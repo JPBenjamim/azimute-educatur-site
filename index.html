@@ -90,51 +90,75 @@
     }
     .nav-cta:hover { background: #c4501e !important; }
 
-    /* ── HERO ─────────────────────────────────────────── */
-    /* Full-bleed: a foto (hoje placeholder) ocupa a seção inteira,
-       texto por cima. Troca fácil: só mexer em .hero-media background. */
+    /* ── HERO (carrossel de destinos) ──────────────────── */
+    /* Slide 0 = mosaico geral (mensagem principal, fixa).
+       Slides 1+ = 1 destino cada, com copy curta própria.
+       Botões e bolinhas ficam FORA da rotação — nunca somem. */
     .hero {
       position: relative; overflow: hidden;
-      min-height: 92svh; display: flex; align-items: flex-end;
-      padding-top: 5rem; color: #fff;
+      min-height: 92svh; padding-top: 5rem; color: #fff;
     }
-    .hero-media {
+    .hero-slides { position: absolute; inset: 0; z-index: 0; }
+    .hero-slide {
+      position: absolute; inset: 0; opacity: 0; visibility: hidden;
+      transition: opacity 1s ease; display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-slide.active { opacity: 1; visibility: visible; z-index: 1; }
+    .hero-slide-media {
       position: absolute; inset: 0; z-index: 0;
       background: linear-gradient(135deg, #0D2246 0%, #163d7a 45%, #DF6951 130%);
     }
-    .hero-media::before {
+    .hero-slide-media::before {
       content: '';
       position: absolute; inset: 0;
       background-image: repeating-linear-gradient(120deg, rgba(255,255,255,.05) 0 2px, transparent 2px 42px);
     }
+    /* Slide 0: mosaico — vários blocos de foto lado a lado */
+    .hero-collage { position: absolute; inset: 0; z-index: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 3px; }
+    /* Fica logo abaixo do menu — nunca disputa espaço com os botões/bolinhas lá embaixo */
     .hero-media-tag {
-      position: absolute; left: 1.25rem; bottom: 1.25rem; z-index: 1;
+      position: absolute; left: 1.25rem; top: 5.25rem; z-index: 1;
       font-size: .65rem; font-weight: 700; letter-spacing: .5px;
       color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.25);
       padding: .3rem .75rem; border-radius: 50px; backdrop-filter: blur(2px);
     }
-    .hero::after {
-      content: ''; position: absolute; inset: 0; z-index: 1;
+    .hero-slide::after {
+      content: ''; position: absolute; inset: 0; z-index: 0;
       background: linear-gradient(180deg, rgba(9,20,42,.25) 0%, rgba(9,20,42,.45) 55%, rgba(9,20,42,.92) 100%);
     }
-    .hero-grid {
+    .hero-slide-text {
       position: relative; z-index: 2;
-      display: flex; flex-direction: column; gap: 2rem;
-      padding: 2.5rem 0 3.5rem; max-width: 640px;
+      padding: 2.5rem 1.25rem 1.5rem; max-width: 640px;
     }
+    @media (min-width: 768px) { .hero-slide-text { padding: 2.5rem 2rem 1.5rem; } }
     .hero-h4 { font-size: .9rem; font-weight: 700; color: #F0A88F; margin-bottom: .85rem; }
     .hero-h1 {
-      font-size: clamp(2.2rem, 8vw, 4.5rem);
-      font-weight: 900; font-style: italic; line-height: 1.07;
+      font-size: clamp(2rem, 7vw, 4.2rem);
+      font-weight: 900; font-style: italic; line-height: 1.1;
       letter-spacing: -.03em; color: #fff; margin-bottom: 1.1rem;
     }
-    .hero-p { font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.8); line-height: 1.75; margin-bottom: 1.75rem; }
+    .hero-p { font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.8); line-height: 1.75; }
+    /* Rodapé fixo do hero: botões + bolinhas, sempre por cima, fora da rotação */
+    .hero-foot {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem; padding: 0 1.25rem 2rem;
+    }
+    @media (min-width: 768px) { .hero-foot { padding: 0 2rem 2.5rem; } }
     .hero-btns { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
     .hero-link { color: rgba(255,255,255,.85); }
     .hero-link:hover { color: #fff; }
+    .hero-dots { display: flex; gap: .5rem; }
+    .hero-dot {
+      width: 8px; height: 8px; border-radius: 50%; padding: 0;
+      background: rgba(255,255,255,.35); border: none; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .hero-dot.active { background: #fff; transform: scale(1.3); }
     @media (min-width: 820px) {
-      .hero { padding-top: 7rem; min-height: 100svh; align-items: center; }
-      .hero-h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); }
+      .hero { padding-top: 7rem; min-height: 100svh; }
+      .hero-h1 { font-size: clamp(2.6rem, 5vw, 4.2rem); }
+      .hero-slide-text { padding: 0 2rem; }
     }
 
     /* ── BOTÕES ────────────────────────────────────────── */
@@ -462,18 +486,89 @@
 
 
   <!-- HERO ─────────────────────────────────────────── -->
-  <!-- .hero-media = placeholder da foto grande. Trocar o background do CSS
-       por uma foto real de expedição (aluno em campo) quando tiver o banco de imagens. -->
+  <!-- Cada .hero-slide-media / .hero-collage > div é um placeholder de foto.
+       Slide 0 = mosaico geral. Slides 1-4 = 1 destino cada.
+       Texto marcado "[ajustar]" ainda não tem copy aprovada — não inventei. -->
   <section class="hero">
-    <div class="hero-media"></div>
-    <span class="hero-media-tag">Foto: aluno em expedição — a definir</span>
-    <div class="wrap hero-grid">
-      <h4 class="hero-h4">Expedições Pedagógicas · RN e Nordeste</h4>
-      <h1 class="hero-h1">A aula que eles nunca esquecem</h1>
-      <p class="hero-p">Transformamos a saída da escola em Expedição Pedagógica — com objetivo curricular claro, BNCC mapeada e alunos que voltam diferentes.</p>
+    <div class="hero-slides" id="heroSlides">
+
+      <!-- SLIDE 0 — mosaico geral -->
+      <div class="hero-slide active">
+        <div class="hero-collage">
+          <div style="background:linear-gradient(160deg,#0D2246,#163d7a)"></div>
+          <div style="background:linear-gradient(160deg,#DF6951,#c4501e)"></div>
+          <div style="background:linear-gradient(160deg,#163d7a,#2a7a2a)"></div>
+          <div style="background:linear-gradient(160deg,#c4501e,#0D2246)"></div>
+          <div style="background:linear-gradient(160deg,#2a7a2a,#0D2246)"></div>
+          <div style="background:linear-gradient(160deg,#0D2246,#DF6951)"></div>
+          <div style="background:linear-gradient(160deg,#163d7a,#c4501e)"></div>
+          <div style="background:linear-gradient(160deg,#DF6951,#163d7a)"></div>
+        </div>
+        <span class="hero-media-tag">Fotos: mosaico dos roteiros — a definir</span>
+        <div class="wrap hero-slide-text">
+          <h4 class="hero-h4">Expedições Pedagógicas · RN e Nordeste</h4>
+          <h1 class="hero-h1">A aula que eles nunca esquecem</h1>
+          <p class="hero-p">Transformamos a saída da escola em Expedição Pedagógica — com objetivo curricular claro, BNCC mapeada e alunos que voltam diferentes.</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 1 — Areia, PB -->
+      <div class="hero-slide">
+        <div class="hero-slide-media" style="background:linear-gradient(135deg,#0D2246 0%,#5a4a2e 55%,#DF6951 130%)"></div>
+        <span class="hero-media-tag">Foto: Centro Histórico de Areia, PB — a definir</span>
+        <div class="wrap hero-slide-text">
+          <h4 class="hero-h4">Roteiro de Descoberta · Areia, PB</h4>
+          <h1 class="hero-h1">A escravidão deixa de ser data</h1>
+          <p class="hero-p">Casarões do século XVIII e um engenho ativo — o aluno mapeia a arquitetura colonial em vez de só ler sobre ela.</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 — Mossoró, RN -->
+      <div class="hero-slide">
+        <div class="hero-slide-media" style="background:linear-gradient(135deg,#0D2246 0%,#8a6d2e 55%,#DF6951 130%)"></div>
+        <span class="hero-media-tag">Foto: Salinas de Mossoró, RN — a definir</span>
+        <div class="wrap hero-slide-text">
+          <h4 class="hero-h4">Roteiro de Descoberta · Mossoró, RN</h4>
+          <h1 class="hero-h1">Sal, Sol e Liberdade</h1>
+          <p class="hero-p">[ajustar linha de efeito para Mossoró]</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 — Recife + Olinda, PE -->
+      <div class="hero-slide">
+        <div class="hero-slide-media" style="background:linear-gradient(135deg,#0D2246 0%,#163d7a 55%,#c4501e 130%)"></div>
+        <span class="hero-media-tag">Foto: Recife + Olinda, PE — a definir</span>
+        <div class="wrap hero-slide-text">
+          <h4 class="hero-h4">Roteiro de Descoberta · Recife + Olinda, PE</h4>
+          <h1 class="hero-h1">Pernambuco Imortal</h1>
+          <p class="hero-p">[ajustar linha de efeito para Pernambuco Imortal]</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 — Veneza Potiguar (ainda sem copy aprovada) -->
+      <div class="hero-slide">
+        <div class="hero-slide-media" style="background:linear-gradient(135deg,#0D2246 0%,#2a7a6b 55%,#163d7a 130%)"></div>
+        <span class="hero-media-tag">Foto: Veneza Potiguar — a definir</span>
+        <div class="wrap hero-slide-text">
+          <h4 class="hero-h4">Roteiro de Descoberta · Veneza Potiguar</h4>
+          <h1 class="hero-h1">[nome/gancho de Veneza — ajustar]</h1>
+          <p class="hero-p">[ajustar linha de efeito para Veneza — não inventei, você conhece o roteiro melhor]</p>
+        </div>
+      </div>
+
+    </div><!-- /.hero-slides -->
+
+    <div class="wrap hero-foot">
       <div class="hero-btns">
         <a href="#roteiros" class="btn-primary">Ver Roteiros</a>
         <a href="#como-funciona" class="hero-link">Como funciona →</a>
+      </div>
+      <div class="hero-dots" id="heroDots">
+        <button class="hero-dot active" aria-label="Mosaico dos roteiros"></button>
+        <button class="hero-dot" aria-label="Areia, PB"></button>
+        <button class="hero-dot" aria-label="Mossoró, RN"></button>
+        <button class="hero-dot" aria-label="Recife + Olinda, PE"></button>
+        <button class="hero-dot" aria-label="Veneza Potiguar"></button>
       </div>
     </div>
   </section>
@@ -850,6 +945,36 @@
         burger.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });
+
+    /* Carousel do hero — slide 0 fixo (mosaico), 1+ trocam sozinhos */
+    var heroSection = document.querySelector('.hero');
+    var heroSlides = document.querySelectorAll('.hero-slide');
+    var heroDots = document.querySelectorAll('.hero-dot');
+    var heroCur = 0;
+    var heroTimer;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function showHeroSlide(n) {
+      heroSlides[heroCur].classList.remove('active');
+      heroDots[heroCur].classList.remove('active');
+      heroCur = (n + heroSlides.length) % heroSlides.length;
+      heroSlides[heroCur].classList.add('active');
+      heroDots[heroCur].classList.add('active');
+    }
+    heroDots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        showHeroSlide(i);
+        resetHeroTimer();
+      });
+    });
+    function startHeroTimer() {
+      if (reduceMotion || heroSlides.length < 2) return;
+      heroTimer = setInterval(function () { showHeroSlide(heroCur + 1); }, 6000);
+    }
+    function resetHeroTimer() { clearInterval(heroTimer); startHeroTimer(); }
+    heroSection.addEventListener('mouseenter', function () { clearInterval(heroTimer); });
+    heroSection.addEventListener('mouseleave', function () { startHeroTimer(); });
+    startHeroTimer();
 
     /* Carousel roteiros — setas (swipe já funciona via scroll-snap) */
     var track = document.getElementById('rotTrack');
