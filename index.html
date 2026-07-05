@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Azimute Educatur — Expedições Pedagógicas no RN e Nordeste</title>
+  <meta name="description" content="Transformamos saída de escola em Expedição Pedagógica — BNCC mapeada, seguro incluso, 22+ roteiros no RN e Nordeste.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────── */
+    :root {
+      --marinho: #0D2246;
+      --cobre:   #DF6951;
+      --cinza:   #888;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Fira Sans', sans-serif; background: #fff; color: #2d2d2d; overflow-x: hidden; }
+
+    /* ── MOBILE-FIRST: container ────────────────────── */
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 1.25rem; }
+    @media (min-width: 768px) { .wrap { padding: 0 2rem; } }
+
+    .eyebrow { display: block; font-size: .82rem; font-weight: 700; color: var(--cobre); margin-bottom: .5rem; }
+
+    /* Fira Sans 900 italic → substitui o Volkhov/font-cursive do Jadoo */
+    .sec-h {
+      font-size: clamp(1.65rem, 5vw, 2.7rem);
+      font-weight: 900; font-style: italic;
+      color: var(--marinho); line-height: 1.15; letter-spacing: -.02em;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    /* Mobile first: branco, padding menor */
+    #nav {
+      position: fixed; inset: 0 0 auto; z-index: 100;
+      padding: 1rem 0; background: #fff; transition: box-shadow .3s;
+    }
+    #nav.solid { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; }
+    .logo { text-decoration: none; line-height: 1.2; }
+    .logo-name { display: block; font-size: 1rem; font-weight: 800; color: var(--marinho); }
+    .logo-sub  { display: block; font-size: .52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cobre); }
+    /* Links: ocultos no mobile */
+    .nav-links { display: none; }
+    .nav-burger {
+      background: none; border: 1.5px solid #ddd; color: var(--marinho);
+      width: 44px; height: 44px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1rem; position: relative; z-index: 102;
+    }
+    .nav-links.open {
+      display: flex; flex-direction: column; position: fixed; inset: 0;
+      background: rgba(255,255,255,.98); justify-content: center; align-items: center;
+      gap: 2.5rem; z-index: 99; list-style: none;
+    }
+    .nav-links.open a { font-size: 1.35rem; color: var(--marinho); text-decoration: none; font-weight: 600; }
+    /* Desktop nav */
+    @media (min-width: 900px) {
+      #nav { padding: 1.5rem 0; }
+      .logo-name { font-size: 1.15rem; }
+      .nav-links {
+        display: flex; align-items: center; gap: 2.5rem;
+        list-style: none;
+      }
+      .nav-links a { font-size: .9rem; font-weight: 500; color: #666; text-decoration: none; transition: color .2s; }
+      .nav-links a:hover { color: var(--marinho); }
+      .nav-burger { display: none; }
+    }
+    .nav-cta {
+      background: var(--cobre) !important; color: #fff !important;
+      padding: .6rem 1.4rem !important; border-radius: 50px !important;
+      font-weight: 700 !important; font-size: .88rem !important;
+      box-shadow: 0 4px 14px rgba(223,105,81,.35);
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: #c4501e !important; }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    /* Mobile: 1 coluna, sem blob, padding top para nav */
+    .hero {
+      padding-top: 5rem;
+      background: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-grid {
+      display: flex; flex-direction: column; gap: 2rem; padding: 2.5rem 0 3rem;
+    }
+    .hero-h4 { font-size: .9rem; font-weight: 700; color: var(--cobre); margin-bottom: .85rem; }
+    .hero-h1 {
+      font-size: clamp(2.2rem, 8vw, 4.5rem);
+      font-weight: 900; font-style: italic; line-height: 1.07;
+      letter-spacing: -.03em; color: var(--marinho); margin-bottom: 1.1rem;
+    }
+    .hero-p { font-size: .95rem; font-weight: 500; color: #777; line-height: 1.75; margin-bottom: 1.75rem; }
+    .hero-btns { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .hero-img {
+      width: 100%; border-radius: 14px; display: block;
+      aspect-ratio: 4/3; object-fit: cover;
+      box-shadow: 0 12px 40px rgba(0,0,0,.12);
+    }
+    /* Desktop: blob + 2 colunas */
+    @media (min-width: 820px) {
+      .hero {
+        padding-top: 7rem;
+        min-height: 100svh; display: flex; align-items: center;
+      }
+      .hero::before {
+        content: '';
+        position: absolute; right: -6%; top: -10%; width: 54%; height: 120%;
+        background: #FEF4F0; border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+        z-index: 0;
+      }
+      .hero-grid {
+        flex-direction: row; display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem; align-items: center; padding: 5rem 0;
+        position: relative; z-index: 1;
+      }
+      .hero-h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); }
+      .hero-img { border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.13); }
+    }
+
+    /* ── BOTÕES ────────────────────────────────────────── */
+    .btn-primary {
+      background: var(--cobre); color: #fff;
+      font-family: 'Fira Sans', sans-serif; font-size: .95rem; font-weight: 700;
+      padding: .85rem 1.75rem; border-radius: 50px; border: none;
+      text-decoration: none; display: inline-block; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(223,105,81,.35);
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: #c4501e; transform: translateY(-1px); }
+    .hero-link { font-size: .88rem; font-weight: 600; color: #666; text-decoration: none; white-space: nowrap; }
+    .hero-link:hover { color: var(--marinho); }
+
+    /* ── SEÇÃO: padding mobile vs desktop ──────────────── */
+    .sec { padding: 3.5rem 0; }
+    @media (min-width: 768px) { .sec { padding: 5rem 0; } }
+
+    /* ── DIFERENCIAIS ──────────────────────────────────── */
+    /* Mobile: 1 col → tablet: 2 col → desktop: 4 col */
+    .dif-head { text-align: center; margin-bottom: 2.5rem; }
+    @media (min-width: 768px) { .dif-head { margin-bottom: 3.5rem; } }
+    .dif-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 560px)  { .dif-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; } }
+    @media (min-width: 1000px) { .dif-grid { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; } }
+    .dif-card {
+      background: #fff; border: 1px solid rgba(0,0,0,.07); border-radius: 12px;
+      padding: 1.5rem; transition: box-shadow .25s, transform .25s;
+    }
+    @media (min-width: 768px) { .dif-card { padding: 2rem 1.5rem; text-align: center; } }
+    .dif-card:hover { box-shadow: 0 10px 35px rgba(0,0,0,.08); transform: translateY(-4px); }
+    .dif-num {
+      display: block; font-size: 1.85rem; font-weight: 900; font-style: italic;
+      color: var(--cobre); opacity: .22; line-height: 1; margin-bottom: .7rem;
+    }
+    .dif-title { font-size: 1rem; font-weight: 700; color: var(--marinho); margin-bottom: .5rem; }
+    .dif-text  { font-size: .88rem; font-weight: 500; color: #777; line-height: 1.75; }
+
+    /* ── ROTEIROS (carousel) ───────────────────────────── */
+    /* Horizontal scroll-snap — mobile-first */
+    .rot-head-row {
+      display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.75rem;
+    }
+    @media (min-width: 640px) {
+      .rot-head-row { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    }
+    @media (min-width: 768px) { .rot-head-row { margin-bottom: 2.25rem; } }
+    .rot-outer { position: relative; }
+    /* Track: scroll horizontal com snap */
+    .rot-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 1rem;
+      /* extende até as bordas do viewport no mobile */
+      margin: 0 -1.25rem;
+      padding: 0 1.25rem .75rem;
+    }
+    .rot-track::-webkit-scrollbar { display: none; }
+    @media (min-width: 768px) {
+      .rot-track { margin: 0; padding: 0 0 .75rem; gap: 1.25rem; }
+    }
+
+    /* Largura dos cards: 82% mobile (peek do próximo), 47% tablet, 32% desktop */
+    .rot-card {
+      flex: 0 0 82%;
+      scroll-snap-align: start;
+      background: #fff; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,.09);
+      display: block; color: inherit; text-decoration: none;
+      transition: transform .25s, box-shadow .25s;
+    }
+    @media (min-width: 600px)  { .rot-card { flex: 0 0 calc(50% - .5rem); } }
+    @media (min-width: 960px)  { .rot-card { flex: 0 0 calc(33.333% - .835rem); } }
+    .rot-card:hover { transform: translateY(-5px); box-shadow: 0 12px 38px rgba(0,0,0,.14); }
+    .rot-card-div { cursor: default; }
+    .rot-img-wrap { position: relative; }
+    .rot-img-wrap img {
+      width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover;
+      transition: transform .35s;
+    }
+    .rot-card:hover .rot-img-wrap img { transform: scale(1.04); }
+    .rot-nivel {
+      position: absolute; top: .75rem; right: .75rem;
+      font-size: .58rem; font-weight: 700; text-transform: uppercase;
+      padding: .22rem .65rem; border-radius: 50px; color: #fff;
+    }
+    .n-local    { background: #2a7a2a; }
+    .n-regional { background: var(--cobre); }
+    .n-inter    { background: var(--marinho); }
+    .rot-body { padding: 1rem 1.1rem 1.15rem; }
+    .rot-name-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .4rem; }
+    .rot-name  { font-size: .97rem; font-weight: 700; color: var(--marinho); }
+    .rot-serie { font-size: .78rem; font-weight: 500; color: #aaa; }
+    .rot-dest-row { display: flex; align-items: center; justify-content: space-between; margin-top: .4rem; }
+    .rot-dest { font-size: .85rem; font-weight: 500; color: #888; }
+    .rot-link { font-size: .8rem; font-weight: 700; color: var(--cobre); text-decoration: none; transition: opacity .2s; white-space: nowrap; }
+    .rot-link:hover { opacity: .7; }
+
+    /* Setas do carousel */
+    .rot-arrows { display: flex; gap: .5rem; justify-content: flex-end; margin-top: 1.25rem; }
+    .rot-arrow {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid #ddd; background: #fff; color: #777;
+      cursor: pointer; font-size: .9rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s, color .2s, box-shadow .2s;
+    }
+    .rot-arrow:hover { border-color: var(--cobre); color: var(--cobre); box-shadow: 0 2px 10px rgba(223,105,81,.2); }
+
+    /* ── COMO FUNCIONA ─────────────────────────────────── */
+    /* Mobile: empilhado | Desktop: 2 colunas */
+    .como-grid { display: flex; flex-direction: column; gap: 2.5rem; }
+    .como-eyebrow { font-size: .85rem; font-weight: 700; color: var(--cobre); margin-bottom: .5rem; }
+    .como-h {
+      font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 900; font-style: italic;
+      color: var(--marinho); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 2rem;
+    }
+    @media (min-width: 820px) {
+      .como-grid { flex-direction: row; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    }
+    .step { display: flex; gap: 1.1rem; align-items: flex-start; margin-bottom: 1.75rem; }
+    .step-box {
+      width: 44px; height: 44px; border-radius: 13px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 900; font-style: italic; color: #fff;
+    }
+    .step-box-1 { background: var(--cobre); }
+    .step-box-2 { background: #596DF0; }
+    .step-box-3 { background: #50C2C9; }
+    .step-h { font-size: .97rem; font-weight: 700; color: var(--marinho); margin-bottom: .3rem; }
+    .step-p { font-size: .88rem; font-weight: 500; color: #777; line-height: 1.72; }
+    .como-card {
+      background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.09);
+      width: 100%; max-width: 360px; margin: 0 auto;
+    }
+    @media (min-width: 820px) { .como-card { margin: 0; } }
+    .como-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; }
+    .como-card-body { padding: 1.25rem 1.35rem 1.4rem; }
+    .como-card-h   { font-size: 1rem; font-weight: 700; color: var(--marinho); margin-bottom: .2rem; }
+    .como-card-sub { font-size: .82rem; font-weight: 500; color: #aaa; margin-bottom: .6rem; }
+    .como-card-det { font-size: .82rem; font-weight: 500; color: #888; line-height: 1.65; }
+
+    /* ── DEPOIMENTOS ─────────────────────────────────── */
+    /* Mobile: empilhado | Desktop: 5/6 col */
+    .dep-grid { display: flex; flex-direction: column; gap: 2.5rem; }
+    @media (min-width: 800px) {
+      .dep-grid { flex-direction: row; display: grid; grid-template-columns: 5fr 6fr; gap: 4rem; align-items: flex-start; }
+    }
+    .dep-h {
+      font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 900; font-style: italic;
+      color: var(--marinho); line-height: 1.2; letter-spacing: -.02em; margin-top: .5rem;
+    }
+    .dep-carousel { position: relative; padding-bottom: 3.5rem; padding-right: 30px; }
+    .dep-slide { display: none; }
+    .dep-slide.active { display: block; }
+    .dep-card-wrap { position: relative; }
+    .dep-card-back {
+      position: absolute; inset: 0; background: #fff; border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      transform: translate(12px, 12px); z-index: 0;
+    }
+    @media (min-width: 600px) {
+      .dep-carousel { padding-right: 35px; }
+      .dep-card-back { transform: translate(25px, 25px); }
+    }
+    .dep-card {
+      background: #fff; border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.1);
+      padding: 2.25rem 1.75rem 1.75rem; position: relative; z-index: 1;
+    }
+    .dep-avatar-pos { position: absolute; top: 0; left: 1.75rem; transform: translateY(-50%); z-index: 2; }
+    .dep-avatar {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--marinho); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.1rem; border: 3px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    }
+    .dep-content { padding-top: 1.5rem; }
+    .dep-text { font-weight: 500; font-size: .93rem; line-height: 1.78; color: #555; margin-bottom: 1.1rem; }
+    .dep-name { font-size: .93rem; font-weight: 700; color: var(--marinho); }
+    .dep-role { font-size: .78rem; font-weight: 500; color: #aaa; }
+    .dep-nav  { display: flex; gap: .5rem; margin-top: 1.5rem; }
+    .dep-btn {
+      background: none; border: 1.5px solid #ddd;
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: #888; font-size: .8rem;
+      transition: border-color .2s, color .2s;
+    }
+    .dep-btn:hover { border-color: var(--cobre); color: var(--cobre); }
+
+    /* ── CTA ─────────────────────────────────────────── */
+    .cta { padding: 2rem 0 4rem; }
+    @media (min-width: 768px) { .cta { padding: 3rem 0 6rem; } }
+    /* Mobile: border-radius simples; desktop: blob Jadoo */
+    .cta-box {
+      border-radius: 20px;
+      background-color: rgba(254,244,240,.85);
+      border: 1px solid rgba(223,105,81,.1);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .cta-box {
+        border-radius: 129px 20px 20px 20px;
+        padding: 4.5rem 5rem;
+      }
+    }
+    .cta-h {
+      font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 900; font-style: italic;
+      color: var(--marinho); line-height: 1.2; letter-spacing: -.02em; margin-bottom: .85rem;
+    }
+    .cta-p { font-size: .93rem; font-weight: 500; color: #777; line-height: 1.75; max-width: 520px; margin: 0 auto 2rem; }
+    .cta-note { margin-top: 1rem; font-size: .8rem; color: #bbb; font-weight: 500; }
+
+    /* ── FOOTER (Jadoo: claro) ─────────────────────── */
+    footer { padding: 3rem 0 1.5rem; border-top: 1px solid rgba(0,0,0,.07); }
+    /* Mobile: 1 col */
+    .footer-grid { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2rem; }
+    @media (min-width: 640px) {
+      .footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    }
+    @media (min-width: 900px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
+    }
+    .footer-logo-name { font-size: 1.05rem; font-weight: 800; color: var(--marinho); display: block; }
+    .footer-logo-sub  { font-size: .52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cobre); display: block; margin-bottom: .85rem; }
+    .footer-desc { font-size: .88rem; font-weight: 500; color: #888; line-height: 1.75; }
+    .footer-socials { display: flex; gap: .5rem; margin-top: 1.1rem; }
+    .soc {
+      width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #ddd; color: #888;
+      display: inline-flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: .85rem; transition: border-color .2s, color .2s;
+    }
+    .soc:hover { border-color: var(--cobre); color: var(--cobre); }
+    .footer-col h5 { font-size: .82rem; font-weight: 800; color: var(--marinho); margin-bottom: 1rem; }
+    .footer-col ul  { list-style: none; }
+    .footer-col li  { margin-bottom: .45rem; }
+    .footer-col a   { font-size: .88rem; font-weight: 500; color: #888; text-decoration: none; transition: color .2s; }
+    .footer-col a:hover { color: var(--marinho); }
+    .footer-bottom {
+      padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,.07);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+    }
+    .footer-bottom p { font-size: .78rem; color: #bbb; margin: 0; font-weight: 500; }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV ──────────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="wrap nav-wrap">
+      <a class="logo" href="#">
+        <span class="logo-name">Azimute Educatur</span>
+        <span class="logo-sub">Expedições Pedagógicas</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#roteiros">Roteiros</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li>
+          <a class="nav-cta"
+            href="https://wa.me/5584999650530?text=Oi%20Jonas%2C%20quero%20conhecer%20os%20roteiros%20da%20Educatur"
+            target="_blank" rel="noopener">
+            Solicitar Calendário
+          </a>
+        </li>
+      </ul>
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- HERO ─────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h4 class="hero-h4">Expedições Pedagógicas · RN e Nordeste</h4>
+        <h1 class="hero-h1">A aula que eles nunca esquecem</h1>
+        <p class="hero-p">Transformamos a saída da escola em Expedição Pedagógica — com objetivo curricular claro, BNCC mapeada e alunos que voltam diferentes.</p>
+        <div class="hero-btns">
+          <a href="#roteiros" class="btn-primary">Ver Roteiros</a>
+          <a href="#como-funciona" class="hero-link">Como funciona →</a>
+        </div>
+      </div>
+      <div>
+        <img class="hero-img"
+          src="https://picsum.photos/seed/areia-brejo-pb-colonial/800/600"
+          alt="Expedição Pedagógica — patrimônio histórico do Nordeste">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DIFERENCIAIS ─────────────────────────────────── -->
+  <section class="sec" id="diferenciais">
+    <div class="wrap">
+      <div class="dif-head">
+        <span class="eyebrow">Por que a Educatur</span>
+        <h2 class="sec-h">Mais do que uma saída de campo</h2>
+      </div>
+      <div class="dif-grid">
+        <div class="dif-card">
+          <span class="dif-num">01</span>
+          <h3 class="dif-title">BNCC Mapeada</h3>
+          <p class="dif-text">Objetivos curriculares em cada roteiro. Você chega à coordenação com argumento pedagógico — não com foto de viagem.</p>
+        </div>
+        <div class="dif-card">
+          <span class="dif-num">02</span>
+          <h3 class="dif-title">Seguro Incluso</h3>
+          <p class="dif-text">Seguro viagem, profissional de saúde e ônibus regulamentado. A escola fica tranquila — e os pais, também.</p>
+        </div>
+        <div class="dif-card">
+          <span class="dif-num">03</span>
+          <h3 class="dif-title">Material do Professor</h3>
+          <p class="dif-text">Guia pedagógico incluso. A aula continua em sala por semanas depois da expedição.</p>
+        </div>
+        <div class="dif-card">
+          <span class="dif-num">04</span>
+          <h3 class="dif-title">Calendário Semestral</h3>
+          <p class="dif-text">Um roteiro para cada série, alinhado com o que cada turma está estudando. O semestre fechado de uma vez.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ROTEIROS ─────────────────────────────────────── -->
+  <!-- Carousel: scroll-snap horizontal, setas no desktop, swipe no mobile -->
+  <section class="sec" id="roteiros" style="padding-top:0;">
+    <div class="wrap">
+      <div class="rot-head-row">
+        <div>
+          <span class="eyebrow">Catálogo</span>
+          <h2 class="sec-h">Roteiros de Descoberta</h2>
+        </div>
+        <a class="btn-primary" href="catalogo.html">Ver catálogo completo</a>
+      </div>
+
+      <div class="rot-outer">
+        <div class="rot-track" id="rotTrack">
+
+          <a class="rot-card" href="roteiro-areia.html">
+            <div class="rot-img-wrap">
+              <img src="https://picsum.photos/seed/areia-pb-colonial/800/600" alt="Areia, PB">
+              <span class="rot-nivel n-regional">Regional</span>
+            </div>
+            <div class="rot-body">
+              <div class="rot-name-row">
+                <span class="rot-name">Civilização e Engenhos</span>
+                <span class="rot-serie">Fund. II · Médio</span>
+              </div>
+              <div class="rot-dest-row">
+                <span class="rot-dest">Areia, PB</span>
+                <span class="rot-link">Ver roteiro →</span>
+              </div>
+            </div>
+          </a>
+
+          <div class="rot-card rot-card-div">
+            <div class="rot-img-wrap">
+              <img src="https://picsum.photos/seed/recife-olinda-historico/800/600" alt="Recife, PE">
+              <span class="rot-nivel n-inter">Interestadual</span>
+            </div>
+            <div class="rot-body">
+              <div class="rot-name-row">
+                <span class="rot-name">Pernambuco Imortal</span>
+                <span class="rot-serie">Fund. II · Médio</span>
+              </div>
+              <div class="rot-dest-row">
+                <span class="rot-dest">Recife + Olinda, PE</span>
+                <a class="rot-link"
+                  href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Pernambuco%20Imortal"
+                  target="_blank" rel="noopener">Solicitar →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="rot-card rot-card-div">
+            <div class="rot-img-wrap">
+              <img src="https://picsum.photos/seed/joao-pessoa-paraiba-costa/800/600" alt="João Pessoa, PB">
+              <span class="rot-nivel n-inter">Interestadual</span>
+            </div>
+            <div class="rot-body">
+              <div class="rot-name-row">
+                <span class="rot-name">Arrebol Paraibano</span>
+                <span class="rot-serie">Fund. II</span>
+              </div>
+              <div class="rot-dest-row">
+                <span class="rot-dest">João Pessoa, PB</span>
+                <a class="rot-link"
+                  href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Arrebol%20Paraibano"
+                  target="_blank" rel="noopener">Solicitar →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="rot-card rot-card-div">
+            <div class="rot-img-wrap">
+              <img src="https://picsum.photos/seed/mossoro-sertao-nordeste/800/600" alt="Mossoró, RN">
+              <span class="rot-nivel n-regional">Regional</span>
+            </div>
+            <div class="rot-body">
+              <div class="rot-name-row">
+                <span class="rot-name">Sal, Sol e Liberdade</span>
+                <span class="rot-serie">Fund. II · Médio</span>
+              </div>
+              <div class="rot-dest-row">
+                <span class="rot-dest">Mossoró, RN</span>
+                <a class="rot-link"
+                  href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Sal%20Sol%20e%20Liberdade"
+                  target="_blank" rel="noopener">Solicitar →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="rot-card rot-card-div">
+            <div class="rot-img-wrap">
+              <img src="https://picsum.photos/seed/currais-novos-serido-rn/800/600" alt="Currais Novos, RN">
+              <span class="rot-nivel n-regional">Regional</span>
+            </div>
+            <div class="rot-body">
+              <div class="rot-name-row">
+                <span class="rot-name">Coração de Metal do Seridó</span>
+                <span class="rot-serie">Fund. II · Médio</span>
+              </div>
+              <div class="rot-dest-row">
+                <span class="rot-dest">Currais Novos, RN</span>
+                <a class="rot-link"
+                  href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Cora%C3%A7%C3%A3o%20de%20Metal"
+                  target="_blank" rel="noopener">Solicitar →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="rot-card rot-card-div">
+            <div class="rot-img-wrap">
+              <img src="https://picsum.photos/seed/natal-forte-dunas-rn/800/600" alt="Natal, RN">
+              <span class="rot-nivel n-local">Local</span>
+            </div>
+            <div class="rot-body">
+              <div class="rot-name-row">
+                <span class="rot-name">O Chão Vivo de Natal</span>
+                <span class="rot-serie">Fund. II</span>
+              </div>
+              <div class="rot-dest-row">
+                <span class="rot-dest">Natal, RN</span>
+                <a class="rot-link"
+                  href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Ch%C3%A3o%20Vivo%20de%20Natal"
+                  target="_blank" rel="noopener">Solicitar →</a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.rot-track -->
+        <div class="rot-arrows">
+          <button class="rot-arrow" id="rotPrev" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="rot-arrow" id="rotNext" aria-label="Próximo">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div><!-- /.rot-outer -->
+    </div>
+  </section>
+
+
+  <!-- COMO FUNCIONA ────────────────────────────────── -->
+  <section class="sec" id="como-funciona">
+    <div class="wrap como-grid">
+      <div>
+        <div class="como-eyebrow">Simples e Rápido</div>
+        <h2 class="como-h">Do contato ao calendário fechado em 3 passos</h2>
+        <div class="step">
+          <div class="step-box step-box-1">01</div>
+          <div>
+            <h3 class="step-h">Mapeamos a sua escola</h3>
+            <p class="step-p">Entendemos as séries, o que cada turma está estudando e quem precisa aprovar. Calendário só sai depois de mapear.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-box step-box-2">02</div>
+          <div>
+            <h3 class="step-h">Montamos o Calendário Semestral</h3>
+            <p class="step-p">Um roteiro para cada turma, alinhado com o que cada série está estudando — o planejamento do semestre inteiro.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-box step-box-3">03</div>
+          <div>
+            <h3 class="step-h">Você chega com argumento</h3>
+            <p class="step-p">Texto pronto para coordenação, comunicado para os pais e BNCC mapeada. Você apresenta resultado.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="como-card">
+          <img src="https://picsum.photos/seed/areia-engenho-colonial/800/500" alt="Expedição Areia, PB">
+          <div class="como-card-body">
+            <h4 class="como-card-h">Civilização e Engenhos · Areia, PB</h4>
+            <p class="como-card-sub">1 dia · Fundamental II e Médio</p>
+            <p class="como-card-det">Ônibus · Almoço · Guia · Fotógrafo · Seguro viagem · BNCC mapeada</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DEPOIMENTOS ──────────────────────────────────── -->
+  <section class="sec" id="depoimentos">
+    <div class="wrap dep-grid">
+      <div>
+        <span class="eyebrow">Diretores falam</span>
+        <h2 class="dep-h">O que muda depois de uma Expedição Pedagógica.</h2>
+      </div>
+      <div class="dep-carousel">
+        <div class="dep-slide active">
+          <div class="dep-card-wrap">
+            <div class="dep-card-back"></div>
+            <div class="dep-card">
+              <div class="dep-avatar-pos"><div class="dep-avatar">A</div></div>
+              <div class="dep-content">
+                <p class="dep-text">"O que me convenceu foi o argumento pedagógico pronto. Tem BNCC mapeada, material para o professor, tudo documentado. Apresentei à coordenação e passou sem resistência."</p>
+                <div class="dep-name">Ana M. Ferreira</div>
+                <div class="dep-role">Diretora · Col. São Paulo · Natal, RN</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dep-slide">
+          <div class="dep-card-wrap">
+            <div class="dep-card-back"></div>
+            <div class="dep-card">
+              <div class="dep-avatar-pos"><div class="dep-avatar" style="background:#163D7A">M</div></div>
+              <div class="dep-content">
+                <p class="dep-text">"Meu maior medo era a responsabilidade fora da escola. Com seguro incluso, profissional de saúde e ônibus regulamentado, aprovei sem hesitar — e os pais ficaram tranquilos."</p>
+                <div class="dep-name">Marcos R. Lima</div>
+                <div class="dep-role">Diretor · E.E. R. Fernandes · Mossoró, RN</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dep-slide">
+          <div class="dep-card-wrap">
+            <div class="dep-card-back"></div>
+            <div class="dep-card">
+              <div class="dep-avatar-pos"><div class="dep-avatar" style="background:#2e6b2e">C</div></div>
+              <div class="dep-content">
+                <p class="dep-text">"Os alunos voltaram diferentes. O professor de história me disse que a aula sobre o ciclo do açúcar gerou debate por três semanas depois da expedição."</p>
+                <div class="dep-name">Conceição A. Nóbrega</div>
+                <div class="dep-role">Diretora · E.M. Leão XIII · Caicó, RN</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dep-nav">
+          <button class="dep-btn" id="depPrev" aria-label="Anterior"><i class="fas fa-chevron-up"></i></button>
+          <button class="dep-btn" id="depNext" aria-label="Próximo"><i class="fas fa-chevron-down"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA ──────────────────────────────────────────── -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-box">
+        <h2 class="cta-h">22 roteiros prontos.<br>Qual é o da sua escola?</h2>
+        <p class="cta-p">Fale com a gente e receba o roteiro certo para o que sua escola está estudando este semestre. 30 minutos, sem compromisso.</p>
+        <a class="btn-primary"
+          href="https://wa.me/5584999650530?text=Oi%20Jonas%2C%20quero%20o%20Calend%C3%A1rio%20Semestral%20da%20Educatur"
+          target="_blank" rel="noopener">
+          Solicitar Calendário Semestral
+        </a>
+        <p class="cta-note">Respondemos em até 24h · Sem compromisso</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER ───────────────────────────────────────── -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <span class="footer-logo-name">Azimute Educatur</span>
+          <span class="footer-logo-sub">Expedições Pedagógicas</span>
+          <p class="footer-desc">Transformamos a saída da escola em Expedição Pedagógica — com objetivo curricular claro e alunos que voltam diferentes.</p>
+          <div class="footer-socials">
+            <a class="soc" href="#!" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a class="soc" href="https://wa.me/5584999650530" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a class="soc" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Roteiros</h5>
+          <ul>
+            <li><a href="catalogo.html">Catálogo completo</a></li>
+            <li><a href="#roteiros">Natal e Região</a></li>
+            <li><a href="#roteiros">Interior do RN</a></li>
+            <li><a href="#roteiros">Paraíba e Pernambuco</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Para a Escola</h5>
+          <ul>
+            <li><a href="#como-funciona">Como Funciona</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="https://wa.me/5584999650530" target="_blank" rel="noopener">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contato</h5>
+          <ul>
+            <li><a href="https://wa.me/5584999650530">(84) 99965-0530</a></li>
+            <li><a href="mailto:jonas.palhares@outlook.com">jonas.palhares@outlook.com</a></li>
+            <li><a href="#">Natal, RN</a></li>
+            <li><a href="#">CNPJ 64.349.866/0001-95</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Azimute Educatur — Hub Azimute · Natal/RN</p>
+        <p>Expedições Pedagógicas alinhadas à BNCC</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Nav scroll */
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('solid', window.scrollY > 40);
+    }, { passive: true });
+
+    /* Burger */
+    var burger = document.getElementById('burger');
+    var navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', function () {
+      navLinks.classList.toggle('open');
+      burger.innerHTML = navLinks.classList.contains('open')
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+    });
+    navLinks.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        burger.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    /* Carousel roteiros — setas (swipe já funciona via scroll-snap) */
+    var track = document.getElementById('rotTrack');
+    function scrollCarousel(dir) {
+      var card = track.querySelector('.rot-card');
+      var gap  = 16; /* 1rem gap */
+      var step = card ? card.offsetWidth + gap : 300;
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    }
+    document.getElementById('rotPrev').addEventListener('click', function () { scrollCarousel(-1); });
+    document.getElementById('rotNext').addEventListener('click', function () { scrollCarousel(1); });
+
+    /* Carousel depoimentos */
+    var slides = document.querySelectorAll('.dep-slide');
+    var cur = 0;
+    function showSlide(n) {
+      slides[cur].classList.remove('active');
+      cur = (n + slides.length) % slides.length;
+      slides[cur].classList.add('active');
+    }
+    document.getElementById('depPrev').addEventListener('click', function () { showSlide(cur - 1); });
+    document.getElementById('depNext').addEventListener('click', function () { showSlide(cur + 1); });
+    setInterval(function () { showSlide(cur + 1); }, 5000);
+  </script>
+
+</body>
+</html>

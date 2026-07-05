@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo de Roteiros — Azimute Educatur</title>
+  <meta name="description" content="22+ Roteiros de Descoberta prontos para o RN e Nordeste — alinhados à BNCC, seguro incluso, 1 dia.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root { --marinho: #0D2246; --cobre: #DF6951; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Fira Sans', sans-serif; background: #fff; color: #2d2d2d; overflow-x: hidden; }
+
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 1.25rem; }
+    @media (min-width: 768px) { .wrap { padding: 0 2rem; } }
+
+    .eyebrow { display: block; font-size: .82rem; font-weight: 700; color: var(--cobre); margin-bottom: .5rem; }
+    .sec-h   { font-size: clamp(1.65rem, 5vw, 2.7rem); font-weight: 900; font-style: italic; color: var(--marinho); line-height: 1.15; letter-spacing: -.02em; }
+
+    /* ── NAV (mesma do index) ───────────────────────── */
+    #nav { position: fixed; inset: 0 0 auto; z-index: 100; padding: 1rem 0; background: #fff; transition: box-shadow .3s; }
+    #nav.solid { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; }
+    .logo { text-decoration: none; line-height: 1.2; }
+    .logo-name { display: block; font-size: 1rem; font-weight: 800; color: var(--marinho); }
+    .logo-sub  { display: block; font-size: .52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cobre); }
+    .nav-links { display: none; }
+    .nav-burger { background: none; border: 1.5px solid #ddd; color: var(--marinho); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; position: relative; z-index: 102; }
+    .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: rgba(255,255,255,.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 99; list-style: none; }
+    .nav-links.open a { font-size: 1.35rem; color: var(--marinho); text-decoration: none; font-weight: 600; }
+    @media (min-width: 900px) {
+      #nav { padding: 1.5rem 0; }
+      .logo-name { font-size: 1.15rem; }
+      .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+      .nav-links a { font-size: .9rem; font-weight: 500; color: #666; text-decoration: none; transition: color .2s; }
+      .nav-links a:hover { color: var(--marinho); }
+      .nav-burger { display: none; }
+    }
+    .nav-cta { background: var(--cobre) !important; color: #fff !important; padding: .6rem 1.4rem !important; border-radius: 50px !important; font-weight: 700 !important; font-size: .88rem !important; box-shadow: 0 4px 14px rgba(223,105,81,.35); transition: background .2s !important; }
+    .nav-cta:hover { background: #c4501e !important; }
+
+    /* ── HERO CATÁLOGO ─────────────────────────────── */
+    /* Mobile: simples, 1 col */
+    .hero-cat {
+      padding: 5.5rem 0 2.5rem; background: #fff;
+      position: relative; overflow: hidden;
+    }
+    .hero-cat::before {
+      content: ''; position: absolute; right: -6%; top: -20%; width: 44%; height: 140%;
+      background: #FEF4F0; border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; z-index: 0;
+    }
+    .hero-cat-inner {
+      position: relative; z-index: 1; max-width: 620px; padding: 1.5rem 0;
+    }
+    .hero-cat-back { font-size: .85rem; font-weight: 600; color: var(--cobre); text-decoration: none; display: inline-block; margin-bottom: 1.25rem; }
+    .hero-cat-back:hover { opacity: .75; }
+    .hero-cat-h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 900; font-style: italic; color: var(--marinho); line-height: 1.1; letter-spacing: -.03em; margin-bottom: .85rem; }
+    .hero-cat-p  { font-size: .97rem; font-weight: 500; color: #777; line-height: 1.75; }
+    @media (min-width: 768px) { .hero-cat { padding: 7.5rem 0 3rem; } }
+
+    /* ── FILTRO / LEGENDA ──────────────────────────── */
+    .filtro-bar {
+      display: flex; align-items: center; gap: .65rem; flex-wrap: wrap;
+      padding: 1.25rem 0; border-bottom: 1px solid rgba(0,0,0,.08);
+      margin-bottom: 2.5rem;
+    }
+    .filtro-label { font-size: .78rem; font-weight: 700; color: #aaa; margin-right: .25rem; }
+    .filtro-pill {
+      font-size: .7rem; font-weight: 700; padding: .3rem .85rem; border-radius: 50px; color: #fff;
+    }
+    .f-local    { background: #2a7a2a; }
+    .f-regional { background: var(--cobre); }
+    .f-inter    { background: var(--marinho); }
+    .f-dev { background: #ccc; color: #555; }
+
+    /* ── GRUPO DE REGIÃO ───────────────────────────── */
+    .grupo { margin-bottom: 3.5rem; }
+    .grupo-titulo {
+      font-size: .72rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
+      color: #aaa; border-bottom: 1px solid rgba(0,0,0,.08);
+      padding-bottom: .75rem; margin-bottom: 1.5rem;
+    }
+
+    /* ── CARDS (mesma do index) ─────────────────────── */
+    /* Grid 1→2→3 colunas */
+    .cat-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 560px)  { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px)  { .cat-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .rot-card {
+      background: #fff; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,.09);
+      display: block; color: inherit; text-decoration: none;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .rot-card:hover { transform: translateY(-5px); box-shadow: 0 12px 38px rgba(0,0,0,.14); }
+    .rot-card-div { cursor: default; }
+    .rot-img-wrap { position: relative; }
+    .rot-img-wrap img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; transition: transform .35s; }
+    .rot-card:hover .rot-img-wrap img { transform: scale(1.04); }
+    .rot-nivel { position: absolute; top: .75rem; right: .75rem; font-size: .58rem; font-weight: 700; text-transform: uppercase; padding: .22rem .65rem; border-radius: 50px; color: #fff; }
+    .n-local    { background: #2a7a2a; }
+    .n-regional { background: var(--cobre); }
+    .n-inter    { background: var(--marinho); }
+    .rot-body { padding: 1rem 1.1rem 1.15rem; }
+    .rot-name-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .4rem; }
+    .rot-name  { font-size: .97rem; font-weight: 700; color: var(--marinho); }
+    .rot-serie { font-size: .78rem; font-weight: 500; color: #aaa; }
+    .rot-dest-row { display: flex; align-items: center; justify-content: space-between; margin-top: .4rem; }
+    .rot-dest { font-size: .85rem; font-weight: 500; color: #888; }
+    .rot-link { font-size: .8rem; font-weight: 700; color: var(--cobre); text-decoration: none; transition: opacity .2s; white-space: nowrap; }
+    .rot-link:hover { opacity: .7; }
+
+    /* Cards "em desenvolvimento" */
+    .rot-card-dev { opacity: .7; }
+    .rot-card-dev .rot-img-wrap img { filter: grayscale(30%); }
+    .dev-badge {
+      position: absolute; top: .75rem; left: .75rem;
+      font-size: .58rem; font-weight: 700; padding: .22rem .65rem;
+      border-radius: 50px; background: rgba(0,0,0,.45); color: #fff;
+    }
+
+    /* ── CTA ──────────────────────────────────────── */
+    .cta { padding: 2rem 0 4rem; }
+    @media (min-width: 768px) { .cta { padding: 3rem 0 6rem; } }
+    .cta-box {
+      border-radius: 20px; background-color: rgba(254,244,240,.85);
+      border: 1px solid rgba(223,105,81,.1); padding: 2.5rem 1.5rem; text-align: center;
+    }
+    @media (min-width: 640px) { .cta-box { border-radius: 129px 20px 20px 20px; padding: 4.5rem 5rem; } }
+    .cta-h { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 900; font-style: italic; color: var(--marinho); line-height: 1.2; letter-spacing: -.02em; margin-bottom: .85rem; }
+    .cta-p  { font-size: .93rem; font-weight: 500; color: #777; line-height: 1.75; max-width: 520px; margin: 0 auto 2rem; }
+    .cta-note { margin-top: 1rem; font-size: .8rem; color: #bbb; font-weight: 500; }
+    .btn-primary { background: var(--cobre); color: #fff; font-family: 'Fira Sans', sans-serif; font-size: .95rem; font-weight: 700; padding: .85rem 1.75rem; border-radius: 50px; border: none; text-decoration: none; display: inline-block; cursor: pointer; box-shadow: 0 6px 20px rgba(223,105,81,.35); transition: background .2s, transform .15s; white-space: nowrap; }
+    .btn-primary:hover { background: #c4501e; transform: translateY(-1px); }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer { padding: 3rem 0 1.5rem; border-top: 1px solid rgba(0,0,0,.07); }
+    .footer-grid { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2rem; }
+    @media (min-width: 640px)  { .footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
+    @media (min-width: 900px)  { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; } }
+    .footer-logo-name { font-size: 1.05rem; font-weight: 800; color: var(--marinho); display: block; }
+    .footer-logo-sub  { font-size: .52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cobre); display: block; margin-bottom: .85rem; }
+    .footer-desc { font-size: .88rem; font-weight: 500; color: #888; line-height: 1.75; }
+    .footer-socials { display: flex; gap: .5rem; margin-top: 1.1rem; }
+    .soc { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #ddd; color: #888; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-size: .85rem; transition: border-color .2s, color .2s; }
+    .soc:hover { border-color: var(--cobre); color: var(--cobre); }
+    .footer-col h5 { font-size: .82rem; font-weight: 800; color: var(--marinho); margin-bottom: 1rem; }
+    .footer-col ul  { list-style: none; }
+    .footer-col li  { margin-bottom: .45rem; }
+    .footer-col a   { font-size: .88rem; font-weight: 500; color: #888; text-decoration: none; transition: color .2s; }
+    .footer-col a:hover { color: var(--marinho); }
+    .footer-bottom { padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,.07); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+    .footer-bottom p { font-size: .78rem; color: #bbb; margin: 0; font-weight: 500; }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV ──────────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="wrap nav-wrap">
+      <a class="logo" href="index.html">
+        <span class="logo-name">Azimute Educatur</span>
+        <span class="logo-sub">Expedições Pedagógicas</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#diferenciais">Por que a Educatur</a></li>
+        <li><a href="index.html#como-funciona">Como Funciona</a></li>
+        <li><a href="index.html#depoimentos">Depoimentos</a></li>
+        <li>
+          <a class="nav-cta"
+            href="https://wa.me/5584999650530?text=Oi%20Jonas%2C%20quero%20o%20Calend%C3%A1rio%20Semestral%20da%20Educatur"
+            target="_blank" rel="noopener">
+            Solicitar Calendário
+          </a>
+        </li>
+      </ul>
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- HERO ─────────────────────────────────────────── -->
+  <section class="hero-cat">
+    <div class="wrap">
+      <div class="hero-cat-inner">
+        <a class="hero-cat-back" href="index.html">← Início</a>
+        <h1 class="hero-cat-h1">Catálogo de Roteiros de Descoberta</h1>
+        <p class="hero-cat-p">22+ roteiros prontos para o RN e Nordeste. Cada um com objetivo curricular mapeado, BNCC alinhada e tudo incluso para a escola só aparecer.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- LEGENDA ──────────────────────────────────────── -->
+  <div class="wrap">
+    <div class="filtro-bar">
+      <span class="filtro-label">Nível</span>
+      <span class="filtro-pill f-local">Local</span>
+      <span class="filtro-pill f-regional">Regional</span>
+      <span class="filtro-pill f-inter">Interestadual</span>
+      <span class="filtro-pill f-dev">Em Desenvolvimento</span>
+    </div>
+  </div>
+
+
+  <!-- CATÁLOGO ─────────────────────────────────────── -->
+  <div class="wrap" style="padding-bottom:1rem;">
+
+    <!-- NATAL E REGIÃO ────────────────────────────── -->
+    <div class="grupo">
+      <div class="grupo-titulo">Natal e Região Metropolitana · Local</div>
+      <div class="cat-grid">
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/natal-dunas-parque/800/600" alt="Parque das Dunas, Natal">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">O Chão Vivo de Natal</span>
+              <span class="rot-serie">Fund. II</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Natal, RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Ch%C3%A3o%20Vivo%20de%20Natal" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/natal-aquario-oceano/800/600" alt="Aquário de Natal">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Sentinelas do Mar</span>
+              <span class="rot-serie">Infantil · Fund. I</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Natal, RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Sentinelas%20do%20Mar" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/natal-forte-ribeira-hist/800/600" alt="Forte dos Reis Magos, Natal">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Raízes e Muralhas</span>
+              <span class="rot-serie">Fund. I · Fund. II</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Natal — Forte + Ribeira</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Ra%C3%ADzes%20e%20Muralhas" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/baia-formosa-mata-estrela/800/600" alt="Mata Estrela, Baía Formosa">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Raízes da Mata Atlântica</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Baía Formosa + Mata Estrela</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Ra%C3%ADzes%20da%20Mata%20Atl%C3%A2ntica" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/ceara-mirim-litoral-rn/800/600" alt="Ceará-Mirim, RN">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Terra do Açúcar e do Rio</span>
+              <span class="rot-serie">Fund. II</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Ceará-Mirim, RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Cear%C3%A1-Mirim" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- INTERIOR DO RN ─────────────────────────────── -->
+    <div class="grupo">
+      <div class="grupo-titulo">Interior do Rio Grande do Norte · Regional</div>
+      <div class="cat-grid">
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/mossoro-sertao-nordeste/800/600" alt="Mossoró, RN">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Sal, Sol e Liberdade</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Mossoró, RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Sal%20Sol%20e%20Liberdade" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/currais-novos-serido-rn/800/600" alt="Currais Novos, RN">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Coração de Metal do Seridó</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Currais Novos, RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Cora%C3%A7%C3%A3o%20de%20Metal" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/martins-serido-chapada/800/600" alt="Martins, RN">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Janelas do Seridó</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Caicó + Acari, RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Janelas%20do%20Serid%C3%B3" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PARAÍBA ─────────────────────────────────────── -->
+    <div class="grupo">
+      <div class="grupo-titulo">Paraíba · Regional e Interestadual</div>
+      <div class="cat-grid">
+
+        <a class="rot-card" href="roteiro-areia.html">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/areia-pb-colonial/800/600" alt="Areia, PB">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Civilização e Engenhos</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Areia, PB</span>
+              <span class="rot-link">Ver roteiro →</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/bananeiras-paraiba-brejo/800/600" alt="Bananeiras, PB">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Entre Trilhos e Engenhos</span>
+              <span class="rot-serie">Fund. II</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Bananeiras, PB</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Bananeiras%20PB" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/joao-pessoa-paraiba-costa/800/600" alt="João Pessoa, PB">
+            <span class="rot-nivel n-inter">Interestadual</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Arrebol Paraibano</span>
+              <span class="rot-serie">Fund. II</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">João Pessoa, PB</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Arrebol%20Paraibano" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PERNAMBUCO ──────────────────────────────────── -->
+    <div class="grupo">
+      <div class="grupo-titulo">Pernambuco · Interestadual</div>
+      <div class="cat-grid">
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/recife-olinda-historico/800/600" alt="Recife, PE">
+            <span class="rot-nivel n-inter">Interestadual</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Pernambuco Imortal</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Recife + Olinda, PE</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Pernambuco%20Imortal" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EM DESENVOLVIMENTO ───────────────────────────── -->
+    <div class="grupo">
+      <div class="grupo-titulo">Em Desenvolvimento · Disponíveis em breve</div>
+      <div class="cat-grid">
+
+        <div class="rot-card rot-card-div rot-card-dev">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/araruna-serra-gameleiras/800/600" alt="Araruna, PB">
+            <span class="dev-badge">Em breve</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Serra das Gameleiras</span>
+              <span class="rot-serie">Fund. II</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Araruna + Serra, PB</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Araruna%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div rot-card-dev">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/cajueiro-barreira-litoral/800/600" alt="Cajueiro, RN">
+            <span class="dev-badge">Em breve</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Cajueiro e Barreira</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Litoral Norte, RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Cajueiro%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div rot-card-dev">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/roliude-cinema-nordestino/800/600" alt="Roliude, RN">
+            <span class="dev-badge">Em breve</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Roliude — Cinema do Sertão</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Interior do RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Roliude%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div rot-card-dev">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/minerio-barco-natal-rn/800/600" alt="Museu de Minérios, Natal">
+            <span class="dev-badge">Em breve</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Do Rio ao Mar</span>
+              <span class="rot-serie">Fund. II</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Natal — Minérios + Barco</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Do%20Rio%20ao%20Mar%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div rot-card-dev">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/martins-chapada-rn-verde/800/600" alt="Martins, RN">
+            <span class="dev-badge">Em breve</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">No Topo da Serra</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Martins, RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Martins%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div rot-card-dev">
+          <div class="rot-img-wrap">
+            <img src="https://picsum.photos/seed/serra-sao-bento-rn/800/600" alt="Serra de São Bento, RN">
+            <span class="dev-badge">Em breve</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Serra de São Bento</span>
+              <span class="rot-serie">Fund. II</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Serra de São Bento, RN</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Serra%20de%20S%C3%A3o%20Bento%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /.wrap -->
+
+
+  <!-- CTA ──────────────────────────────────────────── -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta-box">
+        <h2 class="cta-h">Não encontrou o destino certo?</h2>
+        <p class="cta-p">Fale com a gente. Se a cidade tem potencial pedagógico, a gente mapeia e monta o roteiro — em 30 minutos de conversa você sai com o calendário do semestre.</p>
+        <a class="btn-primary"
+          href="https://wa.me/5584999650530?text=Oi%20Jonas%2C%20quero%20um%20roteiro%20personalizado%20para%20minha%20escola"
+          target="_blank" rel="noopener">
+          Solicitar Roteiro Personalizado
+        </a>
+        <p class="cta-note">Respondemos em até 24h · Sem compromisso</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER ───────────────────────────────────────── -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <span class="footer-logo-name">Azimute Educatur</span>
+          <span class="footer-logo-sub">Expedições Pedagógicas</span>
+          <p class="footer-desc">Transformamos a saída da escola em Expedição Pedagógica — com objetivo curricular claro e alunos que voltam diferentes.</p>
+          <div class="footer-socials">
+            <a class="soc" href="#!" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a class="soc" href="https://wa.me/5584999650530" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a class="soc" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Roteiros</h5>
+          <ul>
+            <li><a href="#">Natal e Região</a></li>
+            <li><a href="#">Interior do RN</a></li>
+            <li><a href="#">Paraíba</a></li>
+            <li><a href="#">Pernambuco</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Para a Escola</h5>
+          <ul>
+            <li><a href="index.html#como-funciona">Como Funciona</a></li>
+            <li><a href="index.html#diferenciais">Diferenciais</a></li>
+            <li><a href="index.html#depoimentos">Depoimentos</a></li>
+            <li><a href="https://wa.me/5584999650530" target="_blank" rel="noopener">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contato</h5>
+          <ul>
+            <li><a href="https://wa.me/5584999650530">(84) 99965-0530</a></li>
+            <li><a href="mailto:jonas.palhares@outlook.com">jonas.palhares@outlook.com</a></li>
+            <li><a href="#">Natal, RN</a></li>
+            <li><a href="#">CNPJ 64.349.866/0001-95</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Azimute Educatur — Hub Azimute · Natal/RN</p>
+        <p>Expedições Pedagógicas alinhadas à BNCC</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('solid', window.scrollY > 40);
+    }, { passive: true });
+    var burger = document.getElementById('burger');
+    var navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', function () {
+      navLinks.classList.toggle('open');
+      burger.innerHTML = navLinks.classList.contains('open')
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+    });
+    navLinks.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        burger.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+  </script>
+
+</body>
+</html>
