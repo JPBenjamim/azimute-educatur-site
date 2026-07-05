@@ -113,8 +113,26 @@
       position: absolute; inset: 0;
       background-image: repeating-linear-gradient(120deg, rgba(255,255,255,.05) 0 2px, transparent 2px 42px);
     }
-    /* Slide 0: mosaico — vários blocos de foto lado a lado */
-    .hero-collage { position: absolute; inset: 0; z-index: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 3px; }
+    /* Slide 0: mosaico — mobile carrega só 1 foto (a principal), desktop
+       monta 4 (1 grande + 3 pequenas). As 3 extras ficam display:none no
+       mobile — com <img loading="lazy"> elas nem chegam a baixar no celular. */
+    .hero-collage { position: absolute; inset: 0; z-index: 0; }
+    .hero-collage-principal {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #0D2246, #163d7a 55%, #DF6951);
+    }
+    .hero-collage-extra { display: none; }
+    @media (min-width: 820px) {
+      .hero-collage {
+        display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: repeat(3, 1fr);
+        gap: 4px;
+      }
+      .hero-collage-principal { position: relative; inset: auto; grid-column: 1; grid-row: 1 / 4; }
+      .hero-collage-extra { display: block; position: relative; }
+      .hero-collage-extra:nth-child(2) { background: linear-gradient(160deg, #DF6951, #c4501e); }
+      .hero-collage-extra:nth-child(3) { background: linear-gradient(160deg, #163d7a, #2a7a2a); }
+      .hero-collage-extra:nth-child(4) { background: linear-gradient(160deg, #2a7a2a, #0D2246); }
+    }
     /* Fica logo abaixo do menu — nunca disputa espaço com os botões/bolinhas lá embaixo */
     .hero-media-tag {
       position: absolute; left: 1.25rem; top: 5.25rem; z-index: 1;
@@ -495,14 +513,10 @@
       <!-- SLIDE 0 — mosaico geral -->
       <div class="hero-slide active">
         <div class="hero-collage">
-          <div style="background:linear-gradient(160deg,#0D2246,#163d7a)"></div>
-          <div style="background:linear-gradient(160deg,#DF6951,#c4501e)"></div>
-          <div style="background:linear-gradient(160deg,#163d7a,#2a7a2a)"></div>
-          <div style="background:linear-gradient(160deg,#c4501e,#0D2246)"></div>
-          <div style="background:linear-gradient(160deg,#2a7a2a,#0D2246)"></div>
-          <div style="background:linear-gradient(160deg,#0D2246,#DF6951)"></div>
-          <div style="background:linear-gradient(160deg,#163d7a,#c4501e)"></div>
-          <div style="background:linear-gradient(160deg,#DF6951,#163d7a)"></div>
+          <div class="hero-collage-principal"></div>
+          <div class="hero-collage-extra"></div>
+          <div class="hero-collage-extra"></div>
+          <div class="hero-collage-extra"></div>
         </div>
         <span class="hero-media-tag">Fotos: mosaico dos roteiros — a definir</span>
         <div class="wrap hero-slide-text">
