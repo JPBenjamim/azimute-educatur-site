@@ -89,10 +89,46 @@
     }
 
     /* ── CARDS (mesma do index) ─────────────────────── */
-    /* Grid 1→2→3 colunas */
-    .cat-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
-    @media (min-width: 560px)  { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px)  { .cat-grid { grid-template-columns: repeat(3, 1fr); } }
+    /* auto-fill em vez de repeat(3) fixo: linha com 1 ou 2 itens não
+       sobra buraco de espaço em branco à direita. */
+    .cat-grid {
+      display: grid; gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+
+    /* ── DESTAQUE (bento anchor no topo do catálogo) ──── */
+    /* Placeholder da foto do destino em destaque — trocar por foto real. */
+    .destaque {
+      position: relative; overflow: hidden; color: #fff;
+      border-radius: 20px; min-height: 46vh;
+      display: flex; align-items: flex-end; margin-bottom: 3rem;
+    }
+    .destaque-media {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(120deg, #0D2246 0%, #163d7a 50%, #DF6951 130%);
+    }
+    .destaque-media::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(120deg, rgba(255,255,255,.05) 0 2px, transparent 2px 42px);
+    }
+    .destaque::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(9,20,42,.15), rgba(9,20,42,.85));
+    }
+    .destaque-body { position: relative; z-index: 2; padding: 2.5rem; }
+    .destaque-tag {
+      display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: rgba(255,255,255,.6);
+      border: 1px solid rgba(255,255,255,.3); padding: .3rem .8rem;
+      border-radius: 50px; margin-bottom: 1rem;
+    }
+    .destaque-h { font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 900; font-style: italic; margin-bottom: .5rem; }
+    .destaque-p { font-size: .9rem; color: rgba(255,255,255,.8); max-width: 480px; margin-bottom: 1.5rem; }
+    .foto-tag {
+      position: absolute; z-index: 3; font-size: .65rem; font-weight: 700; letter-spacing: .5px;
+      color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.25);
+      padding: .3rem .75rem; border-radius: 50px;
+    }
 
     .rot-card {
       background: #fff; border-radius: 10px; overflow: hidden;
@@ -200,6 +236,21 @@
       </div>
     </div>
   </section>
+
+
+  <!-- DESTAQUE ─────────────────────────────────────── -->
+  <div class="wrap">
+    <a class="destaque" href="roteiro-areia.html" style="text-decoration:none;">
+      <div class="destaque-media"></div>
+      <span class="foto-tag" style="left:1.25rem;bottom:1.25rem;">Foto: Centro Histórico de Areia, PB — a definir</span>
+      <div class="destaque-body">
+        <span class="destaque-tag">Roteiro em destaque</span>
+        <h2 class="destaque-h">Civilização e Engenhos · Areia, PB</h2>
+        <p class="destaque-p">Casarões do século XVIII, engenho ativo e o peso real da história colonial — a primeira Expedição com página completa no site.</p>
+        <span class="btn-primary">Ver roteiro completo</span>
+      </div>
+    </a>
+  </div>
 
 
   <!-- LEGENDA ──────────────────────────────────────── -->

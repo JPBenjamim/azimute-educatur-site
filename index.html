@@ -37,24 +37,30 @@
     }
 
     /* ── NAV ─────────────────────────────────────────── */
-    /* Mobile first: branco, padding menor */
+    /* Transparente sobre o hero (foto de fundo escura), vira sólido
+       ao rolar — classe .solid já é ligada pelo scroll listener no JS. */
     #nav {
       position: fixed; inset: 0 0 auto; z-index: 100;
-      padding: 1rem 0; background: #fff; transition: box-shadow .3s;
+      padding: 1rem 0; background: transparent;
+      transition: background .3s, box-shadow .3s;
     }
-    #nav.solid { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+    #nav.solid { background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,.08); }
     .nav-wrap { display: flex; align-items: center; justify-content: space-between; }
     .logo { text-decoration: none; line-height: 1.2; }
-    .logo-name { display: block; font-size: 1rem; font-weight: 800; color: var(--marinho); }
-    .logo-sub  { display: block; font-size: .52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cobre); }
+    .logo-name { display: block; font-size: 1rem; font-weight: 800; color: #fff; transition: color .3s; }
+    .logo-sub  { display: block; font-size: .52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #F0A88F; transition: color .3s; }
+    #nav.solid .logo-name { color: var(--marinho); }
+    #nav.solid .logo-sub  { color: var(--cobre); }
     /* Links: ocultos no mobile */
     .nav-links { display: none; }
     .nav-burger {
-      background: none; border: 1.5px solid #ddd; color: var(--marinho);
+      background: none; border: 1.5px solid rgba(255,255,255,.5); color: #fff;
       width: 44px; height: 44px; border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; font-size: 1rem; position: relative; z-index: 102;
+      transition: color .3s, border-color .3s;
     }
+    #nav.solid .nav-burger { color: var(--marinho); border-color: #ddd; }
     .nav-links.open {
       display: flex; flex-direction: column; position: fixed; inset: 0;
       background: rgba(255,255,255,.98); justify-content: center; align-items: center;
@@ -69,8 +75,10 @@
         display: flex; align-items: center; gap: 2.5rem;
         list-style: none;
       }
-      .nav-links a { font-size: .9rem; font-weight: 500; color: #666; text-decoration: none; transition: color .2s; }
-      .nav-links a:hover { color: var(--marinho); }
+      .nav-links a { font-size: .9rem; font-weight: 500; color: rgba(255,255,255,.85); text-decoration: none; transition: color .2s; }
+      .nav-links a:hover { color: #fff; }
+      #nav.solid .nav-links a { color: #666; }
+      #nav.solid .nav-links a:hover { color: var(--marinho); }
       .nav-burger { display: none; }
     }
     .nav-cta {
@@ -83,49 +91,50 @@
     .nav-cta:hover { background: #c4501e !important; }
 
     /* ── HERO ─────────────────────────────────────────── */
-    /* Mobile: 1 coluna, sem blob, padding top para nav */
+    /* Full-bleed: a foto (hoje placeholder) ocupa a seção inteira,
+       texto por cima. Troca fácil: só mexer em .hero-media background. */
     .hero {
-      padding-top: 5rem;
-      background: #fff;
-      overflow: hidden;
-      position: relative;
+      position: relative; overflow: hidden;
+      min-height: 92svh; display: flex; align-items: flex-end;
+      padding-top: 5rem; color: #fff;
+    }
+    .hero-media {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(135deg, #0D2246 0%, #163d7a 45%, #DF6951 130%);
+    }
+    .hero-media::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(120deg, rgba(255,255,255,.05) 0 2px, transparent 2px 42px);
+    }
+    .hero-media-tag {
+      position: absolute; left: 1.25rem; bottom: 1.25rem; z-index: 1;
+      font-size: .65rem; font-weight: 700; letter-spacing: .5px;
+      color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.25);
+      padding: .3rem .75rem; border-radius: 50px; backdrop-filter: blur(2px);
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(9,20,42,.25) 0%, rgba(9,20,42,.45) 55%, rgba(9,20,42,.92) 100%);
     }
     .hero-grid {
-      display: flex; flex-direction: column; gap: 2rem; padding: 2.5rem 0 3rem;
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; gap: 2rem;
+      padding: 2.5rem 0 3.5rem; max-width: 640px;
     }
-    .hero-h4 { font-size: .9rem; font-weight: 700; color: var(--cobre); margin-bottom: .85rem; }
+    .hero-h4 { font-size: .9rem; font-weight: 700; color: #F0A88F; margin-bottom: .85rem; }
     .hero-h1 {
       font-size: clamp(2.2rem, 8vw, 4.5rem);
       font-weight: 900; font-style: italic; line-height: 1.07;
-      letter-spacing: -.03em; color: var(--marinho); margin-bottom: 1.1rem;
+      letter-spacing: -.03em; color: #fff; margin-bottom: 1.1rem;
     }
-    .hero-p { font-size: .95rem; font-weight: 500; color: #777; line-height: 1.75; margin-bottom: 1.75rem; }
+    .hero-p { font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.8); line-height: 1.75; margin-bottom: 1.75rem; }
     .hero-btns { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-    .hero-img {
-      width: 100%; border-radius: 14px; display: block;
-      aspect-ratio: 4/3; object-fit: cover;
-      box-shadow: 0 12px 40px rgba(0,0,0,.12);
-    }
-    /* Desktop: blob + 2 colunas */
+    .hero-link { color: rgba(255,255,255,.85); }
+    .hero-link:hover { color: #fff; }
     @media (min-width: 820px) {
-      .hero {
-        padding-top: 7rem;
-        min-height: 100svh; display: flex; align-items: center;
-      }
-      .hero::before {
-        content: '';
-        position: absolute; right: -6%; top: -10%; width: 54%; height: 120%;
-        background: #FEF4F0; border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-        z-index: 0;
-      }
-      .hero-grid {
-        flex-direction: row; display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem; align-items: center; padding: 5rem 0;
-        position: relative; z-index: 1;
-      }
+      .hero { padding-top: 7rem; min-height: 100svh; align-items: center; }
       .hero-h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); }
-      .hero-img { border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.13); }
     }
 
     /* ── BOTÕES ────────────────────────────────────────── */
@@ -165,6 +174,38 @@
     }
     .dif-title { font-size: 1rem; font-weight: 700; color: var(--marinho); margin-bottom: .5rem; }
     .dif-text  { font-size: .88rem; font-weight: 500; color: #777; line-height: 1.75; }
+
+    /* ── MOMENTO (faixa imersiva full-bleed) ───────────── */
+    /* Placeholder de foto grande + frase. Trocar .momento-media
+       por uma foto real (aluno em campo) quando o banco de imagens estiver pronto. */
+    .momento {
+      position: relative; overflow: hidden; color: #fff;
+      min-height: 52vh; display: flex; align-items: center;
+    }
+    .momento-media {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(115deg, #DF6951 0%, #c4501e 42%, #0D2246 100%);
+    }
+    .momento-media::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(120deg, rgba(255,255,255,.05) 0 2px, transparent 2px 42px);
+    }
+    .momento::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(13,34,70,.2), rgba(13,34,70,.7));
+    }
+    .momento-inner { position: relative; z-index: 2; padding: 4.5rem 0; }
+    .momento-tag {
+      display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: rgba(255,255,255,.6);
+      border: 1px solid rgba(255,255,255,.3); padding: .3rem .8rem;
+      border-radius: 50px; margin-bottom: 1.5rem;
+    }
+    .momento-quote {
+      font-size: clamp(1.5rem, 4.2vw, 2.6rem); font-weight: 900; font-style: italic;
+      line-height: 1.25; max-width: 760px; letter-spacing: -.02em;
+    }
 
     /* ── ROTEIROS (carousel) ───────────────────────────── */
     /* Horizontal scroll-snap — mobile-first */
@@ -290,7 +331,7 @@
     .dep-slide.active { display: block; }
     .dep-card-wrap { position: relative; }
     .dep-card-back {
-      position: absolute; inset: 0; background: #fff; border-radius: 10px;
+      position: absolute; inset: 0; background: rgba(13,34,70,.12); border-radius: 10px;
       box-shadow: 0 2px 12px rgba(0,0,0,.07);
       transform: translate(12px, 12px); z-index: 0;
     }
@@ -298,23 +339,33 @@
       .dep-carousel { padding-right: 35px; }
       .dep-card-back { transform: translate(25px, 25px); }
     }
+    /* Fundo = placeholder da foto do roteiro citado no depoimento.
+       Trocar o background de cada .dep-card por foto real quando tiver. */
     .dep-card {
-      background: #fff; border-radius: 10px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.1);
-      padding: 2.25rem 1.75rem 1.75rem; position: relative; z-index: 1;
+      position: relative; overflow: hidden; color: #fff;
+      background: linear-gradient(135deg, #0D2246 0%, #1a3f7a 100%);
+      border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.18);
+      padding: 2.25rem 1.75rem 1.75rem; z-index: 1;
     }
+    .dep-card::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(120deg, rgba(255,255,255,.05) 0 2px, transparent 2px 36px);
+    }
+    .dep-slide:nth-child(2) .dep-card { background: linear-gradient(135deg, #DF6951 0%, #a8412a 100%); }
+    .dep-slide:nth-child(3) .dep-card { background: linear-gradient(135deg, #1a5c3a 0%, #0D2246 100%); }
     .dep-avatar-pos { position: absolute; top: 0; left: 1.75rem; transform: translateY(-50%); z-index: 2; }
     .dep-avatar {
       width: 60px; height: 60px; border-radius: 50%;
-      background: var(--marinho); color: #fff;
+      background: #fff; color: var(--marinho);
       display: flex; align-items: center; justify-content: center;
       font-weight: 800; font-size: 1.1rem; border: 3px solid #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,.12);
+      box-shadow: 0 4px 12px rgba(0,0,0,.2);
     }
-    .dep-content { padding-top: 1.5rem; }
-    .dep-text { font-weight: 500; font-size: .93rem; line-height: 1.78; color: #555; margin-bottom: 1.1rem; }
-    .dep-name { font-size: .93rem; font-weight: 700; color: var(--marinho); }
-    .dep-role { font-size: .78rem; font-weight: 500; color: #aaa; }
+    .dep-content { padding-top: 1.5rem; position: relative; }
+    .dep-text { font-weight: 500; font-size: .93rem; line-height: 1.78; color: rgba(255,255,255,.92); margin-bottom: 1.1rem; }
+    .dep-name { font-size: .93rem; font-weight: 700; color: #fff; }
+    .dep-role { font-size: .78rem; font-weight: 500; color: rgba(255,255,255,.6); }
     .dep-nav  { display: flex; gap: .5rem; margin-top: 1.5rem; }
     .dep-btn {
       background: none; border: 1.5px solid #ddd;
@@ -411,21 +462,18 @@
 
 
   <!-- HERO ─────────────────────────────────────────── -->
+  <!-- .hero-media = placeholder da foto grande. Trocar o background do CSS
+       por uma foto real de expedição (aluno em campo) quando tiver o banco de imagens. -->
   <section class="hero">
+    <div class="hero-media"></div>
+    <span class="hero-media-tag">Foto: aluno em expedição — a definir</span>
     <div class="wrap hero-grid">
-      <div>
-        <h4 class="hero-h4">Expedições Pedagógicas · RN e Nordeste</h4>
-        <h1 class="hero-h1">A aula que eles nunca esquecem</h1>
-        <p class="hero-p">Transformamos a saída da escola em Expedição Pedagógica — com objetivo curricular claro, BNCC mapeada e alunos que voltam diferentes.</p>
-        <div class="hero-btns">
-          <a href="#roteiros" class="btn-primary">Ver Roteiros</a>
-          <a href="#como-funciona" class="hero-link">Como funciona →</a>
-        </div>
-      </div>
-      <div>
-        <img class="hero-img"
-          src="https://picsum.photos/seed/areia-brejo-pb-colonial/800/600"
-          alt="Expedição Pedagógica — patrimônio histórico do Nordeste">
+      <h4 class="hero-h4">Expedições Pedagógicas · RN e Nordeste</h4>
+      <h1 class="hero-h1">A aula que eles nunca esquecem</h1>
+      <p class="hero-p">Transformamos a saída da escola em Expedição Pedagógica — com objetivo curricular claro, BNCC mapeada e alunos que voltam diferentes.</p>
+      <div class="hero-btns">
+        <a href="#roteiros" class="btn-primary">Ver Roteiros</a>
+        <a href="#como-funciona" class="hero-link">Como funciona →</a>
       </div>
     </div>
   </section>
@@ -460,6 +508,16 @@
           <p class="dif-text">Um roteiro para cada série, alinhado com o que cada turma está estudando. O semestre fechado de uma vez.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <!-- MOMENTO ──────────────────────────────────────── -->
+  <section class="momento">
+    <div class="momento-media"></div>
+    <div class="wrap momento-inner">
+      <span class="momento-tag">Foto: aluno em campo — a definir</span>
+      <p class="momento-quote">"O aluno que subiu até o mirante não esquece mais a aula de geografia."</p>
     </div>
   </section>
 
