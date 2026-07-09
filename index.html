@@ -10,6 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/images/hero-mosaico-principal-1280.jpg">
+  <link rel="preload" as="image" href="assets/images/hero-slide-areia-1280.jpg">
+  <link rel="preload" as="image" href="assets/images/hero-slide-mossoro-1280.jpg">
+  <link rel="preload" as="image" href="assets/images/hero-slide-pernambuco-1280.jpg">
+  <link rel="preload" as="image" href="assets/images/hero-slide-veneza-1280.jpg">
 
   <style>
     /* ── TOKENS ─────────────────────────────────────── */
@@ -101,12 +106,14 @@
     .hero-slides { position: absolute; inset: 0; z-index: 0; }
     .hero-slide {
       position: absolute; inset: 0; opacity: 0; visibility: hidden;
-      transition: opacity 1s ease; display: flex; flex-direction: column; justify-content: center;
+      transition: opacity .85s ease; display: flex; flex-direction: column; justify-content: center;
+      will-change: opacity; pointer-events: none;
     }
-    .hero-slide.active { opacity: 1; visibility: visible; z-index: 1; }
+    .hero-slide.active { opacity: 1; visibility: visible; z-index: 1; pointer-events: auto; }
     .hero-slide-media {
       position: absolute; inset: 0; z-index: 0;
       background: linear-gradient(135deg, #0D2246 0%, #163d7a 45%, #DF6951 130%);
+      background-color: #0D2246;
     }
     .hero-slide-media::before {
       content: '';
@@ -120,6 +127,7 @@
     .hero-collage-principal {
       position: absolute; inset: 0;
       background: linear-gradient(160deg, #0D2246, #163d7a 55%, #DF6951);
+      background-color: #0D2246;
     }
     .hero-collage-extra { display: none; }
     @media (min-width: 820px) {
@@ -526,28 +534,28 @@
             <picture>
               <source type="image/avif" srcset="assets/images/hero-mosaico-extra1-640.avif 640w, assets/images/hero-mosaico-extra1-1280.avif 1280w" sizes="50vw">
               <source type="image/webp" srcset="assets/images/hero-mosaico-extra1-640.webp 640w, assets/images/hero-mosaico-extra1-1280.webp 1280w" sizes="50vw">
-              <img src="assets/images/hero-mosaico-extra1-1280.jpg" alt="Expedição pedagógica em Mossoró, RN" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+              <img src="assets/images/hero-mosaico-extra1-1280.jpg" alt="Expedição pedagógica em Mossoró, RN" loading="eager" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
             </picture>
           </div>
           <div class="hero-collage-extra">
             <picture>
               <source type="image/avif" srcset="assets/images/hero-mosaico-extra2-640.avif 640w, assets/images/hero-mosaico-extra2-1280.avif 1280w" sizes="50vw">
               <source type="image/webp" srcset="assets/images/hero-mosaico-extra2-640.webp 640w, assets/images/hero-mosaico-extra2-1280.webp 1280w" sizes="50vw">
-              <img src="assets/images/hero-mosaico-extra2-1280.jpg" alt="Expedição pedagógica em Recife + Olinda, PE" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+              <img src="assets/images/hero-mosaico-extra2-1280.jpg" alt="Expedição pedagógica em Recife + Olinda, PE" loading="eager" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
             </picture>
           </div>
           <div class="hero-collage-extra">
             <picture>
               <source type="image/avif" srcset="assets/images/hero-mosaico-extra3-640.avif 640w, assets/images/hero-mosaico-extra3-1280.avif 1280w" sizes="50vw">
               <source type="image/webp" srcset="assets/images/hero-mosaico-extra3-640.webp 640w, assets/images/hero-mosaico-extra3-1280.webp 1280w" sizes="50vw">
-              <img src="assets/images/hero-mosaico-extra3-1280.jpg" alt="Expedição pedagógica em Bananeiras, PB" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+              <img src="assets/images/hero-mosaico-extra3-1280.jpg" alt="Expedição pedagógica em Bananeiras, PB" loading="eager" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
             </picture>
           </div>
         </div>
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Expedições Pedagógicas · RN e Nordeste</h4>
-          <h1 class="hero-h1">A aula que eles nunca esquecem</h1>
-          <p class="hero-p">Transformamos a saída da escola em Expedição Pedagógica — com objetivo curricular claro, BNCC mapeada e alunos que voltam diferentes.</p>
+          <h1 class="hero-h1">A saída da escola vira argumento</h1>
+          <p class="hero-p">22 roteiros de descoberta prontos, com BNCC mapeada, seguro incluso e material para o professor. Você chega na coordenação com planejamento, não com improviso.</p>
         </div>
       </div>
 
@@ -557,13 +565,13 @@
           <picture>
             <source type="image/avif" srcset="assets/images/hero-slide-areia-640.avif 640w, assets/images/hero-slide-areia-1280.avif 1280w, assets/images/hero-slide-areia-1600.avif 1600w" sizes="100vw">
             <source type="image/webp" srcset="assets/images/hero-slide-areia-640.webp 640w, assets/images/hero-slide-areia-1280.webp 1280w, assets/images/hero-slide-areia-1600.webp 1600w" sizes="100vw">
-            <img src="assets/images/hero-slide-areia-1280.jpg" alt="Centro Histórico de Areia, PB" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <img src="assets/images/hero-slide-areia-1280.jpg" alt="Centro Histórico de Areia, PB" loading="eager" fetchpriority="low" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           </picture>
         </div>
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Roteiro de Descoberta · Areia, PB</h4>
           <h1 class="hero-h1">A escravidão deixa de ser data</h1>
-          <p class="hero-p">Casarões do século XVIII e um engenho ativo — o aluno mapeia a arquitetura colonial em vez de só ler sobre ela.</p>
+          <p class="hero-p">Casarões do século XVIII, engenho ativo e a memória do Brejo Paraibano em estado puro — o aluno lê o território em vez de só decorar o conteúdo.</p>
         </div>
       </div>
 
@@ -573,13 +581,13 @@
           <picture>
             <source type="image/avif" srcset="assets/images/hero-slide-mossoro-640.avif 640w, assets/images/hero-slide-mossoro-1280.avif 1280w, assets/images/hero-slide-mossoro-1600.avif 1600w" sizes="100vw">
             <source type="image/webp" srcset="assets/images/hero-slide-mossoro-640.webp 640w, assets/images/hero-slide-mossoro-1280.webp 1280w, assets/images/hero-slide-mossoro-1600.webp 1600w" sizes="100vw">
-            <img src="assets/images/hero-slide-mossoro-1280.jpg" alt="Salinas de Mossoró, RN" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <img src="assets/images/hero-slide-mossoro-1280.jpg" alt="Salinas de Mossoró, RN" loading="eager" fetchpriority="low" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           </picture>
         </div>
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Roteiro de Descoberta · Mossoró, RN</h4>
           <h1 class="hero-h1">Sal, Sol e Liberdade</h1>
-          <p class="hero-p">[ajustar linha de efeito para Mossoró]</p>
+          <p class="hero-p">Salina, resistência ao cangaço e economia do semiárido na mesma leitura de campo. Mossoró mostra como geografia, coragem e trabalho se encontram.</p>
         </div>
       </div>
 
@@ -589,13 +597,13 @@
           <picture>
             <source type="image/avif" srcset="assets/images/hero-slide-pernambuco-640.avif 640w, assets/images/hero-slide-pernambuco-1280.avif 1280w, assets/images/hero-slide-pernambuco-1600.avif 1600w" sizes="100vw">
             <source type="image/webp" srcset="assets/images/hero-slide-pernambuco-640.webp 640w, assets/images/hero-slide-pernambuco-1280.webp 1280w, assets/images/hero-slide-pernambuco-1600.webp 1600w" sizes="100vw">
-            <img src="assets/images/hero-slide-pernambuco-1280.jpg" alt="Recife + Olinda, PE" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <img src="assets/images/hero-slide-pernambuco-1280.jpg" alt="Recife + Olinda, PE" loading="eager" fetchpriority="low" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           </picture>
         </div>
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Roteiro de Descoberta · Recife + Olinda, PE</h4>
           <h1 class="hero-h1">Pernambuco Imortal</h1>
-          <p class="hero-p">[ajustar linha de efeito para Pernambuco Imortal]</p>
+          <p class="hero-p">Recife e Olinda condensam invasão holandesa, patrimônio e arte numa travessia única. É história viva, ladeira real e memória que o aluno leva para depois da aula.</p>
         </div>
       </div>
 
@@ -605,13 +613,13 @@
           <picture>
             <source type="image/avif" srcset="assets/images/hero-slide-veneza-640.avif 640w, assets/images/hero-slide-veneza-1280.avif 1280w, assets/images/hero-slide-veneza-1600.avif 1600w" sizes="100vw">
             <source type="image/webp" srcset="assets/images/hero-slide-veneza-640.webp 640w, assets/images/hero-slide-veneza-1280.webp 1280w, assets/images/hero-slide-veneza-1600.webp 1600w" sizes="100vw">
-            <img src="assets/images/hero-slide-veneza-1280.jpg" alt="Veneza Potiguar" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <img src="assets/images/hero-slide-veneza-1280.jpg" alt="Veneza Potiguar" loading="eager" fetchpriority="low" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           </picture>
         </div>
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Roteiro de Descoberta · Veneza Potiguar</h4>
-          <h1 class="hero-h1">[nome/gancho de Veneza — ajustar]</h1>
-          <p class="hero-p">[ajustar linha de efeito para Veneza — não inventei, você conhece o roteiro melhor]</p>
+          <h1 class="hero-h1">O território fala mais alto que o mapa</h1>
+          <p class="hero-p">Dunas, lagoas e paisagem em movimento para ler geografia com o olho no chão e o conteúdo no caderno.</p>
         </div>
       </div>
 
@@ -729,15 +737,18 @@
               <div class="rot-dest-row">
                 <span class="rot-dest">Recife + Olinda, PE</span>
                 <a class="rot-link"
-                  href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Pernambuco%20Imortal"
-                  target="_blank" rel="noopener">Solicitar →</a>
+                  href="roteiro-pernambuco-imortal.html">Ver roteiro →</a>
               </div>
             </div>
           </div>
 
           <div class="rot-card rot-card-div">
             <div class="rot-img-wrap">
-              <img src="https://picsum.photos/seed/joao-pessoa-paraiba-costa/800/600" alt="João Pessoa, PB">
+              <picture>
+                <source type="image/avif" srcset="assets/images/img/Fortaleza.avif">
+                <source type="image/webp" srcset="assets/images/img/Fortaleza.webp">
+                <img src="assets/images/img/Fortaleza.jpg" alt="João Pessoa, PB" loading="lazy" decoding="async">
+              </picture>
               <span class="rot-nivel n-inter">Interestadual</span>
             </div>
             <div class="rot-body">
@@ -748,8 +759,7 @@
               <div class="rot-dest-row">
                 <span class="rot-dest">João Pessoa, PB</span>
                 <a class="rot-link"
-                  href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Arrebol%20Paraibano"
-                  target="_blank" rel="noopener">Solicitar →</a>
+                  href="roteiro-joao-pessoa.html">Ver roteiro →</a>
               </div>
             </div>
           </div>
@@ -771,15 +781,18 @@
               <div class="rot-dest-row">
                 <span class="rot-dest">Mossoró, RN</span>
                 <a class="rot-link"
-                  href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Sal%20Sol%20e%20Liberdade"
-                  target="_blank" rel="noopener">Solicitar →</a>
+                  href="roteiro-mossoro.html">Ver roteiro →</a>
               </div>
             </div>
           </div>
 
           <div class="rot-card rot-card-div">
             <div class="rot-img-wrap">
-              <img src="https://picsum.photos/seed/currais-novos-serido-rn/800/600" alt="Currais Novos, RN">
+              <picture>
+                <source type="image/avif" srcset="assets/images/img/Veneza.avif">
+                <source type="image/webp" srcset="assets/images/img/Veneza.webp">
+                <img src="assets/images/img/Veneza.jpg" alt="Currais Novos, RN" loading="lazy" decoding="async">
+              </picture>
               <span class="rot-nivel n-regional">Regional</span>
             </div>
             <div class="rot-body">
@@ -790,8 +803,7 @@
               <div class="rot-dest-row">
                 <span class="rot-dest">Currais Novos, RN</span>
                 <a class="rot-link"
-                  href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Cora%C3%A7%C3%A3o%20de%20Metal"
-                  target="_blank" rel="noopener">Solicitar →</a>
+                  href="roteiro-currais-novos.html">Ver roteiro →</a>
               </div>
             </div>
           </div>
