@@ -312,7 +312,11 @@
         </div>
 
         <div class="hero-img-wrap">
-          <img src="https://picsum.photos/seed/areia-pb-engenho-hist/900/900" alt="Vista de Areia, PB — centro histórico e engenhos">
+          <picture>
+            <source type="image/avif" srcset="assets/images/roteiro-areia-hero-640.avif 640w, assets/images/roteiro-areia-hero-1280.avif 1280w, assets/images/roteiro-areia-hero-1600.avif 1600w" sizes="(min-width:820px) 40vw, 100vw">
+            <source type="image/webp" srcset="assets/images/roteiro-areia-hero-640.webp 640w, assets/images/roteiro-areia-hero-1280.webp 1280w, assets/images/roteiro-areia-hero-1600.webp 1600w" sizes="(min-width:820px) 40vw, 100vw">
+            <img src="assets/images/roteiro-areia-hero-1280.jpg" alt="Vista de Areia, PB — centro histórico e engenhos" loading="eager" fetchpriority="high" decoding="async">
+          </picture>
         </div>
 
       </div>

@@ -78,6 +78,7 @@
     .f-local    { background: #2a7a2a; }
     .f-regional { background: var(--cobre); }
     .f-inter    { background: var(--marinho); }
+    .f-pernoite { background: #7a4a1a; }
     .f-dev { background: #ccc; color: #555; }
 
     /* ── GRUPO DE REGIÃO ───────────────────────────── */
@@ -145,6 +146,7 @@
     .n-local    { background: #2a7a2a; }
     .n-regional { background: var(--cobre); }
     .n-inter    { background: var(--marinho); }
+    .n-pernoite { background: #7a4a1a; }
     .rot-body { padding: 1rem 1.1rem 1.15rem; }
     .rot-name-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .4rem; }
     .rot-name  { font-size: .97rem; font-weight: 700; color: var(--marinho); }
@@ -241,8 +243,13 @@
   <!-- DESTAQUE ─────────────────────────────────────── -->
   <div class="wrap">
     <a class="destaque" href="roteiro-areia.html" style="text-decoration:none;">
-      <div class="destaque-media"></div>
-      <span class="foto-tag" style="left:1.25rem;bottom:1.25rem;">Foto: Centro Histórico de Areia, PB — a definir</span>
+      <div class="destaque-media">
+        <picture>
+          <source type="image/avif" srcset="assets/images/hero-slide-areia-640.avif 640w, assets/images/hero-slide-areia-1280.avif 1280w, assets/images/hero-slide-areia-1600.avif 1600w" sizes="100vw">
+          <source type="image/webp" srcset="assets/images/hero-slide-areia-640.webp 640w, assets/images/hero-slide-areia-1280.webp 1280w, assets/images/hero-slide-areia-1600.webp 1600w" sizes="100vw">
+          <img src="assets/images/hero-slide-areia-1280.jpg" alt="Centro Histórico de Areia, PB" loading="eager" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        </picture>
+      </div>
       <div class="destaque-body">
         <span class="destaque-tag">Roteiro em destaque</span>
         <h2 class="destaque-h">Civilização e Engenhos · Areia, PB</h2>
@@ -260,6 +267,7 @@
       <span class="filtro-pill f-local">Local</span>
       <span class="filtro-pill f-regional">Regional</span>
       <span class="filtro-pill f-inter">Interestadual</span>
+      <span class="filtro-pill f-pernoite">Pernoite</span>
       <span class="filtro-pill f-dev">Em Desenvolvimento</span>
     </div>
   </div>
@@ -275,7 +283,11 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/natal-dunas-parque/800/600" alt="Parque das Dunas, Natal">
+            <picture>
+              <source type="image/avif" srcset="assets/images/catalogo-chao-vivo-natal-640.avif 640w, assets/images/catalogo-chao-vivo-natal-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <source type="image/webp" srcset="assets/images/catalogo-chao-vivo-natal-640.webp 640w, assets/images/catalogo-chao-vivo-natal-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <img src="assets/images/catalogo-chao-vivo-natal-1280.jpg" alt="Natal, RN" loading="lazy" decoding="async">
+            </picture>
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="rot-body">
@@ -292,7 +304,11 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/natal-aquario-oceano/800/600" alt="Aquário de Natal">
+            <picture>
+              <source type="image/avif" srcset="assets/images/catalogo-aquario-natal-640.avif 640w, assets/images/catalogo-aquario-natal-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <source type="image/webp" srcset="assets/images/catalogo-aquario-natal-640.webp 640w, assets/images/catalogo-aquario-natal-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <img src="assets/images/catalogo-aquario-natal-1280.jpg" alt="Aquário de Natal" loading="lazy" decoding="async">
+            </picture>
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="rot-body">
@@ -368,7 +384,11 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/mossoro-sertao-nordeste/800/600" alt="Mossoró, RN">
+            <picture>
+              <source type="image/avif" srcset="assets/images/catalogo-mossoro-640.avif 640w, assets/images/catalogo-mossoro-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <source type="image/webp" srcset="assets/images/catalogo-mossoro-640.webp 640w, assets/images/catalogo-mossoro-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <img src="assets/images/catalogo-mossoro-1280.jpg" alt="Mossoró, RN" loading="lazy" decoding="async">
+            </picture>
             <span class="rot-nivel n-regional">Regional</span>
           </div>
           <div class="rot-body">
@@ -427,7 +447,11 @@
 
         <a class="rot-card" href="roteiro-areia.html">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/areia-pb-colonial/800/600" alt="Areia, PB">
+            <picture>
+              <source type="image/avif" srcset="assets/images/catalogo-areia-640.avif 640w, assets/images/catalogo-areia-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <source type="image/webp" srcset="assets/images/catalogo-areia-640.webp 640w, assets/images/catalogo-areia-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <img src="assets/images/catalogo-areia-1280.jpg" alt="Areia, PB" loading="lazy" decoding="async">
+            </picture>
             <span class="rot-nivel n-regional">Regional</span>
           </div>
           <div class="rot-body">
@@ -444,7 +468,11 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/bananeiras-paraiba-brejo/800/600" alt="Bananeiras, PB">
+            <picture>
+              <source type="image/avif" srcset="assets/images/catalogo-bananeiras-640.avif 640w, assets/images/catalogo-bananeiras-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <source type="image/webp" srcset="assets/images/catalogo-bananeiras-640.webp 640w, assets/images/catalogo-bananeiras-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <img src="assets/images/catalogo-bananeiras-1280.jpg" alt="Bananeiras, PB" loading="lazy" decoding="async">
+            </picture>
             <span class="rot-nivel n-regional">Regional</span>
           </div>
           <div class="rot-body">
@@ -486,7 +514,11 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/recife-olinda-historico/800/600" alt="Recife, PE">
+            <picture>
+              <source type="image/avif" srcset="assets/images/catalogo-recife-640.avif 640w, assets/images/catalogo-recife-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <source type="image/webp" srcset="assets/images/catalogo-recife-640.webp 640w, assets/images/catalogo-recife-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <img src="assets/images/catalogo-recife-1280.jpg" alt="Recife, PE" loading="lazy" decoding="async">
+            </picture>
             <span class="rot-nivel n-inter">Interestadual</span>
           </div>
           <div class="rot-body">
@@ -497,6 +529,35 @@
             <div class="rot-dest-row">
               <span class="rot-dest">Recife + Olinda, PE</span>
               <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Pernambuco%20Imortal" target="_blank" rel="noopener">Solicitar →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CEARÁ ─────────────────────────────────────────── -->
+    <div class="grupo">
+      <div class="grupo-titulo">Ceará · Expedição com Pernoite</div>
+      <div class="cat-grid">
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <picture>
+              <source type="image/avif" srcset="assets/images/catalogo-fortaleza-beach-park-640.avif 640w, assets/images/catalogo-fortaleza-beach-park-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <source type="image/webp" srcset="assets/images/catalogo-fortaleza-beach-park-640.webp 640w, assets/images/catalogo-fortaleza-beach-park-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
+              <img src="assets/images/catalogo-fortaleza-beach-park-1280.jpg" alt="Fortaleza + Beach Park, CE" loading="lazy" decoding="async">
+            </picture>
+            <span class="rot-nivel n-pernoite">Pernoite · 2 dias</span>
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Do Marco Zero às Ondas</span>
+              <span class="rot-serie">Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Fortaleza + Beach Park, CE</span>
+              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Fortaleza%20%2B%20Beach%20Park" target="_blank" rel="noopener">Solicitar →</a>
             </div>
           </div>
         </div>
