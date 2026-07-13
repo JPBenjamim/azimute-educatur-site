@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Azimute Educatur — Expedições Pedagógicas no RN e Nordeste</title>
-  <meta name="description" content="Transformamos saída de escola em Expedição Pedagógica — BNCC mapeada, seguro incluso, 22+ roteiros no RN e Nordeste.">
+  <meta name="description" content="Expedições Pedagógicas no RN e Nordeste com 38 roteiros, BNCC mapeada, seguro incluso e suporte para escolas, professores e famílias.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -164,6 +164,15 @@
       letter-spacing: -.03em; color: #fff; margin-bottom: 1.1rem;
     }
     .hero-p { font-size: .95rem; font-weight: 500; color: rgba(255,255,255,.8); line-height: 1.75; }
+    .hero-proof {
+      display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.35rem;
+    }
+    .hero-proof span {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .72rem; font-weight: 800; color: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.22); background: rgba(13,34,70,.38);
+      border-radius: 50px; padding: .42rem .72rem; backdrop-filter: blur(4px);
+    }
     /* Rodapé fixo do hero: botões + bolinhas, sempre por cima, fora da rotação */
     .hero-foot {
       position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
@@ -235,6 +244,10 @@
     .momento-media {
       position: absolute; inset: 0; z-index: 0;
       background: linear-gradient(115deg, #DF6951 0%, #c4501e 42%, #0D2246 100%);
+    }
+    .momento-media img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      filter: contrast(1.08) saturate(1.04) brightness(.88);
     }
     .momento-media::before {
       content: '';
@@ -569,9 +582,7 @@
 
 
   <!-- HERO ─────────────────────────────────────────── -->
-  <!-- Cada .hero-slide-media / .hero-collage > div é um placeholder de foto.
-       Slide 0 = mosaico geral. Slides 1-4 = 1 destino cada.
-       Texto marcado "[ajustar]" ainda não tem copy aprovada — não inventei. -->
+  <!-- Slide 0 = mosaico geral. Slides 1-4 = 1 destino cada. -->
   <section class="hero">
     <div class="hero-slides" id="heroSlides">
 
@@ -597,8 +608,13 @@
         </div>
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Expedições Pedagógicas · RN e Nordeste</h4>
-          <h1 class="hero-h1">A sala de aula agora é o mundo</h1>
-          <p class="hero-p">Roteiros de descoberta com objetivo pedagógico claro, segurança operacional e material para escola, pais e professores. A turma sai para investigar, observar e voltar com repertório.</p>
+          <h1 class="hero-h1">Conteúdo escolar com território, método e segurança</h1>
+          <p class="hero-p">A Azimute transforma aula fora da sala em Expedição Pedagógica: roteiro com objetivo curricular, operação organizada e material para escola, professores e famílias.</p>
+          <div class="hero-proof" aria-label="Diferenciais da Azimute">
+            <span><i class="fas fa-map-location-dot"></i> 38 roteiros</span>
+            <span><i class="fas fa-book-open"></i> BNCC mapeada</span>
+            <span><i class="fas fa-shield-heart"></i> Seguro incluso</span>
+          </div>
         </div>
       </div>
 
@@ -666,7 +682,7 @@
 
     <div class="wrap hero-foot">
       <div class="hero-btns">
-        <a href="#roteiros" class="btn-primary">Ver Roteiros</a>
+        <a href="catalogo.html#rotas" class="btn-primary">Ver rotas do catálogo</a>
         <a href="#como-funciona" class="hero-link">Como funciona →</a>
       </div>
       <div class="hero-dots" id="heroDots">
@@ -685,28 +701,28 @@
     <div class="wrap">
       <div class="dif-head">
         <span class="eyebrow">Por que a Educatur</span>
-        <h2 class="sec-h">Mais do que uma saída de campo</h2>
+        <h2 class="sec-h">Planejado para a escola aprovar com segurança</h2>
       </div>
       <div class="dif-grid">
         <div class="dif-card">
           <span class="dif-num">01</span>
-          <h3 class="dif-title">BNCC Mapeada</h3>
-          <p class="dif-text">Objetivos curriculares em cada roteiro. Você chega à coordenação com argumento pedagógico — não com foto de viagem.</p>
+          <h3 class="dif-title">Objetivo curricular claro</h3>
+          <p class="dif-text">Cada roteiro parte do que a turma precisa aprender. A coordenação recebe argumento pedagógico, não só uma lista de lugares.</p>
         </div>
         <div class="dif-card">
           <span class="dif-num">02</span>
-          <h3 class="dif-title">Seguro Incluso</h3>
-          <p class="dif-text">Seguro viagem, profissional de saúde e ônibus regulamentado. A escola fica tranquila — e os pais, também.</p>
+          <h3 class="dif-title">Operação segura</h3>
+          <p class="dif-text">Seguro incluso, transporte regulamentado e equipe de apoio. A escola acompanha tudo com previsibilidade.</p>
         </div>
         <div class="dif-card">
           <span class="dif-num">03</span>
           <h3 class="dif-title">Material do Professor</h3>
-          <p class="dif-text">Guia pedagógico incluso. A aula continua em sala por semanas depois da expedição.</p>
+          <p class="dif-text">Guia pedagógico e eixo de aprendizagem ajudam o professor a preparar, conduzir e retomar a expedição em sala.</p>
         </div>
         <div class="dif-card">
           <span class="dif-num">04</span>
-          <h3 class="dif-title">Calendário Semestral</h3>
-          <p class="dif-text">Um roteiro para cada série, alinhado com o que cada turma está estudando. O semestre fechado de uma vez.</p>
+          <h3 class="dif-title">Rotas por série e tema</h3>
+          <p class="dif-text">38 roteiros organizados por rotas temáticas para montar um calendário coerente com cada etapa escolar.</p>
         </div>
       </div>
     </div>
@@ -715,10 +731,12 @@
 
   <!-- MOMENTO ──────────────────────────────────────── -->
   <section class="momento">
-    <div class="momento-media"></div>
+    <div class="momento-media">
+      <img src="assets/images/cinematic/catalogo-chao-vivo-natal-hero.jpg" alt="Alunos em expedição pedagógica em Natal, RN" loading="lazy" decoding="async">
+    </div>
     <div class="wrap momento-inner">
-      <span class="momento-tag">Foto: aluno em campo — a definir</span>
-      <p class="momento-quote">"O aluno que subiu até o mirante não esquece mais a aula de geografia."</p>
+      <span class="momento-tag">Da sala ao território</span>
+      <p class="momento-quote">O aluno entende diferente quando o conteúdo deixa de ser assunto e vira paisagem, pergunta e evidência.</p>
     </div>
   </section>
 
@@ -896,7 +914,7 @@
           <div class="como-card-body">
             <h4 class="como-card-h">Civilização e Engenhos · Areia, PB</h4>
             <p class="como-card-sub">1 dia · Fundamental II e Médio</p>
-            <p class="como-card-det">Ônibus · Almoço · Guia · Fotógrafo · Seguro viagem · BNCC mapeada</p>
+            <p class="como-card-det">Ônibus · Almoço · Guia · Fotógrafo · Seguro incluso · BNCC mapeada</p>
           </div>
         </div>
       </div>
@@ -949,8 +967,8 @@
           </div>
           <div class="post-body">
             <div class="post-kicker"><i class="fab fa-instagram"></i> Aula de campo</div>
-            <h3 class="post-title">Muito mais que passeio</h3>
-            <p class="post-text">Aula de campo deve ser muito mais que só um passeio. Tem que ser uma verdadeira expedição.</p>
+            <h3 class="post-title">Mais que sair da escola</h3>
+            <p class="post-text">Aula de campo precisa ter intenção, mediação e pergunta. É assim que ela vira uma verdadeira expedição.</p>
             <span class="post-link">Abrir no Instagram →</span>
           </div>
         </a>
