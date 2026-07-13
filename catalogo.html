@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
@@ -114,7 +114,10 @@
     }
     .destaque::after {
       content: ''; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(180deg, rgba(9,20,42,.15), rgba(9,20,42,.85));
+      background:
+        radial-gradient(circle at 70% 28%, rgba(255,255,255,.08), transparent 34%),
+        linear-gradient(90deg, rgba(9,20,42,.78) 0%, rgba(9,20,42,.38) 48%, rgba(9,20,42,.18) 100%),
+        linear-gradient(180deg, rgba(9,20,42,.08), rgba(9,20,42,.9));
     }
     .destaque-body { position: relative; z-index: 2; padding: 2.5rem; }
     .destaque-tag {
@@ -139,8 +142,19 @@
     }
     .rot-card:hover { transform: translateY(-5px); box-shadow: 0 12px 38px rgba(0,0,0,.14); }
     .rot-card-div { cursor: default; }
-    .rot-img-wrap { position: relative; }
-    .rot-img-wrap img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; transition: transform .35s; }
+    .rot-img-wrap { position: relative; overflow: hidden; background: var(--marinho); }
+    .rot-img-wrap::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 68% 18%, rgba(255,255,255,.16), transparent 32%),
+        linear-gradient(180deg, rgba(13,34,70,.06) 0%, rgba(13,34,70,.18) 58%, rgba(13,34,70,.42) 100%);
+      mix-blend-mode: multiply;
+    }
+    .rot-img-wrap img {
+      width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover;
+      filter: contrast(1.12) saturate(1.12) brightness(.94);
+      transition: transform .35s, filter .35s;
+    }
     .rot-card:hover .rot-img-wrap img { transform: scale(1.04); }
     .rot-nivel { position: absolute; top: .75rem; right: .75rem; font-size: .58rem; font-weight: 700; text-transform: uppercase; padding: .22rem .65rem; border-radius: 50px; color: #fff; }
     .n-local    { background: #2a7a2a; }
@@ -210,6 +224,7 @@
         <span class="logo-sub">Expedições Pedagógicas</span>
       </a>
       <ul class="nav-links" id="navLinks">
+        <li><a href="monte-seu-roteiro.html">Monte seu Roteiro</a></li>
         <li><a href="index.html#diferenciais">Por que a Educatur</a></li>
         <li><a href="index.html#como-funciona">Como Funciona</a></li>
         <li><a href="index.html#depoimentos">Depoimentos</a></li>
@@ -244,11 +259,7 @@
   <div class="wrap">
     <a class="destaque" href="roteiro-areia.html" style="text-decoration:none;">
       <div class="destaque-media">
-        <picture>
-          <source type="image/avif" srcset="assets/images/hero-slide-areia-640.avif 640w, assets/images/hero-slide-areia-1280.avif 1280w, assets/images/hero-slide-areia-1600.avif 1600w" sizes="100vw">
-          <source type="image/webp" srcset="assets/images/hero-slide-areia-640.webp 640w, assets/images/hero-slide-areia-1280.webp 1280w, assets/images/hero-slide-areia-1600.webp 1600w" sizes="100vw">
-          <img src="assets/images/hero-slide-areia-1280.jpg" alt="Centro Histórico de Areia, PB" loading="eager" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-        </picture>
+        <img src="assets/images/cinematic/catalogo-areia-hero.jpg?v=20260713" alt="Centro Histórico de Areia, PB" loading="eager" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.16) saturate(1.12) brightness(.9);">
       </div>
       <div class="destaque-body">
         <span class="destaque-tag">Roteiro em destaque</span>
@@ -283,11 +294,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <picture>
-              <source type="image/avif" srcset="assets/images/catalogo-chao-vivo-natal-640.avif 640w, assets/images/catalogo-chao-vivo-natal-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <source type="image/webp" srcset="assets/images/catalogo-chao-vivo-natal-640.webp 640w, assets/images/catalogo-chao-vivo-natal-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <img src="assets/images/catalogo-chao-vivo-natal-1280.jpg" alt="Natal, RN" loading="lazy" decoding="async">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-chao-vivo-natal-card.jpg?v=20260713" alt="Natal, RN" loading="lazy" decoding="async">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="rot-body">
@@ -304,11 +311,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <picture>
-              <source type="image/avif" srcset="assets/images/catalogo-aquario-natal-640.avif 640w, assets/images/catalogo-aquario-natal-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <source type="image/webp" srcset="assets/images/catalogo-aquario-natal-640.webp 640w, assets/images/catalogo-aquario-natal-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <img src="assets/images/catalogo-aquario-natal-1280.jpg" alt="Aquário de Natal" loading="lazy" decoding="async">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-aquario-natal-card.jpg?v=20260713" alt="Aquário de Natal" loading="lazy" decoding="async">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="rot-body">
@@ -325,7 +328,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/natal-forte-ribeira-hist/800/600" alt="Forte dos Reis Magos, Natal">
+            <img src="assets/images/cinematic/catalogo-forte-ribeira-card.jpg?v=20260713" alt="Forte dos Reis Magos, Natal">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="rot-body">
@@ -335,14 +338,14 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Natal — Forte + Ribeira</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Ra%C3%ADzes%20e%20Muralhas" target="_blank" rel="noopener">Solicitar →</a>
+              <a class="rot-link" href="roteiro-forte-ribeira.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/baia-formosa-mata-estrela/800/600" alt="Mata Estrela, Baía Formosa">
+            <img src="assets/images/cinematic/catalogo-mata-estrela-card.jpg?v=20260713" alt="Mata Estrela, Baía Formosa">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="rot-body">
@@ -352,14 +355,14 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Baía Formosa + Mata Estrela</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Ra%C3%ADzes%20da%20Mata%20Atl%C3%A2ntica" target="_blank" rel="noopener">Solicitar →</a>
+              <a class="rot-link" href="roteiro-mata-estrela.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/ceara-mirim-litoral-rn/800/600" alt="Ceará-Mirim, RN">
+            <img src="assets/images/cinematic/catalogo-ceara-mirim-card.jpg?v=20260713" alt="Ceará-Mirim, RN">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="rot-body">
@@ -369,7 +372,7 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Ceará-Mirim, RN</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Cear%C3%A1-Mirim" target="_blank" rel="noopener">Solicitar →</a>
+              <a class="rot-link" href="roteiro-ceara-mirim.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
@@ -384,11 +387,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <picture>
-              <source type="image/avif" srcset="assets/images/catalogo-mossoro-640.avif 640w, assets/images/catalogo-mossoro-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <source type="image/webp" srcset="assets/images/catalogo-mossoro-640.webp 640w, assets/images/catalogo-mossoro-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <img src="assets/images/catalogo-mossoro-1280.jpg" alt="Mossoró, RN" loading="lazy" decoding="async">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-mossoro-card.jpg?v=20260713" alt="Mossoró, RN" loading="lazy" decoding="async">
             <span class="rot-nivel n-regional">Regional</span>
           </div>
           <div class="rot-body">
@@ -405,7 +404,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/currais-novos-serido-rn/800/600" alt="Currais Novos, RN">
+            <img src="assets/images/cinematic/catalogo-currais-novos-card.jpg?v=20260713" alt="Currais Novos, RN">
             <span class="rot-nivel n-regional">Regional</span>
           </div>
           <div class="rot-body">
@@ -422,7 +421,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/martins-serido-chapada/800/600" alt="Martins, RN">
+            <img src="assets/images/cinematic/catalogo-janelas-serido-card.jpg?v=20260713" alt="Martins, RN">
             <span class="rot-nivel n-regional">Regional</span>
           </div>
           <div class="rot-body">
@@ -432,7 +431,7 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Caicó + Acari, RN</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20Janelas%20do%20Serid%C3%B3" target="_blank" rel="noopener">Solicitar →</a>
+              <a class="rot-link" href="roteiro-janelas-serido.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
@@ -447,11 +446,7 @@
 
         <a class="rot-card" href="roteiro-areia.html">
           <div class="rot-img-wrap">
-            <picture>
-              <source type="image/avif" srcset="assets/images/catalogo-areia-640.avif 640w, assets/images/catalogo-areia-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <source type="image/webp" srcset="assets/images/catalogo-areia-640.webp 640w, assets/images/catalogo-areia-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <img src="assets/images/catalogo-areia-1280.jpg" alt="Areia, PB" loading="lazy" decoding="async">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-areia-card.jpg?v=20260713" alt="Areia, PB" loading="lazy" decoding="async">
             <span class="rot-nivel n-regional">Regional</span>
           </div>
           <div class="rot-body">
@@ -468,11 +463,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <picture>
-              <source type="image/avif" srcset="assets/images/catalogo-bananeiras-640.avif 640w, assets/images/catalogo-bananeiras-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <source type="image/webp" srcset="assets/images/catalogo-bananeiras-640.webp 640w, assets/images/catalogo-bananeiras-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <img src="assets/images/catalogo-bananeiras-1280.jpg" alt="Bananeiras, PB" loading="lazy" decoding="async">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-bananeiras-card.jpg?v=20260713" alt="Bananeiras, PB" loading="lazy" decoding="async">
             <span class="rot-nivel n-regional">Regional</span>
           </div>
           <div class="rot-body">
@@ -489,7 +480,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/joao-pessoa-paraiba-costa/800/600" alt="João Pessoa, PB">
+            <img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg?v=20260713" alt="João Pessoa, PB">
             <span class="rot-nivel n-inter">Interestadual</span>
           </div>
           <div class="rot-body">
@@ -514,11 +505,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <picture>
-              <source type="image/avif" srcset="assets/images/catalogo-recife-640.avif 640w, assets/images/catalogo-recife-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <source type="image/webp" srcset="assets/images/catalogo-recife-640.webp 640w, assets/images/catalogo-recife-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <img src="assets/images/catalogo-recife-1280.jpg" alt="Recife, PE" loading="lazy" decoding="async">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-recife-card.jpg?v=20260713" alt="Recife, PE" loading="lazy" decoding="async">
             <span class="rot-nivel n-inter">Interestadual</span>
           </div>
           <div class="rot-body">
@@ -543,11 +530,7 @@
 
         <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <picture>
-              <source type="image/avif" srcset="assets/images/catalogo-fortaleza-beach-park-640.avif 640w, assets/images/catalogo-fortaleza-beach-park-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <source type="image/webp" srcset="assets/images/catalogo-fortaleza-beach-park-640.webp 640w, assets/images/catalogo-fortaleza-beach-park-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-              <img src="assets/images/catalogo-fortaleza-beach-park-1280.jpg" alt="Fortaleza + Beach Park, CE" loading="lazy" decoding="async">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-fortaleza-beach-park-card.jpg?v=20260713" alt="Fortaleza + Beach Park, CE" loading="lazy" decoding="async">
             <span class="rot-nivel n-pernoite">Pernoite · 2 dias</span>
           </div>
           <div class="rot-body">
@@ -567,13 +550,13 @@
 
     <!-- EM DESENVOLVIMENTO ───────────────────────────── -->
     <div class="grupo">
-      <div class="grupo-titulo">Em Desenvolvimento · Disponíveis em breve</div>
+      <div class="grupo-titulo">Novos roteiros com página · Em validação comercial</div>
       <div class="cat-grid">
 
-        <div class="rot-card rot-card-div rot-card-dev">
+        <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/araruna-serra-gameleiras/800/600" alt="Araruna, PB">
-            <span class="dev-badge">Em breve</span>
+            <img src="assets/images/cinematic/catalogo-araruna-card.jpg?v=20260713" alt="Araruna, PB">
+            
           </div>
           <div class="rot-body">
             <div class="rot-name-row">
@@ -582,15 +565,15 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Araruna + Serra, PB</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Araruna%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+              <a class="rot-link" href="roteiro-araruna-serra-gameleiras.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
 
-        <div class="rot-card rot-card-div rot-card-dev">
+        <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/cajueiro-barreira-litoral/800/600" alt="Cajueiro, RN">
-            <span class="dev-badge">Em breve</span>
+            <img src="assets/images/cinematic/catalogo-cajueiro-barreira-card.jpg?v=20260713" alt="Cajueiro, RN">
+            
           </div>
           <div class="rot-body">
             <div class="rot-name-row">
@@ -599,15 +582,15 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Litoral Norte, RN</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Cajueiro%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+              <a class="rot-link" href="roteiro-cajueiro-barreira.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
 
-        <div class="rot-card rot-card-div rot-card-dev">
+        <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/roliude-cinema-nordestino/800/600" alt="Roliude, RN">
-            <span class="dev-badge">Em breve</span>
+            <img src="assets/images/cinematic/catalogo-roliude-card.jpg?v=20260713" alt="Roliude, RN">
+            
           </div>
           <div class="rot-body">
             <div class="rot-name-row">
@@ -616,15 +599,15 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Interior do RN</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Roliude%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+              <a class="rot-link" href="roteiro-roliude.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
 
-        <div class="rot-card rot-card-div rot-card-dev">
+        <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/minerio-barco-natal-rn/800/600" alt="Museu de Minérios, Natal">
-            <span class="dev-badge">Em breve</span>
+            <img src="assets/images/cinematic/catalogo-minerio-barco-card.jpg?v=20260713" alt="Museu de Minérios, Natal">
+            
           </div>
           <div class="rot-body">
             <div class="rot-name-row">
@@ -633,15 +616,31 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Natal — Minérios + Barco</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Do%20Rio%20ao%20Mar%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+              <a class="rot-link" href="roteiro-minerio-barco.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
 
-        <div class="rot-card rot-card-div rot-card-dev">
+        <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/martins-chapada-rn-verde/800/600" alt="Martins, RN">
-            <span class="dev-badge">Em breve</span>
+            <img src="assets/images/cinematic/catalogo-minerio-dunas-card.jpg?v=20260713" alt="Parque das Dunas e Museu de Minérios, Natal">
+          </div>
+          <div class="rot-body">
+            <div class="rot-name-row">
+              <span class="rot-name">Da Terra à Célula</span>
+              <span class="rot-serie">Fund. II · Médio</span>
+            </div>
+            <div class="rot-dest-row">
+              <span class="rot-dest">Natal — Minérios + Dunas</span>
+              <a class="rot-link" href="roteiro-minerio-dunas.html">Ver roteiro →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rot-card rot-card-div">
+          <div class="rot-img-wrap">
+            <img src="assets/images/cinematic/catalogo-martins-card.jpg?v=20260713" alt="Martins, RN">
+            
           </div>
           <div class="rot-body">
             <div class="rot-name-row">
@@ -650,15 +649,15 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Martins, RN</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Martins%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+              <a class="rot-link" href="roteiro-martins.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
 
-        <div class="rot-card rot-card-div rot-card-dev">
+        <div class="rot-card rot-card-div">
           <div class="rot-img-wrap">
-            <img src="https://picsum.photos/seed/serra-sao-bento-rn/800/600" alt="Serra de São Bento, RN">
-            <span class="dev-badge">Em breve</span>
+            <img src="assets/images/cinematic/catalogo-serra-sao-bento-card.jpg?v=20260713" alt="Serra de São Bento, RN">
+            
           </div>
           <div class="rot-body">
             <div class="rot-name-row">
@@ -667,7 +666,7 @@
             </div>
             <div class="rot-dest-row">
               <span class="rot-dest">Serra de São Bento, RN</span>
-              <a class="rot-link" href="https://wa.me/5584999650530?text=Me%20avise%20quando%20Serra%20de%20S%C3%A3o%20Bento%20estiver%20pronto" target="_blank" rel="noopener">Me avise →</a>
+              <a class="rot-link" href="roteiro-serra-sao-bento.html">Ver roteiro →</a>
             </div>
           </div>
         </div>
@@ -739,7 +738,7 @@
       </div>
       <div class="footer-bottom">
         <p>© 2026 Azimute Educatur — Hub Azimute · Natal/RN</p>
-        <p>Expedições Pedagógicas alinhadas à BNCC</p>
+        <p>Expedições Pedagógicas alinhadas à BNCC</p><p><a href="assets/images/CREDITOS-FOTOS.md">Fotos: Wikimedia Commons (créditos)</a></p>
       </div>
     </div>
   </footer>

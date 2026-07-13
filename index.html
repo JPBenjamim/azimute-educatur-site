@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
@@ -14,7 +14,7 @@
   <link rel="preload" as="image" href="assets/images/hero-slide-areia-1280.jpg">
   <link rel="preload" as="image" href="assets/images/hero-slide-mossoro-1280.jpg">
   <link rel="preload" as="image" href="assets/images/hero-slide-pernambuco-1280.jpg">
-  <link rel="preload" as="image" href="assets/images/hero-slide-veneza-1280.jpg">
+  <link rel="preload" as="image" href="assets/images/cinematic/catalogo-aquario-natal-hero.jpg">
 
   <style>
     /* ── TOKENS ─────────────────────────────────────── */
@@ -100,16 +100,16 @@
        Slides 1+ = 1 destino cada, com copy curta própria.
        Botões e bolinhas ficam FORA da rotação — nunca somem. */
     .hero {
-      position: relative; overflow: hidden;
+      position: relative; overflow: hidden; background: #0D2246;
       min-height: 92svh; padding-top: 5rem; color: #fff;
     }
-    .hero-slides { position: absolute; inset: 0; z-index: 0; }
+    .hero-slides { position: absolute; inset: 0; z-index: 0; background: #0D2246; }
     .hero-slide {
-      position: absolute; inset: 0; opacity: 0; visibility: hidden;
-      transition: opacity .85s ease; display: flex; flex-direction: column; justify-content: center;
-      will-change: opacity; pointer-events: none;
+      position: absolute; inset: 0; opacity: 0; visibility: visible; z-index: 0;
+      transition: opacity 1.15s ease-in-out; display: flex; flex-direction: column; justify-content: center;
+      will-change: opacity; pointer-events: none; transform: translateZ(0);
     }
-    .hero-slide.active { opacity: 1; visibility: visible; z-index: 1; pointer-events: auto; }
+    .hero-slide.active { opacity: 1; z-index: 1; pointer-events: auto; }
     .hero-slide-media {
       position: absolute; inset: 0; z-index: 0;
       background: linear-gradient(135deg, #0D2246 0%, #163d7a 45%, #DF6951 130%);
@@ -494,6 +494,7 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#roteiros">Roteiros</a></li>
+        <li><a href="monte-seu-roteiro.html">Monte seu Roteiro</a></li>
         <li><a href="#como-funciona">Como Funciona</a></li>
         <li><a href="#depoimentos">Depoimentos</a></li>
         <li>
@@ -522,27 +523,13 @@
       <div class="hero-slide active">
         <div class="hero-collage">
           <div class="hero-collage-principal">
-            <picture>
-              <source media="(max-width:819px)" type="image/avif" srcset="assets/images/hero-mosaico-principal-mobile-640.avif">
-              <source media="(max-width:819px)" type="image/webp" srcset="assets/images/hero-mosaico-principal-mobile-640.webp">
-              <source type="image/avif" srcset="assets/images/hero-mosaico-principal-640.avif 640w, assets/images/hero-mosaico-principal-1280.avif 1280w, assets/images/hero-mosaico-principal-1600.avif 1600w" sizes="100vw">
-              <source type="image/webp" srcset="assets/images/hero-mosaico-principal-640.webp 640w, assets/images/hero-mosaico-principal-1280.webp 1280w, assets/images/hero-mosaico-principal-1600.webp 1600w" sizes="100vw">
-              <img src="assets/images/hero-mosaico-principal-1280.jpg" alt="Expedição pedagógica em Areia, PB" loading="eager" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-chao-vivo-natal-hero.jpg" alt="Aula de campo em Natal, RN" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="hero-collage-extra">
-            <picture>
-              <source type="image/avif" srcset="assets/images/hero-mosaico-extra1-640.avif 640w, assets/images/hero-mosaico-extra1-1280.avif 1280w" sizes="50vw">
-              <source type="image/webp" srcset="assets/images/hero-mosaico-extra1-640.webp 640w, assets/images/hero-mosaico-extra1-1280.webp 1280w" sizes="50vw">
-              <img src="assets/images/hero-mosaico-extra1-1280.jpg" alt="Expedição pedagógica em Mossoró, RN" loading="eager" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-mossoro-hero.jpg" alt="Expedição pedagógica em Mossoró, RN" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="hero-collage-extra">
-            <picture>
-              <source type="image/avif" srcset="assets/images/hero-mosaico-extra2-640.avif 640w, assets/images/hero-mosaico-extra2-1280.avif 1280w" sizes="50vw">
-              <source type="image/webp" srcset="assets/images/hero-mosaico-extra2-640.webp 640w, assets/images/hero-mosaico-extra2-1280.webp 1280w" sizes="50vw">
-              <img src="assets/images/hero-mosaico-extra2-1280.jpg" alt="Expedição pedagógica em Recife + Olinda, PE" loading="eager" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            </picture>
+            <img src="assets/images/cinematic/catalogo-bananeiras-hero.jpg" alt="Expedição pedagógica em Bananeiras, PB" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           </div>
           <div class="hero-collage-extra">
             <picture>
@@ -554,8 +541,8 @@
         </div>
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Expedições Pedagógicas · RN e Nordeste</h4>
-          <h1 class="hero-h1">A saída da escola vira argumento</h1>
-          <p class="hero-p">22 roteiros de descoberta prontos, com BNCC mapeada, seguro incluso e material para o professor. Você chega na coordenação com planejamento, não com improviso.</p>
+          <h1 class="hero-h1">A sala de aula agora é o mundo</h1>
+          <p class="hero-p">Roteiros de descoberta com objetivo pedagógico claro, segurança operacional e material para escola, pais e professores. A turma sai para investigar, observar e voltar com repertório.</p>
         </div>
       </div>
 
@@ -570,8 +557,8 @@
         </div>
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Roteiro de Descoberta · Areia, PB</h4>
-          <h1 class="hero-h1">A escravidão deixa de ser data</h1>
-          <p class="hero-p">Casarões do século XVIII, engenho ativo e a memória do Brejo Paraibano em estado puro — o aluno lê o território em vez de só decorar o conteúdo.</p>
+          <h1 class="hero-h1">História que o aluno pisa, vê e questiona</h1>
+          <p class="hero-p">Em Areia, engenhos, casarões e memória afro-brasileira transformam colonização em leitura de território. O professor ganha uma aula de campo com começo, meio e fechamento.</p>
         </div>
       </div>
 
@@ -587,7 +574,7 @@
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Roteiro de Descoberta · Mossoró, RN</h4>
           <h1 class="hero-h1">Sal, Sol e Liberdade</h1>
-          <p class="hero-p">Salina, resistência ao cangaço e economia do semiárido na mesma leitura de campo. Mossoró mostra como geografia, coragem e trabalho se encontram.</p>
+          <p class="hero-p">Salinas, resistência ao cangaço e vida no semiárido entram na mesma investigação. Mossoró ajuda a turma a ligar economia, paisagem e identidade potiguar.</p>
         </div>
       </div>
 
@@ -603,23 +590,19 @@
         <div class="wrap hero-slide-text">
           <h4 class="hero-h4">Roteiro de Descoberta · Recife + Olinda, PE</h4>
           <h1 class="hero-h1">Pernambuco Imortal</h1>
-          <p class="hero-p">Recife e Olinda condensam invasão holandesa, patrimônio e arte numa travessia única. É história viva, ladeira real e memória que o aluno leva para depois da aula.</p>
+          <p class="hero-p">Recife e Olinda colocam invasão holandesa, patrimônio e arte diante dos olhos da turma. A aula deixa o livro e ganha rua, ponte, ladeira e pergunta.</p>
         </div>
       </div>
 
-      <!-- SLIDE 4 — Veneza Potiguar (ainda sem copy aprovada) -->
+      <!-- SLIDE 4 — Aquário Natal -->
       <div class="hero-slide">
         <div class="hero-slide-media">
-          <picture>
-            <source type="image/avif" srcset="assets/images/hero-slide-veneza-640.avif 640w, assets/images/hero-slide-veneza-1280.avif 1280w, assets/images/hero-slide-veneza-1600.avif 1600w" sizes="100vw">
-            <source type="image/webp" srcset="assets/images/hero-slide-veneza-640.webp 640w, assets/images/hero-slide-veneza-1280.webp 1280w, assets/images/hero-slide-veneza-1600.webp 1600w" sizes="100vw">
-            <img src="assets/images/hero-slide-veneza-1280.jpg" alt="Veneza Potiguar" loading="eager" fetchpriority="low" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-          </picture>
+          <img src="assets/images/cinematic/catalogo-aquario-natal-hero.jpg" alt="Aquário Natal, RN" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="wrap hero-slide-text">
-          <h4 class="hero-h4">Roteiro de Descoberta · Veneza Potiguar</h4>
-          <h1 class="hero-h1">O território fala mais alto que o mapa</h1>
-          <p class="hero-p">Dunas, lagoas e paisagem em movimento para ler geografia com o olho no chão e o conteúdo no caderno.</p>
+          <h4 class="hero-h4">Roteiro de Descoberta · Aquário Natal</h4>
+          <h1 class="hero-h1">Biodiversidade com cuidado, ciência e encantamento</h1>
+          <p class="hero-p">No Sentinelas do Mar, os alunos investigam animais aquáticos, resgate de fauna e conservação ambiental com mediação pedagógica e segurança para as famílias.</p>
         </div>
       </div>
 
@@ -635,7 +618,7 @@
         <button class="hero-dot" aria-label="Areia, PB"></button>
         <button class="hero-dot" aria-label="Mossoró, RN"></button>
         <button class="hero-dot" aria-label="Recife + Olinda, PE"></button>
-        <button class="hero-dot" aria-label="Veneza Potiguar"></button>
+        <button class="hero-dot" aria-label="Aquário Natal"></button>
       </div>
     </div>
   </section>
@@ -701,11 +684,7 @@
 
           <a class="rot-card" href="roteiro-areia.html">
             <div class="rot-img-wrap">
-              <picture>
-                <source type="image/avif" srcset="assets/images/catalogo-areia-640.avif 640w, assets/images/catalogo-areia-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-                <source type="image/webp" srcset="assets/images/catalogo-areia-640.webp 640w, assets/images/catalogo-areia-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-                <img src="assets/images/catalogo-areia-1280.jpg" alt="Areia, PB" loading="lazy" decoding="async">
-              </picture>
+              <img src="assets/images/cinematic/catalogo-areia-card.jpg" alt="Areia, PB" loading="lazy" decoding="async">
               <span class="rot-nivel n-regional">Regional</span>
             </div>
             <div class="rot-body">
@@ -722,11 +701,7 @@
 
           <div class="rot-card rot-card-div">
             <div class="rot-img-wrap">
-              <picture>
-                <source type="image/avif" srcset="assets/images/catalogo-recife-640.avif 640w, assets/images/catalogo-recife-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-                <source type="image/webp" srcset="assets/images/catalogo-recife-640.webp 640w, assets/images/catalogo-recife-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-                <img src="assets/images/catalogo-recife-1280.jpg" alt="Recife, PE" loading="lazy" decoding="async">
-              </picture>
+              <img src="assets/images/cinematic/catalogo-recife-card.jpg" alt="Recife, PE" loading="lazy" decoding="async">
               <span class="rot-nivel n-inter">Interestadual</span>
             </div>
             <div class="rot-body">
@@ -744,11 +719,7 @@
 
           <div class="rot-card rot-card-div">
             <div class="rot-img-wrap">
-              <picture>
-                <source type="image/avif" srcset="assets/images/img/Fortaleza.avif">
-                <source type="image/webp" srcset="assets/images/img/Fortaleza.webp">
-                <img src="assets/images/img/Fortaleza.jpg" alt="João Pessoa, PB" loading="lazy" decoding="async">
-              </picture>
+              <img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="João Pessoa, PB" loading="lazy" decoding="async">
               <span class="rot-nivel n-inter">Interestadual</span>
             </div>
             <div class="rot-body">
@@ -766,11 +737,7 @@
 
           <div class="rot-card rot-card-div">
             <div class="rot-img-wrap">
-              <picture>
-                <source type="image/avif" srcset="assets/images/catalogo-mossoro-640.avif 640w, assets/images/catalogo-mossoro-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-                <source type="image/webp" srcset="assets/images/catalogo-mossoro-640.webp 640w, assets/images/catalogo-mossoro-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-                <img src="assets/images/catalogo-mossoro-1280.jpg" alt="Mossoró, RN" loading="lazy" decoding="async">
-              </picture>
+              <img src="assets/images/cinematic/catalogo-mossoro-hero.jpg" alt="Expedição pedagógica em Mossoró, RN" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
               <span class="rot-nivel n-regional">Regional</span>
             </div>
             <div class="rot-body">
@@ -788,11 +755,7 @@
 
           <div class="rot-card rot-card-div">
             <div class="rot-img-wrap">
-              <picture>
-                <source type="image/avif" srcset="assets/images/img/Veneza.avif">
-                <source type="image/webp" srcset="assets/images/img/Veneza.webp">
-                <img src="assets/images/img/Veneza.jpg" alt="Currais Novos, RN" loading="lazy" decoding="async">
-              </picture>
+              <img src="assets/images/cinematic/catalogo-currais-novos-card.jpg" alt="Currais Novos, RN" loading="lazy" decoding="async">
               <span class="rot-nivel n-regional">Regional</span>
             </div>
             <div class="rot-body">
@@ -810,11 +773,7 @@
 
           <div class="rot-card rot-card-div">
             <div class="rot-img-wrap">
-              <picture>
-                <source type="image/avif" srcset="assets/images/catalogo-chao-vivo-natal-640.avif 640w, assets/images/catalogo-chao-vivo-natal-1280.avif 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-                <source type="image/webp" srcset="assets/images/catalogo-chao-vivo-natal-640.webp 640w, assets/images/catalogo-chao-vivo-natal-1280.webp 1280w" sizes="(min-width:960px) 33vw, (min-width:600px) 50vw, 90vw">
-                <img src="assets/images/catalogo-chao-vivo-natal-1280.jpg" alt="Natal, RN" loading="lazy" decoding="async">
-              </picture>
+              <img src="assets/images/cinematic/catalogo-chao-vivo-natal-hero.jpg" alt="Aula de campo em Natal, RN" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
               <span class="rot-nivel n-local">Local</span>
             </div>
             <div class="rot-body">
@@ -1008,7 +967,7 @@
       </div>
       <div class="footer-bottom">
         <p>© 2026 Azimute Educatur — Hub Azimute · Natal/RN</p>
-        <p>Expedições Pedagógicas alinhadas à BNCC</p>
+        <p>Expedições Pedagógicas alinhadas à BNCC</p><p><a href="assets/images/CREDITOS-FOTOS.md">Fotos: Wikimedia Commons (créditos)</a></p>
       </div>
     </div>
   </footer>

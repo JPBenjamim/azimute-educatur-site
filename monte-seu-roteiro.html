@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monte seu Roteiro — Azimute Educatur</title>
+  <meta name="description" content="Escolha a série, os temas do semestre e a distância — e veja quais Roteiros de Descoberta encaixam na sua escola.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root { --marinho: #0D2246; --cobre: #DF6951; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Fira Sans', sans-serif; background: #fff; color: #2d2d2d; overflow-x: hidden; }
+
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 1.25rem; }
+    @media (min-width: 768px) { .wrap { padding: 0 2rem; } }
+
+    /* ── NAV (mesma do catálogo) ────────────────────── */
+    #nav { position: fixed; inset: 0 0 auto; z-index: 100; padding: 1rem 0; background: #fff; transition: box-shadow .3s; }
+    #nav.solid { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; }
+    .logo { text-decoration: none; line-height: 1.2; }
+    .logo-name { display: block; font-size: 1rem; font-weight: 800; color: var(--marinho); }
+    .logo-sub  { display: block; font-size: .52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cobre); }
+    .nav-links { display: none; }
+    .nav-burger { background: none; border: 1.5px solid #ddd; color: var(--marinho); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; position: relative; z-index: 102; }
+    .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: rgba(255,255,255,.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 99; list-style: none; }
+    .nav-links.open a { font-size: 1.35rem; color: var(--marinho); text-decoration: none; font-weight: 600; }
+    @media (min-width: 900px) {
+      #nav { padding: 1.5rem 0; }
+      .logo-name { font-size: 1.15rem; }
+      .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+      .nav-links a { font-size: .9rem; font-weight: 500; color: #666; text-decoration: none; transition: color .2s; }
+      .nav-links a:hover { color: var(--marinho); }
+      .nav-burger { display: none; }
+    }
+    .nav-cta { background: var(--cobre) !important; color: #fff !important; padding: .6rem 1.4rem !important; border-radius: 50px !important; font-weight: 700 !important; font-size: .88rem !important; box-shadow: 0 4px 14px rgba(223,105,81,.35); transition: background .2s !important; }
+    .nav-cta:hover { background: #c4501e !important; }
+
+    /* ── HERO ──────────────────────────────────────── */
+    .hero-cat { padding: 5.5rem 0 2rem; background: #fff; position: relative; overflow: hidden; }
+    .hero-cat::before {
+      content: ''; position: absolute; right: -6%; top: -20%; width: 44%; height: 140%;
+      background: #FEF4F0; border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; z-index: 0;
+    }
+    .hero-cat-inner { position: relative; z-index: 1; max-width: 620px; padding: 1.5rem 0; }
+    .hero-cat-back { font-size: .85rem; font-weight: 600; color: var(--cobre); text-decoration: none; display: inline-block; margin-bottom: 1.25rem; }
+    .hero-cat-back:hover { opacity: .75; }
+    .hero-cat-h1 { font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 900; font-style: italic; color: var(--marinho); line-height: 1.1; letter-spacing: -.03em; margin-bottom: .85rem; }
+    .hero-cat-p  { font-size: .97rem; font-weight: 500; color: #777; line-height: 1.75; }
+    @media (min-width: 768px) { .hero-cat { padding: 7.5rem 0 2.5rem; } }
+
+    /* ── PASSOS ────────────────────────────────────── */
+    .passo { margin-bottom: 2.25rem; }
+    .passo-titulo {
+      display: flex; align-items: baseline; gap: .6rem;
+      margin-bottom: 1rem;
+    }
+    .passo-num {
+      font-size: .72rem; font-weight: 800; color: #fff; background: var(--marinho);
+      width: 22px; height: 22px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center; flex: none;
+      transform: translateY(2px);
+    }
+    .passo-h { font-size: 1.05rem; font-weight: 800; color: var(--marinho); }
+    .passo-hint { font-size: .8rem; font-weight: 500; color: #aaa; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .chip {
+      font-family: 'Fira Sans', sans-serif;
+      font-size: .84rem; font-weight: 600; color: #555;
+      background: #fff; border: 1.5px solid #ddd; border-radius: 50px;
+      padding: .55rem 1.15rem; cursor: pointer;
+      transition: border-color .15s, color .15s, background .15s, box-shadow .15s;
+    }
+    .chip:hover { border-color: var(--cobre); color: var(--cobre); }
+    .chip.on {
+      background: var(--marinho); border-color: var(--marinho); color: #fff;
+      box-shadow: 0 4px 14px rgba(13,34,70,.25);
+    }
+    .chip.on:hover { background: var(--marinho); color: #fff; }
+    .chips-tema .chip.on { background: var(--cobre); border-color: var(--cobre); box-shadow: 0 4px 14px rgba(223,105,81,.3); }
+
+    /* ── RESULTADOS ────────────────────────────────── */
+    .resultados { padding: 1rem 0 3rem; }
+    .res-head {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+      border-top: 1px solid rgba(0,0,0,.08); padding-top: 1.75rem; margin-bottom: 1.5rem;
+    }
+    .res-h { font-size: 1.3rem; font-weight: 900; font-style: italic; color: var(--marinho); }
+    .res-count { font-size: .82rem; font-weight: 600; color: #aaa; }
+
+    .res-grid { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+
+    .res-card {
+      background: #fff; border-radius: 12px; padding: 1.25rem 1.3rem;
+      box-shadow: 0 4px 18px rgba(0,0,0,.09);
+      display: flex; flex-direction: column; gap: .55rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .res-card:hover { transform: translateY(-4px); box-shadow: 0 12px 34px rgba(0,0,0,.13); }
+    .res-top { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+    .res-nivel { font-size: .58rem; font-weight: 700; text-transform: uppercase; padding: .22rem .65rem; border-radius: 50px; color: #fff; white-space: nowrap; }
+    .n-local    { background: #2a7a2a; }
+    .n-regional { background: var(--cobre); }
+    .n-inter    { background: var(--marinho); }
+    .n-pernoite { background: #7a4a1a; }
+    .res-serie { font-size: .75rem; font-weight: 600; color: #aaa; }
+    .res-nome { font-size: 1.05rem; font-weight: 800; color: var(--marinho); line-height: 1.25; }
+    .res-dest { font-size: .84rem; font-weight: 500; color: #888; }
+    .res-match { font-size: .78rem; font-weight: 500; color: #2a7a2a; line-height: 1.5; }
+    .res-match i { margin-right: .3rem; }
+    .res-links { display: flex; gap: 1rem; margin-top: .35rem; align-items: center; flex-wrap: wrap; }
+    .res-link { font-size: .82rem; font-weight: 700; color: var(--cobre); text-decoration: none; }
+    .res-link:hover { opacity: .75; }
+    .res-link-wa { color: #2a7a2a; }
+
+    /* vazio */
+    .res-vazio {
+      border: 1.5px dashed #ddd; border-radius: 16px; padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .res-vazio-h { font-size: 1.1rem; font-weight: 800; color: var(--marinho); margin-bottom: .5rem; }
+    .res-vazio-p { font-size: .88rem; color: #888; max-width: 460px; margin: 0 auto 1.4rem; line-height: 1.7; }
+
+    .btn-primary { background: var(--cobre); color: #fff; font-family: 'Fira Sans', sans-serif; font-size: .95rem; font-weight: 700; padding: .85rem 1.75rem; border-radius: 50px; border: none; text-decoration: none; display: inline-block; cursor: pointer; box-shadow: 0 6px 20px rgba(223,105,81,.35); transition: background .2s, transform .15s; white-space: nowrap; }
+    .btn-primary:hover { background: #c4501e; transform: translateY(-1px); }
+
+    /* barra de envio */
+    .envio {
+      margin-top: 2rem; background: rgba(254,244,240,.85);
+      border: 1px solid rgba(223,105,81,.12); border-radius: 16px;
+      padding: 1.5rem; display: flex; align-items: center; justify-content: space-between;
+      gap: 1.25rem; flex-wrap: wrap;
+    }
+    .envio-p { font-size: .9rem; font-weight: 500; color: #777; line-height: 1.6; max-width: 560px; }
+    .envio-p strong { color: var(--marinho); }
+
+    /* ── FOOTER (mínimo) ───────────────────────────── */
+    footer { padding: 2.5rem 0 1.5rem; border-top: 1px solid rgba(0,0,0,.07); }
+    .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+    .footer-bottom p { font-size: .78rem; color: #bbb; margin: 0; font-weight: 500; }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV ──────────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="wrap nav-wrap">
+      <a class="logo" href="index.html">
+        <span class="logo-name">Azimute Educatur</span>
+        <span class="logo-sub">Expedições Pedagógicas</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="index.html#como-funciona">Como Funciona</a></li>
+        <li><a href="index.html#depoimentos">Depoimentos</a></li>
+        <li>
+          <a class="nav-cta"
+            href="https://wa.me/5584999650530?text=Oi%20Jonas%2C%20quero%20o%20Calend%C3%A1rio%20Semestral%20da%20Educatur"
+            target="_blank" rel="noopener">
+            Solicitar Calendário
+          </a>
+        </li>
+      </ul>
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- HERO ─────────────────────────────────────────── -->
+  <section class="hero-cat">
+    <div class="wrap">
+      <div class="hero-cat-inner">
+        <a class="hero-cat-back" href="catalogo.html">← Catálogo completo</a>
+        <h1 class="hero-cat-h1">Monte o roteiro da sua turma</h1>
+        <p class="hero-cat-p">Marque a série, o que a turma está estudando e até onde a escola quer ir. A gente cruza com os Roteiros de Descoberta prontos e mostra o que encaixa — com BNCC mapeada e tudo incluso.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SELETOR ──────────────────────────────────────── -->
+  <div class="wrap">
+
+    <div class="passo">
+      <div class="passo-titulo">
+        <span class="passo-num">1</span>
+        <span class="passo-h">Para qual etapa?</span>
+      </div>
+      <div class="chips" id="chipsSerie" role="group" aria-label="Etapa escolar"></div>
+    </div>
+
+    <div class="passo">
+      <div class="passo-titulo">
+        <span class="passo-num">2</span>
+        <span class="passo-h">O que a turma está estudando?</span>
+        <span class="passo-hint">pode marcar mais de um</span>
+      </div>
+      <div class="chips chips-tema" id="chipsTema" role="group" aria-label="Temas de estudo"></div>
+    </div>
+
+    <div class="passo">
+      <div class="passo-titulo">
+        <span class="passo-num">3</span>
+        <span class="passo-h">Até onde a escola quer ir?</span>
+        <span class="passo-hint">opcional</span>
+      </div>
+      <div class="chips" id="chipsNivel" role="group" aria-label="Distância"></div>
+    </div>
+
+  </div>
+
+
+  <!-- RESULTADOS ───────────────────────────────────── -->
+  <section class="resultados">
+    <div class="wrap">
+      <div class="res-head">
+        <h2 class="res-h" id="resTitulo">Roteiros que encaixam</h2>
+        <span class="res-count" id="resCount"></span>
+      </div>
+      <div id="resArea"></div>
+
+      <div class="envio" id="envioBar" hidden>
+        <p class="envio-p"><strong>Gostou de algum?</strong> Manda pra gente com um clique — a mensagem já vai com a série e os temas que você marcou. Preço sob consulta, conforme a distância da escola.</p>
+        <a class="btn-primary" id="btnEnviar" href="#" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>&nbsp; Enviar minha seleção
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER ───────────────────────────────────────── -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-bottom">
+        <p>© 2026 Azimute Educatur — Hub Azimute · Natal/RN</p>
+        <p>Expedições Pedagógicas alinhadas à BNCC</p><p><a href="assets/images/CREDITOS-FOTOS.md">Fotos: Wikimedia Commons (créditos)</a></p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* ── Catálogo (fonte: catalogo.html) ─────────────
+       Cada roteiro carrega as etapas que atende, o nível de
+       distância e os temas de estudo que ele cobre de verdade.
+       Não listar tema que o roteiro não sustenta no território. */
+
+    var TEMAS = [
+      { id: 'colonial',   rotulo: 'Brasil colonial e engenhos' },
+      { id: 'escravidao', rotulo: 'Escravidão e liberdade' },
+      { id: 'ecossistemas', rotulo: 'Ecossistemas e Mata Atlântica' },
+      { id: 'marinha',    rotulo: 'Vida marinha e águas' },
+      { id: 'geologia',   rotulo: 'Geologia, minerais e solo' },
+      { id: 'cultura',    rotulo: 'Cultura popular e arte' },
+      { id: 'patrimonio', rotulo: 'Patrimônio e cidades históricas' },
+      { id: 'economia',   rotulo: 'Economia e trabalho' }
+    ];
+
+    var SERIES = [
+      { id: 'infantil', rotulo: 'Educação Infantil' },
+      { id: 'fund1',    rotulo: 'Fundamental I' },
+      { id: 'fund2',    rotulo: 'Fundamental II' },
+      { id: 'medio',    rotulo: 'Ensino Médio' }
+    ];
+
+    var NIVEIS = [
+      { id: 'qualquer', rotulo: 'Tanto faz' },
+      { id: 'local',    rotulo: 'Perto de Natal' },
+      { id: 'regional', rotulo: 'Interior do RN/PB' },
+      { id: 'inter',    rotulo: 'Outro estado' },
+      { id: 'pernoite', rotulo: 'Com pernoite' }
+    ];
+
+    var ROTEIROS = [
+      { nome: 'Sentinelas do Mar', destino: 'Aquário · Natal, RN', series: ['infantil','fund1'], nivel: 'local',
+        temas: ['marinha','ecossistemas'], href: 'roteiro-aquario-natal.html' },
+      { nome: 'Raízes e Muralhas', destino: 'Forte + Ribeira · Natal, RN', series: ['fund1','fund2'], nivel: 'local',
+        temas: ['colonial','patrimonio'], href: 'roteiro-forte-ribeira.html' },
+      { nome: 'O Chão Vivo de Natal', destino: 'Natal, RN', series: ['fund2'], nivel: 'local',
+        temas: ['geologia','ecossistemas'], href: null },
+      { nome: 'Raízes da Mata Atlântica', destino: 'Baía Formosa + Mata Estrela, RN', series: ['fund2','medio'], nivel: 'local',
+        temas: ['ecossistemas'], href: 'roteiro-mata-estrela.html' },
+      { nome: 'Terra do Açúcar e do Rio', destino: 'Ceará-Mirim, RN', series: ['fund2'], nivel: 'local',
+        temas: ['colonial','escravidao','economia'], href: 'roteiro-ceara-mirim.html' },
+      { nome: 'Do Rio ao Mar', destino: 'Museu de Minérios + Barco · Natal, RN', series: ['fund2'], nivel: 'local',
+        temas: ['marinha','geologia'], href: 'roteiro-minerio-barco.html' },
+      { nome: 'Da Terra à Célula', destino: 'Minérios + Parque das Dunas · Natal, RN', series: ['fund2','medio'], nivel: 'local',
+        temas: ['geologia','ecossistemas'], href: 'roteiro-minerio-dunas.html' },
+      { nome: 'Cajueiro e Barreira', destino: 'Litoral Norte, RN', series: ['fund2','medio'], nivel: 'local',
+        temas: ['ecossistemas','marinha'], href: 'roteiro-cajueiro-barreira.html' },
+      { nome: 'Sal, Sol e Liberdade', destino: 'Mossoró, RN', series: ['fund2','medio'], nivel: 'regional',
+        temas: ['escravidao','economia','cultura'], href: 'roteiro-mossoro.html' },
+      { nome: 'Coração de Metal do Seridó', destino: 'Currais Novos, RN', series: ['fund2','medio'], nivel: 'regional',
+        temas: ['geologia','economia'], href: 'roteiro-currais-novos.html' },
+      { nome: 'Janelas do Seridó', destino: 'Caicó + Acari, RN', series: ['fund2','medio'], nivel: 'regional',
+        temas: ['geologia','cultura'], href: 'roteiro-janelas-serido.html' },
+      { nome: 'Roliude — Cinema do Sertão', destino: 'Interior do RN', series: ['fund2','medio'], nivel: 'regional',
+        temas: ['cultura'], href: 'roteiro-roliude.html' },
+      { nome: 'No Topo da Serra', destino: 'Martins, RN', series: ['fund2','medio'], nivel: 'regional',
+        temas: ['ecossistemas','geologia'], href: 'roteiro-martins.html' },
+      { nome: 'Serra de São Bento', destino: 'Serra de São Bento, RN', series: ['fund2'], nivel: 'regional',
+        temas: ['ecossistemas'], href: 'roteiro-serra-sao-bento.html' },
+      { nome: 'Serra das Gameleiras', destino: 'Araruna + Serra, PB', series: ['fund2'], nivel: 'regional',
+        temas: ['ecossistemas','geologia'], href: 'roteiro-araruna-serra-gameleiras.html' },
+      { nome: 'Civilização e Engenhos', destino: 'Areia, PB', series: ['fund2','medio'], nivel: 'regional',
+        temas: ['colonial','escravidao','patrimonio'], href: 'roteiro-areia.html' },
+      { nome: 'Entre Trilhos e Engenhos', destino: 'Bananeiras, PB', series: ['fund2'], nivel: 'regional',
+        temas: ['colonial','economia','patrimonio'], href: 'roteiro-bananeiras.html' },
+      { nome: 'Arrebol Paraibano', destino: 'João Pessoa, PB', series: ['fund2'], nivel: 'inter',
+        temas: ['patrimonio','colonial'], href: 'roteiro-joao-pessoa.html' },
+      { nome: 'Pernambuco Imortal', destino: 'Recife + Olinda, PE', series: ['fund2','medio'], nivel: 'inter',
+        temas: ['colonial','escravidao','patrimonio','cultura'], href: 'roteiro-pernambuco-imortal.html' },
+      { nome: 'Do Marco Zero às Ondas', destino: 'Fortaleza + Beach Park, CE', series: ['medio'], nivel: 'pernoite',
+        temas: ['cultura','patrimonio'], href: null }
+    ];
+
+    var NIVEL_ROTULO = { local: 'Local', regional: 'Regional', inter: 'Interestadual', pernoite: 'Pernoite' };
+    var SERIE_CURTA = { infantil: 'Infantil', fund1: 'Fund. I', fund2: 'Fund. II', medio: 'Médio' };
+
+    var estado = { serie: null, temas: [], nivel: 'qualquer' };
+
+    function montarChips(alvo, itens, aoClicar) {
+      var box = document.getElementById(alvo);
+      itens.forEach(function (item) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.textContent = item.rotulo;
+        b.dataset.id = item.id;
+        b.addEventListener('click', function () { aoClicar(item.id, b); });
+        box.appendChild(b);
+      });
+    }
+
+    montarChips('chipsSerie', SERIES, function (id, btn) {
+      estado.serie = (estado.serie === id) ? null : id;
+      document.querySelectorAll('#chipsSerie .chip').forEach(function (c) {
+        c.classList.toggle('on', c.dataset.id === estado.serie);
+      });
+      render();
+    });
+
+    montarChips('chipsTema', TEMAS, function (id, btn) {
+      var i = estado.temas.indexOf(id);
+      if (i >= 0) { estado.temas.splice(i, 1); } else { estado.temas.push(id); }
+      btn.classList.toggle('on', estado.temas.indexOf(id) >= 0);
+      render();
+    });
+
+    montarChips('chipsNivel', NIVEIS, function (id, btn) {
+      estado.nivel = id;
+      document.querySelectorAll('#chipsNivel .chip').forEach(function (c) {
+        c.classList.toggle('on', c.dataset.id === estado.nivel);
+      });
+      render();
+    });
+    document.querySelector('#chipsNivel .chip').classList.add('on');
+
+    function temaRotulo(id) {
+      for (var i = 0; i < TEMAS.length; i++) if (TEMAS[i].id === id) return TEMAS[i].rotulo;
+      return id;
+    }
+
+    function filtrar() {
+      return ROTEIROS
+        .map(function (r) {
+          var casados = r.temas.filter(function (t) { return estado.temas.indexOf(t) >= 0; });
+          return { r: r, casados: casados };
+        })
+        .filter(function (x) {
+          if (estado.serie && x.r.series.indexOf(estado.serie) < 0) return false;
+          if (estado.nivel !== 'qualquer' && x.r.nivel !== estado.nivel) return false;
+          if (estado.temas.length && x.casados.length === 0) return false;
+          return true;
+        })
+        .sort(function (a, b) { return b.casados.length - a.casados.length; });
+    }
+
+    function linkWa(texto) {
+      return 'https://wa.me/5584999650530?text=' + encodeURIComponent(texto);
+    }
+
+    function resumoEscolhas() {
+      var partes = [];
+      if (estado.serie) partes.push('Etapa: ' + SERIE_CURTA[estado.serie]);
+      if (estado.temas.length) partes.push('Temas: ' + estado.temas.map(temaRotulo).join(', '));
+      if (estado.nivel !== 'qualquer') {
+        var n = NIVEIS.filter(function (x) { return x.id === estado.nivel; })[0];
+        partes.push('Distância: ' + n.rotulo);
+      }
+      return partes.join(' · ');
+    }
+
+    function render() {
+      var area = document.getElementById('resArea');
+      var resultados = filtrar();
+      var temFiltro = estado.serie || estado.temas.length || estado.nivel !== 'qualquer';
+
+      document.getElementById('resCount').textContent =
+        resultados.length + (resultados.length === 1 ? ' roteiro encontrado' : ' roteiros encontrados');
+      document.getElementById('resTitulo').textContent =
+        temFiltro ? 'Roteiros que encaixam na sua escolha' : 'Todos os Roteiros de Descoberta';
+
+      area.innerHTML = '';
+
+      if (!resultados.length) {
+        var texto = 'Oi Jonas, montei uma busca no site e não achei roteiro pronto. ' + resumoEscolhas() +
+          '. Quero um roteiro mapeado para isso.';
+        area.innerHTML =
+          '<div class="res-vazio">' +
+          '<p class="res-vazio-h">Ainda não temos roteiro pronto para essa combinação</p>' +
+          '<p class="res-vazio-p">Isso não é um não. Se o tema tem chão no RN ou no Nordeste, a gente pesquisa o território e monta o roteiro com a BNCC mapeada — é o nosso trabalho.</p>' +
+          '<a class="btn-primary" target="_blank" rel="noopener" href="' + linkWa(texto) + '">Pedir esse roteiro no WhatsApp</a>' +
+          '</div>';
+        document.getElementById('envioBar').hidden = true;
+        return;
+      }
+
+      var grid = document.createElement('div');
+      grid.className = 'res-grid';
+
+      resultados.forEach(function (x) {
+        var r = x.r;
+        var card = document.createElement('div');
+        card.className = 'res-card';
+
+        var match = '';
+        if (x.casados.length) {
+          match = '<p class="res-match"><i class="fas fa-check"></i>Cobre: ' +
+            x.casados.map(temaRotulo).join(' · ') + '</p>';
+        }
+
+        var waTexto = 'Oi Jonas, escolhi no site o roteiro "' + r.nome + '" (' + r.destino + '). ' + resumoEscolhas();
+        var links = '<a class="res-link res-link-wa" target="_blank" rel="noopener" href="' + linkWa(waTexto) + '">Solicitar →</a>';
+        if (r.href) links = '<a class="res-link" href="' + r.href + '">Ver roteiro →</a>' + links;
+
+        card.innerHTML =
+          '<div class="res-top">' +
+          '<span class="res-nivel n-' + r.nivel + '">' + NIVEL_ROTULO[r.nivel] + '</span>' +
+          '<span class="res-serie">' + r.series.map(function (s) { return SERIE_CURTA[s]; }).join(' · ') + '</span>' +
+          '</div>' +
+          '<p class="res-nome">' + r.nome + '</p>' +
+          '<p class="res-dest">' + r.destino + '</p>' +
+          match +
+          '<div class="res-links">' + links + '</div>';
+
+        grid.appendChild(card);
+      });
+
+      area.appendChild(grid);
+
+      var envio = document.getElementById('envioBar');
+      if (temFiltro) {
+        envio.hidden = false;
+        var nomes = resultados.slice(0, 3).map(function (x) { return x.r.nome; }).join(', ');
+        var textoGeral = 'Oi Jonas, montei um roteiro no site. ' + resumoEscolhas() +
+          '. Roteiros sugeridos: ' + nomes + '. Quero saber como funciona para minha escola.';
+        document.getElementById('btnEnviar').href = linkWa(textoGeral);
+      } else {
+        envio.hidden = true;
+      }
+    }
+
+    render();
+
+    /* nav */
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('solid', window.scrollY > 40);
+    }, { passive: true });
+    var burger = document.getElementById('burger');
+    var navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', function () {
+      navLinks.classList.toggle('open');
+      burger.innerHTML = navLinks.classList.contains('open')
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+    });
+    navLinks.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        burger.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+  </script>
+
+</body>
+</html>

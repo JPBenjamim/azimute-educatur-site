@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mockup Visual - Padrão de Roteiros Azimute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --marinho: #0D2246;
+      --cobre: #DF6951;
+      --verde: #2A7A62;
+      --azul: #2A7AB8;
+      --off: #F7F6F2;
+      --text: #2d2d2d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Fira Sans', sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
+    @media (min-width: 768px) { .wrap { padding: 0 2rem; } }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      height: 74px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { text-decoration: none; line-height: 1.1; }
+    .brand strong { display: block; color: var(--marinho); font-size: 1rem; }
+    .brand span { display: block; color: var(--cobre); font-size: .52rem; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; }
+    .nav-note { color: #999; font-size: .82rem; font-weight: 600; }
+
+    .mock-intro {
+      padding: 3rem 0 2rem;
+      background:
+        radial-gradient(circle at 76% 18%, rgba(223,105,81,.18), transparent 28%),
+        linear-gradient(180deg, #fff, #fbfbfb);
+    }
+    .eyebrow {
+      display: block; color: var(--cobre); font-size: .78rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: .55rem;
+    }
+    .intro-h {
+      color: var(--marinho);
+      font-weight: 900; font-style: italic;
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 1.04;
+      max-width: 760px;
+    }
+    .intro-p {
+      color: #666; font-weight: 500; line-height: 1.75;
+      max-width: 680px; margin-top: 1rem;
+    }
+
+    .section { padding: 3.5rem 0; }
+    .section.alt { background: #fafafa; }
+    .sec-head { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.6rem; }
+    @media (min-width: 760px) {
+      .sec-head { flex-direction: row; justify-content: space-between; align-items: end; }
+    }
+    .sec-h {
+      color: var(--marinho);
+      font-weight: 900; font-style: italic;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      line-height: 1.12;
+    }
+    .sec-p { color: #777; font-size: .92rem; line-height: 1.7; max-width: 460px; }
+
+    .photo {
+      position: relative; overflow: hidden; background: #ddd;
+    }
+    .photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: contrast(1.12) saturate(1.12) brightness(.94);
+      transform: scale(1.01);
+    }
+    .photo::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 68% 18%, rgba(255,255,255,.16), transparent 30%),
+        linear-gradient(180deg, rgba(13,34,70,.02), rgba(13,34,70,.38));
+      mix-blend-mode: multiply;
+    }
+
+    /* 1. Destaque: colagem forte de 5 fotos */
+    .featured-card {
+      position: relative; overflow: hidden; min-height: 560px;
+      color: #fff; text-decoration: none; display: block;
+      border-radius: 18px; background: var(--marinho);
+      box-shadow: 0 18px 60px rgba(13,34,70,.20);
+    }
+    .featured-collage {
+      position: absolute; inset: 0;
+      display: grid; gap: 4px;
+      grid-template-columns: 1.28fr .72fr;
+      grid-template-rows: repeat(4, 1fr);
+    }
+    .featured-collage .photo-main { grid-row: 1 / 5; }
+    .featured-collage .photo-small:nth-child(2) { grid-column: 2; grid-row: 1; }
+    .featured-collage .photo-small:nth-child(3) { grid-column: 2; grid-row: 2; }
+    .featured-collage .photo-small:nth-child(4) { grid-column: 2; grid-row: 3; }
+    .featured-collage .photo-small:nth-child(5) { grid-column: 2; grid-row: 4; }
+    .featured-card::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(9,20,42,.88) 0%, rgba(9,20,42,.56) 42%, rgba(9,20,42,.15) 100%),
+        linear-gradient(180deg, rgba(9,20,42,.05), rgba(9,20,42,.88));
+    }
+    .featured-body {
+      position: relative; z-index: 2; min-height: 560px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: clamp(1.4rem, 5vw, 3.6rem);
+      max-width: 620px;
+    }
+    .badge-line {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .34rem .72rem; border-radius: 999px;
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25);
+      color: rgba(255,255,255,.82); font-size: .68rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .8px;
+    }
+    .featured-h {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 900; font-style: italic;
+      line-height: 1.04; margin-bottom: .85rem;
+    }
+    .featured-p {
+      color: rgba(255,255,255,.84); line-height: 1.75; font-size: .98rem; max-width: 520px;
+      margin-bottom: 1.5rem;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .85rem 1.35rem; border-radius: 999px;
+      background: var(--cobre); color: #fff; font-weight: 800; text-decoration: none;
+      box-shadow: 0 8px 24px rgba(223,105,81,.32);
+      font-size: .9rem;
+    }
+    .ghost { color: rgba(255,255,255,.85); font-weight: 700; font-size: .86rem; }
+    @media (max-width: 760px) {
+      .featured-card, .featured-body { min-height: 680px; }
+      .featured-collage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1.5fr repeat(2, .75fr);
+      }
+      .featured-collage .photo-main { grid-column: 1 / 3; grid-row: 1; }
+      .featured-collage .photo-small:nth-child(2) { grid-column: 1; grid-row: 2; }
+      .featured-collage .photo-small:nth-child(3) { grid-column: 2; grid-row: 2; }
+      .featured-collage .photo-small:nth-child(4) { grid-column: 1; grid-row: 3; }
+      .featured-collage .photo-small:nth-child(5) { grid-column: 2; grid-row: 3; }
+    }
+
+    /* 2. Cards de catálogo: mini-colagem padrão */
+    .cards-grid {
+      display: grid; gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .route-card {
+      display: block; color: inherit; text-decoration: none;
+      border-radius: 12px; overflow: hidden; background: #fff;
+      box-shadow: 0 8px 28px rgba(0,0,0,.08);
+      transition: transform .22s, box-shadow .22s;
+    }
+    .route-card:hover { transform: translateY(-4px); box-shadow: 0 16px 44px rgba(0,0,0,.13); }
+    .mini-collage {
+      display: grid; gap: 3px; aspect-ratio: 4/3; background: var(--marinho);
+      grid-template-columns: 1.3fr .7fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    .mini-collage .photo:first-child { grid-row: 1 / 3; }
+    .route-body { padding: 1rem 1.1rem 1.15rem; }
+    .route-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; margin-bottom: .35rem; }
+    .route-title { color: var(--marinho); font-size: 1rem; font-weight: 800; }
+    .route-serie { color: #aaa; font-size: .76rem; font-weight: 600; white-space: nowrap; }
+    .route-dest { color: #777; font-size: .84rem; font-weight: 600; display: flex; justify-content: space-between; gap: .8rem; }
+    .route-link { color: var(--cobre); font-weight: 800; white-space: nowrap; }
+
+    /* 3. Página do roteiro */
+    .route-page {
+      background: #fff;
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+    .route-hero {
+      padding: 4rem 0 3rem;
+      background:
+        radial-gradient(circle at 84% 0%, rgba(223,105,81,.16), transparent 30%),
+        linear-gradient(180deg, #fff, #fafafa);
+      overflow: hidden;
+    }
+    .route-hero-grid {
+      display: grid; gap: 2rem; align-items: center;
+    }
+    @media (min-width: 900px) {
+      .route-hero-grid { grid-template-columns: .9fr 1.1fr; gap: 3.5rem; }
+    }
+    .breadcrumb { color: #aaa; font-size: .82rem; font-weight: 700; margin-bottom: 1.2rem; }
+    .route-h1 {
+      color: var(--marinho); font-size: clamp(2.2rem, 6vw, 4.25rem);
+      line-height: 1.03; font-style: italic; font-weight: 900; margin-bottom: 1rem;
+    }
+    .route-lead { color: #666; line-height: 1.75; font-weight: 500; margin-bottom: 1.4rem; max-width: 560px; }
+    .meta-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.4rem; }
+    .meta-pill { background: #f1f1f1; color: #666; border-radius: 999px; padding: .36rem .75rem; font-size: .76rem; font-weight: 700; }
+    .hero-collage {
+      display: grid; gap: 5px; aspect-ratio: 1.25 / 1;
+      grid-template-columns: 1.45fr .8fr .8fr;
+      grid-template-rows: 1fr 1fr;
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 18px 60px rgba(13,34,70,.18);
+      background: var(--marinho);
+    }
+    .hero-collage .photo:first-child { grid-row: 1 / 3; }
+    @media (max-width: 640px) {
+      .hero-collage {
+        aspect-ratio: auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 220px 120px 120px;
+      }
+      .hero-collage .photo:first-child { grid-column: 1 / 3; grid-row: 1; }
+    }
+
+    .journey {
+      padding: 4rem 0;
+    }
+    .journey-grid { display: grid; gap: 1rem; }
+    @media (min-width: 820px) { .journey-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .step-card {
+      background: #fff; border-radius: 12px; padding: 1.2rem;
+      box-shadow: 0 4px 22px rgba(0,0,0,.07);
+      border-left: 4px solid var(--cobre);
+    }
+    .step-num { color: rgba(13,34,70,.18); font-size: 2.5rem; font-style: italic; font-weight: 900; line-height: 1; }
+    .step-card h3 { color: var(--marinho); font-size: 1rem; margin: .5rem 0; }
+    .step-card p { color: #777; font-size: .88rem; line-height: 1.65; font-weight: 500; }
+
+    .image-story {
+      padding: 4rem 0;
+      background: #fafafa;
+    }
+    .route-timeline {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .timeline-stop {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(0,0,0,.075);
+      display: grid;
+      border: 1px solid rgba(0,0,0,.05);
+    }
+    @media (min-width: 820px) {
+      .timeline-stop {
+        grid-template-columns: minmax(280px, .85fr) 1fr;
+        min-height: 250px;
+      }
+      .timeline-stop:nth-child(even) {
+        grid-template-columns: 1fr minmax(280px, .85fr);
+      }
+      .timeline-stop:nth-child(even) .timeline-photo { grid-column: 2; }
+      .timeline-stop:nth-child(even) .timeline-body { grid-column: 1; grid-row: 1; }
+    }
+    .timeline-photo {
+      min-height: 230px;
+    }
+    .timeline-body {
+      padding: clamp(1.35rem, 4vw, 2.25rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .timeline-kicker {
+      color: var(--cobre);
+      font-size: .72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: .55rem;
+    }
+    .timeline-body h3 {
+      color: var(--marinho);
+      font-size: clamp(1.25rem, 3vw, 1.85rem);
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1.12;
+      margin-bottom: .7rem;
+    }
+    .timeline-body p {
+      color: #666;
+      font-size: .92rem;
+      font-weight: 500;
+      line-height: 1.75;
+      max-width: 540px;
+    }
+    .timeline-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .timeline-tags span {
+      border-radius: 999px;
+      background: #f1f1f1;
+      color: #666;
+      padding: .26rem .65rem;
+      font-size: .68rem;
+      font-weight: 800;
+    }
+    .photo-strip {
+      margin-top: 1.25rem;
+      background: var(--marinho);
+      border-radius: 14px;
+      padding: .55rem;
+      display: grid;
+      gap: .55rem;
+      grid-template-columns: repeat(5, 1fr);
+      box-shadow: 0 10px 34px rgba(13,34,70,.16);
+    }
+    .photo-strip .photo {
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+    }
+    @media (max-width: 680px) {
+      .photo-strip {
+        overflow-x: auto;
+        grid-template-columns: repeat(5, minmax(120px, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="catalogo.html">
+        <strong>Azimute Educatur</strong>
+        <span>Expedições Pedagógicas</span>
+      </a>
+      <div class="nav-note">Mockup visual · colagem padrão</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="mock-intro">
+      <div class="wrap">
+        <span class="eyebrow">Proposta visual</span>
+        <h1 class="intro-h">Um padrão único para vender cada roteiro como expedição.</h1>
+        <p class="intro-p">A ideia é usar a mesma linguagem em todo o site: colagem no card de destaque, mini-colagem nos cards comuns e a mesma família visual dentro da página do roteiro.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">01 · Catálogo</span>
+            <h2 class="sec-h">Card de destaque com 5 fotos</h2>
+          </div>
+          <p class="sec-p">Uma foto principal segura a promessa do roteiro. As quatro menores mostram variedade: lugar, detalhe, paisagem e experiência.</p>
+        </div>
+
+        <a class="featured-card" href="#pagina-roteiro">
+          <div class="featured-collage">
+            <div class="photo photo-main"><img src="assets/images/cinematic/catalogo-areia-hero.jpg" alt=""></div>
+            <div class="photo photo-small"><img src="assets/images/cinematic/catalogo-bananeiras-card.jpg" alt=""></div>
+            <div class="photo photo-small"><img src="assets/images/cinematic/catalogo-mossoro-card.jpg" alt=""></div>
+            <div class="photo photo-small"><img src="assets/images/cinematic/catalogo-recife-card.jpg" alt=""></div>
+            <div class="photo photo-small"><img src="assets/images/cinematic/catalogo-aquario-natal-card.jpg" alt=""></div>
+          </div>
+          <div class="featured-body">
+            <div class="badge-line">
+              <span class="badge"><i class="fas fa-compass"></i> Roteiro em destaque</span>
+              <span class="badge">Regional</span>
+              <span class="badge">Fund. II · Médio</span>
+            </div>
+            <h2 class="featured-h">Civilização e Engenhos · Areia, PB</h2>
+            <p class="featured-p">Casarões, engenhos e memória afro-brasileira para transformar história colonial em leitura de território.</p>
+            <div class="cta-row">
+              <span class="btn">Ver roteiro completo <i class="fas fa-arrow-right"></i></span>
+              <span class="ghost">5 fotos · 1 jornada pedagógica</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="eyebrow">02 · Cards comuns</span>
+            <h2 class="sec-h">Mini-colagem para todos</h2>
+          </div>
+          <p class="sec-p">Mesmo padrão, menos espaço. O catálogo ganha consistência e cada roteiro deixa de parecer uma foto solta.</p>
+        </div>
+
+        <div class="cards-grid">
+          <a class="route-card" href="#pagina-roteiro">
+            <div class="mini-collage">
+              <div class="photo"><img src="assets/images/cinematic/catalogo-mossoro-card.jpg" alt=""></div>
+              <div class="photo"><img src="assets/images/cinematic/catalogo-currais-novos-card.jpg" alt=""></div>
+              <div class="photo"><img src="assets/images/cinematic/catalogo-janelas-serido-card.jpg" alt=""></div>
+            </div>
+            <div class="route-body">
+              <div class="route-title-row">
+                <span class="route-title">Sal, Sol e Liberdade</span>
+                <span class="route-serie">Fund. II</span>
+              </div>
+              <div class="route-dest">
+                <span>Mossoró, RN</span>
+                <span class="route-link">Ver roteiro →</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="route-card" href="#pagina-roteiro">
+            <div class="mini-collage">
+              <div class="photo"><img src="assets/images/cinematic/catalogo-aquario-natal-card.jpg" alt=""></div>
+              <div class="photo"><img src="assets/images/cinematic/catalogo-chao-vivo-natal-card.jpg" alt=""></div>
+              <div class="photo"><img src="assets/images/cinematic/catalogo-minerio-dunas-card.jpg" alt=""></div>
+            </div>
+            <div class="route-body">
+              <div class="route-title-row">
+                <span class="route-title">Sentinelas do Mar</span>
+                <span class="route-serie">Fund. I</span>
+              </div>
+              <div class="route-dest">
+                <span>Aquário Natal</span>
+                <span class="route-link">Ver roteiro →</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="route-card" href="#pagina-roteiro">
+            <div class="mini-collage">
+              <div class="photo"><img src="assets/images/cinematic/catalogo-araruna-card.jpg" alt=""></div>
+              <div class="photo"><img src="assets/images/cinematic/catalogo-serra-sao-bento-card.jpg" alt=""></div>
+              <div class="photo"><img src="assets/images/cinematic/catalogo-mata-estrela-card.jpg" alt=""></div>
+            </div>
+            <div class="route-body">
+              <div class="route-title-row">
+                <span class="route-title">Serra das Gameleiras</span>
+                <span class="route-serie">Fund. II</span>
+              </div>
+              <div class="route-dest">
+                <span>Araruna + Serra</span>
+                <span class="route-link">Ver roteiro →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="route-page" id="pagina-roteiro">
+      <div class="route-hero">
+        <div class="wrap route-hero-grid">
+          <div>
+            <div class="breadcrumb">Catálogo / Civilização e Engenhos</div>
+            <span class="eyebrow">03 · Página do roteiro</span>
+            <h2 class="route-h1">Civilização e Engenhos</h2>
+            <p class="route-lead">A mesma colagem do catálogo aparece maior no hero. A escola sente continuidade visual: clicou em uma expedição, entrou dentro dela.</p>
+            <div class="meta-list">
+              <span class="meta-pill"><i class="fas fa-map-marker-alt"></i> Areia, PB</span>
+              <span class="meta-pill"><i class="fas fa-clock"></i> 1 dia integral</span>
+              <span class="meta-pill"><i class="fas fa-users"></i> mín. 30 alunos</span>
+            </div>
+            <a class="btn" href="#!">Solicitar Agora</a>
+          </div>
+
+          <div class="hero-collage">
+            <div class="photo"><img src="assets/images/cinematic/catalogo-areia-hero.jpg" alt=""></div>
+            <div class="photo"><img src="assets/images/cinematic/catalogo-bananeiras-card.jpg" alt=""></div>
+            <div class="photo"><img src="assets/images/cinematic/catalogo-recife-card.jpg" alt=""></div>
+            <div class="photo"><img src="assets/images/cinematic/catalogo-mossoro-card.jpg" alt=""></div>
+            <div class="photo"><img src="assets/images/cinematic/catalogo-aquario-natal-card.jpg" alt=""></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <span class="eyebrow">A jornada</span>
+              <h2 class="sec-h">Fotos aparecem ligadas às paradas</h2>
+            </div>
+            <p class="sec-p">Em vez de carrossel escondido, a página usa imagens como parte da narrativa pedagógica.</p>
+          </div>
+          <div class="journey-grid">
+            <article class="step-card">
+              <div class="step-num">01</div>
+              <h3>Centro histórico</h3>
+              <p>Arquitetura, rua e patrimônio aparecem antes da explicação. O aluno entende o lugar pela observação.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-num">02</div>
+              <h3>Engenho e produção</h3>
+              <p>O ciclo econômico deixa de ser capítulo e vira espaço, trabalho, matéria-prima e memória.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-num">03</div>
+              <h3>Roda de síntese</h3>
+              <p>A turma organiza o que viu em diário de campo, pergunta investigativa e atividade pós-saída.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-story">
+        <div class="wrap">
+          <span class="eyebrow">A expedição em imagens</span>
+          <h2 class="sec-h">Imagens presas à jornada, não soltas na página</h2>
+          <p class="sec-p" style="margin-top:.7rem;">Cada foto aparece dentro de uma parada do roteiro. A imagem ganha função: mostrar o que o aluno observa, investiga e registra.</p>
+
+          <div class="route-timeline">
+            <article class="timeline-stop">
+              <div class="photo timeline-photo">
+                <img src="assets/images/cinematic/catalogo-areia-hero.jpg" alt="">
+              </div>
+              <div class="timeline-body">
+                <div class="timeline-kicker">Parada 01</div>
+                <h3>Chegada ao território</h3>
+                <p>A primeira imagem abre o contexto: onde a turma está, que paisagem será lida e qual pergunta conduz a observação em campo.</p>
+                <div class="timeline-tags">
+                  <span>Leitura de paisagem</span>
+                  <span>Diário de campo</span>
+                  <span>Território</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="timeline-stop">
+              <div class="photo timeline-photo">
+                <img src="assets/images/cinematic/catalogo-bananeiras-card.jpg" alt="">
+              </div>
+              <div class="timeline-body">
+                <div class="timeline-kicker">Parada 02</div>
+                <h3>Patrimônio e memória</h3>
+                <p>A foto deixa de ser decoração e entra como evidência. O texto aponta o que o aluno deve notar: arquitetura, marcas do tempo e relação com o conteúdo.</p>
+                <div class="timeline-tags">
+                  <span>Patrimônio</span>
+                  <span>História</span>
+                  <span>Observação</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="timeline-stop">
+              <div class="photo timeline-photo">
+                <img src="assets/images/cinematic/catalogo-recife-card.jpg" alt="">
+              </div>
+              <div class="timeline-body">
+                <div class="timeline-kicker">Parada 03</div>
+                <h3>Síntese da experiência</h3>
+                <p>No fechamento, a imagem acompanha a conclusão pedagógica: o que mudou na leitura do aluno e como o professor leva isso de volta para a sala.</p>
+                <div class="timeline-tags">
+                  <span>Síntese</span>
+                  <span>Argumento</span>
+                  <span>Pós-saída</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="photo-strip" aria-label="Miniaturas complementares da expedição">
+            <div class="photo"><img src="assets/images/cinematic/catalogo-areia-hero.jpg" alt=""></div>
+            <div class="photo"><img src="assets/images/cinematic/catalogo-bananeiras-card.jpg" alt=""></div>
+            <div class="photo"><img src="assets/images/cinematic/catalogo-recife-card.jpg" alt=""></div>
+            <div class="photo"><img src="assets/images/cinematic/catalogo-mossoro-card.jpg" alt=""></div>
+            <div class="photo"><img src="assets/images/cinematic/catalogo-aquario-natal-card.jpg" alt=""></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
