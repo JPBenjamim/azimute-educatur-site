@@ -1006,13 +1006,29 @@
     var rotaBtns = document.querySelectorAll('.rota-btn');
     var rotaLinks = document.querySelectorAll('[data-rota-link]');
     var dcards = document.querySelectorAll('.dcard');
+    var dcatGrid = document.getElementById('dcatGrid');
     var gradeTitulo = document.getElementById('gradeTitulo');
     var gradeSub = document.getElementById('gradeSub');
+    var ordemOriginal = Array.prototype.slice.call(dcards);
 
     function filtrarRota(rota) {
       rotaBtns.forEach(function (b) { b.classList.toggle('active', b.dataset.rota === rota); });
+
+      var ordenados = ordemOriginal.slice();
+      if (rota !== 'all') {
+        ordenados.sort(function (a, b) {
+          var aPertence = (a.dataset.rotas || '').split(' ').indexOf(rota) !== -1;
+          var bPertence = (b.dataset.rotas || '').split(' ').indexOf(rota) !== -1;
+          return Number(bPertence) - Number(aPertence);
+        });
+      }
+      ordenados.forEach(function (c) { dcatGrid.appendChild(c); });
+
       dcards.forEach(function (c) {
-        if (rota === 'all') { c.classList.remove('hi', 'lo'); return; }
+        if (rota === 'all') {
+          c.classList.remove('hi', 'lo');
+          return;
+        }
         var pertence = (c.dataset.rotas || '').split(' ').indexOf(rota) !== -1;
         c.classList.toggle('hi', pertence);
         c.classList.toggle('lo', !pertence);
@@ -1024,6 +1040,8 @@
         gradeTitulo.textContent = rotaNomes[rota];
         gradeSub.textContent = 'Roteiros em destaque pertencem a esta rota. Os demais continuam disponíveis abaixo, esmaecidos.';
       }
+
+      gradeTitulo.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     rotaBtns.forEach(function (btn) {
