@@ -45,11 +45,89 @@
     .logo-sub { display: block; color: var(--cobre); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; font-size: .52rem; }
     .nav-links { display: none; align-items: center; gap: 1.6rem; list-style: none; }
     .nav-links a { color: #666; text-decoration: none; font-size: .88rem; font-weight: 700; }
-    @media (min-width: 860px) { .nav-links { display: flex; } }
+    .nav-burger {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(13,34,70,.14);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--marinho);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+      z-index: 80;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
+    .nav-links.open {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.4rem;
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
+    }
+    .nav-links.open a {
+      color: var(--marinho);
+      font-size: 1.25rem;
+      font-weight: 900;
+    }
+    .nav-links.open .nav-cta {
+      margin-top: .4rem;
+      color: #fff !important;
+      font-size: 1rem !important;
+      padding: .85rem 1.4rem !important;
+    }
+    body.menu-open { overflow: hidden; }
+    @media (min-width: 860px) {
+      .nav-links { display: flex; }
+      .nav-burger { display: none; }
+    }
     .nav-cta {
       background: var(--cobre); color: #fff !important; padding: .62rem 1rem; border-radius: 999px;
       box-shadow: 0 6px 20px rgba(223,105,81,.24);
     }
+    .mobile-actionbar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 48;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: .65rem;
+      padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
+      background: rgba(255,255,255,.94);
+      border-top: 1px solid rgba(13,34,70,.1);
+      box-shadow: 0 -8px 28px rgba(13,34,70,.12);
+      backdrop-filter: blur(12px);
+    }
+    .mobile-actionbar a {
+      min-height: 44px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: .86rem;
+    }
+    .mobile-actionbar .mobile-secondary {
+      color: var(--marinho);
+      border: 1px solid rgba(13,34,70,.14);
+      background: #fff;
+    }
+    .mobile-actionbar .mobile-primary {
+      color: #fff;
+      background: var(--cobre);
+      box-shadow: 0 6px 18px rgba(223,105,81,.28);
+    }
+    @media (min-width: 860px) { .mobile-actionbar { display: none; } }
 
     .photo {
       position: relative; overflow: hidden; background: var(--marinho);
@@ -582,6 +660,31 @@
     .cta-box p { color: rgba(255,255,255,.75); line-height: 1.7; max-width: 560px; margin-top: .65rem; }
     footer { border-top: 1px solid rgba(0,0,0,.07); padding: 2rem 0; color: #aaa; font-size: .8rem; }
     footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+    @media (max-width: 859px) {
+      body { padding-bottom: 76px; }
+      body.menu-open .mobile-actionbar { display: none; }
+      .hero { padding: 2.6rem 0 2.5rem; }
+      section { padding: 3.15rem 0; }
+      .route-summary-band { padding-bottom: 2.7rem; }
+      .prologue { padding: 2.55rem 0; }
+      .quick-panel { margin-top: .85rem; gap: .6rem; }
+      .quick-item { padding: .85rem; }
+      .change-grid { gap: .85rem; }
+      .change-card {
+        min-height: auto;
+        justify-content: flex-start;
+        padding: 1.35rem;
+      }
+      .change-num { font-size: 3.35rem; right: .85rem; top: .55rem; }
+      .timeline-photo { min-height: 190px; }
+      .timeline-body { padding: 1.35rem; }
+      .photo-strip { margin-top: 1rem; padding: .4rem; gap: .4rem; }
+      .testimonial-grid { gap: 1.2rem; }
+      .testimonial-stack { padding-right: 12px; padding-bottom: 18px; }
+      .cta { padding-bottom: 2.75rem; }
+      .cta-box { border-radius: 18px; gap: 1.25rem; }
+      footer { padding-bottom: 2.2rem; }
+    }
   </style>
 </head>
 
@@ -592,14 +695,22 @@
         <span class="logo-name">Azimute Educatur</span>
         <span class="logo-sub">Expedições Pedagógicas</span>
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#transformacao">Aprendizagem</a></li>
         <li><a href="#jornada">Jornada</a></li>
         <li><a href="#depoimentos">Depoimentos</a></li>
         <li><a class="nav-cta" href="#solicitar">Solicitar</a></li>
       </ul>
+      <button class="nav-burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </nav>
+
+  <div class="mobile-actionbar" aria-label="Ações rápidas">
+    <a class="mobile-secondary" href="#jornada"><i class="fas fa-map"></i> Jornada</a>
+    <a class="mobile-primary" href="#solicitar"><i class="fas fa-paper-plane"></i> Solicitar</a>
+  </div>
 
   <header class="hero">
     <div class="wrap">
@@ -948,5 +1059,27 @@
       <span>Expedições Pedagógicas alinhadas à BNCC</span>
     </div>
   </footer>
+  <script>
+    var burger = document.getElementById('burger');
+    var navLinks = document.getElementById('navLinks');
+    if (burger && navLinks) {
+      burger.addEventListener('click', function () {
+        var isOpen = navLinks.classList.toggle('open');
+        document.body.classList.toggle('menu-open', isOpen);
+        burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        burger.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+        burger.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      });
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          document.body.classList.remove('menu-open');
+          burger.setAttribute('aria-expanded', 'false');
+          burger.setAttribute('aria-label', 'Abrir menu');
+          burger.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+    }
+  </script>
 </body>
 </html>
