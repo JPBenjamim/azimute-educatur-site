@@ -226,6 +226,37 @@
       font-size: .68rem;
       font-weight: 900;
     }
+    .option-list {
+      display: grid;
+      gap: .65rem;
+      list-style: none;
+    }
+    .option-list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: .6rem;
+      color: #616161;
+      line-height: 1.48;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+    .option-list span {
+      width: 1.65rem;
+      height: 1.65rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(13,34,70,.06);
+      color: var(--marinho);
+      font-size: .72rem;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+    .option-list strong {
+      color: var(--marinho);
+      font-weight: 900;
+    }
     .route-status {
       margin-top: auto;
       border-top: 1px solid rgba(13,34,70,.07);
@@ -394,7 +425,8 @@
       <h1>Novos roteiros em descoberta</h1>
       <p>O Claude atualizou um lote com novas possibilidades de Expedições Pedagógicas. Esta página organiza o que já apareceu, o que parece mais promissor e o que ainda precisa de validação antes de virar catálogo final.</p>
       <div class="status-row">
-        <span class="pill"><i class="fas fa-compass"></i> 7 rotas mapeadas</span>
+        <span class="pill"><i class="fas fa-compass"></i> 9 rotas mapeadas</span>
+        <span class="pill"><i class="fas fa-route"></i> 26 possibilidades</span>
         <span class="pill"><i class="fas fa-clipboard-check"></i> Em validação</span>
         <span class="pill"><i class="fas fa-triangle-exclamation"></i> BNCC preliminar</span>
         <span class="pill"><i class="fas fa-tag"></i> Sem preço fixo</span>
@@ -410,7 +442,7 @@
             <span class="eyebrow">Mapa do lote</span>
             <h2>Rotas que entraram na mesa</h2>
           </div>
-          <p>São oportunidades reais, mas ainda não são roteiros publicados. Cada uma precisa passar por contato com locais, checagem de acesso, segurança, público ideal e BNCC oficial.</p>
+          <p>São rotas-mãe com possibilidades internas para triagem. A lista abaixo organiza o lote do jeito certo: o que cabe no dia, o que exige pernoite e o que precisa de contato antes de virar catálogo.</p>
         </div>
 
         <div class="route-grid">
@@ -420,39 +452,19 @@
               <h3>Rota do Espaço e da Ciência</h3>
             </div>
             <div class="route-body">
-              <p>Grande Natal, com eixo em Parnamirim: CLBI, programa Dia Espacial, Centro de Cultura Espacial e possível conexão com o Cajueiro de Pirangi.</p>
-              <div>
-                <div class="mini-label">Melhor entrada</div>
-                <div class="mini-value">Dia Espacial no CLBI para 9º ano e 1ª série do Ensino Médio.</div>
-              </div>
+              <p>Todas cabem no dia, dependendo de agendamento e confirmação dos locais.</p>
+              <ol class="option-list">
+                <li><span>1</span><div><strong>Dia Espacial</strong> - CLBI completo, 9º ano a 1ª série, gratuito e agendável.</div></li>
+                <li><span>2</span><div><strong>Do Cajueiro ao Foguete</strong> - Pirangi + Centro de Cultura Espacial, 5º ao 8º ano.</div></li>
+                <li><span>3</span><div><strong>Ciência que Acontece Agora</strong> - Instituto Santos Dumont, Macaíba, Ensino Médio; depende de contato.</div></li>
+              </ol>
               <div class="tag-row">
                 <span class="tag">Ciências</span>
                 <span class="tag">Física</span>
                 <span class="tag">Geografia</span>
-                <span class="tag">Local</span>
-              </div>
-              <div class="route-status"><strong>Status:</strong> prioridade alta. Existe programa oficial de visita escolar, mas datas, documentos e regras de imagem precisam ser confirmados.</div>
-            </div>
-          </article>
-
-          <article class="route-card">
-            <div class="route-top">
-              <div class="route-icon"><i class="fas fa-water"></i></div>
-              <h3>Rota do Litoral Sul</h3>
-            </div>
-            <div class="route-body">
-              <p>Tibau do Sul e Pipa como laboratório de falésias, Mata Atlântica costeira, golfinhos, laguna, mangue e conflitos de uso do território.</p>
-              <div>
-                <div class="mini-label">Melhor entrada</div>
-                <div class="mini-value">Santuário Ecológico de Pipa e mirantes do Madeiro, com opção sem atividade embarcada.</div>
-              </div>
-              <div class="tag-row">
-                <span class="tag">Ecossistemas</span>
-                <span class="tag">Falésias</span>
-                <span class="tag">Manguezal</span>
                 <span class="tag">Dia único</span>
               </div>
-              <div class="route-status"><strong>Status:</strong> prioridade alta. Logística curta, mas valores, capacidade e monitoria do Santuário precisam ser confirmados.</div>
+              <div class="route-status"><strong>Status:</strong> prioridade alta. Os contatos destravam a versão escolhida.</div>
             </div>
           </article>
 
@@ -462,39 +474,63 @@
               <h3>Rota da Fé</h3>
             </div>
             <div class="route-body">
-              <p>Cunhaú, Uruaçu e Santa Cruz como portas de entrada para história colonial, patrimônio religioso, turismo, memória e território.</p>
-              <div>
-                <div class="mini-label">Melhor entrada</div>
-                <div class="mini-value">Cunhaú + Uruaçu para 7º ano, ou Santa Cruz para Geografia e Matemática em campo.</div>
-              </div>
+              <p>Todas cabem no dia, com enquadramento histórico, cultural e não confessional.</p>
+              <ol class="option-list">
+                <li><span>4</span><div><strong>Caminho dos Primeiros Santos</strong> - Cunhaú + Uruaçu, 7º ao 9º ano.</div></li>
+                <li><span>5</span><div><strong>A Cidade da Estátua</strong> - Santa Cruz, com medição indireta em Matemática, 8º ao Ensino Médio.</div></li>
+                <li><span>6</span><div><strong>Fé e Engenho</strong> - Cunhaú + estuário de Barra do Cunhaú, 6º ao 7º ano.</div></li>
+              </ol>
               <div class="tag-row">
                 <span class="tag">História</span>
                 <span class="tag">Patrimônio</span>
-                <span class="tag">Fenômeno religioso</span>
+                <span class="tag">Matemática</span>
                 <span class="tag">Dia único</span>
               </div>
-              <div class="route-status"><strong>Status:</strong> prioridade média. Exige enquadramento não confessional e agendamento com paróquias/santuários.</div>
+              <div class="route-status"><strong>Status:</strong> prioridade média. Validar contatos de santuários, paróquias e guias locais.</div>
             </div>
           </article>
 
           <article class="route-card">
             <div class="route-top">
-              <div class="route-icon"><i class="fas fa-wind"></i></div>
-              <h3>Rota do Sal e do Vento</h3>
+              <div class="route-icon"><i class="fas fa-water"></i></div>
+              <h3>Rota do Litoral Sul</h3>
             </div>
             <div class="route-body">
-              <p>Costa Branca, Galinhos, Dunas do Rosado e salinas como campo para evaporação, cristalização, vento, sal, pesca e modos de vida litorâneos.</p>
-              <div>
-                <div class="mini-label">Melhor entrada</div>
-                <div class="mini-value">Galinhos como dia único justo; Dunas do Rosado e salinas como pernoite ou extensão de Mossoró.</div>
-              </div>
+              <p>Todas cabem no dia, com foco em falésia, laguna, mangue e leitura ambiental.</p>
+              <ol class="option-list">
+                <li><span>7</span><div><strong>No Alto da Falésia</strong> - Santuário Ecológico de Pipa, 6º ao 7º ano.</div></li>
+                <li><span>8</span><div><strong>A Laguna que Trabalha</strong> - navegação na Guaraíras, 8º ao Ensino Médio.</div></li>
+                <li><span>9</span><div><strong>Falésia + Laguna</strong> - dia combinado sem barco, 5º ao 7º ano.</div></li>
+              </ol>
               <div class="tag-row">
-                <span class="tag">Geografia</span>
-                <span class="tag">Ciências</span>
-                <span class="tag">Salinas</span>
-                <span class="tag">Regional</span>
+                <span class="tag">Ecossistemas</span>
+                <span class="tag">Falésias</span>
+                <span class="tag">Manguezal</span>
+                <span class="tag">Dia único</span>
               </div>
-              <div class="route-status"><strong>Status:</strong> prioridade média. Precisa confirmar barcos, coletes, almoços, salinas visitáveis e estrutura para grupos.</div>
+              <div class="route-status"><strong>Status:</strong> prioridade alta. Confirmar valores, capacidade e condição de navegação quando houver barco.</div>
+            </div>
+          </article>
+
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-people-group"></i></div>
+              <h3>Rota dos Povos Originários</h3>
+            </div>
+            <div class="route-body">
+              <p>Todas cabem no dia, com decisão pedagógica sensível e contato prévio com as comunidades.</p>
+              <ol class="option-list">
+                <li><span>10</span><div><strong>Potiguara Hoje</strong> - vivência na aldeia, Baía da Traição/PB, 4º ao 7º ano.</div></li>
+                <li><span>11</span><div><strong>Aldeia e Forte</strong> - vivência + ruínas coloniais de São Miguel, 7º ao 9º ano.</div></li>
+                <li><span>12</span><div><strong>Dois Povos do Mesmo Nome</strong> - versão Ensino Médio, com ponte para o Catu/RN.</div></li>
+              </ol>
+              <div class="tag-row">
+                <span class="tag">História</span>
+                <span class="tag">Cultura</span>
+                <span class="tag">Lei 11.645</span>
+                <span class="tag">Interestadual</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> precisa de validação comunitária antes de qualquer publicação comercial.</div>
             </div>
           </article>
 
@@ -504,18 +540,62 @@
               <h3>Rota do Geoparque Seridó</h3>
             </div>
             <div class="route-body">
-              <p>Geoparque Mundial da UNESCO no Seridó, com Cerro Corá, nascente do Potengi, Vale Vulcânico, Acari e Carnaúba dos Dantas.</p>
-              <div>
-                <div class="mini-label">Melhor entrada</div>
-                <div class="mini-value">Cerro Corá: onde nasce o rio de Natal, com leitura de bacia hidrográfica e vulcanismo antigo.</div>
-              </div>
+              <p>Uma opção cabe no dia; as combinações mais completas ficam no limite ou pedem pernoite.</p>
+              <ol class="option-list">
+                <li><span>13</span><div><strong>Onde Nasce o Rio de Natal</strong> - Cerro Corá, nascente do Potengi + Vale Vulcânico, cabe no dia.</div></li>
+                <li><span>14</span><div><strong>Pedra, Tinta e Fé</strong> - sítios rupestres de Carnaúba dos Dantas + Monte do Galo, no limite.</div></li>
+                <li><span>15</span><div><strong>Seridó UNESCO 2 Dias</strong> - Cerro Corá + Acari + Carnaúba, pernoite.</div></li>
+              </ol>
               <div class="tag-row">
                 <span class="tag">UNESCO</span>
                 <span class="tag">Geologia</span>
                 <span class="tag">Seridó</span>
                 <span class="tag">Regional</span>
               </div>
-              <div class="route-status"><strong>Status:</strong> prioridade média-alta. Argumento forte, mas precisa alinhar condutores e entidade gestora do geoparque.</div>
+              <div class="route-status"><strong>Status:</strong> prioridade média-alta. Alinhar condutores e entidade gestora do geoparque.</div>
+            </div>
+          </article>
+
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-landmark"></i></div>
+              <h3>Rota da Pré-História</h3>
+            </div>
+            <div class="route-body">
+              <p>Ingá/PB entra como roteiro de arqueologia e interpretação de registros rupestres, com logística mais exigente.</p>
+              <ol class="option-list">
+                <li><span>16</span><div><strong>O Enigma da Pedra</strong> - Ingá/PB bate-volta, no limite.</div></li>
+                <li><span>17</span><div><strong>Pedra e Cidade</strong> - Ingá + Campina Grande, pernoite.</div></li>
+              </ol>
+              <div class="tag-row">
+                <span class="tag">Arqueologia</span>
+                <span class="tag">História</span>
+                <span class="tag">Paraíba</span>
+                <span class="tag">No limite</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> depende de checagem fina de tempo de estrada, acesso e condução local.</div>
+            </div>
+          </article>
+
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-wind"></i></div>
+              <h3>Rota do Sal e do Vento</h3>
+            </div>
+            <div class="route-body">
+              <p>Galinhos cabe no dia com margem apertada. As demais opções pedem pernoite ou encaixe com Mossoró.</p>
+              <ol class="option-list">
+                <li><span>18</span><div><strong>A Península Sem Carros</strong> - Galinhos, cabe no dia, mas justo.</div></li>
+                <li><span>19</span><div><strong>Dunas que Andam</strong> - Dunas do Rosado, pernoite.</div></li>
+                <li><span>20</span><div><strong>Do Sal ao Prato</strong> - salinas industriais como dia 2 de Mossoró, pernoite.</div></li>
+              </ol>
+              <div class="tag-row">
+                <span class="tag">Geografia</span>
+                <span class="tag">Ciências</span>
+                <span class="tag">Salinas</span>
+                <span class="tag">Regional</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> prioridade média. Confirmar barcos, coletes, almoços, salinas visitáveis e estrutura para grupos.</div>
             </div>
           </article>
 
@@ -525,39 +605,41 @@
               <h3>Rota das Cavernas</h3>
             </div>
             <div class="route-body">
-              <p>Oeste Potiguar com Furna Feia, Lajedo de Soledade e Felipe Guerra. Recorte para geologia, arqueologia, carste, fósseis e Caatinga.</p>
-              <div>
-                <div class="mini-label">Melhor entrada</div>
-                <div class="mini-value">Lajedo de Soledade, por ter museu, guia e recepção mais madura para escolas.</div>
-              </div>
+              <p>Todas exigem pernoite saindo de Natal e combinam naturalmente com Mossoró.</p>
+              <ol class="option-list">
+                <li><span>21</span><div><strong>Subterrâneos da Caatinga</strong> - Furna Feia.</div></li>
+                <li><span>22</span><div><strong>O Sertão Já Foi Mar</strong> - Lajedo de Soledade.</div></li>
+                <li><span>23</span><div><strong>Capital das Cavernas</strong> - Felipe Guerra.</div></li>
+              </ol>
               <div class="tag-row">
                 <span class="tag">Geologia</span>
                 <span class="tag">Arqueologia</span>
                 <span class="tag">Caatinga</span>
                 <span class="tag">Pernoite</span>
               </div>
-              <div class="route-status"><strong>Status:</strong> prioridade média. Todas as opções são pernoite saindo de Natal; exige regras de acesso e segurança.</div>
+              <div class="route-status"><strong>Status:</strong> prioridade média. Exige regras de acesso, segurança e condução local.</div>
             </div>
           </article>
 
           <article class="route-card">
             <div class="route-top">
               <div class="route-icon"><i class="fas fa-cloud-sun-rain"></i></div>
-              <h3>Rota das Serras do Oeste</h3>
+              <h3>Rota das Serras</h3>
             </div>
             <div class="route-body">
-              <p>Portalegre como serra úmida no semiárido: Cachoeira do Pinga, mirantes, mata serrana e possibilidade de rota quilombola.</p>
-              <div>
-                <div class="mini-label">Melhor entrada</div>
-                <div class="mini-value">Cachoeira do Pinga e mirantes para clima de altitude; rota quilombola apenas com condução comunitária.</div>
-              </div>
+              <p>Todas pedem pernoite saindo de Natal e combinam com Martins.</p>
+              <ol class="option-list">
+                <li><span>24</span><div><strong>A Serra que Pinga</strong> - Portalegre clássico.</div></li>
+                <li><span>25</span><div><strong>Serra e Quilombo</strong> - rota quilombola, Lei 10.639.</div></li>
+                <li><span>26</span><div><strong>Duas Serras</strong> - Martins + Portalegre em 2 dias.</div></li>
+              </ol>
               <div class="tag-row">
                 <span class="tag">Clima</span>
                 <span class="tag">Água</span>
                 <span class="tag">Quilombos</span>
                 <span class="tag">Pernoite</span>
               </div>
-              <div class="route-status"><strong>Status:</strong> prioridade média. Pernoite obrigatório para Natal e validação comunitária é condição para o recorte quilombola.</div>
+              <div class="route-status"><strong>Status:</strong> prioridade média. Validar hospedagem, estrada, acesso às serras e condução comunitária quando houver quilombo.</div>
             </div>
           </article>
         </div>
