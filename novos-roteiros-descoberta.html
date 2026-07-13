@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Novos Roteiros em Descoberta | Azimute Educatur</title>
+  <meta name="description" content="Rotas pedagógicas em descoberta para avaliação da Azimute Educatur. Material preliminar, ainda sujeito a validação logística, pedagógica e BNCC.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --marinho: #0D2246;
+      --cobre: #DF6951;
+      --azul: #2A7AB8;
+      --verde: #2A7A62;
+      --off: #F7F6F2;
+      --texto: #2d2d2d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Fira Sans', sans-serif;
+      background: #fff;
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 1.25rem; }
+    @media (min-width: 768px) { .wrap { padding: 0 2rem; } }
+
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo { text-decoration: none; line-height: 1.1; flex: 0 0 auto; }
+    .logo-name { display: block; color: var(--marinho); font-weight: 900; }
+    .logo-sub {
+      display: block; color: var(--cobre); font-weight: 800;
+      letter-spacing: 3px; text-transform: uppercase; font-size: .52rem;
+    }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 1.4rem; }
+    .nav-links a { color: #666; text-decoration: none; font-size: .88rem; font-weight: 700; }
+    .nav-cta {
+      background: var(--cobre); color: #fff !important; padding: .62rem 1rem;
+      border-radius: 999px; box-shadow: 0 6px 20px rgba(223,105,81,.24);
+    }
+    .mobile-nav-pill {
+      color: var(--marinho);
+      text-decoration: none;
+      font-weight: 900;
+      font-size: .82rem;
+      border: 1px solid rgba(13,34,70,.12);
+      border-radius: 999px;
+      padding: .52rem .8rem;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+    }
+    @media (min-width: 860px) {
+      .nav-links { display: flex; }
+      .mobile-nav-pill { display: none; }
+    }
+
+    .hero {
+      padding: 4rem 0 2.4rem;
+      background:
+        radial-gradient(circle at 88% 0%, rgba(223,105,81,.18), transparent 30%),
+        linear-gradient(180deg, #fff, #fafafa);
+    }
+    .breadcrumb {
+      color: #aaa;
+      font-size: .84rem;
+      font-weight: 800;
+      margin-bottom: 1.1rem;
+    }
+    .breadcrumb a { color: #aaa; text-decoration: none; }
+    .eyebrow {
+      display: block; color: var(--cobre); font-size: .78rem; font-weight: 900;
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: .55rem;
+    }
+    h1 {
+      color: var(--marinho);
+      font-size: clamp(2.25rem, 8vw, 4.5rem);
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1.02;
+      max-width: 880px;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 720px;
+      font-weight: 500;
+    }
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1.3rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .38rem;
+      background: #f0f0f0;
+      color: #666;
+      border-radius: 999px;
+      padding: .38rem .78rem;
+      font-size: .74rem;
+      font-weight: 900;
+    }
+
+    section { padding: 3.7rem 0; }
+    .section-head {
+      display: grid;
+      gap: .6rem;
+      margin-bottom: 1.7rem;
+    }
+    @media (min-width: 820px) {
+      .section-head {
+        grid-template-columns: 1fr minmax(280px, 420px);
+        align-items: end;
+      }
+    }
+    .section-head h2 {
+      color: var(--marinho);
+      font-size: clamp(1.65rem, 4vw, 2.7rem);
+      font-style: italic;
+      font-weight: 900;
+      line-height: 1.12;
+    }
+    .section-head p {
+      color: #777;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .route-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 760px) { .route-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1080px) { .route-grid { grid-template-columns: repeat(3, 1fr); } }
+    .route-card {
+      background: #fff;
+      border: 1px solid rgba(13,34,70,.08);
+      border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(13,34,70,.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .route-top {
+      min-height: 112px;
+      padding: 1.25rem;
+      background:
+        radial-gradient(circle at 85% 10%, rgba(255,255,255,.18), transparent 30%),
+        linear-gradient(135deg, var(--marinho), #17457f);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .route-icon {
+      width: 38px; height: 38px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.12);
+    }
+    .route-top h3 {
+      font-size: 1.22rem;
+      font-style: italic;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+    .route-body {
+      padding: 1.25rem;
+      display: grid;
+      gap: 1rem;
+      flex: 1;
+    }
+    .route-body p {
+      color: #616161;
+      line-height: 1.62;
+      font-size: .92rem;
+      font-weight: 500;
+    }
+    .mini-label {
+      color: var(--cobre);
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      font-weight: 900;
+      margin-bottom: .25rem;
+    }
+    .mini-value {
+      color: var(--marinho);
+      line-height: 1.45;
+      font-size: .9rem;
+      font-weight: 800;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag {
+      background: rgba(223,105,81,.1);
+      color: var(--cobre);
+      border-radius: 999px;
+      padding: .28rem .6rem;
+      font-size: .68rem;
+      font-weight: 900;
+    }
+    .route-status {
+      margin-top: auto;
+      border-top: 1px solid rgba(13,34,70,.07);
+      padding-top: .9rem;
+      color: #777;
+      font-size: .8rem;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+    .route-status strong { color: var(--marinho); }
+
+    .priority {
+      background: #fafafa;
+    }
+    .priority-list {
+      display: grid;
+      gap: .8rem;
+      counter-reset: priority;
+    }
+    .priority-item {
+      counter-increment: priority;
+      background: #fff;
+      border: 1px solid rgba(13,34,70,.08);
+      border-radius: 14px;
+      padding: 1.1rem;
+      display: grid;
+      gap: .45rem;
+      box-shadow: 0 4px 18px rgba(0,0,0,.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .priority-item::after {
+      content: counter(priority, decimal-leading-zero);
+      position: absolute;
+      right: .8rem;
+      top: .35rem;
+      color: rgba(13,34,70,.06);
+      font-size: 3rem;
+      font-style: italic;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .priority-item h3 {
+      color: var(--marinho);
+      font-size: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .priority-item p {
+      color: #666;
+      line-height: 1.6;
+      font-size: .9rem;
+      font-weight: 500;
+      max-width: 820px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .notice {
+      background: var(--marinho);
+      color: #fff;
+      border-radius: 18px;
+      padding: clamp(1.6rem, 5vw, 2.6rem);
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 820px) {
+      .notice { grid-template-columns: 1fr auto; align-items: center; }
+    }
+    .notice h2 {
+      font-size: clamp(1.45rem, 4vw, 2.4rem);
+      font-style: italic;
+      font-weight: 900;
+      line-height: 1.12;
+      margin-bottom: .45rem;
+    }
+    .notice p {
+      color: rgba(255,255,255,.74);
+      line-height: 1.7;
+      max-width: 720px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      min-height: 46px;
+      padding: .85rem 1.2rem;
+      border-radius: 999px;
+      background: var(--cobre);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 8px 24px rgba(223,105,81,.28);
+      white-space: nowrap;
+    }
+
+    footer {
+      border-top: 1px solid rgba(0,0,0,.07);
+      padding: 2rem 0;
+      color: #aaa;
+      font-size: .8rem;
+    }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+
+    @media (max-width: 700px) {
+      .hero { padding: 2.8rem 0 2rem; }
+      section { padding: 3rem 0; }
+      .route-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: .9rem;
+        padding-bottom: .5rem;
+        scrollbar-width: none;
+      }
+      .route-grid::-webkit-scrollbar { display: none; }
+      .route-card {
+        flex: 0 0 86%;
+        scroll-snap-align: center;
+      }
+      .priority-list {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: .9rem;
+        padding-bottom: .5rem;
+        scrollbar-width: none;
+      }
+      .priority-list::-webkit-scrollbar { display: none; }
+      .priority-item {
+        flex: 0 0 86%;
+        scroll-snap-align: center;
+      }
+      .notice .btn { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-name">Azimute Educatur</span>
+        <span class="logo-sub">Expedições Pedagógicas</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="#rotas">Rotas</a></li>
+        <li><a href="#prioridades">Prioridades</a></li>
+        <li><a class="nav-cta" href="https://wa.me/5584999650530" target="_blank" rel="noopener">Falar com a Azimute</a></li>
+      </ul>
+      <a class="mobile-nav-pill" href="catalogo.html">Catálogo</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="catalogo.html">Catálogo</a> / Novos roteiros</div>
+      <span class="eyebrow">Backlog pedagógico</span>
+      <h1>Novos roteiros em descoberta</h1>
+      <p>O Claude atualizou um lote com novas possibilidades de Expedições Pedagógicas. Esta página organiza o que já apareceu, o que parece mais promissor e o que ainda precisa de validação antes de virar catálogo final.</p>
+      <div class="status-row">
+        <span class="pill"><i class="fas fa-compass"></i> 7 rotas mapeadas</span>
+        <span class="pill"><i class="fas fa-clipboard-check"></i> Em validação</span>
+        <span class="pill"><i class="fas fa-triangle-exclamation"></i> BNCC preliminar</span>
+        <span class="pill"><i class="fas fa-tag"></i> Sem preço fixo</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="rotas">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Mapa do lote</span>
+            <h2>Rotas que entraram na mesa</h2>
+          </div>
+          <p>São oportunidades reais, mas ainda não são roteiros publicados. Cada uma precisa passar por contato com locais, checagem de acesso, segurança, público ideal e BNCC oficial.</p>
+        </div>
+
+        <div class="route-grid">
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-rocket"></i></div>
+              <h3>Rota do Espaço e da Ciência</h3>
+            </div>
+            <div class="route-body">
+              <p>Grande Natal, com eixo em Parnamirim: CLBI, programa Dia Espacial, Centro de Cultura Espacial e possível conexão com o Cajueiro de Pirangi.</p>
+              <div>
+                <div class="mini-label">Melhor entrada</div>
+                <div class="mini-value">Dia Espacial no CLBI para 9º ano e 1ª série do Ensino Médio.</div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Ciências</span>
+                <span class="tag">Física</span>
+                <span class="tag">Geografia</span>
+                <span class="tag">Local</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> prioridade alta. Existe programa oficial de visita escolar, mas datas, documentos e regras de imagem precisam ser confirmados.</div>
+            </div>
+          </article>
+
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-water"></i></div>
+              <h3>Rota do Litoral Sul</h3>
+            </div>
+            <div class="route-body">
+              <p>Tibau do Sul e Pipa como laboratório de falésias, Mata Atlântica costeira, golfinhos, laguna, mangue e conflitos de uso do território.</p>
+              <div>
+                <div class="mini-label">Melhor entrada</div>
+                <div class="mini-value">Santuário Ecológico de Pipa e mirantes do Madeiro, com opção sem atividade embarcada.</div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Ecossistemas</span>
+                <span class="tag">Falésias</span>
+                <span class="tag">Manguezal</span>
+                <span class="tag">Dia único</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> prioridade alta. Logística curta, mas valores, capacidade e monitoria do Santuário precisam ser confirmados.</div>
+            </div>
+          </article>
+
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-church"></i></div>
+              <h3>Rota da Fé</h3>
+            </div>
+            <div class="route-body">
+              <p>Cunhaú, Uruaçu e Santa Cruz como portas de entrada para história colonial, patrimônio religioso, turismo, memória e território.</p>
+              <div>
+                <div class="mini-label">Melhor entrada</div>
+                <div class="mini-value">Cunhaú + Uruaçu para 7º ano, ou Santa Cruz para Geografia e Matemática em campo.</div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">História</span>
+                <span class="tag">Patrimônio</span>
+                <span class="tag">Fenômeno religioso</span>
+                <span class="tag">Dia único</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> prioridade média. Exige enquadramento não confessional e agendamento com paróquias/santuários.</div>
+            </div>
+          </article>
+
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-wind"></i></div>
+              <h3>Rota do Sal e do Vento</h3>
+            </div>
+            <div class="route-body">
+              <p>Costa Branca, Galinhos, Dunas do Rosado e salinas como campo para evaporação, cristalização, vento, sal, pesca e modos de vida litorâneos.</p>
+              <div>
+                <div class="mini-label">Melhor entrada</div>
+                <div class="mini-value">Galinhos como dia único justo; Dunas do Rosado e salinas como pernoite ou extensão de Mossoró.</div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Geografia</span>
+                <span class="tag">Ciências</span>
+                <span class="tag">Salinas</span>
+                <span class="tag">Regional</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> prioridade média. Precisa confirmar barcos, coletes, almoços, salinas visitáveis e estrutura para grupos.</div>
+            </div>
+          </article>
+
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-mountain-sun"></i></div>
+              <h3>Rota do Geoparque Seridó</h3>
+            </div>
+            <div class="route-body">
+              <p>Geoparque Mundial da UNESCO no Seridó, com Cerro Corá, nascente do Potengi, Vale Vulcânico, Acari e Carnaúba dos Dantas.</p>
+              <div>
+                <div class="mini-label">Melhor entrada</div>
+                <div class="mini-value">Cerro Corá: onde nasce o rio de Natal, com leitura de bacia hidrográfica e vulcanismo antigo.</div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">UNESCO</span>
+                <span class="tag">Geologia</span>
+                <span class="tag">Seridó</span>
+                <span class="tag">Regional</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> prioridade média-alta. Argumento forte, mas precisa alinhar condutores e entidade gestora do geoparque.</div>
+            </div>
+          </article>
+
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-dungeon"></i></div>
+              <h3>Rota das Cavernas</h3>
+            </div>
+            <div class="route-body">
+              <p>Oeste Potiguar com Furna Feia, Lajedo de Soledade e Felipe Guerra. Recorte para geologia, arqueologia, carste, fósseis e Caatinga.</p>
+              <div>
+                <div class="mini-label">Melhor entrada</div>
+                <div class="mini-value">Lajedo de Soledade, por ter museu, guia e recepção mais madura para escolas.</div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Geologia</span>
+                <span class="tag">Arqueologia</span>
+                <span class="tag">Caatinga</span>
+                <span class="tag">Pernoite</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> prioridade média. Todas as opções são pernoite saindo de Natal; exige regras de acesso e segurança.</div>
+            </div>
+          </article>
+
+          <article class="route-card">
+            <div class="route-top">
+              <div class="route-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+              <h3>Rota das Serras do Oeste</h3>
+            </div>
+            <div class="route-body">
+              <p>Portalegre como serra úmida no semiárido: Cachoeira do Pinga, mirantes, mata serrana e possibilidade de rota quilombola.</p>
+              <div>
+                <div class="mini-label">Melhor entrada</div>
+                <div class="mini-value">Cachoeira do Pinga e mirantes para clima de altitude; rota quilombola apenas com condução comunitária.</div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Clima</span>
+                <span class="tag">Água</span>
+                <span class="tag">Quilombos</span>
+                <span class="tag">Pernoite</span>
+              </div>
+              <div class="route-status"><strong>Status:</strong> prioridade média. Pernoite obrigatório para Natal e validação comunitária é condição para o recorte quilombola.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="priority" id="prioridades">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Próxima decisão</span>
+            <h2>O que eu priorizaria agora</h2>
+          </div>
+          <p>Para não transformar descoberta em bagunça, o melhor é escolher poucas rotas para desenvolver primeiro.</p>
+        </div>
+
+        <div class="priority-list">
+          <article class="priority-item">
+            <h3>1. Rota do Espaço e da Ciência</h3>
+            <p>Tem programa oficial, gratuito e documentado no CLBI. É a mais perto de virar página comercial, desde que as datas e regras de visita sejam confirmadas.</p>
+          </article>
+          <article class="priority-item">
+            <h3>2. Rota do Litoral Sul</h3>
+            <p>Boa para catálogo porque cabe no dia, tem apelo visual forte e conversa com Ciências e Geografia. A versão sem barco reduz risco operacional.</p>
+          </article>
+          <article class="priority-item">
+            <h3>3. Rota do Geoparque Seridó</h3>
+            <p>O selo UNESCO é um diferencial real. Começaria por Cerro Corá, com a narrativa da nascente do Potengi, antes de vender o circuito completo.</p>
+          </article>
+          <article class="priority-item">
+            <h3>4. Rota da Fé</h3>
+            <p>Tem força histórica e cultural, mas precisa cuidado de linguagem. Deve ser vendida como estudo de patrimônio e fenômeno religioso, não como vivência confessional.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="notice">
+          <div>
+            <h2>Essas rotas ainda não são catálogo final.</h2>
+            <p>Antes de virar página de roteiro, cada opção precisa de confirmação de visitação, segurança, logística, BNCC oficial, fotos reais e escolha do recorte pedagógico com a escola/professora.</p>
+          </div>
+          <a class="btn" href="catalogo.html"><i class="fas fa-arrow-left"></i> Voltar ao catálogo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Azimute Educatur</span>
+      <span>Rotas em descoberta para avaliação pedagógica</span>
+    </div>
+  </footer>
+</body>
+</html>
