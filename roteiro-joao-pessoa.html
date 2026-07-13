@@ -3,671 +3,1052 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JoÃ£o Pessoa â€” Arrebol Paraibano Â· Azimute Educatur</title>
-  <meta name="description" content="Roteiro de Descoberta para JoÃ£o Pessoa, PB â€” energia, centro histÃ³rico, litoral e biodiversidade. Alinhado Ã  BNCC, seguro incluso, 1 dia.">
-
+  <title>Arrebol Paraibano | Azimute Educatur</title>
+  <meta name="description" content="Uma expedi&#231;&#227;o para conectar patrim&#244;nio, forma&#231;&#227;o urbana, litoral e cultura na capital paraibana.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
   <style>
-    :root { --marinho: #0D2246; --cobre: #DF6951; }
+    :root {
+      --marinho: #0D2246;
+      --cobre: #DF6951;
+      --azul: #2A7AB8;
+      --verde: #2A7A62;
+      --off: #F7F6F2;
+      --texto: #2d2d2d;
+    }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: 'Fira Sans', sans-serif; background: #fff; color: #2d2d2d; overflow-x: hidden; }
-
-    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 1.25rem; }
+    body {
+      font-family: 'Fira Sans', sans-serif;
+      color: var(--texto);
+      background: #fff;
+      overflow-x: hidden;
+    }
+    p, li, .summary-value, .quick-value, .testimonial-text { text-align: left; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
     @media (min-width: 768px) { .wrap { padding: 0 2rem; } }
 
-    .eyebrow { display: block; font-size: .82rem; font-weight: 700; color: var(--cobre); margin-bottom: .5rem; }
-
-    /* â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    #nav { position: fixed; inset: 0 0 auto; z-index: 100; padding: 1rem 0; background: #fff; transition: box-shadow .3s; }
-    #nav.solid { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
-    .nav-wrap { display: flex; align-items: center; justify-content: space-between; }
-    .logo { text-decoration: none; line-height: 1.2; }
-    .logo-name { display: block; font-size: 1rem; font-weight: 800; color: var(--marinho); }
-    .logo-sub  { display: block; font-size: .52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cobre); }
-    .nav-links { display: none; }
-    .nav-burger { background: none; border: 1.5px solid #ddd; color: var(--marinho); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; position: relative; z-index: 102; }
-    .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: rgba(255,255,255,.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 99; list-style: none; }
-    .nav-links.open a { font-size: 1.35rem; color: var(--marinho); text-decoration: none; font-weight: 600; }
-    @media (min-width: 900px) {
-      #nav { padding: 1.5rem 0; }
-      .logo-name { font-size: 1.15rem; }
-      .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
-      .nav-links a { font-size: .9rem; font-weight: 500; color: #666; text-decoration: none; transition: color .2s; }
-      .nav-links a:hover { color: var(--marinho); }
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner {
+      height: 74px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { text-decoration: none; line-height: 1.1; }
+    .logo-name { display: block; color: var(--marinho); font-weight: 900; }
+    .logo-sub { display: block; color: var(--cobre); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; font-size: .52rem; }
+    .nav-links { display: none; align-items: center; gap: 1.6rem; list-style: none; }
+    .nav-links a { color: #666; text-decoration: none; font-size: .88rem; font-weight: 700; }
+    .nav-burger {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(13,34,70,.14);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--marinho);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+      z-index: 80;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
+    .nav-links.open {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.4rem;
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
+    }
+    .nav-links.open a {
+      color: var(--marinho);
+      font-size: 1.25rem;
+      font-weight: 900;
+    }
+    .nav-links.open .nav-cta {
+      margin-top: .4rem;
+      color: #fff !important;
+      font-size: 1rem !important;
+      padding: .85rem 1.4rem !important;
+    }
+    body.menu-open { overflow: hidden; }
+    @media (min-width: 860px) {
+      .nav-links { display: flex; }
       .nav-burger { display: none; }
     }
-    .nav-cta { background: var(--cobre) !important; color: #fff !important; padding: .6rem 1.4rem !important; border-radius: 50px !important; font-weight: 700 !important; font-size: .88rem !important; box-shadow: 0 4px 14px rgba(223,105,81,.35); transition: background .2s !important; }
-    .nav-cta:hover { background: #c4501e !important; }
+    .nav-cta {
+      background: var(--cobre); color: #fff !important; padding: .62rem 1rem; border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(223,105,81,.24);
+    }
+    .mobile-actionbar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 48;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: .65rem;
+      padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
+      background: rgba(255,255,255,.94);
+      border-top: 1px solid rgba(13,34,70,.1);
+      box-shadow: 0 -8px 28px rgba(13,34,70,.12);
+      backdrop-filter: blur(12px);
+    }
+    .mobile-actionbar a {
+      min-height: 44px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: .86rem;
+    }
+    .mobile-actionbar .mobile-secondary {
+      color: var(--marinho);
+      border: 1px solid rgba(13,34,70,.14);
+      background: #fff;
+    }
+    .mobile-actionbar .mobile-primary {
+      color: #fff;
+      background: var(--cobre);
+      box-shadow: 0 6px 18px rgba(223,105,81,.28);
+    }
+    @media (min-width: 860px) { .mobile-actionbar { display: none; } }
 
-    /* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    /* Mobile: 1 col, sem blob */
+    .photo {
+      position: relative; overflow: hidden; background: var(--marinho);
+    }
+    .photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: contrast(1.12) saturate(1.12) brightness(.94);
+    }
+    .photo::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 72% 16%, rgba(255,255,255,.15), transparent 30%),
+        linear-gradient(180deg, rgba(13,34,70,.02), rgba(13,34,70,.38));
+      mix-blend-mode: multiply;
+    }
+
+    .eyebrow {
+      display: block; color: var(--cobre); font-size: .78rem; font-weight: 900;
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: .55rem;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+      padding: .9rem 1.35rem; border-radius: 999px;
+      background: var(--cobre); color: #fff; text-decoration: none; font-weight: 900;
+      box-shadow: 0 8px 24px rgba(223,105,81,.28);
+      border: 0;
+      white-space: nowrap;
+    }
+    .btn-secondary {
+      background: #fff; color: var(--marinho); border: 2px solid rgba(13,34,70,.12);
+      box-shadow: none;
+    }
+
+    /* HERO */
     .hero {
-      padding-top: 5rem; background: #fff; overflow: hidden; position: relative;
+      padding: 3.5rem 0 3rem;
+      background:
+        radial-gradient(circle at 88% 0%, rgba(223,105,81,.18), transparent 30%),
+        linear-gradient(180deg, #fff, #fafafa);
+      position: relative;
+      overflow: hidden;
     }
-    .hero-inner {
-      display: flex; flex-direction: column; gap: 1.5rem; padding: 2rem 0 1.5rem;
+    .hero-grid {
+      display: grid; gap: 2rem; align-items: center;
     }
-    .hero-text { position: relative; z-index: 1; }
-    .hero-img-wrap {
-      border-radius: 14px; overflow: hidden; aspect-ratio: 16/9; flex-shrink: 0;
+    @media (min-width: 940px) {
+      .hero-grid { grid-template-columns: .86fr 1.14fr; gap: 3.5rem; }
     }
-    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    /* Desktop: blob + 2 colunas */
-    @media (min-width: 820px) {
-      .hero {
-        padding-top: 7rem; min-height: 90svh; display: flex; align-items: center;
-      }
-      .hero::before {
-        content: ''; position: absolute; right: -6%; top: -10%; width: 54%; height: 120%;
-        background: #FEF4F0; border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-        z-index: 0;
-      }
-      .hero-inner {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-        padding: 4rem 0; position: relative; z-index: 1;
-      }
-      .hero-img-wrap { aspect-ratio: 4/3; border-radius: 20px; }
+    .breadcrumb {
+      color: #aaa; font-size: .82rem; font-weight: 700; margin-bottom: 1.1rem;
     }
-
-    .breadcrumb { font-size: .82rem; font-weight: 600; color: #aaa; margin-bottom: 1.25rem; }
     .breadcrumb a { color: #aaa; text-decoration: none; }
-    .breadcrumb a:hover { color: var(--cobre); }
-    .breadcrumb span { color: var(--cobre); }
-    .nivel-badge {
-      display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: 1.5px;
-      text-transform: uppercase; padding: .3rem .9rem; border-radius: 50px;
-      background: rgba(223,105,81,.12); color: var(--cobre); margin-bottom: 1rem;
-    }
-    .hero-label { font-size: .78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cobre); margin-bottom: .4rem; }
     .hero-h1 {
-      font-size: clamp(2rem, 7vw, 3.5rem); font-weight: 900; font-style: italic;
-      color: var(--marinho); line-height: 1.1; letter-spacing: -.03em; margin-bottom: 1rem;
+      color: var(--marinho);
+      font-size: clamp(2.35rem, 6vw, 4.5rem);
+      font-weight: 900; font-style: italic;
+      line-height: 1.02;
+      margin-bottom: 1rem;
     }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
-    .meta-tag {
-      font-size: .75rem; font-weight: 600; background: #f4f4f4; color: #666;
-      padding: .28rem .75rem; border-radius: 50px;
+    .hero-lead {
+      color: #666; font-size: 1rem; line-height: 1.75; font-weight: 500;
+      max-width: 580px; margin-bottom: 1.35rem;
     }
-    .hero-btns { display: flex; flex-wrap: wrap; gap: .75rem; }
-    .btn-primary { background: var(--cobre); color: #fff; font-family: 'Fira Sans', sans-serif; font-size: .95rem; font-weight: 700; padding: .85rem 1.75rem; border-radius: 50px; border: none; text-decoration: none; display: inline-block; cursor: pointer; box-shadow: 0 6px 20px rgba(223,105,81,.35); transition: background .2s, transform .15s; white-space: nowrap; }
-    .btn-primary:hover { background: #c4501e; transform: translateY(-1px); }
-    .btn-outline { background: transparent; color: var(--marinho); font-family: 'Fira Sans', sans-serif; font-size: .9rem; font-weight: 700; padding: .82rem 1.6rem; border-radius: 50px; border: 2px solid rgba(13,34,70,.18); text-decoration: none; display: inline-block; cursor: pointer; transition: border-color .2s, color .2s; white-space: nowrap; }
-    .btn-outline:hover { border-color: var(--marinho); color: var(--marinho); }
+    .meta {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.4rem;
+    }
+    .meta span {
+      display: inline-flex; align-items: center; gap: .38rem;
+      background: #f0f0f0; color: #666;
+      border-radius: 999px; padding: .36rem .72rem;
+      font-size: .76rem; font-weight: 800;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
 
-    /* â”€â”€ SEÃ‡Ã•ES COMUNS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    section { padding: 3.5rem 0; }
-    @media (min-width: 768px) { section { padding: 5rem 0; } }
-    .sec-h {
-      font-size: clamp(1.65rem, 5vw, 2.7rem); font-weight: 900; font-style: italic;
-      color: var(--marinho); line-height: 1.15; letter-spacing: -.02em;
+    .hero-collage {
+      display: grid; gap: 5px;
+      grid-template-columns: 1.45fr .78fr .78fr;
+      grid-template-rows: 1fr 1fr;
+      aspect-ratio: 1.34 / 1;
+      background: var(--marinho);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 60px rgba(13,34,70,.18);
     }
-    .sec-sub { font-size: .95rem; font-weight: 500; color: #888; line-height: 1.75; margin-top: .5rem; }
-
-    /* â”€â”€ O QUE MUDA NO ALUNO (numbered cards) â”€â”€â”€â”€â”€â”€ */
-    .muda { background: #fafafa; }
-    .muda-grid { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-    @media (min-width: 640px)  { .muda-grid { grid-template-columns: repeat(3, 1fr); } }
-    .muda-card {
-      background: #fff; border-radius: 12px; padding: 1.75rem 1.5rem 1.5rem;
-      box-shadow: 0 2px 14px rgba(0,0,0,.06); position: relative; overflow: hidden;
+    .hero-collage .photo:first-child { grid-row: 1 / 3; }
+    @media (max-width: 680px) {
+      .hero-collage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 230px 120px 120px;
+        aspect-ratio: auto;
+      }
+      .hero-collage .photo:first-child { grid-column: 1 / 3; grid-row: 1; }
     }
-    .muda-num {
-      font-size: 4rem; font-weight: 900; font-style: italic; color: rgba(13,34,70,.06);
-      line-height: 1; position: absolute; top: .5rem; right: 1rem; user-select: none;
+
+    .quick-panel {
+      margin-top: 1rem;
+      display: grid; gap: .75rem;
+      grid-template-columns: 1fr;
     }
-    .muda-card h3 { font-size: 1rem; font-weight: 700; color: var(--marinho); margin-bottom: .5rem; }
-    .muda-card p  { font-size: .88rem; font-weight: 500; color: #777; line-height: 1.65; }
+    @media (min-width: 760px) { .quick-panel { grid-template-columns: repeat(4, 1fr); } }
+    .quick-item {
+      background: #fff; border: 1px solid rgba(0,0,0,.06);
+      border-radius: 12px; padding: 1rem;
+      box-shadow: 0 4px 18px rgba(0,0,0,.05);
+    }
+    .quick-item i { color: var(--cobre); margin-bottom: .55rem; }
+    .quick-label { color: #aaa; font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+    .quick-value { color: var(--marinho); font-weight: 900; margin-top: .12rem; font-size: .94rem; }
 
-    /* â”€â”€ JORNADA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    /* Mobile: 1 col linear */
-    .jornada-layout { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
-
-    /* Desktop: paradas (2/3) + aside sticky (1/3) */
+    .route-summary-band {
+      padding: 0 0 4rem;
+      background: #fafafa;
+    }
+    .route-summary-layout {
+      display: grid;
+      gap: 1.2rem;
+      align-items: stretch;
+    }
     @media (min-width: 900px) {
-      .jornada-layout { flex-direction: row; align-items: flex-start; gap: 2.5rem; }
-      .jornada-paradas { flex: 2; }
-      .jornada-aside { flex: 0 0 300px; position: sticky; top: 5.5rem; }
+      .route-summary-layout { grid-template-columns: 340px 1fr; }
+    }
+    .route-summary-card {
+      background: var(--marinho);
+      color: #fff;
+      border-radius: 16px;
+      padding: 1.45rem;
+      box-shadow: 0 14px 44px rgba(13,34,70,.18);
+    }
+    .route-summary-card h2 {
+      font-size: .86rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: rgba(255,255,255,.58);
+      margin-bottom: 1.2rem;
+    }
+    .summary-row {
+      display: flex;
+      gap: .85rem;
+      align-items: flex-start;
+      padding: .85rem 0;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .summary-row:first-of-type { border-top: 0; padding-top: 0; }
+    .summary-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      flex: 0 0 auto;
+    }
+    .summary-label {
+      color: rgba(255,255,255,.58);
+      font-size: .76rem;
+      font-weight: 700;
+      margin-bottom: .15rem;
+    }
+    .summary-value {
+      color: #fff;
+      font-size: .94rem;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+    .summary-note {
+      margin-top: 1rem;
+      color: rgba(255,255,255,.68);
+      font-size: .82rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .route-pitch {
+      background: #fff;
+      border-radius: 16px;
+      padding: clamp(1.35rem, 4vw, 2.2rem);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 6px 28px rgba(0,0,0,.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .route-pitch h3 {
+      color: var(--marinho);
+      font-weight: 900;
+      font-style: italic;
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      line-height: 1.14;
+      margin-bottom: .75rem;
+    }
+    .route-pitch p {
+      color: #666;
+      line-height: 1.75;
+      font-weight: 500;
+      max-width: 680px;
     }
 
-    .parada {
-      border-radius: 12px; overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,.07); background: #fff; display: flex;
+    .prologue {
+      padding: 3.2rem 0;
+      background: #fff;
     }
-    .parada-accent { width: 4px; flex-shrink: 0; }
-    .pb-1 { background: var(--cobre); }
-    .pb-2 { background: #2A7AB8; }
-    .pb-3 { background: #2A9B72; }
-    .pb-4 { background: #7B5EA7; }
-    .parada-body { padding: 1.25rem 1.25rem 1.25rem 1rem; }
-    .parada-step { font-size: .65rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #ccc; margin-bottom: .25rem; }
-    .parada-nome { font-size: 1.05rem; font-weight: 700; color: var(--marinho); margin-bottom: .4rem; }
-    .parada-desc { font-size: .88rem; font-weight: 500; color: #777; line-height: 1.65; }
-    .parada-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
-    .ptag { font-size: .68rem; font-weight: 700; padding: .2rem .65rem; border-radius: 50px; background: #f0f0f0; color: #666; }
-
-    /* Aside */
-    .aside-card {
-      background: var(--marinho); border-radius: 14px; padding: 1.5rem;
-      color: #fff; margin-bottom: 1rem;
+    .prologue-box {
+      max-width: 920px;
+      border-left: 4px solid var(--cobre);
+      padding-left: clamp(1.2rem, 4vw, 2rem);
     }
-    @media (min-width: 900px) { .aside-card { margin-bottom: 0; } }
-    .aside-card h4 { font-size: .88rem; font-weight: 700; opacity: .6; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.1rem; }
-    .aside-row { display: flex; align-items: center; gap: .75rem; margin-bottom: .85rem; }
-    .aside-row:last-child { margin-bottom: 0; }
-    .aside-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: .9rem; flex-shrink: 0; }
-    .aside-label { font-size: .78rem; opacity: .6; margin-bottom: .1rem; }
-    .aside-val   { font-size: .9rem; font-weight: 700; }
-    .aside-price { font-size: .8rem; opacity: .65; font-weight: 500; line-height: 1.55; margin: 1rem 0; }
-    .aside-btn { display: block; text-align: center; background: var(--cobre); color: #fff; font-family: 'Fira Sans', sans-serif; font-size: .9rem; font-weight: 700; padding: .85rem; border-radius: 50px; text-decoration: none; transition: background .2s; }
-    .aside-btn:hover { background: #c4501e; }
-
-    /* â”€â”€ INCLUSO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    .incluso { background: #fafafa; }
-    .incluso-grid { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (min-width: 640px)  { .incluso-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 900px)  { .incluso-grid { grid-template-columns: repeat(4, 1fr); } }
-    .incluso-item {
-      background: #fff; border-radius: 10px; padding: 1.1rem 1rem 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,.06); position: relative;
+    .prologue h2 {
+      color: var(--marinho);
+      font-size: clamp(1.45rem, 3.6vw, 2.35rem);
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1.12;
+      margin-bottom: .85rem;
     }
-    .incluso-num { font-size: 2.2rem; font-weight: 900; font-style: italic; color: rgba(13,34,70,.06); line-height: 1; margin-bottom: .5rem; user-select: none; }
-    .incluso-item p { font-size: .85rem; font-weight: 600; color: var(--marinho); line-height: 1.4; }
+    .prologue p {
+      color: #5f5f5f;
+      font-size: clamp(.98rem, 2vw, 1.08rem);
+      line-height: 1.8;
+      font-weight: 500;
+      max-width: 820px;
+    }
 
-    /* â”€â”€ BNCC â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    .bncc-grid { margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
-    @media (min-width: 640px)  { .bncc-grid { grid-template-columns: repeat(3, 1fr); } }
-    .bncc-card {
-      background: #f8f9fb; border-radius: 10px; padding: 1rem;
+    section { padding: 4rem 0; }
+    .sec-head { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 2rem; }
+    @media (min-width: 800px) { .sec-head { flex-direction: row; align-items: end; justify-content: space-between; } }
+    .sec-h {
+      color: var(--marinho); font-weight: 900; font-style: italic;
+      font-size: clamp(1.65rem, 4vw, 2.7rem);
+      line-height: 1.12;
+    }
+    .sec-p { color: #777; line-height: 1.75; font-weight: 500; max-width: 520px; }
+
+    /* TRANSFORMACAO */
+    .transform { background: #fff; }
+    @media (min-width: 800px) {
+      .transform .sec-head { align-items: flex-start; }
+      .transform .sec-p { margin-top: 1.95rem; }
+    }
+    .change-grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 780px) { .change-grid { grid-template-columns: repeat(3, 1fr); } }
+    .change-card {
+      position: relative; overflow: hidden;
+      background: #fff; border-radius: 14px; padding: 1.7rem 1.55rem 1.6rem;
+      box-shadow: 0 6px 28px rgba(0,0,0,.07);
+      border: 1px solid rgba(0,0,0,.05);
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .change-num {
+      position: absolute; right: 1rem; top: .5rem;
+      color: rgba(13,34,70,.06);
+      font-size: 4rem; line-height: 1; font-weight: 900; font-style: italic;
+    }
+    .change-card h3 {
+      color: var(--marinho);
+      font-size: 1.02rem;
+      line-height: 1.25;
+      margin-bottom: .8rem;
+      max-width: calc(100% - 62px);
+      position: relative;
+      z-index: 1;
+    }
+    .change-card p {
+      color: #626262;
+      font-size: .9rem;
+      line-height: 1.68;
+      font-weight: 500;
+      width: 100%;
+      max-width: none;
+      position: relative;
+      z-index: 1;
+      text-align: justify;
+      text-align-last: left;
+      text-wrap: pretty;
+      word-spacing: normal;
+      letter-spacing: 0;
+    }
+
+    /* JORNADA COM FOTOS */
+    .journey { background: #fafafa; }
+    .route-timeline {
+      display: grid; gap: 1rem;
+    }
+    .timeline-stop {
+      background: #fff; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.075);
+      border: 1px solid rgba(0,0,0,.05);
+      display: grid;
+    }
+    @media (min-width: 860px) {
+      .timeline-stop {
+        grid-template-columns: minmax(300px, .86fr) 1fr;
+        min-height: 270px;
+      }
+      .timeline-stop:nth-child(even) { grid-template-columns: 1fr minmax(300px, .86fr); }
+      .timeline-stop:nth-child(even) .timeline-photo { grid-column: 2; }
+      .timeline-stop:nth-child(even) .timeline-body { grid-column: 1; grid-row: 1; }
+    }
+    .timeline-photo { min-height: 240px; }
+    .timeline-body {
+      padding: clamp(1.4rem, 4vw, 2.35rem);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .timeline-kicker {
+      color: var(--cobre); font-size: .72rem; font-weight: 900; text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: .5rem;
+    }
+    .timeline-body h3 {
+      color: var(--marinho); font-size: clamp(1.25rem, 3vw, 1.85rem);
+      font-weight: 900; font-style: italic; line-height: 1.12; margin-bottom: .7rem;
+    }
+    .timeline-body p {
+      color: #666; font-size: .92rem; line-height: 1.75; font-weight: 500; max-width: 560px;
+    }
+    .timeline-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+    .timeline-tags span {
+      background: #f1f1f1; color: #666; border-radius: 999px;
+      padding: .26rem .65rem; font-size: .68rem; font-weight: 800;
+    }
+
+    .photo-strip {
+      margin-top: 1.25rem;
+      background: var(--marinho);
+      border-radius: 14px;
+      padding: .55rem;
+      display: grid; gap: .55rem;
+      grid-template-columns: repeat(5, 1fr);
+      box-shadow: 0 10px 34px rgba(13,34,70,.16);
+    }
+    .photo-strip .photo { aspect-ratio: 1 / 1; border-radius: 10px; }
+    @media (max-width: 680px) {
+      .photo-strip { overflow-x: auto; grid-template-columns: repeat(5, minmax(120px, 1fr)); }
+    }
+
+    /* INCLUSO / BNCC */
+    .info-grid {
+      display: grid; gap: 1.2rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 900px) { .info-grid { grid-template-columns: .9fr 1.1fr; } }
+    .info-box {
+      background: #fff; border-radius: 16px; padding: 1.7rem;
+      box-shadow: 0 6px 28px rgba(0,0,0,.07);
+      border: 1px solid rgba(0,0,0,.05);
+    }
+    .info-box h3 { color: var(--marinho); font-size: 1.15rem; margin-bottom: 1rem; }
+    .check-list { display: grid; gap: .75rem; list-style: none; }
+    .check-list li {
+      display: flex; align-items: flex-start; gap: .65rem;
+      color: #666; font-size: .9rem; line-height: 1.55; font-weight: 600;
+    }
+    .check-list i { color: var(--verde); margin-top: .14rem; }
+    .ops-panel {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(13,34,70,.08);
+      display: grid;
+      gap: .8rem;
+    }
+    .ops-item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: .7rem;
+      align-items: start;
+    }
+    .ops-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(13,34,70,.06);
+      color: var(--marinho);
+      font-size: .82rem;
+    }
+    .ops-item strong {
+      display: block;
+      color: var(--marinho);
+      font-size: .86rem;
+      margin-bottom: .15rem;
+    }
+    .ops-item span {
+      display: block;
+      color: #777;
+      font-size: .8rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .bncc-list { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .bncc-list span {
+      background: rgba(223,105,81,.1); color: var(--cobre);
+      padding: .46rem .7rem; border-radius: 999px;
+      font-size: .76rem; font-weight: 900;
+    }
+    .bncc-skills {
+      margin-top: 1.2rem;
+      display: grid;
+      gap: .75rem;
+    }
+    @media (min-width: 680px) { .bncc-skills { grid-template-columns: 1fr 1fr; } }
+    .bncc-skill {
+      background: #f8f8f8;
       border-left: 3px solid var(--cobre);
+      border-radius: 10px;
+      padding: .9rem;
     }
-    .bncc-code { font-size: .72rem; font-weight: 800; color: var(--cobre); letter-spacing: 1px; margin-bottom: .3rem; }
-    .bncc-desc { font-size: .8rem; font-weight: 500; color: #666; line-height: 1.5; }
+    .bncc-code {
+      color: var(--cobre);
+      font-weight: 900;
+      font-size: .78rem;
+      letter-spacing: .8px;
+      margin-bottom: .38rem;
+      text-transform: uppercase;
+    }
+    .bncc-desc {
+      color: var(--marinho);
+      font-size: .88rem;
+      line-height: 1.55;
+      font-weight: 800;
+    }
 
-    /* â”€â”€ PARA OS PAIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    .pais-layout { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
-    @media (min-width: 768px) { .pais-layout { flex-direction: row; gap: 3rem; align-items: flex-start; } }
-    .pais-text { flex: 1; }
-    .pais-text p { font-size: .93rem; font-weight: 500; color: #555; line-height: 1.85; background: #f9f9f9; border-radius: 12px; padding: 1.5rem; border-left: 3px solid var(--cobre); }
-    .pais-copy-wrap { flex: 0 0 auto; display: flex; flex-direction: column; gap: .75rem; align-items: flex-start; }
-    @media (min-width: 768px) { .pais-copy-wrap { width: 220px; } }
-    .pais-copy-wrap p { font-size: .82rem; font-weight: 500; color: #aaa; line-height: 1.6; }
-    .btn-copy { background: none; border: 2px solid rgba(13,34,70,.14); color: var(--marinho); font-family: 'Fira Sans', sans-serif; font-size: .85rem; font-weight: 700; padding: .7rem 1.25rem; border-radius: 50px; cursor: pointer; transition: border-color .2s, background .2s; width: 100%; text-align: center; }
-    .btn-copy:hover { border-color: var(--marinho); background: rgba(13,34,70,.04); }
-    .btn-copy.copied { border-color: #2A9B72; color: #2A9B72; }
+    .testimonials { background: #fafafa; }
+    .testimonial-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 2.4rem;
+    }
+    .testimonial-head .eyebrow { margin-bottom: .65rem; }
+    .testimonial-head .sec-h { margin: 0 auto; }
+    .testimonial-grid {
+      display: grid;
+      gap: 1.8rem;
+    }
+    @media (min-width: 860px) { .testimonial-grid { grid-template-columns: 1fr 1fr; } }
+    .testimonial-stack {
+      position: relative;
+      padding-right: 28px;
+      padding-bottom: 28px;
+    }
+    .testimonial-stack::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: calc(100% - 36px);
+      height: calc(100% - 34px);
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 30px rgba(0,0,0,.08);
+      z-index: 0;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: clamp(1.6rem, 4vw, 2.35rem);
+      box-shadow: 0 12px 42px rgba(0,0,0,.09);
+      border: 1px solid rgba(0,0,0,.05);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      left: 1.7rem;
+      top: 1.25rem;
+      color: var(--cobre);
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 900;
+      font-style: italic;
+    }
+    .testimonial-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      color: var(--marinho);
+      font-size: .76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-text {
+      color: var(--marinho);
+      font-size: .98rem;
+      line-height: 1.85;
+      font-weight: 700;
+      margin-bottom: 1.55rem;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-name {
+      color: var(--marinho);
+      font-weight: 900;
+      font-size: .9rem;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-role {
+      color: #999;
+      font-size: .82rem;
+      font-weight: 600;
+      margin-top: .15rem;
+      position: relative;
+      z-index: 1;
+    }
 
-    /* â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    .cta { padding: 2rem 0 4rem; }
-    @media (min-width: 768px) { .cta { padding: 3rem 0 6rem; } }
+    .cta { padding: 4rem 0 5rem; }
     .cta-box {
-      border-radius: 20px; background-color: rgba(254,244,240,.85);
-      border: 1px solid rgba(223,105,81,.1); padding: 2.5rem 1.5rem; text-align: center;
+      border-radius: 22px; overflow: hidden;
+      background:
+        radial-gradient(circle at 78% 20%, rgba(223,105,81,.22), transparent 32%),
+        var(--marinho);
+      color: #fff; padding: clamp(2rem, 6vw, 4rem);
+      display: grid; gap: 1.5rem; align-items: center;
     }
-    @media (min-width: 640px) { .cta-box { border-radius: 129px 20px 20px 20px; padding: 4.5rem 5rem; } }
-    .cta-h { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 900; font-style: italic; color: var(--marinho); line-height: 1.2; letter-spacing: -.02em; margin-bottom: .85rem; }
-    .cta-p  { font-size: .93rem; font-weight: 500; color: #777; line-height: 1.75; max-width: 520px; margin: 0 auto 2rem; }
-    .cta-note { margin-top: 1rem; font-size: .8rem; color: #bbb; font-weight: 500; }
-
-    /* â”€â”€ DEPOIMENTOS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    .dep { background: #fafafa; }
-    .dep-wrap { margin-top: 2.5rem; position: relative; max-width: 620px; padding-right: 16px; padding-bottom: 16px; }
-    .dep-card-back {
-      position: absolute; inset: 0; background: #fff; border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(0,0,0,.07); transform: translate(12px, 12px); z-index: 0;
+    @media (min-width: 850px) { .cta-box { grid-template-columns: 1fr auto; } }
+    .cta-box h2 { font-size: clamp(1.7rem, 4vw, 2.8rem); font-weight: 900; font-style: italic; line-height: 1.12; }
+    .cta-box p { color: rgba(255,255,255,.75); line-height: 1.7; max-width: 560px; margin-top: .65rem; }
+    footer { border-top: 1px solid rgba(0,0,0,.07); padding: 2rem 0; color: #aaa; font-size: .8rem; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+    @media (max-width: 859px) {
+      body { padding-bottom: 76px; }
+      body.menu-open .mobile-actionbar { display: none; }
+      .hero { padding: 2.6rem 0 2.5rem; }
+      section { padding: 3.15rem 0; }
+      .route-summary-band { padding-bottom: 2.7rem; }
+      .prologue { padding: 2.55rem 0; }
+      .quick-panel { margin-top: .85rem; gap: .6rem; }
+      .quick-item { padding: .85rem; }
+      .change-grid {
+        display: flex;
+        gap: .85rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: .1rem .1rem .55rem;
+        scrollbar-width: none;
+      }
+      .change-grid::-webkit-scrollbar,
+      .route-timeline::-webkit-scrollbar,
+      .bncc-skills::-webkit-scrollbar,
+      .testimonial-grid::-webkit-scrollbar { display: none; }
+      .change-card {
+        flex: 0 0 82%;
+        scroll-snap-align: center;
+        min-height: auto;
+        justify-content: flex-start;
+        padding: 1.35rem;
+      }
+      .change-num { font-size: 3.35rem; right: .85rem; top: .55rem; }
+      .route-timeline {
+        display: flex;
+        gap: .9rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: .1rem .1rem .6rem;
+        scrollbar-width: none;
+      }
+      .timeline-stop {
+        flex: 0 0 88%;
+        scroll-snap-align: center;
+        display: block;
+      }
+      .timeline-photo { min-height: 190px; }
+      .timeline-body { padding: 1.35rem; }
+      .photo-strip { display: none; }
+      .bncc-skills {
+        display: flex;
+        gap: .75rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: .1rem .1rem .45rem;
+        scrollbar-width: none;
+      }
+      .bncc-skill {
+        flex: 0 0 84%;
+        scroll-snap-align: center;
+      }
+      .testimonial-grid {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: .1rem .1rem .7rem;
+        scrollbar-width: none;
+      }
+      .testimonial-stack { padding-right: 12px; padding-bottom: 18px; }
+      .testimonial-grid .testimonial-stack {
+        flex: 0 0 88%;
+        scroll-snap-align: center;
+      }
+      .cta { padding-bottom: 2.75rem; }
+      .cta-box { border-radius: 18px; gap: 1.25rem; }
+      footer { padding-bottom: 2.2rem; }
     }
-    @media (min-width: 600px) {
-      .dep-wrap { padding-right: 30px; padding-bottom: 30px; }
-      .dep-card-back { transform: translate(25px, 25px); }
-    }
-    .dep-card {
-      background: #fff; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,.1);
-      padding: 2.25rem 1.75rem 1.75rem; position: relative; z-index: 1;
-    }
-    .dep-quote { font-size: 2rem; color: var(--cobre); line-height: 1; margin-bottom: .5rem; }
-    .dep-text  { font-size: .95rem; font-weight: 500; color: #444; line-height: 1.75; margin-bottom: 1.25rem; }
-    .dep-name  { font-size: .85rem; font-weight: 700; color: var(--marinho); }
-    .dep-role  { font-size: .8rem;  font-weight: 500; color: #aaa; }
-
-    /* â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    footer { padding: 3rem 0 1.5rem; border-top: 1px solid rgba(0,0,0,.07); }
-    .footer-grid { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2rem; }
-    @media (min-width: 640px) { .footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
-    @media (min-width: 900px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; } }
-    .footer-logo-name { font-size: 1.05rem; font-weight: 800; color: var(--marinho); display: block; }
-    .footer-logo-sub  { font-size: .52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--cobre); display: block; margin-bottom: .85rem; }
-    .footer-desc { font-size: .88rem; font-weight: 500; color: #888; line-height: 1.75; }
-    .footer-socials { display: flex; gap: .5rem; margin-top: 1.1rem; }
-    .soc { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid #ddd; color: #888; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-size: .85rem; transition: border-color .2s, color .2s; }
-    .soc:hover { border-color: var(--cobre); color: var(--cobre); }
-    .footer-col h5 { font-size: .82rem; font-weight: 800; color: var(--marinho); margin-bottom: 1rem; }
-    .footer-col ul  { list-style: none; }
-    .footer-col li  { margin-bottom: .45rem; }
-    .footer-col a   { font-size: .88rem; font-weight: 500; color: #888; text-decoration: none; transition: color .2s; }
-    .footer-col a:hover { color: var(--marinho); }
-    .footer-bottom { padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,.07); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
-    .footer-bottom p { font-size: .78rem; color: #bbb; margin: 0; font-weight: 500; }
   </style>
 </head>
-
 <body>
-
-  <!-- NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <nav id="nav">
-    <div class="wrap nav-wrap">
-      <a class="logo" href="index.html">
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="catalogo.html">
         <span class="logo-name">Azimute Educatur</span>
-        <span class="logo-sub">ExpediÃ§Ãµes PedagÃ³gicas</span>
+        <span class="logo-sub">Expedições Pedagógicas</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#diferenciais">Por que a Educatur</a></li>
-        <li><a href="index.html#como-funciona">Como Funciona</a></li>
-        <li><a href="catalogo.html">CatÃ¡logo</a></li>
-        <li>
-          <a class="nav-cta"
-            href="https://wa.me/5584999650530?text=Oi%20Jonas%2C%20quero%20saber%20mais%20sobre%20Areia%20PB"
-            target="_blank" rel="noopener">
-            Solicitar CalendÃ¡rio
-          </a>
-        </li>
+        <li><a href="#transformacao">Aprendizagem</a></li>
+        <li><a href="#jornada">Jornada</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a class="nav-cta" href="#solicitar">Solicitar</a></li>
       </ul>
-      <button class="nav-burger" id="burger" aria-label="Menu">
+      <button class="nav-burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </nav>
 
+  <div class="mobile-actionbar" aria-label="Ações rápidas">
+    <a class="mobile-secondary" href="#jornada"><i class="fas fa-map"></i> Jornada</a>
+    <a class="mobile-primary" href="#solicitar"><i class="fas fa-paper-plane"></i> Solicitar</a>
+  </div>
 
-  <!-- HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <header class="hero">
     <div class="wrap">
-      <div class="hero-inner">
-
-        <div class="hero-text">
-          <nav class="breadcrumb" aria-label="VocÃª estÃ¡ em">
-            <a href="index.html">InÃ­cio</a> Â· <a href="catalogo.html">CatÃ¡logo</a> Â· <span>JoÃ£o Pessoa, PB</span>
-          </nav>
-          <span class="nivel-badge">ExpediÃ§Ã£o Regional</span>
-          <div class="hero-label">Roteiro de Descoberta</div>
+      <div class="hero-grid">
+        <div>
+          <div class="breadcrumb"><a href="catalogo.html">Catálogo</a> / Jo&#227;o Pessoa, PB</div>
+          <span class="eyebrow">Rota de Jo&#227;o Pessoa</span>
           <h1 class="hero-h1">Arrebol Paraibano</h1>
-          <div class="hero-meta">
-            <span class="meta-tag"><i class="fas fa-map-marker-alt" style="color:var(--cobre)"></i> JoÃ£o Pessoa, PB</span>
-            <span class="meta-tag"><i class="fas fa-clock" style="color:var(--cobre)"></i> 1 dia escolar</span>
-            <span class="meta-tag"><i class="fas fa-graduation-cap" style="color:var(--cobre)"></i> Fund. II Â· MÃ©dio</span>
-            <span class="meta-tag"><i class="fas fa-users" style="color:var(--cobre)"></i> mÃ­n. 35 alunos</span>
+          <p class="hero-lead">Uma expedi&#231;&#227;o para conectar patrim&#244;nio, forma&#231;&#227;o urbana, litoral e cultura na capital paraibana.</p>
+          <div class="meta">
+            <span><i class="fas fa-map-marker-alt"></i> Jo&#227;o Pessoa, PB</span>
+            <span><i class="fas fa-clock"></i> 1 dia integral</span>
+            <span><i class="fas fa-graduation-cap"></i> Fund. II &#183; M&#233;dio</span>
+            <span><i class="fas fa-users"></i> mín. 35 alunos</span>
           </div>
-          <div class="hero-btns">
-            <a class="btn-primary"
-              href="https://wa.me/5584999650530?text=Quero%20o%20roteiro%20Arrebol%20Paraibano%20para%20minha%20escola"
-              target="_blank" rel="noopener">
-              Solicitar Agora
-            </a>
-            <a class="btn-outline" href="#jornada">Ver a Jornada</a>
+          <div class="hero-actions">
+            <a class="btn" href="#solicitar">Solicitar Agora <i class="fas fa-arrow-right"></i></a>
+            <a class="btn btn-secondary" href="#jornada">Ver a Jornada</a>
           </div>
         </div>
+        <div class="hero-collage" aria-label="Colagem visual do roteiro">
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-hero.jpg" alt="Arrebol Paraibano"></div>
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="Arrebol Paraibano"></div>
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-hero.jpg" alt="Arrebol Paraibano"></div>
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="Arrebol Paraibano"></div>
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-hero.jpg" alt="Arrebol Paraibano"></div>
+        </div>
+      </div>
 
-        <div class="hero-img-wrap"><img src="assets/images/cinematic/catalogo-joao-pessoa-hero.jpg" alt="Foto real tratada do roteiro" loading="eager" fetchpriority="high" decoding="async"></div>
-
+      <div class="quick-panel">
+        <div class="quick-item"><i class="fas fa-route"></i><div class="quick-label">Formato</div><div class="quick-value">1 dia integral</div></div>
+        <div class="quick-item"><i class="fas fa-shield-alt"></i><div class="quick-label">Segurança</div><div class="quick-value">Seguro incluso</div></div>
+        <div class="quick-item"><i class="fas fa-book-open"></i><div class="quick-label">Método</div><div class="quick-value">Diário de campo</div></div>
+        <div class="quick-item"><i class="fas fa-comments"></i><div class="quick-label">Escola</div><div class="quick-value">Suporte completo</div></div>
       </div>
     </div>
   </header>
 
-
-  <!-- O QUE MUDA NO ALUNO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="muda">
-    <div class="wrap">
-      <span class="eyebrow">TransformaÃ§Ã£o</span>
-      <h2 class="sec-h">O que muda no aluno depois de JoÃ£o Pessoa</h2>
-      <p class="sec-sub">Resultado antes de atividade â€” energia, patrimÃ´nio e litoral se conectam numa leitura Ãºnica da capital paraibana.</p>
-
-      <div class="muda-grid">
-        <div class="muda-card">
-          <div class="muda-num">01</div>
-          <h3>A energia ganha histÃ³ria</h3>
-          <p>Na Usina Energisa, o aluno entende eletricidade, distribuiÃ§Ã£o e consumo consciente como parte da cidade que cresce.</p>
-        </div>
-        <div class="muda-card">
-          <div class="muda-num">02</div>
-          <h3>O litoral vira leitura</h3>
-          <p>Cabo Branco, Bica e estuÃ¡rio deixam de ser ponto turÃ­stico e passam a ser paisagem, geografia e biodiversidade.</p>
-        </div>
-        <div class="muda-card">
-          <div class="muda-num">03</div>
-          <h3>O centro histÃ³rico ganha contexto</h3>
-          <p>PraÃ§a Antenor Navarro, fachadas e rios mostram a formaÃ§Ã£o da capital paraibana como processo e nÃ£o como fotografia.</p>
+  <main>
+    <section class="route-summary-band">
+      <div class="wrap">
+        <div class="route-summary-layout">
+          <aside class="route-summary-card">
+            <h2>O roteiro</h2>
+            <div class="summary-row"><div class="summary-icon"><i class="fas fa-map-marker-alt"></i></div><div><div class="summary-label">Destino</div><div class="summary-value">Jo&#227;o Pessoa, PB</div></div></div>
+            <div class="summary-row"><div class="summary-icon"><i class="fas fa-route"></i></div><div><div class="summary-label">Distância de Natal</div><div class="summary-value">Rota interestadual</div></div></div>
+            <div class="summary-row"><div class="summary-icon"><i class="fas fa-clock"></i></div><div><div class="summary-label">Saída / Retorno</div><div class="summary-value">1 dia integral</div></div></div>
+            <div class="summary-row"><div class="summary-icon"><i class="fas fa-users"></i></div><div><div class="summary-label">Mínimo de alunos</div><div class="summary-value">35 alunos</div></div></div>
+            <p class="summary-note">Valor sob consulta · ajustado conforme cidade da escola, data e número de participantes.</p>
+          </aside>
+          <div class="route-pitch">
+            <span class="eyebrow">Para a direção</span>
+            <h3>Uma aula de campo com roteiro, segurança e objetivo curricular.</h3>
+            <p>A escola apresenta a saída com clareza: onde a turma vai, quanto tempo dura, o que está incluso e qual aprendizagem justifica a proposta.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
+    <section class="prologue" aria-labelledby="prologo-title">
+      <div class="wrap">
+        <div class="prologue-box">
+          <span class="eyebrow">Antes da jornada</span>
+          <h2 id="prologo-title">Jo&#227;o Pessoa apresenta camadas de cidade, mar e mem&#243;ria.</h2>
+          <p>A capital paraibana permite ler a forma&#231;&#227;o colonial, o patrim&#244;nio arquitet&#244;nico e a rela&#231;&#227;o com o litoral. A turma observa como diferentes tempos seguem presentes na cidade.</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- JORNADA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section id="jornada">
-    <div class="wrap">
-      <span class="eyebrow">A ExpediÃ§Ã£o</span>
-      <h2 class="sec-h">A jornada do aluno</h2>
-      <p class="sec-sub">SaÃ­da Ã s 7h. Retorno atÃ© 18h. A rota cruza ciÃªncia, histÃ³ria e paisagem litorÃ¢nea.</p>
+    <section class="transform" id="transformacao">
+      <div class="wrap">
+        <div class="sec-head">
+          <div><span class="eyebrow">Aprendizagem</span><h2 class="sec-h">O que muda no aluno depois de Arrebol Paraibano</h2></div>
+          <p class="sec-p">Resultado antes de atividade: a expedição precisa continuar fazendo sentido quando o professor volta para a sala.</p>
+        </div>
+        <div class="change-grid">
+          <article class="change-card">
+            <div class="change-num">01</div>
+            <h3>Centro hist&#243;rico vira documento</h3>
+            <p>A arquitetura ajuda a entender poder, religi&#227;o e organiza&#231;&#227;o urbana.</p>
+          </article>          <article class="change-card">
+            <div class="change-num">02</div>
+            <h3>Litoral vira geografia</h3>
+            <p>A costa permite discutir paisagem, ocupa&#231;&#227;o e din&#226;mica ambiental.</p>
+          </article>          <article class="change-card">
+            <div class="change-num">03</div>
+            <h3>Cultura ganha cidade</h3>
+            <p>Mem&#243;ria, arte e espa&#231;os p&#250;blicos conectam identidade e territ&#243;rio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-      <div class="jornada-layout">
+    <section class="journey" id="jornada">
+      <div class="wrap">
+        <div class="sec-head">
+          <div><span class="eyebrow">A jornada</span><h2 class="sec-h">A jornada do aluno</h2></div>
+          <p class="sec-p">Cada parada tem intenção pedagógica, mediação em campo e conexão com o conteúdo trabalhado em sala.</p>
+        </div>
+        <div class="route-timeline">
+          <article class="timeline-stop">
+            <div class="photo timeline-photo">
+              <img src="assets/images/cinematic/catalogo-joao-pessoa-hero.jpg" alt="">
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-kicker">Parada 01</div>
+              <h3>Centro hist&#243;rico</h3>
+              <p>Leitura de igrejas, pra&#231;as e edif&#237;cios como documentos urbanos.</p>
+              <div class="timeline-tags">
+                <span>Hist&#243;ria</span>
+                <span>Patrim&#244;nio</span>
+                <span>Geografia costeira</span>
+                <span>Cultura</span>
+              </div>
+            </div>
+          </article>          <article class="timeline-stop">
+            <div class="photo timeline-photo">
+              <img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="">
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-kicker">Parada 02</div>
+              <h3>Espa&#231;os culturais</h3>
+              <p>Discuss&#227;o sobre mem&#243;ria, identidade e produ&#231;&#227;o art&#237;stica.</p>
+              <div class="timeline-tags">
+                <span>Hist&#243;ria</span>
+                <span>Patrim&#244;nio</span>
+                <span>Geografia costeira</span>
+                <span>Cultura</span>
+              </div>
+            </div>
+          </article>          <article class="timeline-stop">
+            <div class="photo timeline-photo">
+              <img src="assets/images/cinematic/catalogo-joao-pessoa-hero.jpg" alt="">
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-kicker">Parada 03</div>
+              <h3>Orla e paisagem costeira</h3>
+              <p>Observa&#231;&#227;o de ocupa&#231;&#227;o, turismo e geografia do litoral.</p>
+              <div class="timeline-tags">
+                <span>Hist&#243;ria</span>
+                <span>Patrim&#244;nio</span>
+                <span>Geografia costeira</span>
+                <span>Cultura</span>
+              </div>
+            </div>
+          </article>          <article class="timeline-stop">
+            <div class="photo timeline-photo">
+              <img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="">
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-kicker">Fechamento</div>
+              <h3>S&#237;ntese urbana</h3>
+              <p>Di&#225;rio de campo sobre cidade, patrim&#244;nio e costa.</p>
+              <div class="timeline-tags">
+                <span>Hist&#243;ria</span>
+                <span>Patrim&#244;nio</span>
+                <span>Geografia costeira</span>
+                <span>Cultura</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="photo-strip">
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-hero.jpg" alt="Arrebol Paraibano"></div>
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="Arrebol Paraibano"></div>
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-hero.jpg" alt="Arrebol Paraibano"></div>
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="Arrebol Paraibano"></div>
+          <div class="photo"><img src="assets/images/cinematic/catalogo-joao-pessoa-hero.jpg" alt="Arrebol Paraibano"></div>
+        </div>
+      </div>
+    </section>
 
-        <div class="jornada-paradas">
-
-          <div class="parada" style="margin-bottom:1rem;">
-            <div class="parada-accent pb-1"></div>
-            <div class="parada-body">
-              <div class="parada-step">Parada 01</div>
-              <div class="parada-nome">Usina Cultural Energisa</div>
-              <p class="parada-desc">Centro HistÃ³rico e PraÃ§a Antenor Navarro</p>
-              <div class="parada-tags">
-                <span class="ptag">HistÃ³ria Colonial</span>
-                <span class="ptag">PatrimÃ´nio Cultural</span>
-                <span class="ptag">1h30</span>
+    <section>
+      <div class="wrap">
+        <div class="sec-head">
+          <div><span class="eyebrow">Sem surpresas</span><h2 class="sec-h">Tudo que a escola recebe</h2></div>
+          <p class="sec-p">A promessa pedagógica vem acompanhada de operação, segurança e comunicação para as famílias.</p>
+        </div>
+        <div class="info-grid">
+          <div class="info-box">
+            <h3>Incluso na expedição</h3>
+            <ul class="check-list">
+              <li><i class="fas fa-check-circle"></i> Transporte regulamentado ida e volta</li>
+              <li><i class="fas fa-check-circle"></i> Seguro viagem para todos os participantes</li>
+              <li><i class="fas fa-check-circle"></i> Mediação pedagógica durante a aula de campo</li>
+              <li><i class="fas fa-check-circle"></i> Suporte operacional para escola e responsáveis</li>
+              <li><i class="fas fa-check-circle"></i> Diário de campo e perguntas investigativas</li>
+              <li><i class="fas fa-check-circle"></i> Alimentação conforme desenho final do roteiro</li>
+            </ul>
+            <div class="ops-panel">
+              <div class="ops-item"><div class="ops-icon"><i class="fas fa-clipboard-check"></i></div><div><strong>Antes da saída</strong><span>Alinhamento com a escola, lista de participantes, orientações às famílias e conferência de necessidades específicas.</span></div></div>
+              <div class="ops-item"><div class="ops-icon"><i class="fas fa-headset"></i></div><div><strong>Durante a expedição</strong><span>Equipe Azimute acompanha o grupo e mantém suporte para coordenação e responsáveis.</span></div></div>
+            </div>
+          </div>
+          <div class="info-box">
+            <h3>Áreas e habilidades BNCC</h3>
+            <p class="sec-p" style="margin-bottom:1rem;">Temas do roteiro e habilidades que podem ser mobilizadas antes, durante e depois da aula de campo.</p>
+            <div class="bncc-list">
+              <span>Hist&#243;ria</span>
+              <span>Patrim&#244;nio</span>
+              <span>Geografia costeira</span>
+              <span>Cultura</span>
+            </div>
+            <div class="bncc-skills">
+              <div class="bncc-skill">
+                <div class="bncc-code">EF07HI12 (Hist&#243;ria)</div>
+                <p class="bncc-desc">Analisar din&#226;micas coloniais e forma&#231;&#227;o urbana.</p>
+              </div>              <div class="bncc-skill">
+                <div class="bncc-code">EF06GE07 (Geografia)</div>
+                <p class="bncc-desc">Explicar mudan&#231;as na paisagem por sociedade e natureza.</p>
+              </div>              <div class="bncc-skill">
+                <div class="bncc-code">EF08GE17 (Geografia)</div>
+                <p class="bncc-desc">Analisar din&#226;micas urbanas e ambientais.</p>
+              </div>              <div class="bncc-skill">
+                <div class="bncc-code">EF69LP44 (L&#237;ngua Portuguesa)</div>
+                <p class="bncc-desc">Argumentar com base em registros de campo.</p>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="parada" style="margin-bottom:1rem;">
-            <div class="parada-accent pb-2"></div>
-            <div class="parada-body">
-              <div class="parada-step">Parada 02</div>
-              <div class="parada-nome">Parque Arruda CÃ¢mara</div>
-              <p class="parada-desc">Farol do Cabo Branco</p>
-              <div class="parada-tags">
-                <span class="ptag">EscravidÃ£o</span>
-                <span class="ptag">Modo de ProduÃ§Ã£o</span>
-                <span class="ptag">1h30</span>
-              </div>
-            </div>
+    <section class="testimonials" id="depoimentos">
+      <div class="wrap">
+        <div class="testimonial-head">
+          <span class="eyebrow">Quem já foi</span>
+          <h2 class="sec-h">O que dizem quem já foi</h2>
+        </div>
+        <div class="testimonial-grid">
+          <div class="testimonial-stack">
+            <article class="testimonial-card">
+              <div class="testimonial-label"><i class="fas fa-chalkboard-teacher"></i> Professores</div>
+              <p class="testimonial-text">A turma voltou com repertório concreto para discutir o conteúdo em sala. O território ajudou os alunos a enxergar relações que, no livro, pareciam distantes.</p>
+              <div class="testimonial-name">Professora participante</div>
+              <div class="testimonial-role">Escola parceira · RN/PB/PE</div>
+            </article>
           </div>
-
-          <div class="parada" style="margin-bottom:1rem;">
-            <div class="parada-accent pb-3"></div>
-            <div class="parada-body">
-              <div class="parada-step">Parada 03</div>
-              <div class="parada-nome">PÃ´r do Sol do JacarÃ©</div>
-              <p class="parada-desc">Visita tÃ©cnica para compreender histÃ³ria da eletricidade, geraÃ§Ã£o e consumo consciente.</p>
-              <div class="parada-tags">
-                <span class="ptag">HistÃ³ria Militar</span>
-                <span class="ptag">Cultura Material</span>
-                <span class="ptag">1h</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="parada">
-            <div class="parada-accent pb-4"></div>
-            <div class="parada-body">
-              <div class="parada-step">Parada 04</div>
-              <div class="parada-nome">AnÃ¡lise das fachadas coloridas, igrejas barrocas e da organizaÃ§Ã£o urbana da capital.</div>
-              <p class="parada-desc">BotÃ¢nica, zoologia e preservaÃ§Ã£o em um espaÃ§o de Mata AtlÃ¢ntica no coraÃ§Ã£o da cidade.</p>
-              <div class="parada-tags">
-                <span class="ptag">SÃ­ntese Curricular</span>
-                <span class="ptag">Identidade Cultural</span>
-                <span class="ptag">45min</span>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /.jornada-paradas -->
-
-        <!-- ASIDE CARD (aparece antes no mobile por ser mais simples) -->
-        <div class="jornada-aside">
-          <div class="aside-card">
-            <h4>O Roteiro</h4>
-            <div class="aside-row">
-              <div class="aside-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div>
-                <div class="aside-label">Destino</div>
-                <div class="aside-val">JoÃ£o Pessoa, PB</div>
-              </div>
-            </div>
-            <div class="aside-row">
-              <div class="aside-icon"><i class="fas fa-route"></i></div>
-              <div>
-                <div class="aside-label">DistÃ¢ncia de Natal</div>
-                <div class="aside-val">Capital paraibana</div>
-              </div>
-            </div>
-            <div class="aside-row">
-              <div class="aside-icon"><i class="fas fa-clock"></i></div>
-              <div>
-                <div class="aside-label">SaÃ­da / Retorno</div>
-                <div class="aside-val">1 dia escolar</div>
-              </div>
-            </div>
-            <div class="aside-row">
-              <div class="aside-icon"><i class="fas fa-users"></i></div>
-              <div>
-                <div class="aside-label">MÃ­nimo de alunos</div>
-                <div class="aside-val">35 alunos</div>
-              </div>
-            </div>
-            <p class="aside-price">Sob consulta Â· Valor por aluno conforme a distÃ¢ncia da escola Â· mÃ­n. 35 alunos</p>
-            <a class="aside-btn"
-              href="https://wa.me/5584999650530?text=Quero%20o%20roteiro%20Arrebol%20Paraibano%20para%20minha%20escola"
-              target="_blank" rel="noopener">
-              Solicitar Agora
-            </a>
+          <div class="testimonial-stack">
+            <article class="testimonial-card">
+              <div class="testimonial-label"><i class="fas fa-user-shield"></i> Responsáveis</div>
+              <p class="testimonial-text">A comunicação foi clara antes da saída e meu filho voltou explicando o que viu. Deu para perceber que não foi apenas deslocamento, teve aprendizagem.</p>
+              <div class="testimonial-name">Responsável por estudante</div>
+              <div class="testimonial-role">Família participante</div>
+            </article>
           </div>
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <!-- INCLUSO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="incluso">
-    <div class="wrap">
-      <span class="eyebrow">Sem surpresas</span>
-      <h2 class="sec-h">Tudo que estÃ¡ incluso</h2>
-      <p class="sec-sub">A escola confirma, a gente cuida do resto.</p>
-
-      <div class="incluso-grid">
-        <div class="incluso-item"><div class="incluso-num">01</div><p>Transporte ida e volta (Ã´nibus climatizado)</p></div>
-        <div class="incluso-item"><div class="incluso-num">02</div><p>Guia pedagÃ³gico especializado</p></div>
-        <div class="incluso-item"><div class="incluso-num">03</div><p>Seguro de viagem para todos os alunos</p></div>
-        <div class="incluso-item"><div class="incluso-num">04</div><p>Material pedagÃ³gico de apoio ao professor</p></div>
-        <div class="incluso-item"><div class="incluso-num">05</div><p>Ingressos e taxas de acesso aos espaÃ§os</p></div>
-        <div class="incluso-item"><div class="incluso-num">06</div><p>Comunicado escolar pronto para os pais</p></div>
-        <div class="incluso-item"><div class="incluso-num">07</div><p>AlmoÃ§o (cardÃ¡pio regional incluso)</p></div>
-        <div class="incluso-item"><div class="incluso-num">08</div><p>CoordenaÃ§Ã£o operacional do dia inteiro</p></div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- BNCC â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">Alinhamento curricular</span>
-      <h2 class="sec-h">Habilidades BNCC cobertas</h2>
-      <p class="sec-sub">Para o professor chegar na reuniÃ£o pedagÃ³gica com argumento, nÃ£o com foto de passeio.</p>
-
-      <div class="bncc-grid">
-        <div class="bncc-card">
-          <div class="bncc-code">EF06HI15</div>
-          <p class="bncc-desc">Explicar o significado de "modernidade" e suas tensÃµes com as populaÃ§Ãµes tradicionais e Ã©tnicas</p>
-        </div>
-        <div class="bncc-card">
-          <div class="bncc-code">EF07CI11</div>
-          <p class="bncc-desc">Caracterizar a escravidÃ£o moderna e comparar com outras formas de trabalho compulsÃ³rio</p>
-        </div>
-        <div class="bncc-card">
-          <div class="bncc-code">EF08GE01</div>
-          <p class="bncc-desc">Descrever as dinÃ¢micas do trÃ¡fico negreiro e a escravidÃ£o no Brasil colonial</p>
-        </div>
-        <div class="bncc-card">
-          <div class="bncc-code">EF69AR01</div>
-          <p class="bncc-desc">Descrever e contextualizar os principais aspectos das revoluÃ§Ãµes do sÃ©culo XVIII e XIX</p>
-        </div>
-        <div class="bncc-card">
-          <div class="bncc-code">EF06HI15</div>
-          <p class="bncc-desc">Descrever as dinÃ¢micas de circulaÃ§Ã£o de pessoas e mercadorias no mundo antigo e moderno</p>
-        </div>
-        <div class="bncc-card">
-          <div class="bncc-code">EF69LP44</div>
-          <p class="bncc-desc">Identificar e analisar posicionamentos em textos argumentativos, reconhecendo formas de produÃ§Ã£o do discurso</p>
+    <section class="cta" id="solicitar">
+      <div class="wrap">
+        <div class="cta-box">
+          <div>
+            <h2>Arrebol Paraibano no calendário deste semestre?</h2>
+            <p>Em 30 minutos a Azimute entende suas turmas, ajusta o roteiro e entrega o argumento pedagógico para apresentar à coordenação e às famílias.</p>
+          </div>
+          <a class="btn" href="https://wa.me/5584999650530?text=Quero%20o%20roteiro%20Arrebol%20Paraibano%20para%20minha%20escola" target="_blank" rel="noopener">Falar com a Azimute</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-
-  <!-- PARA OS PAIS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section style="background:#fafafa;">
-    <div class="wrap">
-      <span class="eyebrow">ComunicaÃ§Ã£o com as famÃ­lias</span>
-      <h2 class="sec-h">Para os pais que perguntarem</h2>
-      <p class="sec-sub">Texto pronto para o diretor copiar e mandar no grupo dos responsÃ¡veis â€” sem editar.</p>
-
-      <div class="pais-layout">
-        <div class="pais-text">
-          <p id="paisText">
-            Vamos realizar uma ExpediÃ§Ã£o PedagÃ³gica para JoÃ£o Pessoa, na ParaÃ­ba. O roteiro conecta histÃ³ria da capital, energia, patrimÃ´nio, litoral e biodiversidade.
-
-Os alunos vÃ£o visitar o Centro HistÃ³rico tombado, o Parque Arruda CÃ¢mara (que ainda funciona) e o Museu do Brejo. Tudo alinhado ao conteÃºdo de HistÃ³ria que estamos trabalhando em sala: colonizaÃ§Ã£o, escravidÃ£o e formaÃ§Ã£o da cultura brasileira.
-
-O roteiro Ã© de 1 dia (saÃ­da Ã s 7h, retorno atÃ© 18h). Inclui transporte climatizado, guia pedagÃ³gico, almoÃ§o e seguro de viagem. A escola nÃ£o organiza nada â€” a Azimute Educatur cuida de toda a operaÃ§Ã£o.
-
-Qualquer dÃºvida, fale com a coordenaÃ§Ã£o.
-          </p>
-        </div>
-        <div class="pais-copy-wrap">
-          <p>Clique para copiar o texto e colar direto no grupo dos pais.</p>
-          <button class="btn-copy" id="copyBtn" onclick="copyPaisText()">
-            Copiar texto
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- DEPOIMENTO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="dep">
-    <div class="wrap">
-      <span class="eyebrow">Quem jÃ¡ foi</span>
-      <h2 class="sec-h">O que dizem os professores</h2>
-
-      <div class="dep-wrap">
-        <div class="dep-card-back"></div>
-        <div class="dep-card">
-          <div class="dep-quote">"</div>
-          <p class="dep-text">Nunca vi alunos de 8Âº ano tÃ£o quietos e atentos como dentro do Parque Arruda CÃ¢mara. O guia apresentou a escravidÃ£o de um jeito que eu nÃ£o consigo fazer sÃ³ com o livro. Na semana seguinte, a redaÃ§Ã£o deles era completamente diferente.</p>
-          <div class="dep-name">Professora de HistÃ³ria</div>
-          <div class="dep-role">Escola Municipal â€” Natal, RN</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <section class="cta">
-    <div class="wrap">
-      <div class="cta-box">
-        <h2 class="cta-h">JoÃ£o Pessoa no calendÃ¡rio deste semestre?</h2>
-        <p class="cta-p">30 minutos de conversa. A gente mapeia suas turmas e monta o calendÃ¡rio completo â€” argumento pedagÃ³gico incluso para vocÃª apresentar Ã  coordenaÃ§Ã£o.</p>
-        <a class="btn-primary"
-          href="https://wa.me/5584999650530?text=Quero%20o%20roteiro%20Arrebol%20Paraibano%20para%20minha%20escola"
-          target="_blank" rel="noopener">
-          Solicitar Agora
-        </a>
-        <p class="cta-note">Respondemos em atÃ© 24h Â· Sem compromisso</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <footer>
     <div class="wrap">
-      <div class="footer-grid">
-        <div>
-          <span class="footer-logo-name">Azimute Educatur</span>
-          <span class="footer-logo-sub">ExpediÃ§Ãµes PedagÃ³gicas</span>
-          <p class="footer-desc">Transformamos a saÃ­da da escola em ExpediÃ§Ã£o PedagÃ³gica â€” com objetivo curricular claro e alunos que voltam diferentes.</p>
-          <div class="footer-socials">
-            <a class="soc" href="#!" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a class="soc" href="https://wa.me/5584999650530" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a class="soc" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h5>Roteiros</h5>
-          <ul>
-            <li><a href="catalogo.html">Ver CatÃ¡logo Completo</a></li>
-            <li><a href="#">JoÃ£o Pessoa, PB</a></li>
-            <li><a href="#">Recife, PE</a></li>
-            <li><a href="#">MossorÃ³, RN</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Para a Escola</h5>
-          <ul>
-            <li><a href="index.html#como-funciona">Como Funciona</a></li>
-            <li><a href="index.html#diferenciais">Diferenciais</a></li>
-            <li><a href="index.html#depoimentos">Depoimentos</a></li>
-            <li><a href="https://wa.me/5584999650530" target="_blank" rel="noopener">Contato</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Contato</h5>
-          <ul>
-            <li><a href="https://wa.me/5584999650530">(84) 99965-0530</a></li>
-            <li><a href="mailto:jonas.palhares@outlook.com">jonas.palhares@outlook.com</a></li>
-            <li><a href="#">Natal, RN</a></li>
-            <li><a href="#">CNPJ 64.349.866/0001-95</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>Â© 2026 Azimute Educatur â€” Hub Azimute Â· Natal/RN</p>
-        <p>ExpediÃ§Ãµes PedagÃ³gicas alinhadas Ã  BNCC</p><p><a href="assets/images/CREDITOS-FOTOS.md">Fotos: Wikimedia Commons (créditos)</a></p>
-      </div>
+      <span>© 2026 Azimute Educatur</span>
+      <span>Expedições Pedagógicas alinhadas à BNCC</span>
     </div>
   </footer>
-
   <script>
-    var nav = document.getElementById('nav');
-    window.addEventListener('scroll', function () {
-      nav.classList.toggle('solid', window.scrollY > 40);
-    }, { passive: true });
     var burger = document.getElementById('burger');
     var navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', function () {
-      navLinks.classList.toggle('open');
-      burger.innerHTML = navLinks.classList.contains('open')
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
-    });
-    navLinks.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        navLinks.classList.remove('open');
-        burger.innerHTML = '<i class="fas fa-bars"></i>';
+    if (burger && navLinks) {
+      burger.addEventListener('click', function () {
+        var isOpen = navLinks.classList.toggle('open');
+        document.body.classList.toggle('menu-open', isOpen);
+        burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        burger.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+        burger.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
       });
-    });
-
-    function copyPaisText() {
-      var text = document.getElementById('paisText').innerText.trim();
-      var btn  = document.getElementById('copyBtn');
-      navigator.clipboard.writeText(text).then(function () {
-        btn.textContent = 'Copiado!';
-        btn.classList.add('copied');
-        setTimeout(function () {
-          btn.textContent = 'Copiar texto';
-          btn.classList.remove('copied');
-        }, 2500);
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          document.body.classList.remove('menu-open');
+          burger.setAttribute('aria-expanded', 'false');
+          burger.setAttribute('aria-label', 'Abrir menu');
+          burger.innerHTML = '<i class="fas fa-bars"></i>';
+        });
       });
     }
   </script>
-
 </body>
 </html>
-
