@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Catálogo de Roteiros — Azimute Educatur</title>
-  <meta name="description" content="22+ Roteiros de Descoberta prontos para o RN e Nordeste — alinhados à BNCC, seguro incluso, 1 dia.">
+  <meta name="description" content="38 Roteiros de Descoberta organizados por rotas temáticas no RN e Nordeste — alinhados à BNCC, seguro incluso e suporte pedagógico.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,6 @@
     .nav-cta:hover { background: #c4501e !important; }
 
     /* ── HERO CATÁLOGO ─────────────────────────────── */
-    /* Mobile: simples, 1 col */
     .hero-cat {
       padding: 5.5rem 0 2.5rem; background: #fff;
       position: relative; overflow: hidden;
@@ -65,11 +64,11 @@
     .hero-cat-p  { font-size: .97rem; font-weight: 500; color: #777; line-height: 1.75; }
     @media (min-width: 768px) { .hero-cat { padding: 7.5rem 0 3rem; } }
 
-    /* ── FILTRO / LEGENDA ──────────────────────────── */
+    /* ── FILTRO / LEGENDA / ROTAS ──────────────────── */
     .filtro-bar {
       display: flex; align-items: center; gap: .65rem; flex-wrap: wrap;
       padding: 1.25rem 0; border-bottom: 1px solid rgba(0,0,0,.08);
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.25rem;
     }
     .filtro-label { font-size: .78rem; font-weight: 700; color: #aaa; margin-right: .25rem; }
     .filtro-pill {
@@ -81,24 +80,38 @@
     .f-pernoite { background: #7a4a1a; }
     .f-dev { background: #ccc; color: #555; }
 
-    /* ── GRUPO DE REGIÃO ───────────────────────────── */
-    .grupo { margin-bottom: 3.5rem; }
+    .rotas-bar {
+      display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+      padding: 0 0 1.5rem; margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+    .rota-chip {
+      font-size: .74rem; font-weight: 700; padding: .42rem 1rem; border-radius: 50px;
+      color: var(--marinho); background: #fff; border: 1.5px solid rgba(13,34,70,.16);
+      text-decoration: none; transition: background .2s, color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .rota-chip:hover { background: var(--marinho); color: #fff; border-color: var(--marinho); }
+
+    /* ── GRUPO DE ROTA ─────────────────────────────── */
+    .grupo { margin-bottom: 3.5rem; scroll-margin-top: 96px; }
     .grupo-titulo {
       font-size: .72rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
       color: #aaa; border-bottom: 1px solid rgba(0,0,0,.08);
-      padding-bottom: .75rem; margin-bottom: 1.5rem;
+      padding-bottom: .75rem; margin-bottom: .6rem;
+    }
+    .grupo-sub {
+      font-size: .88rem; font-weight: 500; color: #999; line-height: 1.6;
+      margin-bottom: 1.5rem; max-width: 720px;
     }
 
     /* ── CARDS (mesma do index) ─────────────────────── */
-    /* auto-fill em vez de repeat(3) fixo: linha com 1 ou 2 itens não
-       sobra buraco de espaço em branco à direita. */
     .cat-grid {
       display: grid; gap: 1.25rem;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     }
 
     /* ── DESTAQUE (bento anchor no topo do catálogo) ──── */
-    /* Placeholder da foto do destino em destaque — trocar por foto real. */
     .destaque {
       position: relative; overflow: hidden; color: #fff;
       border-radius: 20px; min-height: 46vh;
@@ -189,6 +202,8 @@
       }
       .rot-dest-row { gap: .75rem; }
       .rot-link { flex: 0 0 auto; }
+      .rotas-bar { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; padding-bottom: 1rem; }
+      .rotas-bar::-webkit-scrollbar { display: none; }
     }
 
     /* Cards "em desenvolvimento" */
@@ -232,6 +247,67 @@
     .footer-col a:hover { color: var(--marinho); }
     .footer-bottom { padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,.07); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
     .footer-bottom p { font-size: .78rem; color: #bbb; margin: 0; font-weight: 500; }
+
+    /* ── GRADE ÚNICA + FILTRO DE ROTAS ─────────────── */
+    .rota-btn {
+      font-size: .74rem; font-weight: 700; padding: .42rem 1rem; border-radius: 50px;
+      color: var(--marinho); background: #fff; border: 1.5px solid rgba(13,34,70,.16);
+      cursor: pointer; font-family: 'Fira Sans', sans-serif;
+      transition: background .2s, color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .rota-btn:hover { border-color: var(--marinho); }
+    .rota-btn.active { background: var(--marinho); color: #fff; border-color: var(--marinho); }
+
+    .dcat-grid {
+      display: grid; gap: .9rem;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      grid-auto-flow: dense;
+      align-items: start;
+    }
+    .dcard {
+      background: #fff; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,.08);
+      display: block; color: inherit; text-decoration: none;
+      transition: transform .25s, box-shadow .25s, opacity .3s, filter .3s;
+    }
+    .dcard:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,.14); }
+    .dcard-img { position: relative; overflow: hidden; background: var(--marinho); }
+    .dcard-img img {
+      width: 100%; display: block; aspect-ratio: 1 / 1; object-fit: cover;
+      filter: contrast(1.12) saturate(1.12) brightness(.94);
+      transition: transform .35s;
+    }
+    .dcard:hover .dcard-img img { transform: scale(1.05); }
+    .dcard-body { padding: .65rem .75rem .8rem; display: flex; flex-direction: column; gap: .12rem; }
+    .dcard-name { font-size: .84rem; font-weight: 800; color: var(--marinho); line-height: 1.25; }
+    .dcard-meta { font-size: .72rem; font-weight: 600; color: #999; }
+    .dcard-serie { display: none; font-size: .72rem; font-weight: 500; color: #aaa; }
+    .dcard-link { display: none; margin-top: .45rem; font-size: .78rem; font-weight: 800; color: var(--cobre); }
+
+    /* destaque: card da rota selecionada cresce */
+    .dcard.hi {
+      grid-column: span 2; grid-row: span 2;
+      box-shadow: 0 14px 40px rgba(13,34,70,.18);
+    }
+    .dcard.hi .dcard-img img { aspect-ratio: 4 / 3; }
+    .dcard.hi .dcard-body { padding: .95rem 1.05rem 1.1rem; }
+    .dcard.hi .dcard-name { font-size: 1.05rem; }
+    .dcard.hi .dcard-meta { font-size: .8rem; }
+    .dcard.hi .dcard-serie,
+    .dcard.hi .dcard-link { display: block; }
+
+    /* fora da rota selecionada: apaga */
+    .dcard.lo { opacity: .32; filter: grayscale(.7); }
+    .dcard.lo:hover { opacity: .75; filter: grayscale(0); }
+
+    .dcard-dev .dcard-img img { filter: grayscale(30%) contrast(1.05) brightness(.94); }
+
+    @media (max-width: 680px) {
+      .dcat-grid { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: .7rem; }
+      .dcard.hi { grid-column: span 2; }
+      .dcard-name { font-size: .78rem; }
+    }
   </style>
 </head>
 
@@ -271,7 +347,7 @@
       <div class="hero-cat-inner">
         <a class="hero-cat-back" href="index.html">← Início</a>
         <h1 class="hero-cat-h1">Catálogo de Roteiros de Descoberta</h1>
-        <p class="hero-cat-p">22+ roteiros prontos para o RN e Nordeste. Cada um com objetivo curricular mapeado, BNCC alinhada e tudo incluso para a escola só aparecer.</p>
+        <p class="hero-cat-p">38 destinos organizados por rotas temáticas no RN e Nordeste. Cada um com objetivo curricular mapeado, BNCC alinhada e tudo incluso para a escola só aparecer.</p>
       </div>
     </div>
   </section>
@@ -293,7 +369,7 @@
   </div>
 
 
-  <!-- LEGENDA ──────────────────────────────────────── -->
+  <!-- LEGENDA + ROTAS ──────────────────────────────── -->
   <div class="wrap">
     <div class="filtro-bar">
       <span class="filtro-label">Nível</span>
@@ -303,399 +379,533 @@
       <span class="filtro-pill f-pernoite">Pernoite</span>
       <span class="filtro-pill f-dev">Em Desenvolvimento</span>
     </div>
+    <div class="rotas-bar" id="rotas" aria-label="Rotas temáticas">
+      <span class="filtro-label">Rotas</span>
+      <button class="rota-btn active" data-rota="all">Todos</button>
+      <button class="rota-btn" data-rota="litoral">Litoral e Mar</button>
+      <button class="rota-btn" data-rota="sal">Sal e Vento</button>
+      <button class="rota-btn" data-rota="serras">Serras</button>
+      <button class="rota-btn" data-rota="serido">Seridó · Geoparque</button>
+      <button class="rota-btn" data-rota="cavernas">Cavernas e Pré-História</button>
+      <button class="rota-btn" data-rota="engenhos">Engenhos e História</button>
+      <button class="rota-btn" data-rota="fe">Fé e Memória</button>
+      <button class="rota-btn" data-rota="ciencia">Ciência e Espaço</button>
+      <button class="rota-btn" data-rota="povos">Povos Originários</button>
+      <button class="rota-btn" data-rota="capitais">Capitais</button>
+    </div>
   </div>
 
 
-  <!-- CATÁLOGO ─────────────────────────────────────── -->
+  <!-- CATÁLOGO — GRADE ÚNICA COM FILTRO DE ROTAS ── -->
   <div class="wrap" style="padding-bottom:1rem;">
-
-    <!-- NATAL E REGIÃO ────────────────────────────── -->
     <div class="grupo">
-      <div class="grupo-titulo">Natal e Região Metropolitana · Local</div>
-      <div class="cat-grid">
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-chao-vivo-natal-card.jpg?v=20260713" alt="Natal, RN" loading="lazy" decoding="async">
+      <div class="grupo-titulo" id="gradeTitulo">Todos os roteiros</div>
+      <p class="grupo-sub" id="gradeSub">Selecione uma rota acima para destacar os roteiros do tema. Um mesmo roteiro pode aparecer em mais de uma rota.</p>
+      <div class="dcat-grid" id="dcatGrid">
+        <a class="dcard" href="roteiro-aquario-natal.html" data-rotas="litoral ciencia">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-aquario-natal-card.jpg?v=20260713" alt="Sentinelas do Mar" loading="lazy" decoding="async">
             <span class="rot-nivel n-local">Local</span>
           </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">O Chão Vivo de Natal</span>
-              <span class="rot-serie">Fund. II</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Natal, RN</span>
-              <a class="rot-link" href="roteiro-chao-vivo-natal.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-aquario-natal-card.jpg?v=20260713" alt="Aquário de Natal" loading="lazy" decoding="async">
-            <span class="rot-nivel n-local">Local</span>
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Sentinelas do Mar</span>
-              <span class="rot-serie">Infantil · Fund. I</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Natal, RN</span>
-              <a class="rot-link" href="roteiro-aquario-natal.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-forte-ribeira-card.jpg?v=20260713" alt="Forte dos Reis Magos, Natal">
-            <span class="rot-nivel n-local">Local</span>
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Raízes e Muralhas</span>
-              <span class="rot-serie">Fund. I · Fund. II</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Natal — Forte + Ribeira</span>
-              <a class="rot-link" href="roteiro-forte-ribeira.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-mata-estrela-card.jpg?v=20260713" alt="Mata Estrela, Baía Formosa">
-            <span class="rot-nivel n-local">Local</span>
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Raízes da Mata Atlântica</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Baía Formosa + Mata Estrela</span>
-              <a class="rot-link" href="roteiro-mata-estrela.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-ceara-mirim-card.jpg?v=20260713" alt="Ceará-Mirim, RN">
-            <span class="rot-nivel n-local">Local</span>
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Terra do Açúcar e do Rio</span>
-              <span class="rot-serie">Fund. II</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Ceará-Mirim, RN</span>
-              <a class="rot-link" href="roteiro-ceara-mirim.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- INTERIOR DO RN ─────────────────────────────── -->
-    <div class="grupo">
-      <div class="grupo-titulo">Interior do Rio Grande do Norte · Regional</div>
-      <div class="cat-grid">
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-mossoro-card.jpg?v=20260713" alt="Mossoró, RN" loading="lazy" decoding="async">
-            <span class="rot-nivel n-regional">Regional</span>
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Sal, Sol e Liberdade</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Mossoró, RN</span>
-              <a class="rot-link" href="roteiro-mossoro.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-currais-novos-card.jpg?v=20260713" alt="Currais Novos, RN">
-            <span class="rot-nivel n-regional">Regional</span>
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Coração de Metal do Seridó</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Currais Novos, RN</span>
-              <a class="rot-link" href="roteiro-currais-novos.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-janelas-serido-card.jpg?v=20260713" alt="Martins, RN">
-            <span class="rot-nivel n-regional">Regional</span>
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Janelas do Seridó</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Caicó + Acari, RN</span>
-              <a class="rot-link" href="roteiro-janelas-serido.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- PARAÍBA ─────────────────────────────────────── -->
-    <div class="grupo">
-      <div class="grupo-titulo">Paraíba · Regional e Interestadual</div>
-      <div class="cat-grid">
-
-        <a class="rot-card" href="roteiro-areia.html">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-areia-card.jpg?v=20260713" alt="Areia, PB" loading="lazy" decoding="async">
-            <span class="rot-nivel n-regional">Regional</span>
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Civilização e Engenhos</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Areia, PB</span>
-              <span class="rot-link">Ver roteiro →</span>
-            </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Sentinelas do Mar</span>
+            <span class="dcard-meta">Natal, RN</span>
+            <span class="dcard-serie">Infantil · Fund. I</span>
+            <span class="dcard-link">Ver roteiro →</span>
           </div>
         </a>
 
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-bananeiras-card.jpg?v=20260713" alt="Bananeiras, PB" loading="lazy" decoding="async">
+        <a class="dcard" href="roteiro-mata-estrela.html" data-rotas="litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-mata-estrela-card.jpg?v=20260713" alt="Raízes da Mata Atlântica" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Raízes da Mata Atlântica</span>
+            <span class="dcard-meta">Baía Formosa, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-cajueiro-barreira.html" data-rotas="litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-cajueiro-barreira-card.jpg?v=20260713" alt="Cajueiro e Barreira" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Cajueiro e Barreira</span>
+            <span class="dcard-meta">Litoral Norte, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-pipa-falesias.html" data-rotas="litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-mata-estrela-card.jpg?v=20260713" alt="No Alto da Falésia" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">No Alto da Falésia</span>
+            <span class="dcard-meta">Pipa, RN</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20na%20Lagoa%20Guara%C3%ADras" target="_blank" rel="noopener" data-rotas="litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-cajueiro-barreira-card.jpg?v=20260713" alt="A Laguna que Trabalha" loading="lazy" decoding="async">
+            <span class="dev-badge">Em desenvolvimento</span>
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">A Laguna que Trabalha</span>
+            <span class="dcard-meta">Lagoa Guaraíras, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Solicitar →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-forte-ribeira.html" data-rotas="engenhos litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-forte-ribeira-card.jpg?v=20260713" alt="Raízes e Muralhas" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Raízes e Muralhas</span>
+            <span class="dcard-meta">Natal — Forte + Ribeira</span>
+            <span class="dcard-serie">Fund. I · Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-mossoro.html" data-rotas="sal cavernas">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-mossoro-card.jpg?v=20260713" alt="Sal, Sol e Liberdade" loading="lazy" decoding="async">
             <span class="rot-nivel n-regional">Regional</span>
           </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Entre Trilhos e Engenhos</span>
-              <span class="rot-serie">Fund. II</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Bananeiras, PB</span>
-              <a class="rot-link" href="roteiro-bananeiras.html">Ver roteiro →</a>
-            </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Sal, Sol e Liberdade</span>
+            <span class="dcard-meta">Mossoró, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
           </div>
-        </div>
+        </a>
 
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg?v=20260713" alt="João Pessoa, PB">
+        <a class="dcard" href="roteiro-galinhos.html" data-rotas="sal litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-minerio-barco-card.jpg?v=20260713" alt="Galinhos — Península do Sal" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Galinhos — Península do Sal</span>
+            <span class="dcard-meta">Galinhos, RN</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20nas%20Dunas%20do%20Rosado" target="_blank" rel="noopener" data-rotas="sal litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-minerio-dunas-card.jpg?v=20260713" alt="Dunas que Andam" loading="lazy" decoding="async">
+            <span class="dev-badge">Em desenvolvimento</span>
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Dunas que Andam</span>
+            <span class="dcard-meta">Dunas do Rosado, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Solicitar →</span>
+          </div>
+        </a>
+
+        <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20nas%20salinas%20de%20Areia%20Branca" target="_blank" rel="noopener" data-rotas="sal">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-mossoro-card.jpg?v=20260713" alt="Do Sal ao Prato" loading="lazy" decoding="async">
+            <span class="dev-badge">Em desenvolvimento</span>
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Do Sal ao Prato</span>
+            <span class="dcard-meta">Areia Branca, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Solicitar →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-martins.html" data-rotas="serras cavernas">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-martins-card.jpg?v=20260713" alt="No Topo da Serra" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">No Topo da Serra</span>
+            <span class="dcard-meta">Martins, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-portalegre.html" data-rotas="serras">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-serra-sao-bento-card.jpg?v=20260713" alt="A Serra que Pinga" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">A Serra que Pinga</span>
+            <span class="dcard-meta">Portalegre, RN</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-serra-sao-bento.html" data-rotas="serras">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-serra-sao-bento-card.jpg?v=20260713" alt="Serra de São Bento" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Serra de São Bento</span>
+            <span class="dcard-meta">Serra de São Bento, RN</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-araruna-serra-gameleiras.html" data-rotas="serras">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-araruna-card.jpg?v=20260713" alt="Serra das Gameleiras" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Serra das Gameleiras</span>
+            <span class="dcard-meta">Araruna, PB</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20Serra%20e%20Quilombo" target="_blank" rel="noopener" data-rotas="serras">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-serra-sao-bento-card.jpg?v=20260713" alt="Serra e Quilombo" loading="lazy" decoding="async">
+            <span class="dev-badge">Em desenvolvimento</span>
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Serra e Quilombo</span>
+            <span class="dcard-meta">Portalegre, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Solicitar →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-currais-novos.html" data-rotas="serido">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-currais-novos-card.jpg?v=20260713" alt="Coração de Metal do Seridó" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Coração de Metal do Seridó</span>
+            <span class="dcard-meta">Currais Novos, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-janelas-serido.html" data-rotas="serido">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-janelas-serido-card.jpg?v=20260713" alt="Janelas do Seridó" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Janelas do Seridó</span>
+            <span class="dcard-meta">Caicó + Acari, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-cerro-cora.html" data-rotas="serido">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-janelas-serido-card.jpg?v=20260713" alt="Onde Nasce o Potengi" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Onde Nasce o Potengi</span>
+            <span class="dcard-meta">Cerro Corá, RN</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20em%20Carna%C3%BAba%20dos%20Dantas" target="_blank" rel="noopener" data-rotas="serido cavernas fe">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-janelas-serido-card.jpg?v=20260713" alt="Pedra, Tinta e Fé" loading="lazy" decoding="async">
+            <span class="dev-badge">Em desenvolvimento</span>
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Pedra, Tinta e Fé</span>
+            <span class="dcard-meta">Carnaúba dos Dantas, RN</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Solicitar →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-lajedo-soledade.html" data-rotas="cavernas">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-martins-card.jpg?v=20260713" alt="O Sertão Já Foi Mar" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">O Sertão Já Foi Mar</span>
+            <span class="dcard-meta">Lajedo de Soledade — Apodi, RN</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-pedra-do-inga.html" data-rotas="cavernas">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-araruna-card.jpg?v=20260713" alt="O Enigma da Pedra do Ingá" loading="lazy" decoding="async">
             <span class="rot-nivel n-inter">Interestadual</span>
           </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Arrebol Paraibano</span>
-              <span class="rot-serie">Fund. II</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">João Pessoa, PB</span>
-              <a class="rot-link" href="roteiro-joao-pessoa.html">Ver roteiro →</a>
-            </div>
+          <div class="dcard-body">
+            <span class="dcard-name">O Enigma da Pedra do Ingá</span>
+            <span class="dcard-meta">Ingá, PB</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
           </div>
-        </div>
+        </a>
 
-      </div>
-    </div>
+        <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20na%20Furna%20Feia" target="_blank" rel="noopener" data-rotas="cavernas">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-mossoro-card.jpg?v=20260713" alt="Subterrâneos da Caatinga" loading="lazy" decoding="async">
+            <span class="dev-badge">Em desenvolvimento</span>
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Subterrâneos da Caatinga</span>
+            <span class="dcard-meta">Furna Feia — Baraúna, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Solicitar →</span>
+          </div>
+        </a>
 
-    <!-- PERNAMBUCO ──────────────────────────────────── -->
-    <div class="grupo">
-      <div class="grupo-titulo">Pernambuco · Interestadual</div>
-      <div class="cat-grid">
+        <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20em%20Felipe%20Guerra" target="_blank" rel="noopener" data-rotas="cavernas">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-martins-card.jpg?v=20260713" alt="Capital das Cavernas" loading="lazy" decoding="async">
+            <span class="dev-badge">Em desenvolvimento</span>
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Capital das Cavernas</span>
+            <span class="dcard-meta">Felipe Guerra, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Solicitar →</span>
+          </div>
+        </a>
 
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-recife-card.jpg?v=20260713" alt="Recife, PE" loading="lazy" decoding="async">
+        <a class="dcard" href="roteiro-areia.html" data-rotas="engenhos serras">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-areia-card.jpg?v=20260713" alt="Civilização e Engenhos" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Civilização e Engenhos</span>
+            <span class="dcard-meta">Areia, PB</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-bananeiras.html" data-rotas="engenhos serras">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-bananeiras-card.jpg?v=20260713" alt="Entre Trilhos e Engenhos" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Entre Trilhos e Engenhos</span>
+            <span class="dcard-meta">Bananeiras, PB</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-ceara-mirim.html" data-rotas="engenhos">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-ceara-mirim-card.jpg?v=20260713" alt="Terra do Açúcar e do Rio" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Terra do Açúcar e do Rio</span>
+            <span class="dcard-meta">Ceará-Mirim, RN</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-roliude.html" data-rotas="engenhos">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-roliude-card.jpg?v=20260713" alt="Roliude — Cinema do Sertão" loading="lazy" decoding="async">
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Roliude — Cinema do Sertão</span>
+            <span class="dcard-meta">Interior do RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-martires-cunhau-uruacu.html" data-rotas="fe engenhos">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-forte-ribeira-card.jpg?v=20260713" alt="Primeiros Santos do Brasil" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Primeiros Santos do Brasil</span>
+            <span class="dcard-meta">Cunhaú + Uruaçu, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20em%20Santa%20Cruz" target="_blank" rel="noopener" data-rotas="fe">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-janelas-serido-card.jpg?v=20260713" alt="A Cidade da Estátua" loading="lazy" decoding="async">
+            <span class="dev-badge">Em desenvolvimento</span>
+            <span class="rot-nivel n-regional">Regional</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">A Cidade da Estátua</span>
+            <span class="dcard-meta">Santa Cruz, RN</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Solicitar →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-barreira-do-inferno.html" data-rotas="ciencia">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-minerio-dunas-card.jpg?v=20260713" alt="Rumo ao Espaço" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Rumo ao Espaço</span>
+            <span class="dcard-meta">Barreira do Inferno, RN</span>
+            <span class="dcard-serie">9º ano · 1ª série EM</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20Do%20Cajueiro%20ao%20Foguete" target="_blank" rel="noopener" data-rotas="ciencia">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-minerio-dunas-card.jpg?v=20260713" alt="Do Cajueiro ao Foguete" loading="lazy" decoding="async">
+            <span class="dev-badge">Em desenvolvimento</span>
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Do Cajueiro ao Foguete</span>
+            <span class="dcard-meta">Pirangi + CLBI, RN</span>
+            <span class="dcard-serie">Fund. I · Fund. II</span>
+            <span class="dcard-link">Solicitar →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-chao-vivo-natal.html" data-rotas="ciencia">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-chao-vivo-natal-card.jpg?v=20260713" alt="O Chão Vivo de Natal" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">O Chão Vivo de Natal</span>
+            <span class="dcard-meta">Natal, RN</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-minerio-dunas.html" data-rotas="ciencia litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-minerio-dunas-card.jpg?v=20260713" alt="Da Terra à Célula" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Da Terra à Célula</span>
+            <span class="dcard-meta">Natal — Minérios + Dunas</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-minerio-barco.html" data-rotas="ciencia litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-minerio-barco-card.jpg?v=20260713" alt="Do Rio ao Mar" loading="lazy" decoding="async">
+            <span class="rot-nivel n-local">Local</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Do Rio ao Mar</span>
+            <span class="dcard-meta">Natal — Minérios + Barco</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-baia-da-traicao.html" data-rotas="povos litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-cajueiro-barreira-card.jpg?v=20260713" alt="Potiguara — O Povo que Deu Nome ao RN" loading="lazy" decoding="async">
             <span class="rot-nivel n-inter">Interestadual</span>
           </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Pernambuco Imortal</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Recife + Olinda, PE</span>
-              <a class="rot-link" href="roteiro-pernambuco-imortal.html">Ver roteiro →</a>
-            </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Potiguara — O Povo que Deu Nome ao RN</span>
+            <span class="dcard-meta">Baía da Traição, PB</span>
+            <span class="dcard-serie">Fund. I · Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
           </div>
-        </div>
+        </a>
 
+        <a class="dcard" href="roteiro-joao-pessoa.html" data-rotas="capitais litoral">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg?v=20260713" alt="Arrebol Paraibano" loading="lazy" decoding="async">
+            <span class="rot-nivel n-inter">Interestadual</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Arrebol Paraibano</span>
+            <span class="dcard-meta">João Pessoa, PB</span>
+            <span class="dcard-serie">Fund. II</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-pernambuco-imortal.html" data-rotas="capitais engenhos">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-recife-card.jpg?v=20260713" alt="Pernambuco Imortal" loading="lazy" decoding="async">
+            <span class="rot-nivel n-inter">Interestadual</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Pernambuco Imortal</span>
+            <span class="dcard-meta">Recife + Olinda, PE</span>
+            <span class="dcard-serie">Fund. II · Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
+
+        <a class="dcard" href="roteiro-marco-zero-ondas.html" data-rotas="capitais">
+          <div class="dcard-img">
+            <img src="assets/images/cinematic/catalogo-fortaleza-beach-park-card.jpg?v=20260713" alt="Do Marco Zero às Ondas" loading="lazy" decoding="async">
+            <span class="rot-nivel n-pernoite">Pernoite</span>
+          </div>
+          <div class="dcard-body">
+            <span class="dcard-name">Do Marco Zero às Ondas</span>
+            <span class="dcard-meta">Fortaleza, CE</span>
+            <span class="dcard-serie">Médio</span>
+            <span class="dcard-link">Ver roteiro →</span>
+          </div>
+        </a>
       </div>
     </div>
-
-    <!-- CEARÁ ─────────────────────────────────────────── -->
-    <div class="grupo">
-      <div class="grupo-titulo">Ceará · Expedição com Pernoite</div>
-      <div class="cat-grid">
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-fortaleza-beach-park-card.jpg?v=20260713" alt="Fortaleza + Beach Park, CE" loading="lazy" decoding="async">
-            <span class="rot-nivel n-pernoite">Pernoite · 2 dias</span>
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Do Marco Zero às Ondas</span>
-              <span class="rot-serie">Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Fortaleza + Beach Park, CE</span>
-              <a class="rot-link" href="roteiro-marco-zero-ondas.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- EM DESENVOLVIMENTO ───────────────────────────── -->
-    <div class="grupo">
-      <div class="grupo-titulo">Novos roteiros com página · Em validação comercial</div>
-      <div class="cat-grid">
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-araruna-card.jpg?v=20260713" alt="Araruna, PB">
-            
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Serra das Gameleiras</span>
-              <span class="rot-serie">Fund. II</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Araruna + Serra, PB</span>
-              <a class="rot-link" href="roteiro-araruna-serra-gameleiras.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-cajueiro-barreira-card.jpg?v=20260713" alt="Cajueiro, RN">
-            
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Cajueiro e Barreira</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Litoral Norte, RN</span>
-              <a class="rot-link" href="roteiro-cajueiro-barreira.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-roliude-card.jpg?v=20260713" alt="Roliude, RN">
-            
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Roliude — Cinema do Sertão</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Interior do RN</span>
-              <a class="rot-link" href="roteiro-roliude.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-minerio-barco-card.jpg?v=20260713" alt="Museu de Minérios, Natal">
-            
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Do Rio ao Mar</span>
-              <span class="rot-serie">Fund. II</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Natal — Minérios + Barco</span>
-              <a class="rot-link" href="roteiro-minerio-barco.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-minerio-dunas-card.jpg?v=20260713" alt="Parque das Dunas e Museu de Minérios, Natal">
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Da Terra à Célula</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Natal — Minérios + Dunas</span>
-              <a class="rot-link" href="roteiro-minerio-dunas.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-martins-card.jpg?v=20260713" alt="Martins, RN">
-            
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">No Topo da Serra</span>
-              <span class="rot-serie">Fund. II · Médio</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Martins, RN</span>
-              <a class="rot-link" href="roteiro-martins.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="rot-card rot-card-div">
-          <div class="rot-img-wrap">
-            <img src="assets/images/cinematic/catalogo-serra-sao-bento-card.jpg?v=20260713" alt="Serra de São Bento, RN">
-            
-          </div>
-          <div class="rot-body">
-            <div class="rot-name-row">
-              <span class="rot-name">Serra de São Bento</span>
-              <span class="rot-serie">Fund. II</span>
-            </div>
-            <div class="rot-dest-row">
-              <span class="rot-dest">Serra de São Bento, RN</span>
-              <a class="rot-link" href="roteiro-serra-sao-bento.html">Ver roteiro →</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
   </div><!-- /.wrap -->
 
 
@@ -731,12 +941,12 @@
           </div>
         </div>
         <div class="footer-col">
-          <h5>Roteiros</h5>
+          <h5>Rotas</h5>
           <ul>
-            <li><a href="#">Natal e Região</a></li>
-            <li><a href="#">Interior do RN</a></li>
-            <li><a href="#">Paraíba</a></li>
-            <li><a href="#">Pernambuco</a></li>
+            <li><a href="#rotas" data-rota-link="litoral">Litoral e Mar</a></li>
+            <li><a href="#rotas" data-rota-link="serras">Serras</a></li>
+            <li><a href="#rotas" data-rota-link="serido">Seridó · Geoparque</a></li>
+            <li><a href="#rotas" data-rota-link="ciencia">Ciência e Espaço</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -782,6 +992,48 @@
       a.addEventListener('click', function () {
         navLinks.classList.remove('open');
         burger.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    // Filtro de rotas: destaca os roteiros da rota selecionada
+    var rotaNomes = {
+      litoral: 'Rota do Litoral e do Mar', sal: 'Rota do Sal e do Vento',
+      serras: 'Rota das Serras', serido: 'Rota do Seridó · Geoparque UNESCO',
+      cavernas: 'Rota das Cavernas e da Pré-História', engenhos: 'Rota dos Engenhos e da História',
+      fe: 'Rota da Fé e da Memória', ciencia: 'Rota da Ciência e do Espaço',
+      povos: 'Rota dos Povos Originários', capitais: 'Rota das Capitais'
+    };
+    var rotaBtns = document.querySelectorAll('.rota-btn');
+    var rotaLinks = document.querySelectorAll('[data-rota-link]');
+    var dcards = document.querySelectorAll('.dcard');
+    var gradeTitulo = document.getElementById('gradeTitulo');
+    var gradeSub = document.getElementById('gradeSub');
+
+    function filtrarRota(rota) {
+      rotaBtns.forEach(function (b) { b.classList.toggle('active', b.dataset.rota === rota); });
+      dcards.forEach(function (c) {
+        if (rota === 'all') { c.classList.remove('hi', 'lo'); return; }
+        var pertence = (c.dataset.rotas || '').split(' ').indexOf(rota) !== -1;
+        c.classList.toggle('hi', pertence);
+        c.classList.toggle('lo', !pertence);
+      });
+      if (rota === 'all') {
+        gradeTitulo.textContent = 'Todos os roteiros';
+        gradeSub.textContent = 'Selecione uma rota acima para destacar os roteiros do tema. Um mesmo roteiro pode aparecer em mais de uma rota.';
+      } else {
+        gradeTitulo.textContent = rotaNomes[rota];
+        gradeSub.textContent = 'Roteiros em destaque pertencem a esta rota. Os demais continuam disponíveis abaixo, esmaecidos.';
+      }
+    }
+
+    rotaBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        filtrarRota(btn.dataset.rota);
+      });
+    });
+    rotaLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        filtrarRota(link.dataset.rotaLink);
       });
     });
   </script>
