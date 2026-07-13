@@ -225,17 +225,24 @@
     .quick-panel {
       margin-top: 1rem;
       display: grid; gap: .75rem;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
     @media (min-width: 760px) { .quick-panel { grid-template-columns: repeat(4, 1fr); } }
     .quick-item {
       background: #fff; border: 1px solid rgba(0,0,0,.06);
-      border-radius: 12px; padding: 1rem;
+      border-radius: 12px; padding: .8rem;
       box-shadow: 0 4px 18px rgba(0,0,0,.05);
+      min-height: 92px;
     }
-    .quick-item i { color: var(--cobre); margin-bottom: .55rem; }
-    .quick-label { color: #aaa; font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
-    .quick-value { color: var(--marinho); font-weight: 900; margin-top: .12rem; font-size: .94rem; }
+    .quick-item i { color: var(--cobre); margin-bottom: .42rem; font-size: .95rem; }
+    .quick-label { color: #aaa; font-size: .64rem; font-weight: 900; text-transform: uppercase; letter-spacing: .7px; }
+    .quick-value { color: var(--marinho); font-weight: 900; margin-top: .1rem; font-size: .84rem; line-height: 1.2; }
+    @media (min-width: 760px) {
+      .quick-item { padding: 1rem; min-height: auto; }
+      .quick-item i { margin-bottom: .55rem; font-size: 1rem; }
+      .quick-label { font-size: .72rem; letter-spacing: 1px; }
+      .quick-value { font-size: .94rem; }
+    }
 
     .route-summary-band {
       padding: 0 0 4rem;
@@ -667,8 +674,8 @@
       section { padding: 3.15rem 0; }
       .route-summary-band { padding-bottom: 2.7rem; }
       .prologue { padding: 2.55rem 0; }
-      .quick-panel { margin-top: .85rem; gap: .6rem; }
-      .quick-item { padding: .85rem; }
+      .quick-panel { margin-top: .85rem; gap: .55rem; }
+      .quick-item { padding: .72rem; }
       .change-grid {
         display: flex;
         gap: .85rem;
