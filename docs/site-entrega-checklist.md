@@ -25,6 +25,13 @@ Use a coluna `Status` na planilha com: `Pendente`, `Em andamento`, `Revisar`, `A
 | CAT-04 | Media | Catalogo | Destacados sobem na rota selecionada | Roteiros em destaque aparecem primeiro dentro do grupo ativo |
 | CAT-05 | Alta | Catalogo | Revisar todos os cards | Todos tem imagem, titulo, local, segmento, selo e link |
 | CAT-06 | Media | Catalogo | Revisar cards em desenvolvimento | Dev badge claro e sem parecer erro visual |
+| NATAL-01 | Alta | Natal e Grande Natal | Definir Chao Vivo de Natal como rota local/linha tematica | Catalogo e documentos tratam Chao Vivo como guarda-chuva de mini roteiros combinaveis em Natal, sem duplicar o mesmo roteiro |
+| NATAL-02 | Alta | Natal e Grande Natal | Listar mini roteiros possiveis de Natal e Grande Natal | Existe uma lista com atrativos, combinacoes possiveis, segmento escolar indicado e necessidade de pesquisa |
+| NATAL-03 | Alta | Natal e Grande Natal | Separar mini roteiros em prontos, combinaveis e precisam pesquisa | Cada ideia fica classificada para orientar o que entra no catalogo agora e o que vira descoberta futura |
+| NATAL-04 | Alta | Natal e Grande Natal | Resolver duplicidade de Da Terra a Celula | Roteiro sai do catalogo ou ganha recorte proprio sem repetir Parque das Dunas + Museu de Minerios |
+| NATAL-05 | Alta | Natal e Grande Natal | Definir quais mini roteiros viram cards no catalogo | Apenas roteiros com paradas claras, destino real e proposta pedagogica entram como card publicado |
+| NATAL-06 | Alta | Natal e Grande Natal | Atualizar catalogo com a nova organizacao de Natal | Cards de Natal aparecem agrupados de forma coerente dentro da rota local/linha tematica definida |
+| NATAL-07 | Media | Natal e Grande Natal | Desenvolver primeiro lote de paginas da Rota Chao Vivo de Natal | Primeiros roteiros escolhidos usam o padrao da pagina piloto, com onde e, jornada, BNCC, incluso, depoimentos e CTA |
 | ROT-00 | Alta | Roteiros | Finalizar pagina piloto O Chao Vivo de Natal | Pagina aprovada em desktop e mobile, com conteudo completo, fotos individuais, BNCC, jornada, incluso, depoimentos, CTA e footer |
 | ROT-01 | Alta | Roteiros | Replicar a estrutura aprovada para todos os roteiros | Todas as paginas roteiro-*.html usam a mesma estrutura visual e as mesmas secoes da pagina piloto |
 | ROT-01A | Alta | Roteiros | Comparar cada roteiro com a pagina piloto | Nenhum roteiro fica sem secao obrigatoria, sem CTA, sem card O roteiro ou com footer antigo |
