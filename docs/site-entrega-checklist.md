@@ -19,6 +19,12 @@ Use a coluna `Status` na planilha com: `Pendente`, `Em andamento`, `Revisar`, `A
 | HOME-03 | Media | Home | Revisar contagem de roteiros | Numero exibido bate com catalogo publicado |
 | HOME-04 | Media | Home | Revisar Diario de Campo | Posts escolhidos, capas e textos coerentes com Instagram |
 | HOME-05 | Media | Home | Revisar CTA final | Texto curto, botao claro e responsivo |
+| DESIGN-01 | Alta | Design | Definir sistema visual premium editorial Azimute | Direcao visual combina base Samsung, menos cards, fotos maiores, ficha tecnica fina e calor pedagogico Azimute |
+| DESIGN-02 | Alta | Design | Redesenhar home com nova linguagem | Home deixa de parecer template IA, usa hero editorial, secoes com divisorias finas, cards reduzidos e CTA claro |
+| DESIGN-03 | Alta | Design | Redesenhar roteiro piloto Chao Vivo | Pagina piloto usa nova linguagem sem perder ficha tecnica, jornada, incluso, BNCC, depoimentos e CTA |
+| DESIGN-04 | Alta | Design | Validar mobile da nova linguagem | Home e Chao Vivo nao geram overflow, nao espremem texto e parecem desenhados para celular |
+| DESIGN-05 | Alta | Design | Adaptar catalogo ao novo padrao | Catalogo usa vitrine editorial e filtros sem cards brancos vazios ou excesso de sombra |
+| DESIGN-06 | Alta | Design | Replicar padrao para demais roteiros | Todas as paginas roteiro seguem a linguagem premium editorial apos aprovar piloto |
 | CAT-01 | Alta | Catalogo | Confirmar total final de roteiros | Quantidade do catalogo bate com paginas disponiveis |
 | CAT-02 | Alta | Catalogo | Revisar rotas tematicas como subtitulos | Cada roteiro fica dentro de uma rota coerente |
 | CAT-03 | Alta | Catalogo | Revisar filtros de rota | Usuario alterna rotas sem precisar voltar manualmente ao topo |
