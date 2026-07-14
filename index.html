@@ -273,6 +273,8 @@
 
     /* ── ROTEIROS (carousel) ───────────────────────────── */
     /* Horizontal scroll-snap — mobile-first */
+    .roteiros-sec { padding-top: 3rem; }
+    @media (min-width: 768px) { .roteiros-sec { padding-top: 4rem; } }
     .rot-head-row {
       display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.75rem;
     }
@@ -770,7 +772,7 @@
 
   <!-- ROTEIROS ─────────────────────────────────────── -->
   <!-- Carousel: scroll-snap horizontal, setas no desktop, swipe no mobile -->
-  <section class="sec" id="roteiros" style="padding-top:0;">
+  <section class="sec roteiros-sec" id="roteiros">
     <div class="wrap">
       <div class="rot-head-row">
         <div>
@@ -1148,7 +1150,7 @@
       </div>
       <div class="footer-bottom">
         <p>© 2026 Azimute Educatur — Hub Azimute · Natal/RN</p>
-        <p>Expedições Pedagógicas alinhadas à BNCC</p><p><a href="assets/images/CREDITOS-FOTOS.md">Fotos: Wikimedia Commons (créditos)</a></p>
+        <p>Expedições Pedagógicas alinhadas à BNCC</p>
       </div>
     </div>
   </footer>

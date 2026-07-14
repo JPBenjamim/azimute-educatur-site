@@ -25,7 +25,9 @@ Use a coluna `Status` na planilha com: `Pendente`, `Em andamento`, `Revisar`, `A
 | CAT-04 | Media | Catalogo | Destacados sobem na rota selecionada | Roteiros em destaque aparecem primeiro dentro do grupo ativo |
 | CAT-05 | Alta | Catalogo | Revisar todos os cards | Todos tem imagem, titulo, local, segmento, selo e link |
 | CAT-06 | Media | Catalogo | Revisar cards em desenvolvimento | Dev badge claro e sem parecer erro visual |
-| ROT-01 | Alta | Roteiros | Garantir que todos sigam o modelo de Areia | Estrutura, secoes e padrao visual iguais ao modelo aprovado |
+| ROT-00 | Alta | Roteiros | Finalizar pagina piloto O Chao Vivo de Natal | Pagina aprovada em desktop e mobile, com conteudo completo, fotos individuais, BNCC, jornada, incluso, depoimentos, CTA e footer |
+| ROT-01 | Alta | Roteiros | Replicar a estrutura aprovada para todos os roteiros | Todas as paginas roteiro-*.html usam a mesma estrutura visual e as mesmas secoes da pagina piloto |
+| ROT-01A | Alta | Roteiros | Comparar cada roteiro com a pagina piloto | Nenhum roteiro fica sem secao obrigatoria, sem CTA, sem card O roteiro ou com footer antigo |
 | ROT-02 | Alta | Roteiros | Cada roteiro responde onde e | Pagina informa cidade, pontos visitados e paradas principais |
 | ROT-03 | Alta | Roteiros | Revisar card O roteiro | Destino, duracao, saida/retorno, minimo de alunos e formato presentes |
 | ROT-04 | Alta | Roteiros | Revisar prologo local | Mini resumo historico, cultural ou geografico sem texto generico |
@@ -38,7 +40,7 @@ Use a coluna `Status` na planilha com: `Pendente`, `Em andamento`, `Revisar`, `A
 | IMG-01 | Alta | Imagens | Remover fotos repetidas indevidas | Imagens repetidas so ficam quando houver intencao visual |
 | IMG-02 | Alta | Imagens | Trocar colagens dentro de cards | Cards de jornada usam fotos individuais, nao mosaicos |
 | IMG-03 | Media | Imagens | Padronizar proporcao das imagens | Cards, hero, carrosseis e jornada mantem proporcoes consistentes |
-| IMG-04 | Media | Imagens | Conferir creditos/licencas | Imagens externas tem credito em arquivo ou rodape |
+| IMG-04 | Media | Imagens | Substituir imagens provisiorias por fotos finais | Fotos finais entram sem credito Wikimedia no rodape; creditos/licencas ficam controlados em documento interno se necessario |
 | COPY-01 | Alta | Conteudo | Revisar tom Azimute | Texto pedagogico, concreto e seguro, sem cara de turismo generico |
 | COPY-02 | Alta | Conteudo | Remover textos de legenda/mockup | Nenhum trecho parece comentario interno ou placeholder |
 | COPY-03 | Media | Conteudo | Evitar promessas vagas | Cada roteiro mostra paradas, temas e resultado esperado |
