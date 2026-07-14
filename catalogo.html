@@ -35,6 +35,7 @@
     .nav-burger { background: none; border: 1.5px solid #ddd; color: var(--marinho); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; position: relative; z-index: 102; }
     .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: rgba(255,255,255,.98); justify-content: center; align-items: center; gap: 2.5rem; z-index: 99; list-style: none; }
     .nav-links.open a { font-size: 1.35rem; color: var(--marinho); text-decoration: none; font-weight: 600; }
+    body.menu-open { overflow: hidden; }
     @media (min-width: 900px) {
       #nav { padding: 1.5rem 0; }
       .logo-name { font-size: 1.15rem; }
@@ -345,7 +346,7 @@
           </a>
         </li>
       </ul>
-      <button class="nav-burger" id="burger" aria-label="Menu">
+      <button class="nav-burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -358,7 +359,7 @@
       <div class="hero-cat-inner">
         <a class="hero-cat-back" href="index.html">← Início</a>
         <h1 class="hero-cat-h1">Catálogo de Roteiros de Descoberta</h1>
-        <p class="hero-cat-p">38 destinos organizados por rotas temáticas no RN e Nordeste. Cada um com objetivo curricular mapeado, BNCC alinhada e tudo incluso para a escola só aparecer.</p>
+        <p class="hero-cat-p">29 roteiros publicados por rotas temáticas no RN e Nordeste. Cada um com objetivo curricular mapeado, BNCC alinhada e tudo incluso para a escola só aparecer.</p>
       </div>
     </div>
   </section>
@@ -994,14 +995,18 @@
     var burger = document.getElementById('burger');
     var navLinks = document.getElementById('navLinks');
     burger.addEventListener('click', function () {
-      navLinks.classList.toggle('open');
-      burger.innerHTML = navLinks.classList.contains('open')
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
+      var isOpen = navLinks.classList.toggle('open');
+      document.body.classList.toggle('menu-open', isOpen);
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      burger.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      burger.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
     });
     navLinks.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         navLinks.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Abrir menu');
         burger.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });

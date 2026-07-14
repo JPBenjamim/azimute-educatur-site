@@ -72,6 +72,7 @@
       gap: 2.5rem; z-index: 99; list-style: none;
     }
     .nav-links.open a { font-size: 1.35rem; color: var(--marinho); text-decoration: none; font-weight: 600; }
+    body.menu-open { overflow: hidden; }
     /* Desktop nav */
     @media (min-width: 900px) {
       #nav { padding: 1.5rem 0; }
@@ -603,7 +604,7 @@
           </a>
         </li>
       </ul>
-      <button class="nav-burger" id="burger" aria-label="Menu">
+      <button class="nav-burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -1167,14 +1168,18 @@
     var burger = document.getElementById('burger');
     var navLinks = document.getElementById('navLinks');
     burger.addEventListener('click', function () {
-      navLinks.classList.toggle('open');
-      burger.innerHTML = navLinks.classList.contains('open')
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
+      var isOpen = navLinks.classList.toggle('open');
+      document.body.classList.toggle('menu-open', isOpen);
+      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      burger.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+      burger.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
     });
     navLinks.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () {
         navLinks.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Abrir menu');
         burger.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });
