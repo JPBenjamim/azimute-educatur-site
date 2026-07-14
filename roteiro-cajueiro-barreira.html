@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
@@ -798,7 +798,242 @@ footer {
       .footer-col ul { gap: .28rem; }
       .footer-bottom { padding-top: .8rem; }
     }
+
+    /* Premium route editorial - Azimute 2026 */
+    :root {
+      --dark:#0D2246;
+      --black:#1a1a1a;
+      --white:#fff;
+      --off:#f4f4f4;
+      --line:#e2e2e2;
+      --gray:#686a70;
+      --accent:#DF6951;
+      --marinho: var(--dark);
+      --cobre: var(--accent);
+      --verde:#2d7a62;
+    }
+    body { color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 1400px; padding-left: 32px; padding-right: 32px; }
+    @media (max-width: 768px) { .wrap { padding-left: 20px; padding-right: 20px; } }
+
+    .nav, #nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: none;
+    }
+    .nav-inner, .nav-wrap { min-height: 64px; height: 64px; }
+    .logo { display: grid; line-height: 1.05; }
+    .logo-name { font-size: 16px; font-weight: 900; letter-spacing: -.02em; color: var(--dark); }
+    .logo-sub { font-size: 8px; font-weight: 900; letter-spacing: 3px; color: var(--accent); }
+    .nav-links a { color: var(--black); font-size: 13px; font-weight: 600; }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; box-shadow: none !important; font-weight: 800 !important; padding: 10px 20px !important; }
+    .menu-toggle, .nav-burger { background: var(--white); border: 1px solid var(--line); border-radius: 8px; color: var(--dark); }
+
+    .eyebrow, .breadcrumb, .breadcrumb a {
+      color: var(--gray);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+    .hero {
+      padding: 88px 0 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-grid { gap: clamp(28px, 5vw, 64px); }
+    @media (min-width: 940px) { .hero-grid { grid-template-columns: .92fr 1.08fr; } }
+    .hero-h1 {
+      color: var(--black);
+      font-style: normal;
+      font-size: clamp(2.45rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -.035em;
+      max-width: 980px;
+    }
+    .hero-lead {
+      color: var(--gray);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.6;
+      max-width: 680px;
+      font-weight: 500;
+    }
+    .meta span {
+      background: var(--white);
+      border: 1px solid var(--line);
+      color: var(--dark);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 13px;
+    }
+    .btn {
+      min-height: 46px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 8px 24px rgba(223,105,81,.24);
+      font-size: 14px;
+      font-weight: 800;
+      padding: 0 24px;
+    }
+    .btn-secondary { background: var(--white); color: var(--dark); border: 1px solid var(--line); box-shadow: none; }
+    .hero-collage {
+      border-radius: 0;
+      box-shadow: none;
+      background: var(--dark);
+      gap: 6px;
+    }
+    .hero-collage .photo, .photo, .timeline-photo { background: var(--off); }
+    .hero-collage img, .photo img, .timeline-photo img { filter: saturate(1.02) contrast(1.04); }
+
+    section { padding: 82px 0; }
+    .sec-head { margin-bottom: 34px; }
+    .sec-h, .prologue h2, .timeline-body h3, .cta-box h2 {
+      color: var(--black);
+      font-style: normal;
+      font-weight: 900;
+      letter-spacing: -.035em;
+      line-height: 1.08;
+    }
+    .sec-h { font-size: clamp(1.8rem, 3.6vw, 2.8rem); }
+    .sec-p, .prologue p, .timeline-body p, .route-pitch p, .cta-box p {
+      color: var(--gray);
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .route-summary-band, .prologue, .transform { background: var(--white); }
+    .prologue-box { border-left: 0; padding-left: 0; max-width: 920px; }
+    .prologue h2 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); }
+
+    .quick-panel, .change-grid, .info-grid, .testimonial-grid { gap: 0; }
+    .quick-item, .change-card, .info-box, .testimonial-card, .testimonial-stack {
+      border-radius: 0;
+      box-shadow: none;
+      border: 0;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+    }
+    .quick-item { padding: 22px 0; }
+    .change-card { padding: 30px 28px; min-height: 0; }
+    .change-num {
+      color: #d4d4d4;
+      opacity: .7;
+      font-style: normal;
+      font-weight: 300;
+    }
+    .change-card h3, .info-box h3, .testimonial-name, .ops-item strong {
+      color: var(--dark);
+      font-weight: 900;
+      letter-spacing: -.01em;
+    }
+    .change-card p, .check-list li, .ops-item span, .testimonial-quote, .testimonial-role {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .journey { background: #fafafa; }
+    .route-timeline { gap: 0; }
+    .timeline-stop {
+      border-radius: 0;
+      box-shadow: none;
+      border: 0;
+      border-top: 1px solid var(--line);
+      background: transparent;
+    }
+    @media (min-width: 860px) { .timeline-stop { min-height: 360px; } }
+    .timeline-body { padding: clamp(28px, 5vw, 56px); }
+    .timeline-kicker { color: var(--accent); font-size: 12px; font-weight: 900; letter-spacing: .07em; }
+    .timeline-tags span, .bncc-list span {
+      background: #f6f6f6;
+      color: var(--dark);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 6px 10px;
+    }
+    .photo-strip { background: transparent; box-shadow: none; padding: 0; gap: 10px; }
+    .photo-strip .photo { border-radius: 0; }
+
+    .info-box { padding: 28px 0; overflow: visible; }
+    .bncc-skill {
+      border-radius: 0;
+      box-shadow: none;
+      border: 0;
+      border-left: 3px solid var(--accent);
+      background: #fafafa;
+    }
+    .bncc-code { color: var(--accent); font-weight: 900; }
+    .bncc-desc { color: var(--dark); }
+
+    .testimonials { background: var(--white); }
+    .testimonial-stack { padding: 28px 0; }
+    .testimonial-stack::before { display: none; }
+
+    .cta { padding: 40px 0 72px; }
+    .cta-box {
+      border-radius: 0;
+      background: var(--dark);
+      box-shadow: none;
+      color: var(--white);
+    }
+    .cta-box h2 { color: var(--white); }
+    .cta-box p { color: rgba(255,255,255,.72); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 56px 0 28px;
+      color: var(--gray);
+      background: var(--white);
+    }
+    .footer-grid { gap: 32px; margin-bottom: 40px; }
+    @media (min-width: 900px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+    .footer-logo-name { font-size: 15px; font-weight: 900; color: var(--dark); }
+    .footer-logo-sub { font-size: 8px; font-weight: 900; letter-spacing: 3px; color: var(--accent); }
+    .footer-desc, .footer-col a, .footer-bottom p { color: var(--gray); }
+    .footer-col h5 { color: var(--gray); font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+    .footer-bottom { border-top: 1px solid var(--line); }
+
+    @media (max-width: 859px) {
+      body { padding-bottom: 74px; }
+      .hero { padding: 48px 0 42px; }
+      section { padding: 56px 0; }
+      .hero-collage { border-radius: 0; }
+      .change-grid, .route-timeline, .bncc-skills, .testimonial-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow: visible;
+        gap: 0;
+        padding: 0;
+      }
+      .change-card, .timeline-stop, .bncc-skill, .testimonial-grid .testimonial-stack {
+        flex: initial;
+        scroll-snap-align: initial;
+      }
+      .timeline-photo { min-height: 220px; }
+      .photo-strip { display: grid; overflow-x: auto; grid-template-columns: repeat(5, minmax(130px, 1fr)); }
+      .cta { padding: 32px 0 48px; }
+      .cta-box { border-radius: 0; padding: 28px 22px; }
+      footer { padding: 34px 0 24px; }
+    }
   </style>
+  <link rel="canonical" href="https://jpbenjamim.github.io/azimute-educatur-site/roteiro-cajueiro-barreira.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Gigantes do Litoral e Ciência Aeroespacial | Azimute Educatur">
+  <meta property="og:description" content="Uma rota entre natureza costeira, escalas de grandeza e ci&#234;ncia aeroespacial no litoral sul potiguar.">
+  <meta property="og:url" content="https://jpbenjamim.github.io/azimute-educatur-site/roteiro-cajueiro-barreira.html">
+  <meta property="og:image" content="https://jpbenjamim.github.io/azimute-educatur-site/assets/images/cinematic/catalogo-cajueiro-barreira-hero.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Azimute Educatur">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gigantes do Litoral e Ciência Aeroespacial | Azimute Educatur">
+  <meta name="twitter:description" content="Uma rota entre natureza costeira, escalas de grandeza e ci&#234;ncia aeroespacial no litoral sul potiguar.">
+  <meta name="twitter:image" content="https://jpbenjamim.github.io/azimute-educatur-site/assets/images/cinematic/catalogo-cajueiro-barreira-hero.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"Gigantes do Litoral e Ciência Aeroespacial","description":"Uma rota entre natureza costeira, escalas de grandeza e ci&#234;ncia aeroespacial no litoral sul potiguar.","url":"https://jpbenjamim.github.io/azimute-educatur-site/roteiro-cajueiro-barreira.html","image":"https://jpbenjamim.github.io/azimute-educatur-site/assets/images/cinematic/catalogo-cajueiro-barreira-hero.jpg","touristType":["Escolas","Famílias","Turismo educativo"],"address":{"@type":"PostalAddress","addressRegion":"RN","addressLocality":"Parnamirim","addressCountry":"BR"}}</script>
 </head>
 <body>
   <nav class="nav">
