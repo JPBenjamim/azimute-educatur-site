@@ -644,6 +644,22 @@
       footer { padding: 34px 0 24px; }
       .footer-desc, .footer-socials { display: none; }
     }
+
+    @media (max-width: 680px) {
+      .dcat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 14px;
+      }
+      .dcard.hi {
+        grid-column: span 2;
+      }
+      .dcard.hi .dcard-name { font-size: 20px; }
+      .dcard-name { font-size: 14px; }
+      .dcard-meta, .dcard-serie, .dcard-link { font-size: 12px; }
+      .dcard-body { padding-top: 10px; }
+      .dcard-img img { aspect-ratio: 1 / 1; }
+      .dcard.hi .dcard-img img { aspect-ratio: 16 / 10; }
+    }
   </style>
   <link rel="canonical" href="https://jpbenjamim.github.io/azimute-educatur-site/catalogo.html">
   <meta property="og:type" content="website">
@@ -751,7 +767,7 @@
       <div class="dcat-grid" id="dcatGrid">
         <a class="dcard" href="roteiro-aquario-natal.html" data-rotas="litoral ciencia">
           <div class="dcard-img">
-            <img src="assets/images/cinematic/catalogo-aquario-natal-card.jpg?v=20260713" alt="Sentinelas do Mar" loading="lazy" decoding="async">
+            <img src="assets/images/cinematic/catalogo-aquario-natal-card.jpg?v=20260713" alt="Sentinelas do Mar" loading="eager" decoding="async">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="dcard-body">
@@ -764,7 +780,7 @@
 
         <a class="dcard" href="roteiro-mata-estrela.html" data-rotas="litoral">
           <div class="dcard-img">
-            <img src="assets/images/cinematic/catalogo-mata-estrela-card.jpg?v=20260713" alt="Raízes da Mata Atlântica" loading="lazy" decoding="async">
+            <img src="assets/images/cinematic/catalogo-mata-estrela-card.jpg?v=20260713" alt="Raízes da Mata Atlântica" loading="eager" decoding="async">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="dcard-body">
@@ -777,7 +793,7 @@
 
         <a class="dcard" href="roteiro-cajueiro-barreira.html" data-rotas="litoral ciencia">
           <div class="dcard-img">
-            <img src="assets/images/cinematic/catalogo-cajueiro-barreira-card.jpg?v=20260713" alt="Cajueiro e Barreira" loading="lazy" decoding="async">
+            <img src="assets/images/cinematic/catalogo-cajueiro-barreira-card.jpg?v=20260713" alt="Cajueiro e Barreira" loading="eager" decoding="async">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="dcard-body">
@@ -790,7 +806,7 @@
 
         <a class="dcard" href="roteiro-pipa-falesias.html" data-rotas="litoral">
           <div class="dcard-img">
-            <img src="assets/images/cinematic/catalogo-mata-estrela-card.jpg?v=20260713" alt="No Alto da Falésia" loading="lazy" decoding="async">
+            <img src="assets/images/cinematic/catalogo-mata-estrela-card.jpg?v=20260713" alt="No Alto da Falésia" loading="eager" decoding="async">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="dcard-body">
@@ -803,7 +819,7 @@
 
         <a class="dcard dcard-dev" href="https://wa.me/5584999650530?text=Quero%20saber%20mais%20sobre%20a%20expedi%C3%A7%C3%A3o%20na%20Lagoa%20Guara%C3%ADras" target="_blank" rel="noopener" data-rotas="litoral">
           <div class="dcard-img">
-            <img src="assets/images/cinematic/catalogo-cajueiro-barreira-card.jpg?v=20260713" alt="A Laguna que Trabalha" loading="lazy" decoding="async">
+            <img src="assets/images/cinematic/catalogo-cajueiro-barreira-card.jpg?v=20260713" alt="A Laguna que Trabalha" loading="eager" decoding="async">
             <span class="dev-badge">Em desenvolvimento</span>
             <span class="rot-nivel n-local">Local</span>
           </div>
@@ -817,7 +833,7 @@
 
         <a class="dcard" href="roteiro-forte-ribeira.html" data-rotas="engenhos litoral">
           <div class="dcard-img">
-            <img src="assets/images/cinematic/catalogo-forte-ribeira-card.jpg?v=20260713" alt="Raízes e Muralhas" loading="lazy" decoding="async">
+            <img src="assets/images/cinematic/catalogo-forte-ribeira-card.jpg?v=20260713" alt="Raízes e Muralhas" loading="eager" decoding="async">
             <span class="rot-nivel n-local">Local</span>
           </div>
           <div class="dcard-body">
