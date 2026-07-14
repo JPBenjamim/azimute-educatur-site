@@ -267,7 +267,8 @@
     }
     .momento-quote {
       font-size: clamp(1.5rem, 4.2vw, 2.6rem); font-weight: 900; font-style: italic;
-      line-height: 1.25; max-width: 760px; letter-spacing: -.02em;
+      line-height: 1.25; max-width: 760px; letter-spacing: 0;
+      overflow-wrap: anywhere;
     }
 
     /* ── ROTEIROS (carousel) ───────────────────────────── */
@@ -304,16 +305,23 @@
       scroll-snap-align: start;
       background: #fff; border-radius: 10px; overflow: hidden;
       box-shadow: 0 4px 18px rgba(0,0,0,.09);
-      display: block; color: inherit; text-decoration: none;
+      display: flex; flex-direction: column;
+      color: inherit; text-decoration: none;
       transition: transform .25s, box-shadow .25s;
     }
     @media (min-width: 600px)  { .rot-card { flex: 0 0 calc(50% - .5rem); } }
     @media (min-width: 960px)  { .rot-card { flex: 0 0 calc(33.333% - .835rem); } }
     .rot-card:hover { transform: translateY(-5px); box-shadow: 0 12px 38px rgba(0,0,0,.14); }
     .rot-card-div { cursor: default; }
-    .rot-img-wrap { position: relative; }
+    .rot-img-wrap {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      flex: 0 0 auto;
+      background: var(--marinho);
+    }
     .rot-img-wrap img {
-      width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover;
+      width: 100%; height: 100%; display: block; object-fit: cover;
       transition: transform .35s;
     }
     .rot-card:hover .rot-img-wrap img { transform: scale(1.04); }
@@ -325,11 +333,11 @@
     .n-local    { background: #2a7a2a; }
     .n-regional { background: var(--cobre); }
     .n-inter    { background: var(--marinho); }
-    .rot-body { padding: 1rem 1.1rem 1.15rem; }
-    .rot-name-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .4rem; }
+    .rot-body { padding: 1rem 1.1rem 1.15rem; flex: 1; min-width: 0; }
+    .rot-name-row { display: flex; justify-content: space-between; align-items: baseline; gap: .55rem; margin-bottom: .4rem; }
     .rot-name  { font-size: .97rem; font-weight: 700; color: var(--marinho); }
     .rot-serie { font-size: .78rem; font-weight: 500; color: #aaa; }
-    .rot-dest-row { display: flex; align-items: center; justify-content: space-between; margin-top: .4rem; }
+    .rot-dest-row { display: flex; align-items: center; justify-content: space-between; gap: .55rem; margin-top: .4rem; }
     .rot-dest { font-size: .85rem; font-weight: 500; color: #888; }
     .rot-link { font-size: .8rem; font-weight: 700; color: var(--cobre); text-decoration: none; transition: opacity .2s; white-space: nowrap; }
     .rot-link:hover { opacity: .7; }
@@ -548,6 +556,25 @@
       display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
     }
     .footer-bottom p { font-size: .78rem; color: #bbb; margin: 0; font-weight: 500; }
+
+    @media (max-width: 680px) {
+      .momento-inner { padding: 3.1rem 0; }
+      .momento-quote { font-size: 1.55rem; line-height: 1.22; }
+      .rot-card { flex-basis: 78%; border-radius: 12px; }
+      .rot-name-row,
+      .rot-dest-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .28rem;
+      }
+      .rot-link { white-space: normal; }
+      footer { padding: 1.6rem 0 1.2rem; }
+      .footer-grid { gap: 1.1rem; margin-bottom: 1rem; }
+      .footer-desc, .footer-socials { display: none; }
+      .footer-col h5 { margin-bottom: .55rem; }
+      .footer-col li { margin-bottom: .28rem; }
+      .footer-bottom { padding-top: .9rem; }
+    }
   </style>
 </head>
 
