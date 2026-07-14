@@ -3,1400 +3,165 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Roli&#250;de Nordestina | Azimute Educatur</title>
-  <meta name="description" content="Uma expedi&#231;&#227;o para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.">
+  <title>Roliúde Nordestina | Azimute Educatur</title>
+  <meta name="description" content="Uma expedição para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/images/cinematic/catalogo-roliude-hero.jpg">
   <style>
-    :root {
-      --marinho: #0D2246;
-      --cobre: #DF6951;
-      --azul: #2A7AB8;
-      --verde: #2A7A62;
-      --off: #F7F6F2;
-      --texto: #2d2d2d;
-    }
-
+    :root { --dark:#0D2246; --black:#1a1a1a; --white:#fff; --off:#f4f4f4; --line:#e2e2e2; --gray:#686a70; --accent:#DF6951; --green:#2d7a62; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    img, svg, video { max-width: 100%; }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body {
-      font-family: 'Fira Sans', sans-serif;
-      color: var(--texto);
-      background: #fff;
-      overflow-x: hidden;
-    }
-    p, li, .summary-value, .quick-value, .testimonial-text { text-align: left; }
-    .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
-    @media (min-width: 768px) { .wrap { padding: 0 2rem; } }
+    body { font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 768px) { .wrap { padding: 0 20px; } }
+    section { padding: 88px 0; }
+    @media (max-width: 768px) { section { padding: 54px 0; } }
 
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(255,255,255,.95);
-      border-bottom: 1px solid rgba(0,0,0,.07);
-      backdrop-filter: blur(10px);
-    }
-    .nav-inner {
-      height: 74px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo { text-decoration: none; line-height: 1.1; }
-    .logo-name { display: block; color: var(--marinho); font-weight: 900; }
-    .logo-sub { display: block; color: var(--cobre); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; font-size: .52rem; }
-    .nav-links { display: none; align-items: center; gap: 1.6rem; list-style: none; }
-    .nav-links a { color: #666; text-decoration: none; font-size: .88rem; font-weight: 700; }
-    .nav-burger {
-      width: 44px; height: 44px;
-      border: 1px solid rgba(13,34,70,.14);
-      border-radius: 12px;
-      background: #fff;
-      color: var(--marinho);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      cursor: pointer;
-      position: relative;
-      z-index: 80;
-      box-shadow: 0 4px 16px rgba(0,0,0,.06);
-    }
-    .nav-links.open {
-      position: fixed;
-      inset: 0;
-      z-index: 70;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1.4rem;
-      background: rgba(255,255,255,.98);
-      backdrop-filter: blur(12px);
-      padding: 2rem;
-    }
-    .nav-links.open a {
-      color: var(--marinho);
-      font-size: 1.25rem;
-      font-weight: 900;
-    }
-    .nav-links.open .nav-cta {
-      margin-top: .4rem;
-      color: #fff !important;
-      font-size: 1rem !important;
-      padding: .85rem 1.4rem !important;
-    }
+    #nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { text-decoration: none; line-height: 1.05; display: grid; }
+    .logo-name { font-weight: 900; font-size: 16px; letter-spacing: -.02em; color: var(--dark); }
+    .logo-sub { color: var(--accent); font-size: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; }
+    .nav-links { display: none; list-style: none; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 13px; font-weight: 600; text-decoration: none; color: var(--black); }
+    .nav-cta { background: var(--accent); color: var(--white) !important; padding: 10px 20px; border-radius: 999px; font-weight: 800 !important; }
+    .nav-burger { width: 42px; height: 42px; border: 1px solid var(--line); background: var(--white); border-radius: 8px; font-size: 13px; font-weight: 800; color: var(--dark); }
+    @media (min-width: 940px) { .nav-links { display: flex; } .nav-burger { display: none; } }
+    .nav-links.open { display: flex; position: fixed; inset: 64px 0 0; background: rgba(255,255,255,.98); flex-direction: column; justify-content: center; gap: 28px; z-index: 99; }
+    .nav-links.open a { font-size: 22px; }
     body.menu-open { overflow: hidden; }
-    @media (min-width: 860px) {
-      .nav-links { display: flex; }
-      .nav-burger { display: none; }
-    }
-    .nav-cta {
-      background: var(--cobre); color: #fff !important; padding: .62rem 1rem; border-radius: 999px;
-      box-shadow: 0 6px 20px rgba(223,105,81,.24);
-    }
-    .mobile-actionbar {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 48;
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: .65rem;
-      padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
-      background: rgba(255,255,255,.94);
-      border-top: 1px solid rgba(13,34,70,.1);
-      box-shadow: 0 -8px 28px rgba(13,34,70,.12);
-      backdrop-filter: blur(12px);
-    }
-    .mobile-actionbar a {
-      min-height: 44px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .45rem;
-      text-decoration: none;
-      font-weight: 900;
-      font-size: .86rem;
-    }
-    .mobile-actionbar .mobile-secondary {
-      color: var(--marinho);
-      border: 1px solid rgba(13,34,70,.14);
-      background: #fff;
-    }
-    .mobile-actionbar .mobile-primary {
-      color: #fff;
-      background: var(--cobre);
-      box-shadow: 0 6px 18px rgba(223,105,81,.28);
-    }
-    .mobile-actionbar { transition: transform .22s ease, opacity .22s ease; }
-    .mobile-actionbar.is-hidden { transform: translateY(110%); opacity: 0; pointer-events: none; }
-    @media (min-width: 860px) { .mobile-actionbar { display: none; } }
 
-    .photo {
-      position: relative; overflow: hidden; background: var(--marinho);
-    }
-    .photo img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      filter: contrast(1.12) saturate(1.12) brightness(.94);
-    }
-    .photo::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(circle at 72% 16%, rgba(255,255,255,.15), transparent 30%),
-        linear-gradient(180deg, rgba(13,34,70,.02), rgba(13,34,70,.38));
-      mix-blend-mode: multiply;
-    }
+    .mobile-actionbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.92); backdrop-filter: blur(14px); border-top: 1px solid var(--line); transition: transform .2s ease; }
+    .mobile-actionbar.is-hidden { transform: translateY(120%); }
+    .mobile-actionbar a { min-height: 46px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-size: 14px; font-weight: 900; }
+    .mobile-secondary { border: 1px solid var(--line); color: var(--dark); background: #fff; }
+    .mobile-primary { color: #fff; background: var(--accent); }
+    @media (min-width: 760px) { .mobile-actionbar { display: none; } }
 
-    .eyebrow {
-      display: block; color: var(--cobre); font-size: .78rem; font-weight: 900;
-      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: .55rem;
-    }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
-      padding: .9rem 1.35rem; border-radius: 999px;
-      background: var(--cobre); color: #fff; text-decoration: none; font-weight: 900;
-      box-shadow: 0 8px 24px rgba(223,105,81,.28);
-      border: 0;
-      white-space: nowrap;
-    }
-    .btn-secondary {
-      background: #fff; color: var(--marinho); border: 2px solid rgba(13,34,70,.12);
-      box-shadow: none;
-    }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 24px; border-radius: 999px; font-weight: 800; font-size: 14px; text-decoration: none; border: 1px solid transparent; }
+    .btn-white { background: var(--white); color: var(--dark); }
+    .btn-outline { border-color: rgba(255,255,255,.55); color: var(--white); }
+    .btn-dark { background: var(--dark); color: var(--white); }
+    .btn-accent { background: var(--accent); color: var(--white); box-shadow: 0 8px 24px rgba(223,105,81,.24); }
 
-    /* HERO */
-    .hero {
-      padding: 3.5rem 0 3rem;
-      background:
-        radial-gradient(circle at 88% 0%, rgba(223,105,81,.18), transparent 30%),
-        linear-gradient(180deg, #fff, #fafafa);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-grid {
-      display: grid; gap: 2rem; align-items: center;
-    }
-    @media (min-width: 940px) {
-      .hero-grid { grid-template-columns: .86fr 1.14fr; gap: 3.5rem; }
-    }
-    .breadcrumb {
-      color: #aaa; font-size: .82rem; font-weight: 700; margin-bottom: 1.1rem;
-    }
-    .breadcrumb a { color: #aaa; text-decoration: none; }
-    .hero-h1 {
-      color: var(--marinho);
-      font-size: clamp(2.35rem, 6vw, 4.5rem);
-      font-weight: 900; font-style: italic;
-      line-height: 1.02;
-      margin-bottom: 1rem;
-    }
-    .hero-lead {
-      color: #666; font-size: 1rem; line-height: 1.75; font-weight: 500;
-      max-width: 580px; margin-bottom: 1.35rem;
-    }
-    .meta {
-      display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.4rem;
-    }
-    .meta span {
-      display: inline-flex; align-items: center; gap: .38rem;
-      background: #f0f0f0; color: #666;
-      border-radius: 999px; padding: .36rem .72rem;
-      font-size: .76rem; font-weight: 800;
-    }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
-
-    .hero-collage {
-      display: grid; gap: 5px;
-      grid-template-columns: 1.45fr .78fr .78fr;
-      grid-template-rows: 1fr 1fr;
-      aspect-ratio: 1.34 / 1;
-      background: var(--marinho);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 18px 60px rgba(13,34,70,.18);
-    }
-    .hero-collage .photo:first-child { grid-row: 1 / 3; }
+    .hero { position: relative; height: 82vh; min-height: 540px; overflow: hidden; padding: 0; }
+    .hero-media { position: absolute; inset: 0; background: var(--dark); }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.02) contrast(1.04); }
+    .hero-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,18,40,.88) 0%, rgba(7,18,40,.68) 38%, rgba(7,18,40,.28) 68%, rgba(7,18,40,.18) 100%), linear-gradient(0deg, rgba(7,18,40,.82) 0%, rgba(7,18,40,.28) 58%, rgba(7,18,40,.12) 100%); }
+    .breadcrumb { position: absolute; top: 24px; left: 0; right: 0; z-index: 2; }
+    .breadcrumb .wrap { font-size: 12px; color: rgba(255,255,255,.82); font-weight: 700; }
+    .breadcrumb a { color: #fff; text-decoration: none; }
+    .hero-content { position: absolute; left: 0; right: 0; bottom: 56px; color: var(--white); z-index: 2; }
+    .hero-content > * { max-width: 900px; }
+    .hero-eyebrow { font-size: 13px; font-weight: 800; opacity: .98; margin-bottom: 10px; color: rgba(255,255,255,.9); text-shadow: 0 2px 12px rgba(0,0,0,.45); }
+    .hero-h1 { font-size: clamp(2.25rem, 5.6vw, 4.55rem); font-weight: 900; line-height: 1.02; letter-spacing: -.035em; max-width: 850px; margin-bottom: 16px; }
+    .hero-h1, .hero-p { text-shadow: 0 3px 18px rgba(0,0,0,.58); }
+    .hero-p { font-size: clamp(1rem, 2vw, 1.08rem); font-weight: 600; max-width: 590px; opacity: .98; margin-bottom: 24px; line-height: 1.55; color: rgba(255,255,255,.92); }
+    .meta { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 24px; }
+    .meta span { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.88); }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     @media (max-width: 680px) {
-      .hero-collage {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 230px 120px 120px;
-        aspect-ratio: auto;
-      }
-      .hero-collage .photo:first-child { grid-column: 1 / 3; grid-row: 1; }
+      .hero-media::after { background: linear-gradient(0deg, rgba(7,18,40,.90) 0%, rgba(7,18,40,.58) 62%, rgba(7,18,40,.28) 100%); }
+      .hero-content { bottom: 42px; }
+      .hero-content > * { max-width: min(100%, 31rem); }
+      .hero-h1 { font-size: clamp(2rem, 10vw, 2.95rem); line-height: .98; margin-bottom: 14px; max-width: 8.8ch; }
+      .hero-p { font-size: .95rem; line-height: 1.5; max-width: 31ch; margin-bottom: 20px; }
+      .meta { gap: 12px; margin-bottom: 20px; }
+      .meta span { font-size: 12px; max-width: 13ch; }
+      .hero-actions { gap: 10px; }
+      .hero-actions .btn { min-height: 44px; padding: 0 20px; }
     }
 
-    .quick-panel {
-      margin-top: 1rem;
-      display: grid; gap: .75rem;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 760px) { .quick-panel { grid-template-columns: repeat(4, 1fr); } }
-    .quick-item {
-      background: #fff; border: 1px solid rgba(0,0,0,.06);
-      border-radius: 12px; padding: 1rem;
-      box-shadow: 0 4px 18px rgba(0,0,0,.05);
-    }
-    .quick-item i { color: var(--cobre); margin-bottom: .55rem; }
-    .quick-label { color: #aaa; font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
-    .quick-value { color: var(--marinho); font-weight: 900; margin-top: .12rem; font-size: .94rem; }
+    .specs { border-bottom: 1px solid var(--line); }
+    .spec-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
+    .spec { padding: 30px 26px; border-left: 1px solid var(--line); }
+    .spec:first-child { border-left: 0; }
+    .spec-label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; font-weight: 800; }
+    .spec-value { font-size: 17px; font-weight: 900; letter-spacing: -.02em; color: var(--dark); line-height: 1.1; }
+    @media (max-width: 980px) { .spec-grid { grid-template-columns: repeat(2, 1fr); } .spec { padding: 22px 18px; } .spec:nth-child(2n+1) { border-left: 0; } }
 
-    .route-summary-band {
-      padding: 0 0 4rem;
-      background: #fafafa;
-    }
-    .route-summary-layout {
-      display: grid;
-      gap: 1.2rem;
-      align-items: stretch;
-    }
-    @media (min-width: 900px) {
-      .route-summary-layout { grid-template-columns: 340px 1fr; }
-    }
-    .route-summary-card {
-      background: var(--marinho);
-      color: #fff;
-      border-radius: 16px;
-      padding: 1.45rem;
-      box-shadow: 0 14px 44px rgba(13,34,70,.18);
-    }
-    .route-summary-card h2 {
-      font-size: .86rem;
-      text-transform: uppercase;
-      overflow-wrap: anywhere;
-      letter-spacing: 1.4px;
-      color: rgba(255,255,255,.58);
-      margin-bottom: 1.2rem;
-    }
-    .summary-row {
-      display: flex;
-      gap: .85rem;
-      align-items: flex-start;
-      padding: .85rem 0;
-      border-top: 1px solid rgba(255,255,255,.12);
-    }
-    .summary-row:first-of-type { border-top: 0; padding-top: 0; }
-    .summary-icon {
-      width: 38px; height: 38px; border-radius: 10px;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,.1);
-      color: #fff;
-      flex: 0 0 auto;
-    }
-    .summary-label {
-      color: rgba(255,255,255,.58);
-      font-size: .76rem;
-      font-weight: 700;
-      margin-bottom: .15rem;
-    }
-    .summary-value {
-      color: #fff;
-      font-size: .94rem;
-      font-weight: 900;
-      line-height: 1.35;
-    }
-    .summary-note {
-      margin-top: 1rem;
-      color: rgba(255,255,255,.68);
-      font-size: .82rem;
-      line-height: 1.6;
-      font-weight: 500;
-    }
-    .route-pitch {
-      background: #fff;
-      border-radius: 16px;
-      padding: clamp(1.35rem, 4vw, 2.2rem);
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 6px 28px rgba(0,0,0,.06);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .route-pitch h3 {
-      color: var(--marinho);
-      font-weight: 900;
-      font-style: italic;
-      font-size: clamp(1.35rem, 3vw, 2.1rem);
-      line-height: 1.14;
-      margin-bottom: .75rem;
-    }
-    .route-pitch p {
-      color: #666;
-      line-height: 1.75;
-      font-weight: 500;
-      max-width: 680px;
-    }
+    .sec-eyebrow { font-size: 13px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 12px; }
+    .sec-h { font-size: clamp(1.75rem, 3.4vw, 2.6rem); font-weight: 900; letter-spacing: -.035em; line-height: 1.1; color: var(--black); }
+    .sec-head { margin-bottom: 46px; max-width: 720px; }
+    .prologue-box { max-width: 820px; }
+    .prologue h2 { font-size: clamp(1.65rem, 3.2vw, 2.45rem); font-weight: 900; letter-spacing: -.03em; line-height: 1.12; margin-bottom: 18px; color: var(--dark); }
+    .prologue p { font-size: 16px; color: var(--gray); line-height: 1.75; font-weight: 500; }
 
-    .prologue {
-      padding: 3.2rem 0;
-      background: #fff;
-    }
-    .prologue-box {
-      max-width: 920px;
-      border-left: 4px solid var(--cobre);
-      padding-left: clamp(1.2rem, 4vw, 2rem);
-    }
-    .prologue h2 {
-      color: var(--marinho);
-      font-size: clamp(1.45rem, 3.6vw, 2.35rem);
-      font-weight: 900;
-      font-style: italic;
-      line-height: 1.12;
-      margin-bottom: .85rem;
-    }
-    .prologue p {
-      color: #5f5f5f;
-      font-size: clamp(.98rem, 2vw, 1.08rem);
-      line-height: 1.8;
-      font-weight: 500;
-      max-width: 820px;
-    }
+    .change-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .change-card { padding: 30px 24px 0 0; border-right: 1px solid var(--line); }
+    .change-card:last-child { border-right: 0; }
+    .change-num { display: block; font-size: 42px; font-weight: 300; color: #d7d7d7; margin-bottom: 14px; letter-spacing: -.04em; }
+    .change-card h3 { font-size: 17px; font-weight: 900; margin-bottom: 8px; color: var(--dark); letter-spacing: -.01em; }
+    .change-card p { font-size: 14px; color: var(--gray); line-height: 1.65; font-weight: 500; }
+    @media (max-width: 860px) { .change-grid { grid-template-columns: 1fr; } .change-card { border-right: 0; border-bottom: 1px solid var(--line); padding: 24px 0; } }
 
-    section { padding: 4rem 0; }
-    .sec-head { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 2rem; }
-    @media (min-width: 800px) { .sec-head { flex-direction: row; align-items: end; justify-content: space-between; } }
-    .sec-h {
-      color: var(--marinho); font-weight: 900; font-style: italic;
-      font-size: clamp(1.65rem, 4vw, 2.7rem);
-      line-height: 1.12;
-    }
-    .sec-p { color: #777; line-height: 1.75; font-weight: 500; max-width: 520px; }
+    .journey { background: var(--off); }
+    .timeline-stop { display: grid; margin-bottom: 4px; background: var(--white); }
+    @media (min-width: 860px) { .timeline-stop { grid-template-columns: 1fr 1fr; min-height: 430px; } .timeline-stop:nth-child(even) .timeline-photo { order: 2; } }
+    .timeline-photo { min-height: 270px; background: var(--line); overflow: hidden; }
+    .timeline-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .timeline-body { padding: 42px; display: flex; flex-direction: column; justify-content: center; }
+    .timeline-kicker { font-size: 12px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
+    .timeline-body h3 { font-size: clamp(1.35rem, 2.7vw, 2rem); font-weight: 900; letter-spacing: -.025em; margin-bottom: 12px; color: var(--dark); }
+    .timeline-body p { font-size: 15px; color: var(--gray); line-height: 1.65; max-width: 500px; font-weight: 500; }
+    .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .timeline-tags span { font-size: 11px; font-weight: 800; color: var(--black); border: 1px solid var(--line); padding: 5px 12px; border-radius: 999px; background: var(--white); }
 
-    /* TRANSFORMACAO */
-    .transform { background: #fff; }
-    @media (min-width: 800px) {
-      .transform .sec-head { align-items: flex-start; }
-      .transform .sec-p { margin-top: 1.95rem; }
-    }
-    .change-grid {
-      display: grid; gap: 1rem;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 780px) { .change-grid { grid-template-columns: repeat(3, 1fr); } }
-    .change-card {
-      position: relative; overflow: hidden;
-      background: #fff; border-radius: 14px; padding: 1.7rem 1.55rem 1.6rem;
-      box-shadow: 0 6px 28px rgba(0,0,0,.07);
-      border: 1px solid rgba(0,0,0,.05);
-      min-height: 210px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-    }
-    .change-num {
-      position: absolute; right: 1rem; top: .5rem;
-      color: rgba(13,34,70,.06);
-      font-size: 4rem; line-height: 1; font-weight: 900; font-style: italic;
-    }
-    .change-card h3 {
-      color: var(--marinho);
-      font-size: 1.02rem;
-      line-height: 1.25;
-      margin-bottom: .8rem;
-      max-width: calc(100% - 62px);
-      position: relative;
-      z-index: 1;
-    }
-    .change-card p {
-      color: #626262;
-      font-size: .9rem;
-      line-height: 1.68;
-      font-weight: 500;
-      width: 100%;
-      max-width: none;
-      position: relative;
-      z-index: 1;
-      text-align: justify;
-      text-align-last: left;
-      text-wrap: pretty;
-      word-spacing: normal;
-      letter-spacing: 0;
-    }
+    .info-grid { display: grid; gap: 46px; }
+    @media (min-width: 900px) { .info-grid { grid-template-columns: 1fr 1fr; } }
+    .info-box { border-top: 4px solid var(--accent); padding-top: 24px; }
+    .info-box h3 { font-size: 20px; font-weight: 900; margin-bottom: 20px; color: var(--dark); letter-spacing: -.02em; }
+    .check-list { list-style: none; display: grid; gap: 14px; }
+    .check-list li { display: flex; gap: 12px; font-size: 14px; color: var(--gray); line-height: 1.5; font-weight: 600; }
+    .check-list li::before { content: '✓'; color: var(--green); font-weight: 900; }
+    .bncc-skill { border-top: 1px solid var(--line); padding: 16px 0; }
+    .bncc-code { font-size: 12px; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+    .bncc-desc { font-size: 14px; font-weight: 700; line-height: 1.45; color: var(--black); }
 
-    /* JORNADA COM FOTOS */
-    .journey { background: #fafafa; }
-    .route-timeline {
-      display: grid; gap: 1rem;
-    }
-    .timeline-stop {
-      background: #fff; border-radius: 16px; overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,.075);
-      border: 1px solid rgba(0,0,0,.05);
-      display: grid;
-    }
-    @media (min-width: 860px) {
-      .timeline-stop {
-        grid-template-columns: minmax(300px, .86fr) 1fr;
-        min-height: 270px;
-      }
-      .timeline-stop:nth-child(even) { grid-template-columns: 1fr minmax(300px, .86fr); }
-      .timeline-stop:nth-child(even) .timeline-photo { grid-column: 2; }
-      .timeline-stop:nth-child(even) .timeline-body { grid-column: 1; grid-row: 1; }
-    }
-    .timeline-photo { min-height: 240px; }
-    .timeline-body {
-      padding: clamp(1.4rem, 4vw, 2.35rem);
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .timeline-kicker {
-      color: var(--cobre); font-size: .72rem; font-weight: 900; text-transform: uppercase;
-      letter-spacing: 1.5px; margin-bottom: .5rem;
-    }
-    .timeline-body h3 {
-      color: var(--marinho); font-size: clamp(1.25rem, 3vw, 1.85rem);
-      font-weight: 900; font-style: italic; line-height: 1.12; margin-bottom: .7rem;
-    }
-    .timeline-body p {
-      color: #666; font-size: .92rem; line-height: 1.75; font-weight: 500; max-width: 560px;
-    }
-    .timeline-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
-    .timeline-tags span {
-      background: #f1f1f1; color: #666; border-radius: 999px;
-      padding: .26rem .65rem; font-size: .68rem; font-weight: 800;
-    }
+    .dep-list { display: grid; gap: 0; max-width: 820px; }
+    .dep-item { padding: 26px 0; border-top: 1px solid var(--line); }
+    .dep-item:last-child { border-bottom: 1px solid var(--line); }
+    .dep-text { font-size: 16px; font-weight: 600; line-height: 1.6; margin-bottom: 12px; }
+    .dep-name { font-size: 13px; font-weight: 900; color: var(--dark); }
+    .dep-role { font-size: 12px; color: var(--gray); margin-top: 3px; }
 
-    .photo-strip {
-      margin-top: 1.25rem;
-      background: var(--marinho);
-      border-radius: 14px;
-      padding: .55rem;
-      display: grid; gap: .55rem;
-      grid-template-columns: repeat(5, 1fr);
-      box-shadow: 0 10px 34px rgba(13,34,70,.16);
-    }
-    .photo-strip .photo { aspect-ratio: 1 / 1; border-radius: 10px; }
-    @media (max-width: 680px) {
-      .photo-strip { overflow-x: auto; grid-template-columns: repeat(5, minmax(120px, 1fr)); }
-    }
+    .cta { background: var(--dark); color: var(--white); padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
+    .cta-h { font-size: clamp(1.85rem, 4vw, 3rem); font-weight: 900; letter-spacing: -.035em; line-height: 1.08; margin-bottom: 20px; max-width: 700px; }
+    .cta-p { font-size: 15px; color: rgba(255,255,255,.68); max-width: 560px; margin-bottom: 28px; line-height: 1.6; font-weight: 500; }
 
-    /* INCLUSO / BNCC */
-    .info-grid {
-      display: grid; gap: 1.2rem;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 900px) { .info-grid { grid-template-columns: .9fr 1.1fr; } }
-    .info-box {
-      min-width: 0;
-      overflow: hidden;
-      background: #fff; border-radius: 16px; padding: 1.7rem;
-      box-shadow: 0 6px 28px rgba(0,0,0,.07);
-      border: 1px solid rgba(0,0,0,.05);
-    }
-    .info-box h3 { color: var(--marinho); font-size: 1.15rem; margin-bottom: 1rem; }
-    .check-list { display: grid; gap: .75rem; list-style: none; }
-    .check-list li {
-      display: flex; align-items: flex-start; gap: .65rem;
-      min-width: 0;
-      color: #666; font-size: .9rem; line-height: 1.55; font-weight: 600;
-      overflow-wrap: anywhere;
-    }
-    .check-list i { color: var(--verde); margin-top: .14rem; }
-    .ops-panel {
-      margin-top: 1.25rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(13,34,70,.08);
-      display: grid;
-      gap: .8rem;
-    }
-    .ops-item {
-      display: grid;
-      grid-template-columns: 34px minmax(0, 1fr);
-      gap: .7rem;
-      align-items: start;
-    }
-    .ops-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(13,34,70,.06);
-      color: var(--marinho);
-      font-size: .82rem;
-    }
-    .ops-item strong {
-      display: block;
-      color: var(--marinho);
-      font-size: .86rem;
-      margin-bottom: .15rem;
-    }
-    .ops-item span {
-      display: block;
-      color: #777;
-      font-size: .8rem;
-      line-height: 1.5;
-      font-weight: 500;
-      overflow-wrap: anywhere;
-    }
-    .bncc-list { display: flex; flex-wrap: wrap; gap: .55rem; }
-    .bncc-list span {
-      background: rgba(223,105,81,.1); color: var(--cobre);
-      padding: .46rem .7rem; border-radius: 999px;
-      font-size: .76rem; font-weight: 900;
-      max-width: 100%;
-      white-space: normal;
-      overflow-wrap: anywhere;
-    }
-    .bncc-skills {
-      margin-top: 1.2rem;
-      display: grid;
-      gap: .75rem;
-    }
-    @media (min-width: 680px) { .bncc-skills { grid-template-columns: 1fr 1fr; } }
-    .bncc-skill {
-      background: #f8f8f8;
-      border-left: 3px solid var(--cobre);
-      border-radius: 10px;
-      padding: .9rem;
-      min-width: 0;
-    }
-    .bncc-code {
-      color: var(--cobre);
-      font-weight: 900;
-      font-size: .78rem;
-      letter-spacing: .8px;
-      margin-bottom: .38rem;
-      text-transform: uppercase;
-      overflow-wrap: anywhere;
-    }
-    .bncc-desc {
-      color: var(--marinho);
-      font-size: .88rem;
-      line-height: 1.55;
-      font-weight: 800;
-      overflow-wrap: anywhere;
-    }
-
-    .testimonials { background: #fafafa; }
-    .testimonial-head {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 2.4rem;
-    }
-    .testimonial-head .eyebrow { margin-bottom: .65rem; }
-    .testimonial-head .sec-h { margin: 0 auto; }
-    .testimonial-grid {
-      display: grid;
-      gap: 1.8rem;
-    }
-    @media (min-width: 860px) { .testimonial-grid { grid-template-columns: 1fr 1fr; } }
-    .testimonial-stack {
-      position: relative;
-      padding-right: 28px;
-      padding-bottom: 28px;
-    }
-    .testimonial-stack::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      width: calc(100% - 36px);
-      height: calc(100% - 34px);
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 6px 30px rgba(0,0,0,.08);
-      z-index: 0;
-    }
-    .testimonial-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: clamp(1.6rem, 4vw, 2.35rem);
-      box-shadow: 0 12px 42px rgba(0,0,0,.09);
-      border: 1px solid rgba(0,0,0,.05);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .testimonial-card::before {
-      content: '"';
-      position: absolute;
-      left: 1.7rem;
-      top: 1.25rem;
-      color: var(--cobre);
-      font-size: 2rem;
-      line-height: 1;
-      font-weight: 900;
-      font-style: italic;
-    }
-    .testimonial-label {
-      display: inline-flex;
-      align-items: center;
-      gap: .45rem;
-      color: var(--marinho);
-      font-size: .76rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      overflow-wrap: anywhere;
-      letter-spacing: 1px;
-      margin-bottom: 1.25rem;
-      position: relative;
-      z-index: 1;
-    }
-    .testimonial-text {
-      color: var(--marinho);
-      font-size: .98rem;
-      line-height: 1.85;
-      font-weight: 700;
-      margin-bottom: 1.55rem;
-      position: relative;
-      z-index: 1;
-    }
-    .testimonial-name {
-      color: var(--marinho);
-      font-weight: 900;
-      font-size: .9rem;
-      position: relative;
-      z-index: 1;
-    }
-    .testimonial-role {
-      color: #999;
-      font-size: .82rem;
-      font-weight: 600;
-      margin-top: .15rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta { padding: 4rem 0 5rem; }
-    .cta-box {
-      border-radius: 22px; overflow: hidden;
-      background:
-        radial-gradient(circle at 78% 20%, rgba(223,105,81,.22), transparent 32%),
-        var(--marinho);
-      color: #fff; padding: clamp(2rem, 6vw, 4rem);
-      display: grid; gap: 1.5rem; align-items: center;
-    }
-    @media (min-width: 850px) { .cta-box { grid-template-columns: 1fr auto; } }
-    .cta-box h2 { font-size: clamp(1.7rem, 4vw, 2.8rem); font-weight: 900; font-style: italic; line-height: 1.12; }
-    .cta-box p { color: rgba(255,255,255,.75); line-height: 1.7; max-width: 560px; margin-top: .65rem; }
-footer {
-      border-top: 1px solid rgba(0,0,0,.07);
-      padding: 2.4rem 0 1.3rem;
-      color: #888;
-      font-size: .86rem;
-      background: #fff;
-    }
-    .footer-grid {
-      display: grid;
-      gap: 1.6rem;
-      margin-bottom: 1.5rem;
-    }
-    @media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 2.4rem; } }
-    .footer-logo-name { font-size: 1.05rem; font-weight: 900; color: var(--marinho); display: block; }
-    .footer-logo-sub { font-size: .52rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--cobre); display: block; margin-bottom: .75rem; }
-    .footer-desc { font-size: .86rem; font-weight: 500; color: #888; line-height: 1.65; max-width: 320px; }
-    .footer-socials { display: flex; gap: .5rem; margin-top: .9rem; }
-    .soc {
-      width: 34px; height: 34px; border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: #f3f3f3; color: var(--marinho); text-decoration: none;
-    }
-    .footer-col h5 { font-size: .82rem; font-weight: 900; color: var(--marinho); margin-bottom: .75rem; }
-    .footer-col ul { list-style: none; display: grid; gap: .36rem; }
-    .footer-col a { font-size: .86rem; font-weight: 600; color: #888; text-decoration: none; overflow-wrap: anywhere; }
-    .footer-col a:hover { color: var(--marinho); }
-    .footer-bottom {
-      padding-top: 1rem;
-      border-top: 1px solid rgba(0,0,0,.07);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: .45rem .9rem;
-    }
-    .footer-bottom p { font-size: .76rem; color: #aaa; margin: 0; font-weight: 600; line-height: 1.45; }
-    .footer-bottom a { color: var(--marinho); }
-    @media (max-width: 859px) {
-      body { padding-bottom: 74px; }
-      .wrap { padding-left: 1rem; padding-right: 1rem; }
-      .nav-inner { height: 68px; }
-      .logo-name { font-size: .95rem; }
-      .logo-sub { font-size: .47rem; letter-spacing: 2px; }
-      body.menu-open .mobile-actionbar { display: none; }
-      .hero { padding: 2.6rem 0 2.5rem; }
-      section { padding: 3.15rem 0; }
-      .route-summary-band { padding-bottom: 2.7rem; }
-      .prologue { padding: 2.55rem 0; }
-      .quick-panel { margin-top: .85rem; gap: .6rem; }
-      .quick-item { padding: .85rem; }
-      .change-grid {
-        display: flex;
-        gap: .85rem;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: .1rem .1rem .55rem;
-        scrollbar-width: none;
-      }
-      .change-grid::-webkit-scrollbar,
-      .route-timeline::-webkit-scrollbar,
-      .bncc-skills::-webkit-scrollbar,
-      .testimonial-grid::-webkit-scrollbar { display: none; }
-      .change-card {
-        flex: 0 0 84%;
-        min-width: 0;
-        scroll-snap-align: center;
-        min-height: auto;
-        justify-content: flex-start;
-        padding: 1.35rem;
-      }
-      .change-num { font-size: 3.35rem; right: .85rem; top: .55rem; }
-      .route-timeline {
-        display: flex;
-        gap: .9rem;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: .1rem .1rem .6rem;
-        scrollbar-width: none;
-      }
-      .timeline-stop {
-        flex: 0 0 88%;
-        scroll-snap-align: center;
-        display: block;
-      }
-      .timeline-photo { min-height: 190px; }
-      .timeline-body { padding: 1.35rem; }
-      .photo-strip { display: none; }
-      .bncc-skills {
-        display: flex;
-        gap: .75rem;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: .1rem .1rem .45rem;
-        scrollbar-width: none;
-      }
-      .bncc-skill {
-        flex: 0 0 86%;
-        min-width: 0;
-        scroll-snap-align: center;
-      }
-      .testimonial-grid {
-        display: flex;
-        gap: 1rem;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: .1rem .1rem .7rem;
-        scrollbar-width: none;
-      }
-      .testimonial-stack { padding-right: 12px; padding-bottom: 18px; }
-      .testimonial-grid .testimonial-stack {
-        flex: 0 0 88%;
-        scroll-snap-align: center;
-      }
-      .cta { padding: 2.4rem 0 1.25rem; }
-      .cta-box { border-radius: 18px; gap: 1.05rem; padding: 1.45rem; }
-      .cta-box h2 { font-size: 1.55rem; line-height: 1.18; }
-      .cta-box p { font-size: .92rem; line-height: 1.55; }
-      .cta-box .btn { width: 100%; min-height: 46px; white-space: normal; text-align: center; }
-      footer { padding: 1.45rem 0 2rem; }
-      .footer-grid { gap: 1.1rem; margin-bottom: 1rem; }
-      .footer-desc, .footer-socials { display: none; }
-      .footer-col ul { gap: .28rem; }
-      .footer-bottom { padding-top: .8rem; }
-    }
-
-    /* Premium route editorial - Azimute 2026 */
-    :root {
-      --dark:#0D2246;
-      --black:#1a1a1a;
-      --white:#fff;
-      --off:#f4f4f4;
-      --line:#e2e2e2;
-      --gray:#686a70;
-      --accent:#DF6951;
-      --marinho: var(--dark);
-      --cobre: var(--accent);
-      --verde:#2d7a62;
-    }
-    body { color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; }
-    .wrap { max-width: 1400px; padding-left: 32px; padding-right: 32px; }
-    @media (max-width: 768px) { .wrap { padding-left: 20px; padding-right: 20px; } }
-
-    .nav, #nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-      box-shadow: none;
-    }
-    .nav-inner, .nav-wrap { min-height: 64px; height: 64px; }
-    .logo { display: grid; line-height: 1.05; }
-    .logo-name { font-size: 16px; font-weight: 900; letter-spacing: -.02em; color: var(--dark); }
-    .logo-sub { font-size: 8px; font-weight: 900; letter-spacing: 3px; color: var(--accent); }
-    .nav-links a { color: var(--black); font-size: 13px; font-weight: 600; }
-    .nav-cta { background: var(--accent) !important; color: var(--white) !important; box-shadow: none !important; font-weight: 800 !important; padding: 10px 20px !important; }
-    .menu-toggle, .nav-burger { background: var(--white); border: 1px solid var(--line); border-radius: 8px; color: var(--dark); }
-
-    .eyebrow, .breadcrumb, .breadcrumb a {
-      color: var(--gray);
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .07em;
-    }
-    .hero {
-      padding: 88px 0 64px;
-      background: var(--white);
-      border-bottom: 1px solid var(--line);
-    }
-    .hero-grid { gap: clamp(28px, 5vw, 64px); }
-    @media (min-width: 940px) { .hero-grid { grid-template-columns: .92fr 1.08fr; } }
-    .hero-h1 {
-      color: var(--black);
-      font-style: normal;
-      font-size: clamp(2.45rem, 6vw, 5rem);
-      font-weight: 900;
-      line-height: 1.02;
-      letter-spacing: -.035em;
-      max-width: 980px;
-    }
-    .hero-lead {
-      color: var(--gray);
-      font-size: clamp(1rem, 2vw, 1.1rem);
-      line-height: 1.6;
-      max-width: 680px;
-      font-weight: 500;
-    }
-    .meta span {
-      background: var(--white);
-      border: 1px solid var(--line);
-      color: var(--dark);
-      font-size: 12px;
-      font-weight: 800;
-      padding: 8px 13px;
-    }
-    .btn {
-      min-height: 46px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 8px 24px rgba(223,105,81,.24);
-      font-size: 14px;
-      font-weight: 800;
-      padding: 0 24px;
-    }
-    .btn-secondary { background: var(--white); color: var(--dark); border: 1px solid var(--line); box-shadow: none; }
-    .hero-collage {
-      border-radius: 0;
-      box-shadow: none;
-      background: var(--dark);
-      gap: 6px;
-    }
-    .hero-collage .photo, .photo, .timeline-photo { background: var(--off); }
-    .hero-collage img, .photo img, .timeline-photo img { filter: saturate(1.02) contrast(1.04); }
-
-    section { padding: 82px 0; }
-    .sec-head { margin-bottom: 34px; }
-    .sec-h, .prologue h2, .timeline-body h3, .cta-box h2 {
-      color: var(--black);
-      font-style: normal;
-      font-weight: 900;
-      letter-spacing: -.035em;
-      line-height: 1.08;
-    }
-    .sec-h { font-size: clamp(1.8rem, 3.6vw, 2.8rem); }
-    .sec-p, .prologue p, .timeline-body p, .route-pitch p, .cta-box p {
-      color: var(--gray);
-      line-height: 1.65;
-      font-weight: 500;
-    }
-
-    .route-summary-band, .prologue, .transform { background: var(--white); }
-    .prologue-box { border-left: 0; padding-left: 0; max-width: 920px; }
-    .prologue h2 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); }
-
-    .quick-panel, .change-grid, .info-grid, .testimonial-grid { gap: 0; }
-    .quick-item, .change-card, .info-box, .testimonial-card, .testimonial-stack {
-      border-radius: 0;
-      box-shadow: none;
-      border: 0;
-      border-top: 1px solid var(--line);
-      background: var(--white);
-    }
-    .quick-item { padding: 22px 0; }
-    .change-card { padding: 30px 28px; min-height: 0; }
-    .change-num {
-      color: #d4d4d4;
-      opacity: .7;
-      font-style: normal;
-      font-weight: 300;
-    }
-    .change-card h3, .info-box h3, .testimonial-name, .ops-item strong {
-      color: var(--dark);
-      font-weight: 900;
-      letter-spacing: -.01em;
-    }
-    .change-card p, .check-list li, .ops-item span, .testimonial-quote, .testimonial-role {
-      color: var(--gray);
-      line-height: 1.6;
-    }
-
-    .journey { background: #fafafa; }
-    .route-timeline { gap: 0; }
-    .timeline-stop {
-      border-radius: 0;
-      box-shadow: none;
-      border: 0;
-      border-top: 1px solid var(--line);
-      background: transparent;
-    }
-    @media (min-width: 860px) { .timeline-stop { min-height: 360px; } }
-    .timeline-body { padding: clamp(28px, 5vw, 56px); }
-    .timeline-kicker { color: var(--accent); font-size: 12px; font-weight: 900; letter-spacing: .07em; }
-    .timeline-tags span, .bncc-list span {
-      background: #f6f6f6;
-      color: var(--dark);
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 6px 10px;
-    }
-    .photo-strip { background: transparent; box-shadow: none; padding: 0; gap: 10px; }
-    .photo-strip .photo { border-radius: 0; }
-
-    .info-box { padding: 28px 0; overflow: visible; }
-    .bncc-skill {
-      border-radius: 0;
-      box-shadow: none;
-      border: 0;
-      border-left: 3px solid var(--accent);
-      background: #fafafa;
-    }
-    .bncc-code { color: var(--accent); font-weight: 900; }
-    .bncc-desc { color: var(--dark); }
-
-    .testimonials { background: var(--white); }
-    .testimonial-stack { padding: 28px 0; }
-    .testimonial-stack::before { display: none; }
-
-    .cta { padding: 40px 0 72px; }
-    .cta-box {
-      border-radius: 0;
-      background: var(--dark);
-      box-shadow: none;
-      color: var(--white);
-    }
-    .cta-box h2 { color: var(--white); }
-    .cta-box p { color: rgba(255,255,255,.72); }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 56px 0 28px;
-      color: var(--gray);
-      background: var(--white);
-    }
-    .footer-grid { gap: 32px; margin-bottom: 40px; }
-    @media (min-width: 900px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
-    .footer-logo-name { font-size: 15px; font-weight: 900; color: var(--dark); }
-    .footer-logo-sub { font-size: 8px; font-weight: 900; letter-spacing: 3px; color: var(--accent); }
-    .footer-desc, .footer-col a, .footer-bottom p { color: var(--gray); }
-    .footer-col h5 { color: var(--gray); font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
-    .footer-bottom { border-top: 1px solid var(--line); }
-
-    @media (max-width: 859px) {
-      body { padding-bottom: 74px; }
-      .hero { padding: 48px 0 42px; }
-      section { padding: 56px 0; }
-      .hero-collage { border-radius: 0; }
-      .change-grid, .route-timeline, .bncc-skills, .testimonial-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        overflow: visible;
-        gap: 0;
-        padding: 0;
-      }
-      .change-card, .timeline-stop, .bncc-skill, .testimonial-grid .testimonial-stack {
-        flex: initial;
-        scroll-snap-align: initial;
-      }
-      .timeline-photo { min-height: 220px; }
-      .photo-strip { display: grid; overflow-x: auto; grid-template-columns: repeat(5, minmax(130px, 1fr)); }
-      .cta { padding: 32px 0 48px; }
-      .cta-box { border-radius: 0; padding: 28px 22px; }
-      footer { padding: 34px 0 24px; }
-    }
+    footer { border-top: 1px solid var(--line); padding: 44px 0 32px; }
+    .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 12px; color: var(--gray); }
   </style>
   <link rel="canonical" href="https://jpbenjamim.github.io/azimute-educatur-site/roteiro-roliude.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Roliúde Nordestina | Azimute Educatur">
-  <meta property="og:description" content="Uma expedi&#231;&#227;o para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.">
+  <meta property="og:description" content="Uma expedição para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.">
   <meta property="og:url" content="https://jpbenjamim.github.io/azimute-educatur-site/roteiro-roliude.html">
   <meta property="og:image" content="https://jpbenjamim.github.io/azimute-educatur-site/assets/images/cinematic/catalogo-roliude-hero.jpg">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Azimute Educatur">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Roliúde Nordestina | Azimute Educatur">
-  <meta name="twitter:description" content="Uma expedi&#231;&#227;o para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.">
+  <meta name="twitter:description" content="Uma expedição para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.">
   <meta name="twitter:image" content="https://jpbenjamim.github.io/azimute-educatur-site/assets/images/cinematic/catalogo-roliude-hero.jpg">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"Roliúde Nordestina","description":"Uma expedi&#231;&#227;o para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.","url":"https://jpbenjamim.github.io/azimute-educatur-site/roteiro-roliude.html","image":"https://jpbenjamim.github.io/azimute-educatur-site/assets/images/cinematic/catalogo-roliude-hero.jpg","touristType":["Escolas","Famílias","Turismo educativo"],"address":{"@type":"PostalAddress","addressRegion":"PB","addressLocality":"Cabaceiras","addressCountry":"BR"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TouristAttraction","name":"Roliúde Nordestina","description":"Uma expedição para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.","url":"https://jpbenjamim.github.io/azimute-educatur-site/roteiro-roliude.html","image":"https://jpbenjamim.github.io/azimute-educatur-site/assets/images/cinematic/catalogo-roliude-hero.jpg","touristType":["Escolas","Famílias","Turismo educativo"],"address":{"@type":"PostalAddress","addressLocality":"Cabaceiras + Lajedo de Pai Mateus, PB","addressCountry":"BR"}}</script>
 </head>
-<body>
-  <nav class="nav">
-    <div class="wrap nav-inner">
-      <a class="logo" href="catalogo.html">
-        <span class="logo-name">Azimute Educatur</span>
-        <span class="logo-sub">Expedições Pedagógicas</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#transformacao">Aprendizagem</a></li>
-        <li><a href="#jornada">Jornada</a></li>
-        <li><a href="#depoimentos">Depoimentos</a></li>
-        <li><a class="nav-cta" href="#solicitar">Solicitar</a></li>
-      </ul>
-      <button class="nav-burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </nav>
-
-  <div class="mobile-actionbar" aria-label="Ações rápidas">
-    <a class="mobile-secondary" href="#jornada"><i class="fas fa-map"></i> Jornada</a>
-    <a class="mobile-primary" href="#solicitar"><i class="fas fa-paper-plane"></i> Solicitar</a>
-  </div>
-
-  <header class="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div>
-          <div class="breadcrumb"><a href="catalogo.html">Catálogo</a> / Cabaceiras + Lajedo de Pai Mateus, PB</div>
-          <span class="eyebrow">Rota do Cinema e da Caatinga</span>
-          <h1 class="hero-h1">Roli&#250;de Nordestina</h1>
-          <p class="hero-lead">Uma expedi&#231;&#227;o para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.</p>
-          <div class="meta">
-            <span><i class="fas fa-map-marker-alt"></i> Cabaceiras + Lajedo de Pai Mateus, PB</span>
-            <span><i class="fas fa-clock"></i> Pernoite</span>
-            <span><i class="fas fa-graduation-cap"></i> Fund. II &#183; M&#233;dio</span>
-            <span><i class="fas fa-users"></i> mín. 35 alunos</span>
-          </div>
-          <div class="hero-actions">
-            <a class="btn" href="#solicitar">Solicitar Agora <i class="fas fa-arrow-right"></i></a>
-            <a class="btn btn-secondary" href="#jornada">Ver a Jornada</a>
-          </div>
-        </div>
-        <div class="hero-collage" aria-label="Colagem visual do roteiro">
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="Roli&#250;de Nordestina"></div>
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-card.jpg" alt="Roli&#250;de Nordestina"></div>
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="Roli&#250;de Nordestina"></div>
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-card.jpg" alt="Roli&#250;de Nordestina"></div>
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="Roli&#250;de Nordestina"></div>
-        </div>
-      </div>
-
-      <div class="quick-panel">
-        <div class="quick-item"><i class="fas fa-route"></i><div class="quick-label">Formato</div><div class="quick-value">Pernoite</div></div>
-        <div class="quick-item"><i class="fas fa-shield-alt"></i><div class="quick-label">Segurança</div><div class="quick-value">Seguro incluso</div></div>
-        <div class="quick-item"><i class="fas fa-book-open"></i><div class="quick-label">Método</div><div class="quick-value">Diário de campo</div></div>
-        <div class="quick-item"><i class="fas fa-comments"></i><div class="quick-label">Escola</div><div class="quick-value">Suporte completo</div></div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="route-summary-band">
-      <div class="wrap">
-        <div class="route-summary-layout">
-          <aside class="route-summary-card">
-            <h2>O roteiro</h2>
-            <div class="summary-row"><div class="summary-icon"><i class="fas fa-map-marker-alt"></i></div><div><div class="summary-label">Destino</div><div class="summary-value">Cabaceiras + Lajedo de Pai Mateus, PB</div></div></div>
-            <div class="summary-row"><div class="summary-icon"><i class="fas fa-route"></i></div><div><div class="summary-label">Distância de Natal</div><div class="summary-value">Rota interestadual</div></div></div>
-            <div class="summary-row"><div class="summary-icon"><i class="fas fa-clock"></i></div><div><div class="summary-label">Saída / Retorno</div><div class="summary-value">Pernoite</div></div></div>
-            <div class="summary-row"><div class="summary-icon"><i class="fas fa-users"></i></div><div><div class="summary-label">Mínimo de alunos</div><div class="summary-value">35 alunos</div></div></div>
-            <p class="summary-note">Valor sob consulta · ajustado conforme cidade da escola, data e número de participantes.</p>
-          </aside>
-          <div class="route-pitch">
-            <span class="eyebrow">Para a direção</span>
-            <h3>Uma aula de campo com roteiro, segurança e objetivo curricular.</h3>
-            <p>A escola apresenta a saída com clareza: onde a turma vai, quanto tempo dura, o que está incluso e qual aprendizagem justifica a proposta.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="prologue" aria-labelledby="prologo-title">
-      <div class="wrap">
-        <div class="prologue-box">
-          <span class="eyebrow">Antes da jornada</span>
-          <h2 id="prologo-title">Cabaceiras transforma sert&#227;o em cen&#225;rio, linguagem e territ&#243;rio.</h2>
-          <p>Conhecida pela rela&#231;&#227;o com o cinema, Cabaceiras permite observar como paisagem, cultura e economia criativa se encontram. O Lajedo amplia a leitura geol&#243;gica e ambiental do Cariri.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="transform" id="transformacao">
-      <div class="wrap">
-        <div class="sec-head">
-          <div><span class="eyebrow">Aprendizagem</span><h2 class="sec-h">O que muda no aluno depois de Roli&#250;de Nordestina</h2></div>
-          <p class="sec-p">Resultado antes de atividade: a expedição precisa continuar fazendo sentido quando o professor volta para a sala.</p>
-        </div>
-        <div class="change-grid">
-          <article class="change-card">
-            <div class="change-num">01</div>
-            <h3>Cinema vira territ&#243;rio</h3>
-            <p>A turma entende como paisagem e cultura constroem narrativas audiovisuais.</p>
-          </article>          <article class="change-card">
-            <div class="change-num">02</div>
-            <h3>Caatinga vira leitura viva</h3>
-            <p>O aluno observa adapta&#231;&#227;o, clima e ocupa&#231;&#227;o no semi&#225;rido.</p>
-          </article>          <article class="change-card">
-            <div class="change-num">03</div>
-            <h3>Pedra vira tempo geol&#243;gico</h3>
-            <p>O lajedo ajuda a discutir rocha, eros&#227;o e longa dura&#231;&#227;o.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="journey" id="jornada">
-      <div class="wrap">
-        <div class="sec-head">
-          <div><span class="eyebrow">A jornada</span><h2 class="sec-h">A jornada do aluno</h2></div>
-          <p class="sec-p">Cada parada tem intenção pedagógica, mediação em campo e conexão com o conteúdo trabalhado em sala.</p>
-        </div>
-        <div class="route-timeline">
-          <article class="timeline-stop">
-            <div class="photo timeline-photo">
-              <img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="">
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-kicker">Parada 01</div>
-              <h3>Cabaceiras e cinema</h3>
-              <p>Leitura da cidade como cen&#225;rio, linguagem e economia criativa.</p>
-              <div class="timeline-tags">
-                <span>Cinema</span>
-                <span>Caatinga</span>
-                <span>Geologia</span>
-                <span>Cultura</span>
-              </div>
-            </div>
-          </article>          <article class="timeline-stop">
-            <div class="photo timeline-photo">
-              <img src="assets/images/cinematic/catalogo-roliude-card.jpg" alt="">
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-kicker">Parada 02</div>
-              <h3>Lajedo de Pai Mateus</h3>
-              <p>Observa&#231;&#227;o de forma&#231;&#245;es rochosas, eros&#227;o e paisagem.</p>
-              <div class="timeline-tags">
-                <span>Cinema</span>
-                <span>Caatinga</span>
-                <span>Geologia</span>
-                <span>Cultura</span>
-              </div>
-            </div>
-          </article>          <article class="timeline-stop">
-            <div class="photo timeline-photo">
-              <img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="">
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-kicker">Parada 03</div>
-              <h3>Cultura do Cariri</h3>
-              <p>Discuss&#227;o sobre identidade, clima e modos de vida.</p>
-              <div class="timeline-tags">
-                <span>Cinema</span>
-                <span>Caatinga</span>
-                <span>Geologia</span>
-                <span>Cultura</span>
-              </div>
-            </div>
-          </article>          <article class="timeline-stop">
-            <div class="photo timeline-photo">
-              <img src="assets/images/cinematic/catalogo-roliude-card.jpg" alt="">
-            </div>
-            <div class="timeline-body">
-              <div class="timeline-kicker">Fechamento</div>
-              <h3>S&#237;ntese audiovisual</h3>
-              <p>Registro sobre paisagem, narrativa e territ&#243;rio.</p>
-              <div class="timeline-tags">
-                <span>Cinema</span>
-                <span>Caatinga</span>
-                <span>Geologia</span>
-                <span>Cultura</span>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="photo-strip">
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="Roli&#250;de Nordestina"></div>
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-card.jpg" alt="Roli&#250;de Nordestina"></div>
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="Roli&#250;de Nordestina"></div>
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-card.jpg" alt="Roli&#250;de Nordestina"></div>
-          <div class="photo"><img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="Roli&#250;de Nordestina"></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sec-head">
-          <div><span class="eyebrow">Sem surpresas</span><h2 class="sec-h">Tudo que a escola recebe</h2></div>
-          <p class="sec-p">A promessa pedagógica vem acompanhada de operação, segurança e comunicação para as famílias.</p>
-        </div>
-        <div class="info-grid">
-          <div class="info-box">
-            <h3>Incluso na expedição</h3>
-            <ul class="check-list">
-              <li><i class="fas fa-check-circle"></i> Transporte regulamentado ida e volta</li>
-              <li><i class="fas fa-check-circle"></i> Seguro viagem para todos os participantes</li>
-              <li><i class="fas fa-check-circle"></i> Mediação pedagógica durante a aula de campo</li>
-              <li><i class="fas fa-check-circle"></i> Suporte operacional para escola e responsáveis</li>
-              <li><i class="fas fa-check-circle"></i> Diário de campo e perguntas investigativas</li>
-              <li><i class="fas fa-check-circle"></i> Alimentação conforme desenho final do roteiro</li>
-            </ul>
-            <div class="ops-panel">
-              <div class="ops-item"><div class="ops-icon"><i class="fas fa-clipboard-check"></i></div><div><strong>Antes da saída</strong><span>Alinhamento com a escola, lista de participantes, orientações às famílias e conferência de necessidades específicas.</span></div></div>
-              <div class="ops-item"><div class="ops-icon"><i class="fas fa-headset"></i></div><div><strong>Durante a expedição</strong><span>Equipe Azimute acompanha o grupo e mantém suporte para coordenação e responsáveis.</span></div></div>
-            </div>
-          </div>
-          <div class="info-box">
-            <h3>Áreas e habilidades BNCC</h3>
-            <p class="sec-p" style="margin-bottom:1rem;">Temas do roteiro e habilidades que podem ser mobilizadas antes, durante e depois da aula de campo.</p>
-            <div class="bncc-list">
-              <span>Cinema</span>
-              <span>Caatinga</span>
-              <span>Geologia</span>
-              <span>Cultura</span>
-            </div>
-            <div class="bncc-skills">
-              <div class="bncc-skill">
-                <div class="bncc-code">EF69AR31 (Arte)</div>
-                <p class="bncc-desc">Relacionar produ&#231;&#245;es art&#237;sticas a contextos sociais e culturais.</p>
-              </div>              <div class="bncc-skill">
-                <div class="bncc-code">EF06GE05 (Geografia)</div>
-                <p class="bncc-desc">Relacionar relevo, clima e vegeta&#231;&#227;o.</p>
-              </div>              <div class="bncc-skill">
-                <div class="bncc-code">EF07CI07 (Ci&#234;ncias)</div>
-                <p class="bncc-desc">Caracterizar fatores ambientais de ecossistemas.</p>
-              </div>              <div class="bncc-skill">
-                <div class="bncc-code">EF69LP44 (L&#237;ngua Portuguesa)</div>
-                <p class="bncc-desc">Analisar e produzir registros narrativos e argumentativos.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="testimonials" id="depoimentos">
-      <div class="wrap">
-        <div class="testimonial-head">
-          <span class="eyebrow">Quem já foi</span>
-          <h2 class="sec-h">O que dizem quem já foi</h2>
-        </div>
-        <div class="testimonial-grid">
-          <div class="testimonial-stack">
-            <article class="testimonial-card">
-              <div class="testimonial-label"><i class="fas fa-chalkboard-teacher"></i> Professores</div>
-              <p class="testimonial-text">A turma voltou com repertório concreto para discutir o conteúdo em sala. O território ajudou os alunos a enxergar relações que, no livro, pareciam distantes.</p>
-              <div class="testimonial-name">Professora participante</div>
-              <div class="testimonial-role">Escola parceira · RN/PB/PE</div>
-            </article>
-          </div>
-          <div class="testimonial-stack">
-            <article class="testimonial-card">
-              <div class="testimonial-label"><i class="fas fa-user-shield"></i> Responsáveis</div>
-              <p class="testimonial-text">A comunicação foi clara antes da saída e meu filho voltou explicando o que viu. Deu para perceber que não foi apenas deslocamento, teve aprendizagem.</p>
-              <div class="testimonial-name">Responsável por estudante</div>
-              <div class="testimonial-role">Família participante</div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta" id="solicitar">
-      <div class="wrap">
-        <div class="cta-box">
-          <div>
-            <h2>Roli&#250;de Nordestina no calendário deste semestre?</h2>
-            <p>Em 30 minutos a Azimute entende suas turmas, ajusta o roteiro e entrega o argumento pedagógico para apresentar à coordenação e às famílias.</p>
-          </div>
-          <a class="btn" href="https://wa.me/5584999650530?text=Quero%20o%20roteiro%20Roli%C3%BAde%20Nordestina%20para%20minha%20escola" target="_blank" rel="noopener">Falar com a Azimute</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-<footer>
-    <div class="wrap">
-      <div class="footer-grid">
-        <div>
-          <span class="footer-logo-name">Azimute Educatur</span>
-          <span class="footer-logo-sub">Expedi&ccedil;&otilde;es Pedag&oacute;gicas</span>
-          <p class="footer-desc">Transformamos a sa&iacute;da da escola em Expedi&ccedil;&atilde;o Pedag&oacute;gica, com objetivo curricular claro e alunos que voltam diferentes.</p>
-          <div class="footer-socials">
-            <a class="soc" href="https://www.instagram.com/azimuteeducatur/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a class="soc" href="https://wa.me/5584999650530" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a class="soc" href="index.html#diario" aria-label="Di&aacute;rio de Campo"><i class="fas fa-map"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h5>Roteiros</h5>
-          <ul>
-            <li><a href="catalogo.html">Cat&aacute;logo completo</a></li>
-            <li><a href="catalogo.html#rotas">Rotas tem&aacute;ticas</a></li>
-            <li><a href="index.html#roteiros">Roteiros em destaque</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Para a Escola</h5>
-          <ul>
-            <li><a href="index.html#como-funciona">Como Funciona</a></li>
-            <li><a href="index.html#diferenciais">Diferenciais</a></li>
-            <li><a href="index.html#diario">Di&aacute;rio de Campo</a></li>
-            <li><a href="index.html#depoimentos">Depoimentos</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Contato</h5>
-          <ul>
-            <li><a href="https://wa.me/5584999650530" target="_blank" rel="noopener">(84) 99965-0530</a></li>
-            <li><a href="mailto:jonas.palhares@outlook.com">jonas.palhares@outlook.com</a></li>
-            <li><a href="https://wa.me/5584999650530" target="_blank" rel="noopener">Natal, RN</a></li>
-            <li><a href="https://wa.me/5584999650530" target="_blank" rel="noopener">CNPJ 64.349.866/0001-95</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Azimute Educatur &mdash; Hub Azimute &middot; Natal/RN</p>
-        <p>Expedi&ccedil;&otilde;es Pedag&oacute;gicas alinhadas &agrave; BNCC</p>
-      </div>
-    </div>
-  </footer>
-  <script>
-
-    var actionbar = document.querySelector('.mobile-actionbar');
-    var footer = document.querySelector('footer');
-    if (actionbar && footer && 'IntersectionObserver' in window) {
-      var footerObserver = new IntersectionObserver(function (entries) {
-        actionbar.classList.toggle('is-hidden', entries[0].isIntersecting);
-      }, { threshold: 0.02 });
-      footerObserver.observe(footer);
-    }
-    var burger = document.getElementById('burger');
-    var navLinks = document.getElementById('navLinks');
-    if (burger && navLinks) {
-      burger.addEventListener('click', function () {
-        var isOpen = navLinks.classList.toggle('open');
-        document.body.classList.toggle('menu-open', isOpen);
-        burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        burger.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
-        burger.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-      });
-      navLinks.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          navLinks.classList.remove('open');
-          document.body.classList.remove('menu-open');
-          burger.setAttribute('aria-expanded', 'false');
-          burger.setAttribute('aria-label', 'Abrir menu');
-          burger.innerHTML = '<i class="fas fa-bars"></i>';
-        });
-      });
-    }
-  </script>
-</body>
-</html>
+<body><nav id="nav"><div class="wrap nav-wrap"><a class="logo" href="index.html"><span class="logo-name">Azimute Educatur</span><span class="logo-sub">Expedições Pedagógicas</span></a><ul class="nav-links" id="navLinks"><li><a href="#transformacao">Aprendizagem</a></li><li><a href="#jornada">Jornada</a></li><li><a href="#depoimentos">Depoimentos</a></li><li><a class="nav-cta" href="#solicitar">Solicitar</a></li></ul><button class="nav-burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false">Menu</button></div></nav><div class="mobile-actionbar" aria-label="Ações rápidas"><a class="mobile-secondary" href="#jornada">Jornada</a><a class="mobile-primary" href="#solicitar">Solicitar</a></div>
+<header class="hero"><div class="hero-media"><img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="Roliúde Nordestina"></div><div class="breadcrumb"><div class="wrap"><a href="catalogo.html">Catálogo</a> / Cabaceiras + Lajedo de Pai Mateus, PB</div></div><div class="wrap hero-content"><div class="hero-eyebrow">Rota do Cinema e da Caatinga</div><h1 class="hero-h1">Roliúde Nordestina</h1><p class="hero-p">Uma expedição para conectar cinema, paisagem da Caatinga, cultura sertaneja e geologia no Cariri paraibano.</p><div class="meta"><span>Cabaceiras + Lajedo de Pai Mateus, PB</span><span>Pernoite</span><span>Fund. II · Médio</span><span>mín. 35 alunos</span></div><div class="hero-actions"><a class="btn btn-accent" href="#solicitar">Solicitar agora</a><a class="btn btn-outline" href="#jornada">Ver a jornada</a></div></div></header>
+<section class="specs"><div class="wrap spec-grid"><div class="spec"><div class="spec-label">Destino</div><div class="spec-value">Cabaceiras + Lajedo de Pai Mateus, PB</div></div><div class="spec"><div class="spec-label">Distância</div><div class="spec-value">Rota interestadual</div></div><div class="spec"><div class="spec-label">Saída / retorno</div><div class="spec-value">Pernoite</div></div><div class="spec"><div class="spec-label">Segmento</div><div class="spec-value">Fund. II · Médio</div></div><div class="spec"><div class="spec-label">Mínimo</div><div class="spec-value">35 alunos</div></div></div></section>
+<section class="prologue"><div class="wrap"><div class="prologue-box"><div class="sec-eyebrow">Antes da jornada</div><h2>Cabaceiras transforma sertão em cenário, linguagem e território.</h2><p>Conhecida pela relação com o cinema, Cabaceiras permite observar como paisagem, cultura e economia criativa se encontram. O Lajedo amplia a leitura geológica e ambiental do Cariri.</p></div></div></section>
+<section id="transformacao"><div class="wrap"><div class="sec-head"><div class="sec-eyebrow">Aprendizagem</div><h2 class="sec-h">O que muda no aluno depois da expedição</h2></div><div class="change-grid">
+</div></div></section>
+<section class="journey" id="jornada"><div class="wrap" style="margin-bottom:46px;"><div class="sec-head" style="margin-bottom:0;"><div class="sec-eyebrow">A jornada</div><h2 class="sec-h">A jornada do aluno</h2></div></div>
+<article class="timeline-stop"><div class="timeline-photo"><img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="Cabaceiras e cinema"></div><div class="timeline-body"><div class="timeline-kicker">Parada 01</div><h3>Cabaceiras e cinema</h3><p>Leitura da cidade como cenário, linguagem e economia criativa.</p></div></article>
+<article class="timeline-stop"><div class="timeline-photo"><img src="assets/images/cinematic/catalogo-roliude-card.jpg" alt="Lajedo de Pai Mateus"></div><div class="timeline-body"><div class="timeline-kicker">Parada 02</div><h3>Lajedo de Pai Mateus</h3><p>Observação de formações rochosas, erosão e paisagem.</p></div></article>
+<article class="timeline-stop"><div class="timeline-photo"><img src="assets/images/cinematic/catalogo-roliude-hero.jpg" alt="Cultura do Cariri"></div><div class="timeline-body"><div class="timeline-kicker">Parada 03</div><h3>Cultura do Cariri</h3><p>Discussão sobre identidade, clima e modos de vida.</p></div></article>
+<article class="timeline-stop"><div class="timeline-photo"><img src="assets/images/cinematic/catalogo-roliude-card.jpg" alt="Síntese audiovisual"></div><div class="timeline-body"><div class="timeline-kicker">Fechamento</div><h3>Síntese audiovisual</h3><p>Registro sobre paisagem, narrativa e território.</p></div></article>
+</section>
+<section><div class="wrap"><div class="sec-head"><div class="sec-eyebrow">Sem surpresas</div><h2 class="sec-h">Tudo que a escola recebe</h2></div><div class="info-grid"><div class="info-box"><h3>Incluso na expedição</h3><ul class="check-list"><li>Transporte regulamentado ida e volta</li><li>Seguro viagem para todos os participantes</li><li>Mediação pedagógica durante a aula de campo</li><li>Suporte operacional para escola e responsáveis</li><li>Diário de campo e perguntas investigativas</li><li>Alimentação conforme desenho final do roteiro</li></ul></div><div class="info-box"><h3>Áreas e habilidades BNCC</h3><div class="bncc-skill"><div class="bncc-code">EF69AR31 (Arte)</div><div class="bncc-desc">Relacionar produções artísticas a contextos sociais e culturais.</div></div><div class="bncc-skill"><div class="bncc-code">EF06GE05 (Geografia)</div><div class="bncc-desc">Relacionar relevo, clima e vegetação.</div></div><div class="bncc-skill"><div class="bncc-code">EF07CI07 (Ciências)</div><div class="bncc-desc">Caracterizar fatores ambientais de ecossistemas.</div></div></div></div></div></section>
+<section id="depoimentos"><div class="wrap"><div class="sec-head"><div class="sec-eyebrow">Quem já foi</div><h2 class="sec-h">O que dizem quem já foi</h2></div><div class="dep-list"><div class="dep-item"><p class="dep-text">"A turma voltou com repertório concreto para discutir o conteúdo em sala. O território ajudou os alunos a enxergar relações que, no livro, pareciam distantes."</p><div class="dep-name">Professora participante</div><div class="dep-role">Escola parceira · RN/PB/PE</div></div><div class="dep-item"><p class="dep-text">"A comunicação foi clara antes da saída e meu filho voltou explicando o que viu. Deu para perceber que não foi apenas deslocamento, teve aprendizagem."</p><div class="dep-name">Responsável por estudante</div><div class="dep-role">Família participante</div></div></div></div></section>
+<section class="cta" id="solicitar"><div class="wrap"><h2 class="cta-h">Roliúde Nordestina no calendário deste semestre?</h2><p class="cta-p">Em 30 minutos a Azimute entende suas turmas, ajusta o roteiro e entrega o argumento pedagógico para apresentar à coordenação e às famílias.</p><a class="btn btn-accent" href="https://wa.me/5584999650530?text=Quero%20o%20roteiro%20Roliude%20Nordestina%20para%20minha%20escola" target="_blank" rel="noopener">Falar com a Azimute</a></div></section><footer><div class="wrap footer-bottom"><p>© 2026 Azimute Educatur — Hub Azimute · Natal/RN</p><p>Expedições Pedagógicas alinhadas à BNCC</p></div></footer><script>var burger=document.getElementById('burger');var navLinks=document.getElementById('navLinks');if(burger&&navLinks){burger.addEventListener('click',function(){var open=navLinks.classList.toggle('open');document.body.classList.toggle('menu-open',open);burger.setAttribute('aria-expanded',open?'true':'false');burger.textContent=open?'Fechar':'Menu';});navLinks.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){navLinks.classList.remove('open');document.body.classList.remove('menu-open');burger.setAttribute('aria-expanded','false');burger.textContent='Menu';});});}var actionbar=document.querySelector('.mobile-actionbar');var footer=document.querySelector('footer');if(actionbar&&footer&&'IntersectionObserver'in window){var observer=new IntersectionObserver(function(entries){actionbar.classList.toggle('is-hidden',entries[0].isIntersecting);},{threshold:.02});observer.observe(footer);}</script></body></html>
