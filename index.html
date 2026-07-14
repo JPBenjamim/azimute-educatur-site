@@ -107,6 +107,8 @@
     .rot-body { padding-top: 16px; }
     .rot-name { display: block; font-size: 17px; font-weight: 900; letter-spacing: -.02em; margin-bottom: 4px; color: var(--dark); }
     .rot-dest { display: block; font-size: 13px; color: var(--gray); margin-bottom: 10px; font-weight: 600; }
+    .rot-cycle { display: block; min-height: 42px; font-size: 14px; line-height: 1.45; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+    .rot-cycle-label { color: var(--accent); font-weight: 900; text-transform: uppercase; font-size: 11px; letter-spacing: .06em; margin-right: 6px; }
     .rot-link { font-size: 13px; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; color: var(--accent); }
     .rot-mobile-hint { display: none; font-size: 12px; font-weight: 800; color: var(--gray); margin-top: 18px; }
     @media (max-width: 768px) {
@@ -230,26 +232,27 @@
   <section id="roteiros">
     <div class="wrap">
       <div class="rot-head-row">
-        <div><div class="sec-eyebrow">Catálogo</div><h2 class="sec-h">Roteiros de Descoberta</h2></div>
+        <div><div class="sec-eyebrow">Cat&aacute;logo</div><h2 class="sec-h">Rotas de Descoberta</h2></div>
         <div class="rot-head-actions">
-          <div class="rot-controls" aria-label="Controle do carrossel de roteiros">
-            <button class="rot-arrow" type="button" data-rot-prev aria-label="Roteiro anterior">‹</button>
-            <button class="rot-arrow" type="button" data-rot-next aria-label="Próximo roteiro">›</button>
+          <div class="rot-controls" aria-label="Controle do carrossel de rotas">
+            <button class="rot-arrow" type="button" data-rot-prev aria-label="Rota anterior">&lsaquo;</button>
+            <button class="rot-arrow" type="button" data-rot-next aria-label="Pr&oacute;xima rota">&rsaquo;</button>
           </div>
-          <a class="btn btn-dark" href="catalogo.html">Ver catálogo completo</a>
+          <a class="btn btn-dark" href="catalogo.html">Ver cat&aacute;logo completo</a>
         </div>
       </div>
       <div class="rot-shell">
-        <div class="rot-track" id="rotTrack" aria-label="Roteiros em destaque">
-        <a class="rot-card" href="roteiro-areia.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-areia-card.jpg" alt="Areia, PB"><span class="rot-nivel">Regional</span></div><div class="rot-body"><span class="rot-name">Civilização e Engenhos</span><span class="rot-dest">Areia, PB</span><span class="rot-link">Ver roteiro →</span></div></a>
-        <a class="rot-card" href="roteiro-pernambuco-imortal.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-recife-card.jpg" alt="Recife, PE"><span class="rot-nivel">Interestadual</span></div><div class="rot-body"><span class="rot-name">Pernambuco Imortal</span><span class="rot-dest">Recife + Olinda, PE</span><span class="rot-link">Ver roteiro →</span></div></a>
-        <a class="rot-card" href="roteiro-joao-pessoa.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="João Pessoa, PB"><span class="rot-nivel">Interestadual</span></div><div class="rot-body"><span class="rot-name">Arrebol Paraibano</span><span class="rot-dest">João Pessoa, PB</span><span class="rot-link">Ver roteiro →</span></div></a>
-        <a class="rot-card" href="roteiro-mossoro.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-mossoro-hero.jpg" alt="Mossoró, RN"><span class="rot-nivel">Regional</span></div><div class="rot-body"><span class="rot-name">Sal, Sol e Liberdade</span><span class="rot-dest">Mossoró, RN</span><span class="rot-link">Ver roteiro →</span></div></a>
-        <a class="rot-card" href="roteiro-currais-novos.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-currais-novos-card.jpg" alt="Currais Novos, RN"><span class="rot-nivel">Regional</span></div><div class="rot-body"><span class="rot-name">Coração de Metal do Seridó</span><span class="rot-dest">Currais Novos, RN</span><span class="rot-link">Ver roteiro →</span></div></a>
-        <a class="rot-card" href="roteiro-chao-vivo-natal.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-chao-vivo-natal-hero.jpg" alt="Natal, RN"><span class="rot-nivel">Local</span></div><div class="rot-body"><span class="rot-name">O Chão Vivo de Natal</span><span class="rot-dest">Natal, RN</span><span class="rot-link">Ver roteiro →</span></div></a>
+        <div class="rot-track" id="rotTrack" aria-label="Rotas em destaque">
+          <a class="rot-card" href="catalogo.html?rota=litoral#rotas" data-rot-items="Sentinelas do Mar|Gigantes do Litoral|Fal&eacute;sia, Mata e Golfinhos|Ra&iacute;zes da Mata"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-chao-vivo-natal-hero.jpg" alt="Rota do Sol, Mar e Fal&eacute;sias"><span class="rot-nivel">Rota tem&aacute;tica</span></div><div class="rot-body"><span class="rot-name">Sol, Mar e Fal&eacute;sias</span><span class="rot-dest">Natal, Pirangi, Pipa e Ba&iacute;a Formosa</span><span class="rot-cycle"><span class="rot-cycle-label">Agora:</span><span data-rot-cycle-text>Sentinelas do Mar</span></span><span class="rot-link">Ver rota no cat&aacute;logo &rarr;</span></div></a>
+          <a class="rot-card" href="catalogo.html?rota=sal#rotas" data-rot-items="Sal, Sol e Liberdade|A Pen&iacute;nsula do Sal|Dunas que Andam|Do Sal ao Prato"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-mossoro-card.jpg" alt="Rota do Sal e do Vento"><span class="rot-nivel">Rota tem&aacute;tica</span></div><div class="rot-body"><span class="rot-name">Sal e Vento</span><span class="rot-dest">Mossor&oacute;, Galinhos, Areia Branca e Rosado</span><span class="rot-cycle"><span class="rot-cycle-label">Agora:</span><span data-rot-cycle-text>Sal, Sol e Liberdade</span></span><span class="rot-link">Ver rota no cat&aacute;logo &rarr;</span></div></a>
+          <a class="rot-card" href="catalogo.html?rota=serras#rotas" data-rot-items="No Topo da Serra|A Serra que Pinga|Serra das Gameleiras|Serra e Quilombo"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-serra-sao-bento-hero.jpg" alt="Rota das Serras e do Interior"><span class="rot-nivel">Rota tem&aacute;tica</span></div><div class="rot-body"><span class="rot-name">Serras e Interior</span><span class="rot-dest">Martins, Portalegre e Araruna</span><span class="rot-cycle"><span class="rot-cycle-label">Agora:</span><span data-rot-cycle-text>No Topo da Serra</span></span><span class="rot-link">Ver rota no cat&aacute;logo &rarr;</span></div></a>
+          <a class="rot-card" href="catalogo.html?rota=serido#rotas" data-rot-items="O Cora&ccedil;&atilde;o de Metal do Serid&oacute;|Janelas do Serid&oacute;|Onde Nasce o Potengi|Pedra, Tinta e F&eacute;"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-currais-novos-card.jpg" alt="Rota do Serid&oacute;"><span class="rot-nivel">Rota tem&aacute;tica</span></div><div class="rot-body"><span class="rot-name">Serid&oacute;</span><span class="rot-dest">Currais Novos, Acari, Cerro Cor&aacute; e Carna&uacute;ba</span><span class="rot-cycle"><span class="rot-cycle-label">Agora:</span><span data-rot-cycle-text>O Cora&ccedil;&atilde;o de Metal do Serid&oacute;</span></span><span class="rot-link">Ver rota no cat&aacute;logo &rarr;</span></div></a>
+          <a class="rot-card" href="catalogo.html?rota=engenhos#rotas" data-rot-items="Areia de Engenho e Mem&oacute;ria|Entre Trilhos e Engenhos|Rio, A&ccedil;&uacute;car e Mem&oacute;ria|Muralhas e Mar&eacute;"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-areia-card.jpg" alt="Rota dos Engenhos e da Mem&oacute;ria"><span class="rot-nivel">Rota tem&aacute;tica</span></div><div class="rot-body"><span class="rot-name">Engenhos e Mem&oacute;ria</span><span class="rot-dest">Areia, Bananeiras, Cear&aacute;-Mirim e Natal</span><span class="rot-cycle"><span class="rot-cycle-label">Agora:</span><span data-rot-cycle-text>Areia de Engenho e Mem&oacute;ria</span></span><span class="rot-link">Ver rota no cat&aacute;logo &rarr;</span></div></a>
+          <a class="rot-card" href="catalogo.html?rota=ciencia#rotas" data-rot-items="Rumo ao Espa&ccedil;o|O Ch&atilde;o Vivo de Natal|Do Rio ao Mar|Gigantes do Litoral"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-minerio-dunas-hero.jpg" alt="Rota Ci&ecirc;ncia e Territ&oacute;rio"><span class="rot-nivel">Rota tem&aacute;tica</span></div><div class="rot-body"><span class="rot-name">Ci&ecirc;ncia e Territ&oacute;rio</span><span class="rot-dest">Natal, Pirangi, CLBI e campo costeiro</span><span class="rot-cycle"><span class="rot-cycle-label">Agora:</span><span data-rot-cycle-text>Rumo ao Espa&ccedil;o</span></span><span class="rot-link">Ver rota no cat&aacute;logo &rarr;</span></div></a>
+          <a class="rot-card" href="catalogo.html?rota=capitais#rotas" data-rot-items="Arrebol Paraibano|Pernambuco Imortal|Da Fortaleza &agrave;s Ondas"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="Rota das Capitais do Mar"><span class="rot-nivel">Rota tem&aacute;tica</span></div><div class="rot-body"><span class="rot-name">Capitais do Mar</span><span class="rot-dest">Jo&atilde;o Pessoa, Recife, Olinda e Fortaleza</span><span class="rot-cycle"><span class="rot-cycle-label">Agora:</span><span data-rot-cycle-text>Arrebol Paraibano</span></span><span class="rot-link">Ver rota no cat&aacute;logo &rarr;</span></div></a>
         </div>
       </div>
-      <p class="rot-mobile-hint">Arraste para ver mais →</p>
+      <p class="rot-mobile-hint">Arraste para ver mais &rarr;</p>
     </div>
   </section>
 
@@ -378,6 +381,18 @@
         event.preventDefault();
         event.stopPropagation();
       }, true);
+
+      var routeCards = rotTrack.querySelectorAll('.rot-card[data-rot-items]');
+      routeCards.forEach(function (card) {
+        var items = (card.dataset.rotItems || '').split('|').filter(Boolean);
+        var target = card.querySelector('[data-rot-cycle-text]');
+        if (!items.length || !target) return;
+        var idx = 0;
+        window.setInterval(function () {
+          idx = (idx + 1) % items.length;
+          target.textContent = items[idx];
+        }, 2600);
+      });
     }
   </script>
 </body>

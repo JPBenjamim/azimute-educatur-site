@@ -1393,6 +1393,15 @@
         filtrarRota(link.dataset.rotaLink);
       });
     });
+
+    var rotaInicial = 'all';
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var rotaParam = params.get('rota');
+      if (rotaParam && rotaNomes[rotaParam]) rotaInicial = rotaParam;
+    } catch (e) {}
+
+    filtrarRota(rotaInicial);
   </script>
 
 </body>
