@@ -398,7 +398,283 @@
       }
       .notice .btn { width: 100%; }
     }
+
+    /* Premium editorial - alinhado com home, catalogo e montador */
+    :root {
+      --dark:#0D2246;
+      --black:#1a1a1a;
+      --white:#fff;
+      --line:#e2e2e2;
+      --gray:#686a70;
+      --accent:#DF6951;
+      --marinho: var(--dark);
+      --cobre: var(--accent);
+      --texto: var(--black);
+    }
+    body { color: var(--black); background: var(--white); -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 1400px; padding: 0 32px; }
+    @media (max-width: 768px) { .wrap { padding: 0 20px; } }
+
+    .nav {
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { min-height: 64px; }
+    .logo { display: grid; line-height: 1.05; }
+    .logo-name { font-size: 16px; font-weight: 900; letter-spacing: -.02em; }
+    .logo-sub { font-size: 8px; font-weight: 900; letter-spacing: 3px; }
+    .nav-links a { color: var(--black); font-size: 13px; font-weight: 600; }
+    .nav-cta {
+      background: var(--accent);
+      box-shadow: none;
+      font-weight: 800;
+      padding: 10px 20px;
+    }
+    .mobile-nav-pill {
+      border: 1px solid var(--line);
+      box-shadow: none;
+      border-radius: 8px;
+      color: var(--dark);
+    }
+
+    .hero {
+      padding: 92px 0 52px;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+    .breadcrumb, .breadcrumb a {
+      color: var(--gray);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+    .eyebrow {
+      color: var(--gray);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .07em;
+    }
+    h1 {
+      color: var(--black);
+      font-size: clamp(2.45rem, 6vw, 5rem);
+      font-style: normal;
+      letter-spacing: -.035em;
+      max-width: 980px;
+      margin-bottom: 18px;
+    }
+    .hero p {
+      color: var(--gray);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.6;
+      max-width: 780px;
+    }
+    .status-row { margin-top: 24px; gap: 10px; }
+    .pill {
+      background: var(--white);
+      border: 1px solid var(--line);
+      color: var(--dark);
+      font-size: 12px;
+      padding: 8px 13px;
+      font-weight: 800;
+    }
+
+    section { padding: 82px 0; }
+    .section-head {
+      margin-bottom: 34px;
+      gap: 24px;
+    }
+    .section-head h2 {
+      color: var(--black);
+      font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+      font-style: normal;
+      letter-spacing: -.035em;
+      line-height: 1.08;
+    }
+    .section-head p {
+      color: var(--gray);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .route-grid { gap: 0; border-top: 1px solid var(--line); }
+    @media (min-width: 760px) { .route-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1080px) { .route-grid { grid-template-columns: repeat(3, 1fr); } }
+    .route-card {
+      border: 0;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
+      background: var(--white);
+    }
+    .route-top {
+      min-height: 0;
+      padding: 30px 28px 16px;
+      background: var(--white);
+      color: var(--dark);
+      display: grid;
+      gap: 16px;
+    }
+    .route-icon {
+      width: auto;
+      height: auto;
+      background: transparent;
+      color: #d4d4d4;
+      font-size: 34px;
+      justify-content: flex-start;
+    }
+    .route-top h3 {
+      color: var(--dark);
+      font-size: 23px;
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+    .route-body { padding: 0 28px 30px; }
+    .route-body p, .option-list li, .route-status {
+      color: var(--gray);
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .option-list {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .option-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+    .option-list li span {
+      background: transparent;
+      color: #c8c8c8;
+      font-size: 22px;
+      font-weight: 300;
+      width: auto;
+      height: auto;
+      line-height: 1;
+    }
+    .option-list strong { color: var(--dark); }
+    .tag-row { gap: 8px; margin-top: 18px; }
+    .tag {
+      background: #f6f6f6;
+      color: var(--dark);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 6px 10px;
+    }
+    .route-status {
+      border-top: 1px solid var(--line);
+      margin-top: 20px;
+      padding-top: 16px;
+    }
+    .route-status strong { color: var(--dark); }
+
+    .priority { background: #fafafa; }
+    .priority-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+    .priority-item {
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      box-shadow: none;
+      padding: 28px 0;
+      background: transparent;
+    }
+    .priority-item h3 {
+      color: var(--dark);
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+    .priority-item p {
+      color: var(--gray);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .notice {
+      border-radius: 0;
+      background: var(--dark);
+      color: var(--white);
+      padding: 48px;
+      box-shadow: none;
+    }
+    .notice h2 {
+      color: var(--white);
+      font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+      letter-spacing: -.035em;
+      line-height: 1.08;
+    }
+    .notice p { color: rgba(255,255,255,.72); }
+    .btn {
+      background: var(--accent);
+      box-shadow: 0 8px 24px rgba(223,105,81,.24);
+      font-size: 14px;
+      font-weight: 800;
+      padding: 0 24px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 44px 0 32px;
+      color: var(--gray);
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .hero { padding: 72px 0 40px; }
+      section { padding: 56px 0; }
+      .route-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow: visible;
+        gap: 0;
+        padding-bottom: 0;
+      }
+      .route-card {
+        flex: initial;
+        scroll-snap-align: initial;
+        border-right: 0;
+      }
+      .route-top { padding: 26px 0 14px; }
+      .route-body { padding: 0 0 28px; }
+      .priority-list {
+        display: grid;
+        overflow: visible;
+        gap: 0;
+        padding-bottom: 0;
+      }
+      .priority-item {
+        flex: initial;
+        scroll-snap-align: initial;
+      }
+      .notice { padding: 34px 24px; }
+    }
   </style>
+  <link rel="canonical" href="https://jpbenjamim.github.io/azimute-educatur-site/novos-roteiros-descoberta.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Novos Roteiros em Descoberta | Azimute Educatur">
+  <meta property="og:description" content="Rotas pedagógicas em descoberta para avaliação da Azimute Educatur. Material preliminar, ainda sujeito a validação logística, pedagógica e BNCC.">
+  <meta property="og:url" content="https://jpbenjamim.github.io/azimute-educatur-site/novos-roteiros-descoberta.html">
+  <meta property="og:image" content="https://jpbenjamim.github.io/azimute-educatur-site/assets/images/hero-mosaico-principal-1280.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Azimute Educatur">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Novos Roteiros em Descoberta | Azimute Educatur">
+  <meta name="twitter:description" content="Rotas pedagógicas em descoberta para avaliação da Azimute Educatur. Material preliminar, ainda sujeito a validação logística, pedagógica e BNCC.">
+  <meta name="twitter:image" content="https://jpbenjamim.github.io/azimute-educatur-site/assets/images/hero-mosaico-principal-1280.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Novos Roteiros em Descoberta | Azimute Educatur","description":"Rotas pedagógicas em descoberta para avaliação da Azimute Educatur. Material preliminar, ainda sujeito a validação logística, pedagógica e BNCC.","url":"https://jpbenjamim.github.io/azimute-educatur-site/novos-roteiros-descoberta.html"}</script>
 </head>
 
 <body>
