@@ -86,8 +86,16 @@
     .momento-tag { color: var(--white); opacity: .72; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 16px; display: block; }
     .momento-quote { color: var(--white); font-size: clamp(1.55rem, 3.5vw, 2.7rem); font-weight: 900; line-height: 1.16; max-width: 850px; letter-spacing: -.03em; }
 
+    #roteiros { padding-bottom: 112px; }
+    #como-funciona { border-top: 1px solid var(--line); padding-top: 112px; }
     .rot-head-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; gap: 20px; flex-wrap: wrap; }
-    .rot-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: none; }
+    .rot-head-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .rot-controls { display: flex; gap: 8px; }
+    .rot-arrow { width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--white); color: var(--dark); font-size: 22px; font-weight: 900; line-height: 1; cursor: pointer; transition: transform .18s ease, background .18s ease, color .18s ease; }
+    .rot-arrow:hover { background: var(--dark); color: var(--white); transform: translateY(-1px); }
+    .rot-shell { position: relative; overflow: hidden; }
+    .rot-shell::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 72px; pointer-events: none; background: linear-gradient(90deg, rgba(255,255,255,0), var(--white)); }
+    .rot-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: none; scroll-behavior: smooth; }
     .rot-track::-webkit-scrollbar { display: none; }
     .rot-card { flex: 0 0 310px; scroll-snap-align: start; text-decoration: none; color: var(--black); }
     .rot-img-wrap { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; background: var(--off); position: relative; }
@@ -97,6 +105,20 @@
     .rot-name { display: block; font-size: 17px; font-weight: 900; letter-spacing: -.02em; margin-bottom: 4px; color: var(--dark); }
     .rot-dest { display: block; font-size: 13px; color: var(--gray); margin-bottom: 10px; font-weight: 600; }
     .rot-link { font-size: 13px; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; color: var(--accent); }
+    .rot-mobile-hint { display: none; font-size: 12px; font-weight: 800; color: var(--gray); margin-top: 18px; }
+    @media (max-width: 768px) {
+      #roteiros { padding-bottom: 72px; }
+      #como-funciona { padding-top: 72px; }
+      .rot-head-row { align-items: flex-start; margin-bottom: 28px; }
+      .rot-head-actions { width: 100%; }
+      .rot-controls { display: none; }
+      .rot-head-actions .btn { width: 100%; }
+      .rot-shell { margin-right: -20px; }
+      .rot-shell::after { width: 48px; background: linear-gradient(90deg, rgba(255,255,255,0), var(--white)); }
+      .rot-track { gap: 14px; padding-right: 40px; }
+      .rot-card { flex-basis: min(78vw, 292px); }
+      .rot-mobile-hint { display: block; }
+    }
 
     .como-grid { display: grid; gap: 56px; }
     @media (min-width: 900px) { .como-grid { grid-template-columns: 1.1fr .9fr; align-items: center; } }
@@ -204,15 +226,27 @@
 
   <section id="roteiros">
     <div class="wrap">
-      <div class="rot-head-row"><div><div class="sec-eyebrow">Catálogo</div><h2 class="sec-h">Roteiros de Descoberta</h2></div><a class="btn btn-dark" href="catalogo.html">Ver catálogo completo</a></div>
-      <div class="rot-track" aria-label="Roteiros em destaque">
+      <div class="rot-head-row">
+        <div><div class="sec-eyebrow">Catálogo</div><h2 class="sec-h">Roteiros de Descoberta</h2></div>
+        <div class="rot-head-actions">
+          <div class="rot-controls" aria-label="Controle do carrossel de roteiros">
+            <button class="rot-arrow" type="button" data-rot-prev aria-label="Roteiro anterior">‹</button>
+            <button class="rot-arrow" type="button" data-rot-next aria-label="Próximo roteiro">›</button>
+          </div>
+          <a class="btn btn-dark" href="catalogo.html">Ver catálogo completo</a>
+        </div>
+      </div>
+      <div class="rot-shell">
+        <div class="rot-track" id="rotTrack" aria-label="Roteiros em destaque">
         <a class="rot-card" href="roteiro-areia.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-areia-card.jpg" alt="Areia, PB"><span class="rot-nivel">Regional</span></div><div class="rot-body"><span class="rot-name">Civilização e Engenhos</span><span class="rot-dest">Areia, PB</span><span class="rot-link">Ver roteiro →</span></div></a>
         <a class="rot-card" href="roteiro-pernambuco-imortal.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-recife-card.jpg" alt="Recife, PE"><span class="rot-nivel">Interestadual</span></div><div class="rot-body"><span class="rot-name">Pernambuco Imortal</span><span class="rot-dest">Recife + Olinda, PE</span><span class="rot-link">Ver roteiro →</span></div></a>
         <a class="rot-card" href="roteiro-joao-pessoa.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-joao-pessoa-card.jpg" alt="João Pessoa, PB"><span class="rot-nivel">Interestadual</span></div><div class="rot-body"><span class="rot-name">Arrebol Paraibano</span><span class="rot-dest">João Pessoa, PB</span><span class="rot-link">Ver roteiro →</span></div></a>
         <a class="rot-card" href="roteiro-mossoro.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-mossoro-hero.jpg" alt="Mossoró, RN"><span class="rot-nivel">Regional</span></div><div class="rot-body"><span class="rot-name">Sal, Sol e Liberdade</span><span class="rot-dest">Mossoró, RN</span><span class="rot-link">Ver roteiro →</span></div></a>
         <a class="rot-card" href="roteiro-currais-novos.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-currais-novos-card.jpg" alt="Currais Novos, RN"><span class="rot-nivel">Regional</span></div><div class="rot-body"><span class="rot-name">Coração de Metal do Seridó</span><span class="rot-dest">Currais Novos, RN</span><span class="rot-link">Ver roteiro →</span></div></a>
         <a class="rot-card" href="roteiro-chao-vivo-natal.html"><div class="rot-img-wrap"><img src="assets/images/cinematic/catalogo-chao-vivo-natal-hero.jpg" alt="Natal, RN"><span class="rot-nivel">Local</span></div><div class="rot-body"><span class="rot-name">O Chão Vivo de Natal</span><span class="rot-dest">Natal, RN</span><span class="rot-link">Ver roteiro →</span></div></a>
+        </div>
       </div>
+      <p class="rot-mobile-hint">Arraste para ver mais →</p>
     </div>
   </section>
 
@@ -276,9 +310,22 @@
           navLinks.classList.remove('open');
           document.body.classList.remove('menu-open');
           burger.setAttribute('aria-expanded', 'false');
-          burger.textContent = 'Menu';
+        burger.textContent = 'Menu';
         });
       });
+    }
+    var rotTrack = document.getElementById('rotTrack');
+    var rotPrev = document.querySelector('[data-rot-prev]');
+    var rotNext = document.querySelector('[data-rot-next]');
+    if (rotTrack && rotPrev && rotNext) {
+      var moveRoteiros = function (direction) {
+        var card = rotTrack.querySelector('.rot-card');
+        var gap = 20;
+        var distance = card ? card.getBoundingClientRect().width + gap : 330;
+        rotTrack.scrollBy({ left: direction * distance, behavior: 'smooth' });
+      };
+      rotPrev.addEventListener('click', function () { moveRoteiros(-1); });
+      rotNext.addEventListener('click', function () { moveRoteiros(1); });
     }
   </script>
 </body>
