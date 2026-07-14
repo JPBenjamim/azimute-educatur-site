@@ -36,23 +36,24 @@ Ver nota em `06-rota-engenhos-historia.md` — mesma pendência.
 
 ---
 
-## 3. Do Marco Zero às Ondas — Fortaleza + Beach Park (categoria A · atualizado 2026-07-14, parcial)
+## 3. Da Fortaleza às Ondas — Fortaleza + Aquiraz (categoria A · atualizado 2026-07-14)
 
-**1. Onde é:** Fortaleza/CE — Beach Park (Aquiraz/CE, região metropolitana) + Marco Zero de Fortaleza (a confirmar se existe formalmente, ver pendência).
+**1. Onde é:** Fortaleza/CE + Beach Park, em Aquiraz/CE. O componente urbano passa a ser a Fortaleza de Nossa Senhora da Assunção e o entorno cultural do Centro Dragão do Mar, evitando a promessa frágil de um "Marco Zero" não confirmado no título anterior.
 
-**2. Prólogo local (parcial):** Beach Park é o maior parque aquático do Brasil; já recebeu ações de escolas de surf/bodyboarding pela Prefeitura de Fortaleza e oferece descontos para grupos acima de 20 pessoas com pagamento antecipado. O componente "Marco Zero" citado no nome do roteiro não foi confirmado como ponto formal do centro de Fortaleza nesta pesquisa (diferente do Marco Zero do Recife, que é bem documentado).
+**2. Prólogo local:** Fortaleza carrega no próprio nome a presença da fortificação que ajudou a organizar a origem urbana da capital cearense. O roteiro conecta esse marco histórico à cidade cultural contemporânea e fecha em Aquiraz, onde o Beach Park permite observar água, corpo, movimento, energia, convivência e segurança em equipamentos de grande escala.
 
-**3. Jornada do aluno (a desenvolver):**
-- Parada 1 (pernoite) — componente urbano/histórico de Fortaleza (a definir e pesquisar: qual marco real substitui o "Marco Zero" no nome do roteiro?).
-- Parada 2 — Beach Park: já é um atrativo concreto e verificável.
-- Fechamento — a definir.
+**3. Jornada do aluno:**
+- Parada 1 — Fortaleza de Nossa Senhora da Assunção: origem urbana, defesa, poder público e memória da cidade.
+- Parada 2 — Centro Dragão do Mar / Praia de Iracema: arte, cultura, circulação e leitura da cidade contemporânea.
+- Parada 3 — orla e deslocamentos: paisagem costeira, serviços, mobilidade e usos do litoral.
+- Fechamento — Beach Park, em Aquiraz: água, movimento, segurança e convivência em grande grupo.
 
-**4. BNCC:** não mapeado.
+**4. BNCC:** manter mapeamento de Ensino Médio já usado na página (`EM13CHS101`, `EM13CHS106`, `EM13CHS206`, `EM13LGG704`) até revisão com professora. O eixo de Ciências da Natureza/Física deve ser validado antes de incluir códigos novos.
 
-**5. Revisão de copy:** o nome do roteiro promete um "Marco Zero" que não foi localizado como ponto real de Fortaleza — ou renomear o roteiro, ou pesquisar e confirmar a existência desse marco antes de vender a promessa do título.
+**5. Revisão de copy:** página integrada como `roteiro-marco-zero-ondas.html`, mas com nome visível "Da Fortaleza às Ondas" para preservar links já publicados enquanto a URL não for migrada.
 
-**6. Fotos necessárias:** Beach Park (estruturas do parque); ponto urbano de Fortaleza a definir.
+**6. Fotos necessárias:** Fortaleza de Nossa Senhora da Assunção, Centro Dragão do Mar/Praia de Iracema, orla de Fortaleza e Beach Park.
 
-**Pendência:** este é o roteiro com menos base do lote — precisa de pesquisa dedicada ao componente histórico/urbano de Fortaleza (o "Marco Zero" do título) antes de qualquer redação final. O componente Beach Park já está pronto para uso.
+**Pendência:** confirmar com operação se a visita interna à Fortaleza de Nossa Senhora da Assunção será sempre viável ou se a parada deve ser tratada como leitura externa + entorno, conforme autorização/agendamento.
 
-Fontes: [Prefeitura de Fortaleza — escolas no Beach Park](https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-leva-escolas-de-surf-e-bodyboarding-ao-beach-park), [Natal Viagens — Beach Park grupos](https://natalviagens.com/beach-park-fortaleza/).
+Fontes: [Visit Fortaleza — Fortaleza de Nossa Senhora da Assunção](https://visit-fortaleza.com/experiencias/fortaleza-de-nossa-senhora-da-assuncao-10-regiao-militar/), [Mapa Cultural do Ceará — Fortaleza de Nossa Senhora da Assunção](https://mapacultural.secult.ce.gov.br/espaco/245/), [Mapa Cultural do Ceará — Centro Dragão do Mar](https://mapacultural.secult.ce.gov.br/espaco/37/), [Beach Park — Projeto Escola](https://beachpark.com.br/projeto-escola-beach-park/), [Prefeitura de Fortaleza — estudantes no Beach Park](https://www.fortaleza.ce.gov.br/noticias/prefeitura-de-fortaleza-leva-escolas-de-surf-e-bodyboarding-ao-beach-park).

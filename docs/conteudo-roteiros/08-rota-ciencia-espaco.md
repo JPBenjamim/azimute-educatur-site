@@ -54,13 +54,13 @@
 
 ---
 
-## 3. O Chão Vivo de Natal — Parque das Dunas + IFRN (categoria A · já publicado, revisão)
+## 3. Rota local Chão Vivo de Natal — Parque das Dunas + IFRN (categoria A · já publicado, revisão)
 
 **1. Onde é:** Natal/RN. Bosque dos Namorados (Parque das Dunas) + Museu de Minérios do RN, no IFRN Natal-Central.
 
-**2. Prólogo local:** já está bem escrito na página piloto — dois territórios complementares: dunas fixas e solo do parque + acervo de rochas/minerais do museu no IFRN.
+**2. Prólogo local:** já está bem escrito na página piloto — dois territórios complementares: dunas fixas e solo do parque + acervo de rochas/minerais do museu no IFRN. Pela estrutura do catálogo, este nome pode funcionar como rota local/linha temática: vários mini roteiros de Natal podem nascer do mesmo eixo solo, dunas, cidade, ciência e museus.
 
-**3. Jornada do aluno:** já está concreta na página piloto (Bosque dos Namorados → leitura da paisagem protegida → Museu de Minérios → diário de campo). É a referência para as outras páginas, não precisa de revisão de conteúdo.
+**3. Jornada do aluno:** já está concreta na página piloto (Bosque dos Namorados → leitura da paisagem protegida → Museu de Minérios → diário de campo). É a referência para as outras páginas. Como rota local, pode abrigar variações futuras combinando Parque das Dunas, Museu de Minérios/IFRN, Parque da Cidade e outros equipamentos de Natal, desde que cada combinação vire um roteiro específico com paradas claras.
 
 **4. BNCC (já na página, conferida):**
 - EF06CI11 (Ciências) — camadas da Terra.
@@ -82,7 +82,7 @@
 
 **3. Confirmação de sobreposição:** este roteiro e "O Chão Vivo de Natal" (página piloto) usam exatamente o mesmo par de locais — Museu de Minérios do IFRN + Parque das Dunas. É duplicidade real, igual às já resolvidas (Serra de São Bento, Cajueiro e Barreira).
 
-**4. Decisão recomendada:** como "O Chão Vivo de Natal" é a página piloto oficial do checklist (ROT-00), ela deve ser o roteiro único para este par de locais. "Da Terra à Célula" deveria ser removido do catálogo ou reformulado com um recorte diferente (ex.: focar em outro par de locais).
+**4. Decisão recomendada:** como "O Chão Vivo de Natal" passa a ser entendido como rota local/linha temática e também como página piloto oficial do checklist (ROT-00), este par de locais deve ficar concentrado nela. "Da Terra à Célula" deveria ser removido do catálogo ou reformulado com um recorte diferente (ex.: focar em outro par de locais).
 
 **5. Revisão de copy:** não reescrever "Da Terra à Célula" até essa decisão — os dados do Museu de Minérios acima já podem enriquecer a página piloto (Chão Vivo de Natal) na parada 3, que hoje usa um ícone ilustrativo em vez de foto real.
 

@@ -33,13 +33,13 @@ Isto é conteúdo, não HTML. Nada aqui deve ser colado direto no site sem revis
 
 ### Pendências reais restantes
 - **Da Terra à Célula** (Minérios+Dunas): sobreposição total com a página piloto "O Chão Vivo de Natal" — decidir remover do catálogo ou dar recorte próprio (ver `08-rota-ciencia-espaco.md`).
-- **Do Marco Zero às Ondas** (Fortaleza+Beach Park): único roteiro sem pesquisa completa — o componente Beach Park está pronto, mas o "Marco Zero" do título não foi localizado como ponto real de Fortaleza. Precisa de pesquisa dedicada.
+- **Da Fortaleza às Ondas** (Fortaleza+Aquiraz): pesquisa dedicada iniciada em 2026-07-14; nome antigo removido da interface porque prometia um "Marco Zero" não confirmado. Mantém pendência operacional de confirmar visita interna à Fortaleza de Nossa Senhora da Assunção.
 
 ## Divisão sugerida com o Codex
 
 Praticamente todo o pacote (35/36) já tem conteúdo pesquisado e citado — é trabalho de reescrita/formatação a partir de agora, bom para eu (Claude) continuar.
 
-Só falta pesquisa territorial nova para "Do Marco Zero às Ondas" (Fortaleza) — mesmo processo da skill `criar-roteiros-azimute`.
+A pesquisa territorial de Fortaleza foi iniciada pelo Codex e registrada em `10-rota-capitais.md`. Próximo passo: validar operação/agendamento e, se aprovado, revisar fotos finais.
 
 ## Arquivos desta pasta
 
