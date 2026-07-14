@@ -334,31 +334,47 @@
       var dragStartX = 0;
       var dragStartScroll = 0;
       var dragMoved = false;
+      var suppressClick = false;
+      var dragThreshold = 8;
 
       rotTrack.addEventListener('mousedown', function (event) {
+        if (event.button !== 0) return;
         isDragging = true;
         dragMoved = false;
+        suppressClick = false;
         dragStartX = event.pageX;
         dragStartScroll = rotTrack.scrollLeft;
-        rotTrack.classList.add('is-dragging');
       });
 
       window.addEventListener('mousemove', function (event) {
         if (!isDragging) return;
         var delta = event.pageX - dragStartX;
-        if (Math.abs(delta) > 4) dragMoved = true;
+        if (!dragMoved && Math.abs(delta) >= dragThreshold) {
+          dragMoved = true;
+          rotTrack.classList.add('is-dragging');
+        }
+        if (!dragMoved) return;
         rotTrack.scrollLeft = dragStartScroll - delta;
       });
 
       window.addEventListener('mouseup', function () {
         if (!isDragging) return;
         isDragging = false;
+        suppressClick = dragMoved;
         rotTrack.classList.remove('is-dragging');
-        window.setTimeout(function () { dragMoved = false; }, 0);
+        window.setTimeout(function () { suppressClick = false; }, 120);
+      });
+
+      rotTrack.addEventListener('mouseleave', function () {
+        if (!isDragging) return;
+        isDragging = false;
+        suppressClick = dragMoved;
+        rotTrack.classList.remove('is-dragging');
+        window.setTimeout(function () { suppressClick = false; }, 120);
       });
 
       rotTrack.addEventListener('click', function (event) {
-        if (!dragMoved) return;
+        if (!suppressClick) return;
         event.preventDefault();
         event.stopPropagation();
       }, true);

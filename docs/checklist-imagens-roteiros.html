@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checklist de Imagens - Home e Roteiros</title>
+  <style>
+    :root {
+      --bg: #f6f3ef;
+      --surface: #ffffff;
+      --ink: #102a57;
+      --muted: #6b7280;
+      --line: rgba(16, 42, 87, 0.12);
+      --accent: #ea6d56;
+      --accent-soft: rgba(234, 109, 86, 0.12);
+      --ok: #1f7a4c;
+      --ok-soft: rgba(31, 122, 76, 0.12);
+      --warn: #9a6700;
+      --warn-soft: rgba(154, 103, 0, 0.12);
+      --shadow: 0 18px 44px rgba(16, 42, 87, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #fbfaf8 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    .page {
+      width: min(1240px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 56px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #132d5f 0%, #1b3f84 55%, #ef8a68 180%);
+      color: #fff;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      line-height: 1;
+    }
+    .hero p {
+      margin: 0;
+      max-width: 860px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.88);
+    }
+    .note {
+      background: #fff8f1;
+      border: 1px solid rgba(234, 109, 86, 0.18);
+      color: #8a4b2b;
+      border-radius: 18px;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      line-height: 1.6;
+    }
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+    }
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+    }
+    .toolbar input, .toolbar select {
+      font: inherit;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: #fff;
+      color: var(--ink);
+      min-width: 180px;
+    }
+    .section {
+      margin-bottom: 24px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 2vw, 2rem);
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 720px;
+      line-height: 1.55;
+    }
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    th {
+      background: #eef2f7;
+      font-size: .84rem;
+      letter-spacing: .02em;
+    }
+    tbody tr:last-child td { border-bottom: 0; }
+    .check { width: 22px; height: 22px; accent-color: var(--ok); }
+    .title strong { display: block; margin-bottom: 4px; }
+    .sub { color: var(--muted); font-size: .87rem; line-height: 1.45; }
+    .mono {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: .78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .status-redo { background: var(--accent-soft); color: var(--accent); }
+    .status-route { background: var(--warn-soft); color: var(--warn); }
+    .status-ok { background: var(--ok-soft); color: var(--ok); }
+    .small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.45;
+    }
+    @media (max-width: 980px) {
+      .specs { grid-template-columns: 1fr; }
+      .toolbar { position: static; }
+      .table-wrap { overflow-x: auto; }
+      table { min-width: 1220px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <h1>Checklist de imagens da home e dos roteiros</h1>
+      <p>Versao operacional para produzir tudo do zero. Aqui ja esta considerada a nova logica da home: vender rotas tematicas primeiro, e nao mais roteiros individuais no bloco principal.</p>
+    </section>
+
+    <section class="note">
+      <strong>Direcao aprovada:</strong> vamos refazer todas as imagens. Nada daqui deve ser tratado como imagem final. Os nomes abaixo servem como controle de producao e substituicao, nao como aproveitamento visual.
+    </section>
+
+    <section class="specs">
+      <article class="card">
+        <h2>Hero de pagina</h2>
+        <ul>
+          <li><strong>Tamanho padrao:</strong> 1600 x 1000 px</li>
+          <li><strong>Proporcao:</strong> 8:5</li>
+          <li><strong>Formato ideal:</strong> WEBP</li>
+          <li><strong>Peso ideal:</strong> 250 a 380 KB</li>
+          <li><strong>Peso maximo:</strong> 450 KB</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Card de rota ou roteiro</h2>
+        <ul>
+          <li><strong>Tamanho padrao:</strong> 1280 x 960 px</li>
+          <li><strong>Proporcao:</strong> 4:3</li>
+          <li><strong>Formato ideal:</strong> WEBP</li>
+          <li><strong>Peso ideal:</strong> 120 a 220 KB</li>
+          <li><strong>Peso maximo:</strong> 260 KB</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Logica nova da home</h2>
+        <ul>
+          <li>O bloco principal vira <strong>Rotas de Descoberta</strong></li>
+          <li>Cada card vende uma <strong>rota tematica real do catalogo</strong></li>
+          <li>Dentro do card, pode alternar <strong>imagem + roteiro da rota</strong></li>
+          <li>Ex.: Rota das Cavernas alterna Felipe Guerra, Barauna e Lajedo</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Buscar por bloco, rota ou roteiro">
+      <select id="status-filter">
+        <option value="">Todos os status</option>
+        <option value="refazer">Refazer do zero</option>
+        <option value="rota">Nova logica por rota</option>
+        <option value="ok">OK</option>
+      </select>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Home</h2>
+          <p>Essas sao as imagens estruturais da home. Todas entram na fila de refacao.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feito</th>
+              <th>Bloco</th>
+              <th>Asset</th>
+              <th>Tamanho</th>
+              <th>Status</th>
+              <th>Observacao</th>
+            </tr>
+          </thead>
+          <tbody class="filter-rows">
+            <tr data-status="refazer">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Hero principal da home</strong><span class="sub">Imagem de impacto da primeira dobra</span></td>
+              <td><span class="mono">home-hero-principal.webp</span></td>
+              <td>1600 x 1000 px</td>
+              <td><span class="status status-redo">Refazer do zero</span></td>
+              <td>Precisa segurar contraste, texto e identidade premium.</td>
+            </tr>
+            <tr data-status="refazer">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Momento editorial</strong><span class="sub">Bloco “Da sala ao territorio”</span></td>
+              <td><span class="mono">home-momento-editorial.webp</span></td>
+              <td>1600 x 1000 px</td>
+              <td><span class="status status-redo">Refazer do zero</span></td>
+              <td>Imagem deve ter profundidade e leitura territorial forte.</td>
+            </tr>
+            <tr data-status="refazer">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Como funciona</strong><span class="sub">Card lateral de apoio</span></td>
+              <td><span class="mono">home-como-funciona-card.webp</span></td>
+              <td>1280 x 960 px</td>
+              <td><span class="status status-redo">Refazer do zero</span></td>
+              <td>Pode ser uma foto de grupo/territorio mais clara e menos genérica.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Home - Rotas de Descoberta</h2>
+          <p>Aqui nao vamos mais exibir cards de roteiros soltos. Cada card da home vira uma rota. Dentro dela, as imagens e o nome do roteiro podem alternar. Os nomes abaixo ja substituem categorias fracas como “Rota das Capitais” genérica ou “Litoral” amplo demais.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feito</th>
+              <th>Rota</th>
+              <th>Assets do card</th>
+              <th>Tamanho</th>
+              <th>Status</th>
+              <th>Logica do card</th>
+            </tr>
+          </thead>
+          <tbody class="filter-rows">
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota das Cavernas</strong><span class="sub">Felipe Guerra, Barauna, Lajedo de Soledade</span></td>
+              <td><span class="mono">home-rota-cavernas-01.webp</span><br><span class="mono">home-rota-cavernas-02.webp</span><br><span class="mono">home-rota-cavernas-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Card alterna imagens + nome do roteiro ativo da rota.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota do Sol, Mar e Falesias</strong><span class="sub">Pipa, Mata Estrela, Guaraíras, Aquario de Natal</span></td>
+              <td><span class="mono">home-rota-sol-mar-01.webp</span><br><span class="mono">home-rota-sol-mar-02.webp</span><br><span class="mono">home-rota-sol-mar-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Substitui “rota do litoral”. Fica mais forte, mais autoral e mais vendavel.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota dos Engenhos e da Memoria</strong><span class="sub">Areia, Bananeiras, Ceara-Mirim</span></td>
+              <td><span class="mono">home-rota-engenhos-01.webp</span><br><span class="mono">home-rota-engenhos-02.webp</span><br><span class="mono">home-rota-engenhos-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Serve para vender repertorio historico e patrimonial.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota do Serido</strong><span class="sub">Currais Novos, Caico, Acari, Cerro Cora · eixo Geoparque Serido</span></td>
+              <td><span class="mono">home-rota-serido-01.webp</span><br><span class="mono">home-rota-serido-02.webp</span><br><span class="mono">home-rota-serido-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Alterna cidade, geologia, acervo e paisagem.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota das Capitais do Mar</strong><span class="sub">Joao Pessoa, Recife, Olinda, Fortaleza</span></td>
+              <td><span class="mono">home-rota-cidades-costeiras-01.webp</span><br><span class="mono">home-rota-cidades-costeiras-02.webp</span><br><span class="mono">home-rota-cidades-costeiras-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Nome curto, forte e bom para Joao Pessoa, Recife/Olinda e Fortaleza.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota Ciencia e Territorio</strong><span class="sub">Chao Vivo, Minerios, Barreira do Inferno</span></td>
+              <td><span class="mono">home-rota-ciencia-01.webp</span><br><span class="mono">home-rota-ciencia-02.webp</span><br><span class="mono">home-rota-ciencia-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Pode substituir o destaque atual mais “roteiro a roteiro”.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota do Sal e do Vento</strong><span class="sub">Mossoro, Galinhos, Areia Branca, Dunas do Rosado</span></td>
+              <td><span class="mono">home-rota-sal-vento-01.webp</span><br><span class="mono">home-rota-sal-vento-02.webp</span><br><span class="mono">home-rota-sal-vento-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Essa nao pode ficar escondida. E uma das rotas mais fortes da marca.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota dos Povos Originarios</strong><span class="sub">Baia da Traicao, Potiguara e futuros desdobramentos no RN/PB</span></td>
+              <td><span class="mono">home-rota-povos-originarios-01.webp</span><br><span class="mono">home-rota-povos-originarios-02.webp</span><br><span class="mono">home-rota-povos-originarios-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Precisa entrar como rota propria, com regra de imagem e autorizacao bem clara.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota dos Museus e Memorias</strong><span class="sub">Forte, Ribeira, Camara Cascudo, Rampa, MARN, futuros museus de Natal</span></td>
+              <td><span class="mono">home-rota-museus-01.webp</span><br><span class="mono">home-rota-museus-02.webp</span><br><span class="mono">home-rota-museus-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Entra muito bem para Natal e Grande Natal. Ajuda a abrir frente de produto urbano.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota das Serras e do Interior</strong><span class="sub">Martins, Portalegre, Serra das Gameleiras, Roliude</span></td>
+              <td><span class="mono">home-rota-serras-interior-01.webp</span><br><span class="mono">home-rota-serras-interior-02.webp</span><br><span class="mono">home-rota-serras-interior-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Melhor usar “Interior” junto de um recorte concreto. Sozinho fica amplo demais.</td>
+            </tr>
+            <tr data-status="rota">
+              <td><input class="check" type="checkbox"></td>
+              <td class="title"><strong>Rota da Fe e da Memoria</strong><span class="sub">Cunhau, Uruacu, Santa Cruz, Carnauba dos Dantas</span></td>
+              <td><span class="mono">home-rota-fe-memoria-01.webp</span><br><span class="mono">home-rota-fe-memoria-02.webp</span><br><span class="mono">home-rota-fe-memoria-03.webp</span></td>
+              <td>1280 x 960 px cada</td>
+              <td><span class="status status-route">Nova logica por rota</span></td>
+              <td>Boa para patrimonio, religiosidade e memoria historica.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Roteiros - assets por pagina</h2>
+          <p>Aqui continua o controle roteiro por roteiro, mas agora assumindo que tudo entra na fila de refacao.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feito</th>
+              <th>Roteiro</th>
+              <th>Hero novo</th>
+              <th>Card novo</th>
+              <th>Status</th>
+              <th>Observacao</th>
+            </tr>
+          </thead>
+          <tbody class="filter-rows">
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>O Chao Vivo de Natal</strong><span class="sub">Natal, RN</span></td><td><span class="mono">catalogo-chao-vivo-natal-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-chao-vivo-natal-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Rota local forte. Merece ensaio proprio.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Civilizacao e Engenhos</strong><span class="sub">Areia, PB</span></td><td><span class="mono">catalogo-areia-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-areia-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Mesmo sendo uma das melhores, vai entrar no pacote novo.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Entre Trilhos e Engenhos</strong><span class="sub">Bananeiras, PB</span></td><td><span class="mono">catalogo-bananeiras-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-bananeiras-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Nova linguagem visual do site pede reensaio.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Terra do Acucar e do Rio</strong><span class="sub">Ceara-Mirim, RN</span></td><td><span class="mono">catalogo-ceara-mirim-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-ceara-mirim-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Pedir imagens que mostrem rio, engenho e cidade.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Sentinelas do Mar</strong><span class="sub">Natal, RN</span></td><td><span class="mono">catalogo-aquario-natal-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-aquario-natal-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Mais vivo, menos cara de banco de imagem.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Gigantes do Litoral e Ciencia Aeroespacial</strong><span class="sub">RN</span></td><td><span class="mono">catalogo-cajueiro-barreira-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-cajueiro-barreira-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Separar melhor territorio e ciencia.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Rumo ao Espaco</strong><span class="sub">Barreira do Inferno, RN</span></td><td><span class="mono">catalogo-barreira-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-barreira-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Pede visual mais institucional e espacial.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Potiguara - O Povo que Deu Nome ao RN</strong><span class="sub">Baia da Traicao, PB</span></td><td><span class="mono">catalogo-baia-da-traicao-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-baia-da-traicao-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Depende de autorizacao e cuidado etico na selecao.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Arrebol Paraibano</strong><span class="sub">Joao Pessoa, PB</span></td><td><span class="mono">catalogo-joao-pessoa-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-joao-pessoa-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Mais identidade urbana e patrimonial.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Pernambuco Imortal</strong><span class="sub">Recife + Olinda, PE</span></td><td><span class="mono">catalogo-recife-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-recife-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Mais autoral, menos postcard.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Da Fortaleza as Ondas</strong><span class="sub">Fortaleza, CE</span></td><td><span class="mono">catalogo-fortaleza-beach-park-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-fortaleza-beach-park-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Pedir imagens mais ligadas ao roteiro aprovado.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>O Coracao de Metal do Serido</strong><span class="sub">Currais Novos, RN</span></td><td><span class="mono">catalogo-currais-novos-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-currais-novos-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Mais corpo geologico e industrial.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Janelas do Serido</strong><span class="sub">Caico + Acari, RN</span></td><td><span class="mono">catalogo-janelas-serido-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-janelas-serido-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Refazer em linguagem consistente com a nova home.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Onde Nasce o Potengi</strong><span class="sub">Cerro Cora, RN</span></td><td><span class="mono">catalogo-cerro-cora-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-cerro-cora-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Precisa deixar claro nascente, mirante e vale.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>No Alto da Falesia</strong><span class="sub">Pipa, RN</span></td><td><span class="mono">catalogo-pipa-falesias-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-pipa-falesias-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Falesia, trilha e vista real de Pipa.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Raizes da Mata Atlantica</strong><span class="sub">Baia Formosa, RN</span></td><td><span class="mono">catalogo-mata-estrela-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-mata-estrela-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Mesmo coerente hoje, entra no reensaio total.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Do Rio ao Mar</strong><span class="sub">Natal, RN</span></td><td><span class="mono">catalogo-minerio-barco-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-minerio-barco-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Nova proposta visual mais humana e territorial.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Da Terra a Celula</strong><span class="sub">Natal, RN</span></td><td><span class="mono">catalogo-minerio-dunas-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-minerio-dunas-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Se o produto ficar, a imagem tambem precisa subir de nivel.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Sal, Sol e Liberdade</strong><span class="sub">Mossoro, RN</span></td><td><span class="mono">catalogo-mossoro-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-mossoro-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Mais identidade mossoroense, menos montagem genérica.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Galinhos - Peninsula do Sal</strong><span class="sub">Galinhos, RN</span></td><td><span class="mono">catalogo-galinhos-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-galinhos-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Precisa travessia, sal e vila sem carros.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>No Topo da Serra</strong><span class="sub">Martins, RN</span></td><td><span class="mono">catalogo-martins-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-martins-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Bom tema, imagem precisa parecer mais premium.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>A Serra que Pinga</strong><span class="sub">Portalegre, RN</span></td><td><span class="mono">catalogo-portalegre-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-portalegre-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Mirante e cachoeira precisam aparecer de forma clara.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Serra das Gameleiras</strong><span class="sub">Araruna, PB</span></td><td><span class="mono">catalogo-araruna-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-araruna-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Hoje conversa parcialmente, mas vamos substituir tudo mesmo.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>O Sertao Ja Foi Mar</strong><span class="sub">Lajedo de Soledade, RN</span></td><td><span class="mono">catalogo-lajedo-soledade-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-lajedo-soledade-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Precisa mini-canions, museu e rocha falarem por si.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>O Enigma da Pedra do Inga</strong><span class="sub">Inga, PB</span></td><td><span class="mono">catalogo-pedra-do-inga-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-pedra-do-inga-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>As gravuras precisam ser o centro da venda.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Primeiros Santos do Brasil</strong><span class="sub">Cunhau + Uruacu, RN</span></td><td><span class="mono">catalogo-cunhau-uruacu-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-cunhau-uruacu-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Capela, santuario e atmosfera historica real.</td></tr>
+            <tr data-status="refazer"><td><input class="check" type="checkbox"></td><td class="title"><strong>Roliude - Cinema do Sertao</strong><span class="sub">Interior do RN</span></td><td><span class="mono">catalogo-roliude-hero.webp</span><span class="small">1600 x 1000 px</span></td><td><span class="mono">catalogo-roliude-card.webp</span><span class="small">1280 x 960 px</span></td><td><span class="status status-redo">Refazer do zero</span></td><td>Subir para visual menos literal e mais cinematografico.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const search = document.getElementById('search');
+    const statusFilter = document.getElementById('status-filter');
+    const tables = [...document.querySelectorAll('.filter-rows tr')];
+
+    function applyFilters() {
+      const q = search.value.trim().toLowerCase();
+      const status = statusFilter.value;
+
+      tables.forEach((row) => {
+        const text = row.innerText.toLowerCase();
+        const rowStatus = row.dataset.status;
+        const matchQuery = !q || text.includes(q);
+        const matchStatus = !status || rowStatus === status;
+        row.style.display = matchQuery && matchStatus ? '' : 'none';
+      });
+    }
+
+    search.addEventListener('input', applyFilters);
+    statusFilter.addEventListener('change', applyFilters);
+  </script>
+</body>
+</html>

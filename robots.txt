@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /mockup-padrao-roteiros.html
+Disallow: /mockup-pagina-roteiro-modelo.html
+Disallow: /template-roteiro-padrao.html
+Disallow: /roteiro-serra-sao-bento.html
+
+Sitemap: https://jpbenjamim.github.io/azimute-educatur-site/sitemap.xml
