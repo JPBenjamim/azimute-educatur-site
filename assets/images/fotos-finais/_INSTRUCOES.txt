@@ -1,0 +1,19 @@
+Estrutura para salvar as fotos finais do site Azimute Educatur.
+
+Como usar:
+- hero: imagem principal da home ou da página do roteiro
+- card: imagem de capa para cards de home/catalogo
+- galeria: fotos da jornada, mosaicos e blocos internos
+- extras: sobras úteis, bastidores ou alternativas
+
+Sugestão rápida:
+- priorizar .jpg ou .webp
+- hero desktop: 1600px de largura
+- card: 960px de largura
+- galeria: 1200px de largura
+- manter arquivos leves e com nomes descritivos
+
+Exemplo:
+hero/forte-ribeira-por-do-sol.jpg
+card/forte-ribeira-fachada.webp
+galeria/forte-ribeira-canhão-01.jpg
